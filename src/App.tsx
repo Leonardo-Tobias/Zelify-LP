@@ -88,7 +88,7 @@ export default function App() {
 
           <div className="flex items-center space-x-4">
             <a 
-              href="https://app.zelify.com.br/login"
+              href="https://zelify.vercel.app/login"
               target="_blank"
               rel="noreferrer"
               className="border border-slate-900 hover:bg-slate-900 hover:text-white px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-300 active:scale-[0.98] cursor-pointer"
@@ -120,7 +120,7 @@ export default function App() {
 
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <a 
-                href="https://app.zelify.com.br/signup"
+                href="https://zelify.vercel.app/cadastro"
                 target="_blank"
                 rel="noreferrer"
                 className="bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-extrabold uppercase tracking-widest px-8 py-4 rounded-xl shadow-[0_8px_30px_rgba(0,28,255,0.22)] hover:shadow-[0_8px_30px_rgba(0,28,255,0.35)] transition-all text-center flex items-center justify-center space-x-2 active:scale-[0.98] cursor-pointer"
@@ -342,7 +342,7 @@ export default function App() {
                   </div>
                   <div className={`px-6 py-1 rounded-md text-[9px] font-mono select-none tracking-tight flex items-center justify-center space-x-1 w-64 max-w-full ${mockupTheme === 'dark' ? 'bg-zinc-950 text-zinc-600 border border-zinc-900' : 'bg-white text-slate-400 border border-slate-200'}`}>
                     <span className="text-[#001CFF] font-bold">https://</span>
-                    <span>app.zelify.com.br/dashboard</span>
+                    <span>zelify.vercel.app/dashboard</span>
                   </div>
                   <div className="w-6 h-6 rounded-full bg-slate-200/40 flex items-center justify-center text-[9px] font-bold text-slate-500">
                     H
@@ -699,7 +699,7 @@ export default function App() {
 
               <div className="pt-8">
                 <a 
-                  href="https://app.zelify.com.br/signup"
+                  href="https://zelify.vercel.app/cadastro"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center space-x-2 bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg shadow-[#001CFF]/15 transition-all active:scale-[0.98]"
@@ -906,7 +906,7 @@ export default function App() {
 
               <div className="pt-8">
                 <a 
-                  href="https://app.zelify.com.br/signup"
+                  href="https://zelify.vercel.app/cadastro"
                   target="_blank"
                   rel="noreferrer"
                   className="block w-full text-center border border-slate-900 hover:bg-slate-950 hover:text-white text-slate-900 text-xs font-bold uppercase tracking-widest py-3.5 rounded-xl transition-all cursor-pointer"
@@ -968,7 +968,7 @@ export default function App() {
 
               <div className="pt-8">
                 <a 
-                  href="https://app.zelify.com.br/signup"
+                  href="https://zelify.vercel.app/cadastro"
                   target="_blank"
                   rel="noreferrer"
                   className="block w-full text-center bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-extrabold uppercase tracking-widest py-3.5 rounded-xl transition-all shadow-lg shadow-[#001CFF]/15 cursor-pointer"
@@ -1096,10 +1096,10 @@ export default function App() {
             <h4 className="text-xs font-black uppercase tracking-wider text-slate-400">Links do Produto</h4>
             <ul className="space-y-2.5 text-xs text-slate-450 font-semibold">
               <li>
-                <a href="https://app.zelify.com.br/login" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Entrar no Painel</a>
+                <a href="https://zelify.vercel.app/login" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Entrar no Painel</a>
               </li>
               <li>
-                <a href="https://app.zelify.com.br/signup" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Criar Novo Condomínio</a>
+                <a href="https://zelify.vercel.app/cadastro" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Criar Novo Condomínio</a>
               </li>
               <li>
                 <a href="#planos" className="hover:text-white transition-colors">Planos e Preços</a>
