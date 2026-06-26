@@ -1065,8 +1065,15 @@ export default function App() {
                   {/* Campo de entrada interativo */}
                   <div className="space-y-3 pt-2 bg-slate-950/40 border border-slate-800/60 p-4 rounded-2xl">
                     <div className="flex items-center justify-between text-xs font-bold text-slate-350">
-                      <label htmlFor="condo-qty" className="uppercase tracking-wider text-[8px] text-slate-400">Qtd. de Prédios</label>
-                      <div className="flex items-center space-x-1 bg-slate-950 border border-slate-800 rounded px-2 py-0.5">
+                      <label htmlFor="condo-qty" className="uppercase tracking-wider text-[9px] text-slate-400 font-extrabold">Qtd. de Prédios</label>
+                      <div className="flex items-center space-x-1.5 bg-slate-950 border border-slate-800 rounded-xl px-1 py-1 shadow-inner">
+                        <button 
+                          type="button"
+                          onClick={() => setCondoCount(prev => Math.max(1, prev - 1))}
+                          className="w-6 h-6 rounded-lg bg-slate-900 hover:bg-slate-800 active:scale-[0.92] text-slate-350 hover:text-white flex items-center justify-center font-bold transition-all border border-slate-800/85 cursor-pointer text-xs select-none"
+                        >
+                          -
+                        </button>
                         <input 
                           type="number"
                           id="condo-qty"
@@ -1077,9 +1084,15 @@ export default function App() {
                             const val = parseInt(e.target.value);
                             setCondoCount(isNaN(val) ? 1 : Math.max(1, Math.min(500, val)));
                           }}
-                          className="w-10 bg-transparent text-white text-center font-bold focus:outline-none text-[11px]"
+                          className="w-12 bg-transparent text-white text-center font-bold focus:outline-none text-xs [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                         />
-                        <span className="text-[9px] text-slate-500 font-semibold">un.</span>
+                        <button 
+                          type="button"
+                          onClick={() => setCondoCount(prev => Math.min(500, prev + 1))}
+                          className="w-6 h-6 rounded-lg bg-slate-900 hover:bg-slate-800 active:scale-[0.92] text-slate-350 hover:text-white flex items-center justify-center font-bold transition-all border border-slate-800/85 cursor-pointer text-xs select-none"
+                        >
+                          +
+                        </button>
                       </div>
                     </div>
                     
