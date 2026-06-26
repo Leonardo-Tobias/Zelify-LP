@@ -596,11 +596,11 @@ export default function App() {
                     </div>
 
                     {/* App Body - Form */}
-                    <div className="flex-1 p-3 space-y-2 bg-slate-50 overflow-y-auto text-left z-10 min-h-0">
-                      <div className="bg-white rounded-2xl p-3.5 border border-slate-200/80 shadow-sm space-y-3">
+                    <div className="flex-1 p-2.5 bg-slate-50 overflow-hidden text-left z-10 min-h-0 flex flex-col justify-center">
+                      <div className="bg-white rounded-2xl p-3 border border-slate-200/80 shadow-sm space-y-2.5">
                         
                         {/* Title Form */}
-                        <div className="text-[9px] font-black uppercase text-slate-900 tracking-wider flex items-center justify-between border-b border-slate-100 pb-1.5">
+                        <div className="text-[9px] font-black uppercase text-slate-900 tracking-wider flex items-center justify-between border-b border-slate-100 pb-1">
                           <span className="flex items-center gap-1">
                             <Wrench className="w-3.5 h-3.5 text-[#001CFF]" />
                             Relatar Problema
@@ -609,36 +609,36 @@ export default function App() {
                         </div>
 
                         {/* Input Local */}
-                        <div className="space-y-1">
+                        <div className="space-y-0.5">
                           <label className="text-[7px] font-extrabold uppercase tracking-wider text-slate-400">Onde está o problema?</label>
                           <div className="relative">
                             <input 
                               type="text" 
                               readOnly 
                               value="Elevador de Serviço - Hall 3"
-                              className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[8px] font-semibold text-slate-900 focus:outline-none pr-6"
+                              className="w-full px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-lg text-[8px] font-semibold text-slate-900 focus:outline-none pr-6"
                             />
                             <span className="absolute right-2 top-1/2 -translate-y-1/2 text-[8px]">📍</span>
                           </div>
                         </div>
 
                         {/* Input Descrição */}
-                        <div className="space-y-1">
+                        <div className="space-y-0.5">
                           <label className="text-[7px] font-extrabold uppercase tracking-wider text-slate-400">Descreva o que ocorreu</label>
                           <textarea 
                             readOnly 
                             value="O botão do 5º andar está afundado e não responde quando apertado."
-                            className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[8px] font-semibold text-slate-800 h-12 focus:outline-none resize-none leading-relaxed"
+                            className="w-full px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-lg text-[8px] font-semibold text-slate-800 h-9 focus:outline-none resize-none leading-relaxed"
                           />
                         </div>
 
                         {/* Foto Carregada */}
-                        <div className="space-y-1">
+                        <div className="space-y-0.5">
                           <label className="text-[7px] font-extrabold uppercase tracking-wider text-slate-400">Foto do Problema</label>
-                          <div className="border border-dashed border-[#001CFF]/30 bg-[#001CFF]/5 p-2 rounded-lg flex items-center justify-between text-[7px] shadow-inner">
+                          <div className="border border-dashed border-[#001CFF]/30 bg-[#001CFF]/5 p-1.5 rounded-lg flex items-center justify-between text-[7px] shadow-inner">
                             <div className="flex items-center space-x-1.5">
                               <span className="text-[9px]">📷</span>
-                              <span className="font-bold text-slate-700 truncate max-w-[120px]">botoeira_quebrada.jpg</span>
+                              <span className="font-bold text-slate-700 truncate max-w-[110px]">botoeira_quebrada.jpg</span>
                               <span className="text-[5.5px] text-slate-400 font-semibold">(1.2 MB)</span>
                             </div>
                             <span className="text-[6.5px] text-emerald-500 font-extrabold uppercase bg-emerald-500/10 border border-emerald-500/15 px-1.5 py-0.5 rounded tracking-widest">Carregado</span>
@@ -646,7 +646,7 @@ export default function App() {
                         </div>
 
                         {/* CTA Enviar */}
-                        <button className="w-full bg-[#001CFF] hover:bg-[#0014CC] text-white py-2 rounded-xl text-[8.5px] font-bold uppercase tracking-wider shadow-lg shadow-[#001CFF]/20 active:scale-[0.98] transition-all flex items-center justify-center space-x-1">
+                        <button className="w-full bg-[#001CFF] hover:bg-[#0014CC] text-white py-1.5 rounded-xl text-[8.5px] font-bold uppercase tracking-wider shadow-lg shadow-[#001CFF]/20 active:scale-[0.98] transition-all flex items-center justify-center space-x-1">
                           <span>Enviar Relato em 20s</span>
                           <span>⚡</span>
                         </button>
