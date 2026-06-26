@@ -85,16 +85,22 @@ export default function App() {
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-[#001CFF]/10 selection:text-[#001CFF] scroll-smooth antialiased">
       
       {/* 2. NAVBAR */}
-      <nav className={`sticky z-40 transition-all duration-500 ease-in-out ${
-        isScrolled 
-          ? 'top-4 max-w-5xl mx-auto px-6' 
-          : 'top-0 w-full px-0'
-      }`}>
-        <div className={`mx-auto flex items-center justify-between transition-all duration-500 ease-in-out ${
+      <nav 
+        style={{ transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)' }}
+        className={`sticky top-0 z-40 w-full h-20 flex items-center transition-all ${
           isScrolled 
-            ? 'bg-white/80 backdrop-blur-lg border border-slate-200/50 shadow-[0_12px_30px_rgba(0,28,255,0.03)] px-6 h-14 rounded-full' 
-            : 'bg-slate-50/80 backdrop-blur-md border-b border-slate-200/60 px-6 h-20'
-        }`}>
+            ? 'bg-transparent border-transparent backdrop-blur-none shadow-none' 
+            : 'bg-slate-50/80 backdrop-blur-md border-b border-slate-200/60'
+        }`}
+      >
+        <div 
+          style={{ transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)' }}
+          className={`mx-auto flex items-center justify-between w-full px-6 transition-all ${
+            isScrolled 
+              ? 'bg-white/85 backdrop-blur-lg border border-slate-200/60 shadow-[0_12px_30px_rgba(0,28,255,0.04)] h-14 rounded-full max-w-5xl' 
+              : 'bg-transparent border-transparent h-full rounded-none max-w-7xl'
+          }`}
+        >
           <div className="flex items-center space-x-2">
             <span className="text-2xl font-black tracking-tight text-slate-900">
               Zelify<span className="text-[#001CFF]">.</span>
