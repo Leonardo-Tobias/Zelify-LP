@@ -14,7 +14,8 @@ import {
   Sparkles,
   Check,
   Send,
-  MessageSquare
+  MessageSquare,
+  X
 } from 'lucide-react';
 
 export default function App() {
@@ -1456,107 +1457,135 @@ export default function App() {
 
       {/* 4. MODAL DE SOLICITAÇÃO B2B */}
       {b2bModalOpen && (
-        <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white border border-slate-200 rounded-3xl w-full max-w-md overflow-hidden shadow-2xl relative animate-scale-in">
-            {/* Top Indicator */}
-            <div className="h-1.5 bg-[#001CFF]"></div>
-
+        <div className="fixed inset-0 bg-slate-950/85 z-50 flex items-center justify-center p-4 backdrop-blur-md animate-fade-in">
+          <div className="bg-white border border-slate-100 rounded-[32px] w-full max-w-md overflow-hidden shadow-2xl relative animate-scale-in">
             {/* Close Button */}
             <button 
               onClick={() => setB2bModalOpen(false)}
-              className="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition-colors flex items-center justify-center font-bold text-xs cursor-pointer"
+              className="absolute top-5 right-5 text-slate-400 hover:text-slate-600 bg-slate-50 hover:bg-slate-100 border border-slate-200/40 rounded-full w-8 h-8 flex items-center justify-center transition-all duration-200 active:scale-95 cursor-pointer"
+              aria-label="Close"
             >
-              ✕
+              <X className="w-4 h-4" />
             </button>
 
             {/* Modal Body */}
             <div className="p-8">
-              <div className="space-y-2 mb-6">
-                <span className="text-[9px] font-extrabold text-[#001CFF] uppercase tracking-widest">Atendimento Comercial</span>
-                <h3 className="text-lg font-black text-slate-900 uppercase tracking-tight">Falar com Consultor B2B</h3>
-                <p className="text-xs text-slate-500 font-semibold">Preencha o formulário abaixo e retornaremos com nossa proposta comercial personalizada.</p>
+              {/* Header section with badge */}
+              <div className="mb-6">
+                <div className="w-12 h-12 bg-blue-50 border border-blue-100/50 rounded-2xl flex items-center justify-center text-[#001CFF] mb-4.5 shadow-sm shadow-blue-100/30">
+                  <Building2 className="w-6 h-6" />
+                </div>
+                <div className="space-y-1.5">
+                  <span className="text-[9px] font-black text-[#001CFF] uppercase tracking-widest bg-blue-50/70 border border-blue-100/30 px-3 py-1 rounded-full w-fit">
+                    Atendimento Comercial
+                  </span>
+                  <h3 className="text-xl font-black text-slate-950 tracking-tight pt-1">
+                    Falar com Consultor B2B
+                  </h3>
+                  <p className="text-xs text-slate-500 font-semibold leading-relaxed">
+                    Preencha o formulário abaixo e retornaremos com nossa proposta comercial personalizada.
+                  </p>
+                </div>
               </div>
 
               {b2bSubmitted ? (
-                <div className="py-10 text-center space-y-4 animate-in fade-in duration-300">
-                  <div className="w-12 h-12 bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 rounded-full flex items-center justify-center mx-auto">
-                    <Check className="w-6 h-6 animate-pulse" />
+                <div className="py-12 text-center space-y-4 animate-in fade-in duration-300">
+                  <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 rounded-2xl flex items-center justify-center mx-auto shadow-sm shadow-emerald-100/50">
+                    <Check className="w-7 h-7 animate-pulse" />
                   </div>
-                  <h4 className="text-sm font-extrabold text-slate-900 uppercase tracking-wide">Solicitação Enviada!</h4>
-                  <p className="text-xs text-slate-500 font-semibold leading-relaxed">Entraremos em contato no e-mail informado nas próximas horas.</p>
+                  <h4 className="text-base font-extrabold text-slate-900 uppercase tracking-wide">Solicitação Enviada!</h4>
+                  <p className="text-xs text-slate-550 font-semibold leading-relaxed max-w-xs mx-auto">
+                    Entraremos em contato no e-mail informado nas próximas horas para apresentar a proposta ideal para sua carteira.
+                  </p>
                 </div>
               ) : (
                 <form onSubmit={handleB2bSubmit} className="space-y-4">
                   {/* Nome */}
-                  <div className="space-y-1">
-                    <label className="block text-[9px] font-extrabold uppercase tracking-wider text-slate-550 flex items-center">
-                      <User className="w-3.5 h-3.5 text-[#001CFF] mr-1.5" />
+                  <div className="space-y-1.5">
+                    <label className="block text-[9px] font-bold uppercase tracking-wider text-slate-400">
                       Nome Completo
                     </label>
-                    <input 
-                      type="text" 
-                      required
-                      placeholder="Ex: Roberto Silva"
-                      value={b2bName}
-                      onChange={(e) => setB2bName(e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-[#001CFF] font-semibold"
-                    />
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                        <User className="w-4 h-4 text-slate-400" />
+                      </div>
+                      <input 
+                        type="text" 
+                        required
+                        placeholder="Ex: Roberto Silva"
+                        value={b2bName}
+                        onChange={(e) => setB2bName(e.target.value)}
+                        className="w-full pl-10 pr-4 py-2.5 bg-slate-50/50 hover:bg-slate-55 focus:bg-white border border-slate-200/80 rounded-2xl text-xs text-slate-850 focus:outline-none focus:ring-4 focus:ring-[#001CFF]/10 focus:border-[#001CFF] font-semibold transition-all duration-200"
+                      />
+                    </div>
                   </div>
 
                   {/* E-mail */}
-                  <div className="space-y-1">
-                    <label className="block text-[9px] font-extrabold uppercase tracking-wider text-slate-550 flex items-center">
-                      <Mail className="w-3.5 h-3.5 text-[#001CFF] mr-1.5" />
+                  <div className="space-y-1.5">
+                    <label className="block text-[9px] font-bold uppercase tracking-wider text-slate-400">
                       E-mail Corporativo
                     </label>
-                    <input 
-                      type="email" 
-                      required
-                      placeholder="Ex: roberto@empresa.com.br"
-                      value={b2bEmail}
-                      onChange={(e) => setB2bEmail(e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-[#001CFF] font-semibold"
-                    />
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                        <Mail className="w-4 h-4 text-slate-400" />
+                      </div>
+                      <input 
+                        type="email" 
+                        required
+                        placeholder="Ex: roberto@empresa.com.br"
+                        value={b2bEmail}
+                        onChange={(e) => setB2bEmail(e.target.value)}
+                        className="w-full pl-10 pr-4 py-2.5 bg-slate-50/50 hover:bg-slate-55 focus:bg-white border border-slate-200/80 rounded-2xl text-xs text-slate-850 focus:outline-none focus:ring-4 focus:ring-[#001CFF]/10 focus:border-[#001CFF] font-semibold transition-all duration-200"
+                      />
+                    </div>
                   </div>
 
                   {/* Nome da Administradora */}
-                  <div className="space-y-1">
-                    <label className="block text-[9px] font-extrabold uppercase tracking-wider text-slate-550 flex items-center">
-                      <Building2 className="w-3.5 h-3.5 text-[#001CFF] mr-1.5" />
+                  <div className="space-y-1.5">
+                    <label className="block text-[9px] font-bold uppercase tracking-wider text-slate-400">
                       Nome da Administradora
                     </label>
-                    <input 
-                      type="text" 
-                      required
-                      placeholder="Ex: Administradora Viver Mais"
-                      value={b2bCompany}
-                      onChange={(e) => setB2bCompany(e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-[#001CFF] font-semibold"
-                    />
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                        <Building2 className="w-4 h-4 text-slate-400" />
+                      </div>
+                      <input 
+                        type="text" 
+                        required
+                        placeholder="Ex: Administradora Viver Mais"
+                        value={b2bCompany}
+                        onChange={(e) => setB2bCompany(e.target.value)}
+                        className="w-full pl-10 pr-4 py-2.5 bg-slate-50/50 hover:bg-slate-55 focus:bg-white border border-slate-200/80 rounded-2xl text-xs text-slate-850 focus:outline-none focus:ring-4 focus:ring-[#001CFF]/10 focus:border-[#001CFF] font-semibold transition-all duration-200"
+                      />
+                    </div>
                   </div>
 
                   {/* Telefone */}
-                  <div className="space-y-1">
-                    <label className="block text-[9px] font-extrabold uppercase tracking-wider text-slate-550 flex items-center">
-                      <MessageSquare className="w-3.5 h-3.5 text-[#001CFF] mr-1.5" />
+                  <div className="space-y-1.5">
+                    <label className="block text-[9px] font-bold uppercase tracking-wider text-slate-400">
                       WhatsApp / Celular
                     </label>
-                    <input 
-                      type="text" 
-                      placeholder="Ex: (11) 99999-9999"
-                      value={b2bPhone}
-                      onChange={(e) => setB2bPhone(e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-[#001CFF] font-semibold"
-                    />
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                        <MessageSquare className="w-4 h-4 text-slate-400" />
+                      </div>
+                      <input 
+                        type="text" 
+                        placeholder="Ex: (11) 99999-9999"
+                        value={b2bPhone}
+                        onChange={(e) => setB2bPhone(e.target.value)}
+                        className="w-full pl-10 pr-4 py-2.5 bg-slate-50/50 hover:bg-slate-55 focus:bg-white border border-slate-200/80 rounded-2xl text-xs text-slate-850 focus:outline-none focus:ring-4 focus:ring-[#001CFF]/10 focus:border-[#001CFF] font-semibold transition-all duration-200"
+                      />
+                    </div>
                   </div>
 
                   {/* Submit button */}
                   <button 
                     type="submit"
-                    className="w-full bg-[#001CFF] hover:bg-[#0014CC] text-white py-3 rounded-xl text-xs font-bold uppercase tracking-widest shadow-lg shadow-[#001CFF]/15 transition-all flex items-center justify-center space-x-1.5"
+                    className="w-full bg-[#001CFF] hover:bg-[#0014CC] text-white py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest shadow-lg shadow-blue-500/20 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] flex items-center justify-center space-x-2 cursor-pointer mt-6"
                   >
                     <Send className="w-3.5 h-3.5" />
-                    <span>Solicitar Contato Comercial</span>
+                    <span>Solicitar Contato</span>
                   </button>
                 </form>
               )}
