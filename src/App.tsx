@@ -159,16 +159,24 @@ export default function App() {
             </span>
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-5">
             <a 
               href="https://zelify.vercel.app/login"
               target="_blank"
               rel="noreferrer"
-              className={`border border-slate-900 hover:bg-slate-900 hover:text-white rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-300 active:scale-[0.98] cursor-pointer ${
-                isScrolled ? 'px-3 py-1.5' : 'px-4 py-2'
+              className="text-xs font-bold text-slate-600 hover:text-[#001CFF] transition-colors cursor-pointer"
+            >
+              Entrar
+            </a>
+            <a 
+              href="https://zelify.vercel.app/cadastro"
+              target="_blank"
+              rel="noreferrer"
+              className={`bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-[#001CFF]/15 transition-all duration-300 active:scale-[0.98] cursor-pointer ${
+                isScrolled ? 'px-3.5 py-1.5 rounded-lg' : 'px-4.5 py-2.5 rounded-xl'
               }`}
             >
-              Entrar no Painel
+              Testar Grátis
             </a>
           </div>
         </div>
