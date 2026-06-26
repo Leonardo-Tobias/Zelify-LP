@@ -29,6 +29,16 @@ export default function App() {
   }, []);
 
   const [faqOpen, setFaqOpen] = useState<Record<number, boolean>>({});
+  const [condoCount, setCondoCount] = useState(12);
+
+  // Plano Lote calculations
+  let pricePerCondo = 59;
+  if (condoCount >= 16 && condoCount <= 50) {
+    pricePerCondo = 49;
+  } else if (condoCount > 50) {
+    pricePerCondo = 39;
+  }
+  const totalPrice = condoCount * pricePerCondo;
   const [b2bModalOpen, setB2bModalOpen] = useState(false);
   const [b2bSubmitted, setB2bSubmitted] = useState(false);
   const [b2bName, setB2bName] = useState('');
@@ -1037,15 +1047,60 @@ export default function App() {
                   <h3 className="text-xl font-black uppercase tracking-tight text-white">Plano Lote</h3>
                 </div>
                 
-                <div className="flex flex-col space-y-2">
-                  <div className="flex items-baseline space-x-1">
-                    <span className="text-sm font-black text-blue-500 align-super">R$</span>
-                    <span className="text-4xl font-black text-white tracking-tight font-mono">59 <span className="text-lg font-bold text-slate-400">a</span> 39</span>
-                    <span className="text-slate-400 text-xs font-semibold ml-1">/mês por prédio</span>
+                <div className="flex flex-col space-y-4">
+                  <div className="space-y-1">
+                    <div className="flex items-baseline space-x-1">
+                      <span className="text-sm font-black text-blue-500 align-super">R$</span>
+                      <span className="text-5xl font-black text-white tracking-tight font-mono">{pricePerCondo}</span>
+                      <span className="text-slate-400 text-xs font-semibold ml-1">/mês por prédio</span>
+                    </div>
+                    
+                    <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider flex items-center space-x-1.5">
+                      <span>Total:</span>
+                      <span className="text-blue-400 font-black text-xs font-mono">R$ {totalPrice.toLocaleString('pt-BR')},00</span>
+                      <span className="text-slate-500 font-medium">/mês</span>
+                    </div>
                   </div>
-                  <span className="inline-flex text-[8.5px] text-blue-400 font-extrabold uppercase tracking-widest bg-blue-950/40 border border-blue-900/30 px-2 py-1 rounded-md self-start">
-                    Custo progressivo por volume
-                  </span>
+
+                  {/* Campo de entrada interativo */}
+                  <div className="space-y-3 pt-2 bg-slate-950/40 border border-slate-800/60 p-4 rounded-2xl">
+                    <div className="flex items-center justify-between text-xs font-bold text-slate-350">
+                      <label htmlFor="condo-qty" className="uppercase tracking-wider text-[8px] text-slate-400">Qtd. de Prédios</label>
+                      <div className="flex items-center space-x-1 bg-slate-950 border border-slate-800 rounded px-2 py-0.5">
+                        <input 
+                          type="number"
+                          id="condo-qty"
+                          min={1}
+                          max={500}
+                          value={condoCount}
+                          onChange={(e) => {
+                            const val = parseInt(e.target.value);
+                            setCondoCount(isNaN(val) ? 1 : Math.max(1, Math.min(500, val)));
+                          }}
+                          className="w-10 bg-transparent text-white text-center font-mono font-bold focus:outline-none text-[11px]"
+                        />
+                        <span className="text-[9px] text-slate-500 font-semibold">un.</span>
+                      </div>
+                    </div>
+                    
+                    <div className="relative flex items-center">
+                      <input 
+                        type="range"
+                        id="condo-range"
+                        min={1}
+                        max={100}
+                        value={condoCount > 100 ? 100 : condoCount}
+                        onChange={(e) => setCondoCount(parseInt(e.target.value))}
+                        className="w-full h-1.5 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-[#001CFF] border border-slate-800 focus:outline-none"
+                      />
+                    </div>
+                    
+                    <div className="flex justify-between text-[8px] text-slate-500 font-bold uppercase tracking-wider font-mono">
+                      <span>1</span>
+                      <span>50</span>
+                      <span>100+</span>
+                    </div>
+                  </div>
                 </div>
 
                 <p className="text-slate-400 text-xs font-semibold leading-relaxed">
