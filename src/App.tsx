@@ -864,42 +864,59 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
             
             {/* PLANO STARTER (GRÁTIS) */}
-            <div className="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:shadow-lg transition-all duration-300 relative">
+            <div className="bg-white/80 backdrop-blur-md border border-slate-200/70 rounded-3xl p-8 flex flex-col justify-between shadow-[0_8px_30px_rgb(0,0,0,0.015)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-300/80 transition-all duration-500 relative group">
               <div className="space-y-6">
                 <div className="space-y-1">
-                  <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Para Começar</span>
-                  <h3 className="text-xl font-black text-slate-900 uppercase tracking-wider">Plano Starter</h3>
+                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Para Começar</span>
+                  <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight">Plano Starter</h3>
                 </div>
                 
-                <div className="flex items-baseline">
-                  <span className="text-3xl font-black text-slate-900 font-mono">R$ 0</span>
-                  <span className="text-slate-500 text-xs font-semibold ml-1">/mês</span>
+                <div className="flex items-baseline space-x-1">
+                  <span className="text-sm font-black text-slate-400 align-super">R$</span>
+                  <span className="text-5xl font-black text-slate-900 tracking-tight font-mono">0</span>
+                  <span className="text-slate-400 text-xs font-semibold ml-1">/mês</span>
                 </div>
 
-                <p className="text-slate-500 text-xs font-medium leading-relaxed">
+                <p className="text-slate-500 text-xs font-semibold leading-relaxed">
                   Perfeito para condomínios pequenos ou para avaliar a adesão dos moradores na prática.
                 </p>
 
-                <hr className="border-slate-150" />
+                <hr className="border-slate-100" />
 
-                <ul className="space-y-3 text-xs font-semibold text-slate-650">
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-[#001CFF] mr-2 shrink-0" />
+                <ul className="space-y-3.5 text-xs font-semibold text-slate-650">
+                  <li className="flex items-center text-slate-600 font-semibold text-xs transition-colors duration-300 group-hover:text-slate-800">
+                    <span className="w-5 h-5 rounded-full bg-blue-50 text-[#001CFF] flex items-center justify-center mr-2.5 shrink-0 shadow-sm shadow-blue-200/10">
+                      <Check className="w-3.5 h-3.5" />
+                    </span>
                     1 Condomínio Ativo
                   </li>
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-[#001CFF] mr-2 shrink-0" />
+                  <li className="flex items-center text-slate-600 font-semibold text-xs transition-colors duration-300 group-hover:text-slate-800">
+                    <span className="w-5 h-5 rounded-full bg-blue-50 text-[#001CFF] flex items-center justify-center mr-2.5 shrink-0 shadow-sm shadow-blue-200/10">
+                      <Check className="w-3.5 h-3.5" />
+                    </span>
                     Limite de 15 Chamados/Mês
                   </li>
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-[#001CFF] mr-2 shrink-0" />
+                  <li className="flex items-center text-slate-600 font-semibold text-xs transition-colors duration-300 group-hover:text-slate-800">
+                    <span className="w-5 h-5 rounded-full bg-blue-50 text-[#001CFF] flex items-center justify-center mr-2.5 shrink-0 shadow-sm shadow-blue-200/10">
+                      <Check className="w-3.5 h-3.5" />
+                    </span>
                     Acesso Completo via QR Code
                   </li>
-                  <li className="flex items-center text-slate-400">
-                    ✕ Mural Kanban de Manutenção
+                  <li className="flex items-center text-slate-400 font-medium text-xs">
+                    <span className="w-5 h-5 rounded-full bg-slate-100/70 text-slate-450 flex items-center justify-center mr-2.5 shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </span>
+                    Mural Kanban de Manutenção
                   </li>
-                  <li className="flex items-center text-slate-400">
-                    ✕ Suporte a Multi-Condomínios
+                  <li className="flex items-center text-slate-400 font-medium text-xs">
+                    <span className="w-5 h-5 rounded-full bg-slate-100/70 text-slate-450 flex items-center justify-center mr-2.5 shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </span>
+                    Suporte a Multi-Condomínios
                   </li>
                 </ul>
               </div>
@@ -909,7 +926,7 @@ export default function App() {
                   href="https://zelify.vercel.app/cadastro"
                   target="_blank"
                   rel="noreferrer"
-                  className="block w-full text-center border border-slate-900 hover:bg-slate-950 hover:text-white text-slate-900 text-xs font-bold uppercase tracking-widest py-3.5 rounded-xl transition-all cursor-pointer"
+                  className="block w-full text-center border-2 border-slate-900 hover:bg-slate-900 hover:text-white text-slate-900 text-xs font-extrabold uppercase tracking-widest py-4 rounded-xl transition-all duration-300 active:scale-[0.98] cursor-pointer shadow-sm hover:shadow-md"
                 >
                   Começar Teste Gratuito
                 </a>
@@ -917,50 +934,61 @@ export default function App() {
             </div>
 
             {/* PLANO PRO (MAIS RECOMENDADO) */}
-            <div className="bg-white border-2 border-[#001CFF] rounded-3xl p-8 flex flex-col justify-between shadow-md hover:shadow-xl transition-all duration-300 relative">
-              <div className="absolute top-4 right-4 bg-[#001CFF]/10 text-[#001CFF] border border-[#001CFF]/20 px-3 py-1 rounded-full text-[8.5px] font-black uppercase tracking-wider">
+            <div className="bg-white border-2 border-[#001CFF] rounded-3xl p-8 flex flex-col justify-between shadow-[0_15px_45px_rgba(0,28,255,0.06)] hover:shadow-[0_25px_60px_rgba(0,28,255,0.12)] hover:-translate-y-2.5 transition-all duration-500 relative group">
+              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#001CFF] text-white border border-[#001CFF]/10 px-4.5 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest shadow-[0_4px_20px_rgba(0,28,255,0.3)] select-none">
                 Mais Recomendado
               </div>
               
               <div className="space-y-6">
                 <div className="space-y-1">
-                  <span className="text-[9px] font-bold text-[#001CFF] uppercase tracking-widest">Controle Completo</span>
-                  <h3 className="text-xl font-black text-slate-900 uppercase tracking-wider flex items-center">
+                  <span className="text-[10px] font-black text-[#001CFF] uppercase tracking-widest">Controle Completo</span>
+                  <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight flex items-center">
                     Zelify Pro
-                    <Sparkles className="w-4 h-4 text-[#001CFF] ml-1.5" />
+                    <Sparkles className="w-4 h-4 text-[#001CFF] ml-1.5 animate-pulse" />
                   </h3>
                 </div>
                 
-                <div className="flex items-baseline">
-                  <span className="text-3xl font-black text-slate-900 font-mono">R$ 149</span>
-                  <span className="text-slate-500 text-xs font-semibold ml-1">/mês por prédio</span>
+                <div className="flex items-baseline space-x-1">
+                  <span className="text-sm font-black text-[#001CFF] align-super">R$</span>
+                  <span className="text-5xl font-black text-slate-900 tracking-tight font-mono">149</span>
+                  <span className="text-slate-550 text-xs font-semibold ml-1">/mês por prédio</span>
                 </div>
 
-                <p className="text-slate-500 text-xs font-medium leading-relaxed">
+                <p className="text-slate-550 text-xs font-semibold leading-relaxed">
                   Tudo o que um síndico precisa para centralizar a operação do condomínio de ponta a ponta.
                 </p>
 
                 <hr className="border-slate-150" />
 
-                <ul className="space-y-3 text-xs font-semibold text-slate-650">
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-emerald-500 mr-2 shrink-0" />
+                <ul className="space-y-3.5 text-xs font-semibold text-slate-650">
+                  <li className="flex items-center text-slate-700 font-semibold text-xs transition-colors duration-300 group-hover:text-slate-900">
+                    <span className="w-5 h-5 rounded-full bg-emerald-50 text-emerald-650 flex items-center justify-center mr-2.5 shrink-0 shadow-sm shadow-emerald-200/10">
+                      <Check className="w-3.5 h-3.5" />
+                    </span>
                     Chamados Ilimitados
                   </li>
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-emerald-500 mr-2 shrink-0" />
+                  <li className="flex items-center text-slate-700 font-semibold text-xs transition-colors duration-300 group-hover:text-slate-900">
+                    <span className="w-5 h-5 rounded-full bg-emerald-50 text-emerald-650 flex items-center justify-center mr-2.5 shrink-0 shadow-sm shadow-emerald-200/10">
+                      <Check className="w-3.5 h-3.5" />
+                    </span>
                     Mural Kanban Completo
                   </li>
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-emerald-500 mr-2 shrink-0" />
+                  <li className="flex items-center text-slate-700 font-semibold text-xs transition-colors duration-300 group-hover:text-slate-900">
+                    <span className="w-5 h-5 rounded-full bg-emerald-50 text-emerald-650 flex items-center justify-center mr-2.5 shrink-0 shadow-sm shadow-emerald-200/10">
+                      <Check className="w-3.5 h-3.5" />
+                    </span>
                     Mural de Achados e Perdidos
                   </li>
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-emerald-500 mr-2 shrink-0" />
+                  <li className="flex items-center text-slate-700 font-semibold text-xs transition-colors duration-300 group-hover:text-slate-900">
+                    <span className="w-5 h-5 rounded-full bg-emerald-50 text-emerald-650 flex items-center justify-center mr-2.5 shrink-0 shadow-sm shadow-emerald-200/10">
+                      <Check className="w-3.5 h-3.5" />
+                    </span>
                     Relatórios Gerenciais Mensais
                   </li>
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-emerald-500 mr-2 shrink-0" />
+                  <li className="flex items-center text-slate-700 font-semibold text-xs transition-colors duration-300 group-hover:text-slate-900">
+                    <span className="w-5 h-5 rounded-full bg-emerald-50 text-emerald-650 flex items-center justify-center mr-2.5 shrink-0 shadow-sm shadow-emerald-200/10">
+                      <Check className="w-3.5 h-3.5" />
+                    </span>
                     Suporte Prioritário do Time
                   </li>
                 </ul>
@@ -971,7 +999,7 @@ export default function App() {
                   href="https://zelify.vercel.app/cadastro"
                   target="_blank"
                   rel="noreferrer"
-                  className="block w-full text-center bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-extrabold uppercase tracking-widest py-3.5 rounded-xl transition-all shadow-lg shadow-[#001CFF]/15 cursor-pointer"
+                  className="block w-full text-center bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-extrabold uppercase tracking-widest py-4 rounded-xl shadow-[0_8px_30px_rgba(0,28,255,0.22)] hover:shadow-[0_12px_35px_rgba(0,28,255,0.35)] transition-all duration-300 active:scale-[0.98] cursor-pointer"
                 >
                   Assinar Plano Pro
                 </a>
@@ -979,47 +1007,59 @@ export default function App() {
             </div>
 
             {/* PLANO CORPORATIVO (ADMINISTRADORAS) */}
-            <div className="bg-slate-900 border border-slate-800 text-white rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:shadow-lg transition-all duration-300 relative">
+            <div className="bg-[#0B0F19] border border-slate-800 text-white rounded-3xl p-8 flex flex-col justify-between shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-slate-700 transition-all duration-500 relative group">
               <div className="space-y-6">
                 <div className="space-y-1">
-                  <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Múltiplos Prédios</span>
-                  <h3 className="text-xl font-black uppercase tracking-wider text-white">Plano Lote</h3>
+                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Múltiplos Prédios</span>
+                  <h3 className="text-xl font-black uppercase tracking-tight text-white">Plano Lote</h3>
                 </div>
                 
-                <div className="flex flex-col space-y-1">
-                  <div className="flex items-baseline">
-                    <span className="text-xs font-semibold text-slate-400">Escala de:</span>
-                    <span className="text-2xl font-black font-mono text-white ml-1.5">R$ 59 a R$ 39</span>
-                    <span className="text-slate-400 text-xs font-semibold ml-1">/mês</span>
+                <div className="flex flex-col space-y-2">
+                  <div className="flex items-baseline space-x-1">
+                    <span className="text-sm font-black text-blue-500 align-super">R$</span>
+                    <span className="text-4xl font-black text-white tracking-tight font-mono">59 <span className="text-lg font-bold text-slate-400">a</span> 39</span>
+                    <span className="text-slate-400 text-xs font-semibold ml-1">/mês por prédio</span>
                   </div>
-                  <span className="text-[9px] text-[#001CFF] font-bold uppercase tracking-wider">Custo progressivo por volume</span>
+                  <span className="inline-flex text-[8.5px] text-blue-400 font-extrabold uppercase tracking-widest bg-blue-950/40 border border-blue-900/30 px-2 py-1 rounded-md self-start">
+                    Custo progressivo por volume
+                  </span>
                 </div>
 
-                <p className="text-slate-450 text-xs font-medium leading-relaxed">
+                <p className="text-slate-400 text-xs font-semibold leading-relaxed">
                   Infraestrutura corporativa desenvolvida especificamente para administradoras de condomínios.
                 </p>
 
                 <hr className="border-slate-800" />
 
-                <ul className="space-y-3 text-xs font-semibold text-slate-350">
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-[#001CFF] mr-2 shrink-0" />
+                <ul className="space-y-3.5 text-xs font-semibold text-slate-350">
+                  <li className="flex items-center text-slate-350 font-semibold text-xs transition-colors duration-300 group-hover:text-white">
+                    <span className="w-5 h-5 rounded-full bg-blue-950/80 text-blue-400 flex items-center justify-center mr-2.5 shrink-0 shadow-sm shadow-blue-950/20">
+                      <Check className="w-3.5 h-3.5" />
+                    </span>
                     Painel Consolidado de Carteira
                   </li>
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-[#001CFF] mr-2 shrink-0" />
+                  <li className="flex items-center text-slate-355 font-semibold text-xs transition-colors duration-300 group-hover:text-white">
+                    <span className="w-5 h-5 rounded-full bg-blue-950/80 text-blue-400 flex items-center justify-center mr-2.5 shrink-0 shadow-sm shadow-blue-950/20">
+                      <Check className="w-3.5 h-3.5" />
+                    </span>
                     Relatórios Consolidados de Lote
                   </li>
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-[#001CFF] mr-2 shrink-0" />
+                  <li className="flex items-center text-slate-355 font-semibold text-xs transition-colors duration-300 group-hover:text-white">
+                    <span className="w-5 h-5 rounded-full bg-blue-950/80 text-blue-400 flex items-center justify-center mr-2.5 shrink-0 shadow-sm shadow-blue-950/20">
+                      <Check className="w-3.5 h-3.5" />
+                    </span>
                     Faturamento Único Mensal
                   </li>
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-[#001CFF] mr-2 shrink-0" />
+                  <li className="flex items-center text-slate-355 font-semibold text-xs transition-colors duration-300 group-hover:text-white">
+                    <span className="w-5 h-5 rounded-full bg-blue-950/80 text-blue-400 flex items-center justify-center mr-2.5 shrink-0 shadow-sm shadow-blue-950/20">
+                      <Check className="w-3.5 h-3.5" />
+                    </span>
                     Customização de Logotipo e Marca
                   </li>
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-[#001CFF] mr-2 shrink-0" />
+                  <li className="flex items-center text-slate-355 font-semibold text-xs transition-colors duration-300 group-hover:text-white">
+                    <span className="w-5 h-5 rounded-full bg-blue-950/80 text-blue-400 flex items-center justify-center mr-2.5 shrink-0 shadow-sm shadow-blue-950/20">
+                      <Check className="w-3.5 h-3.5" />
+                    </span>
                     Gestor de Conta Dedicado
                   </li>
                 </ul>
@@ -1028,7 +1068,7 @@ export default function App() {
               <div className="pt-8">
                 <button 
                   onClick={() => setB2bModalOpen(true)}
-                  className="block w-full text-center bg-white hover:bg-slate-100 text-slate-900 text-xs font-bold uppercase tracking-widest py-3.5 rounded-xl transition-all cursor-pointer"
+                  className="block w-full text-center bg-white hover:bg-slate-100 text-slate-900 text-xs font-extrabold uppercase tracking-widest py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 active:scale-[0.98] cursor-pointer"
                 >
                   Contatar Vendas B2B
                 </button>
