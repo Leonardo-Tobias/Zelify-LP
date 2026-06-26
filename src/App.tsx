@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Building2, 
   QrCode, 
@@ -18,6 +18,16 @@ import {
 
 export default function App() {
   const [mockupTheme, setMockupTheme] = useState<'dark' | 'light'>('dark');
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const [faqOpen, setFaqOpen] = useState<Record<number, boolean>>({});
   const [b2bModalOpen, setB2bModalOpen] = useState(false);
   const [b2bSubmitted, setB2bSubmitted] = useState(false);
@@ -75,14 +85,19 @@ export default function App() {
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-[#001CFF]/10 selection:text-[#001CFF] scroll-smooth antialiased">
       
       {/* 2. NAVBAR */}
-      <nav className="sticky top-0 z-40 bg-slate-50/80 backdrop-blur-md border-b border-slate-200/60 transition-all">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <nav className={`sticky z-40 transition-all duration-500 ease-in-out ${
+        isScrolled 
+          ? 'top-4 max-w-5xl mx-auto px-6' 
+          : 'top-0 w-full px-0'
+      }`}>
+        <div className={`mx-auto flex items-center justify-between transition-all duration-500 ease-in-out ${
+          isScrolled 
+            ? 'bg-white/80 backdrop-blur-lg border border-slate-200/50 shadow-[0_12px_30px_rgba(0,28,255,0.03)] px-6 h-14 rounded-full' 
+            : 'bg-slate-50/80 backdrop-blur-md border-b border-slate-200/60 px-6 h-20'
+        }`}>
           <div className="flex items-center space-x-2">
             <span className="text-2xl font-black tracking-tight text-slate-900">
               Zelify<span className="text-[#001CFF]">.</span>
-            </span>
-            <span className="text-[10px] bg-slate-200/60 text-slate-650 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
-              Zeladoria
             </span>
           </div>
 
@@ -91,7 +106,9 @@ export default function App() {
               href="https://zelify.vercel.app/login"
               target="_blank"
               rel="noreferrer"
-              className="border border-slate-900 hover:bg-slate-900 hover:text-white px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-300 active:scale-[0.98] cursor-pointer"
+              className={`border border-slate-900 hover:bg-slate-900 hover:text-white rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-300 active:scale-[0.98] cursor-pointer ${
+                isScrolled ? 'px-3 py-1.5' : 'px-4 py-2'
+              }`}
             >
               Entrar no Painel
             </a>
