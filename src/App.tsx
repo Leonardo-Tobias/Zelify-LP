@@ -906,7 +906,7 @@ export default function App() {
                 
                 <div className="flex items-baseline space-x-1">
                   <span className="text-sm font-black text-slate-400 align-super">R$</span>
-                  <span className="text-5xl font-black text-slate-900 tracking-tight font-mono">0</span>
+                  <span className="text-5xl font-black text-slate-900 tracking-tight">0</span>
                   <span className="text-slate-400 text-xs font-semibold ml-1">/mês</span>
                 </div>
 
@@ -983,7 +983,7 @@ export default function App() {
                 
                 <div className="flex items-baseline space-x-1">
                   <span className="text-sm font-black text-[#001CFF] align-super">R$</span>
-                  <span className="text-5xl font-black text-slate-900 tracking-tight font-mono">149</span>
+                  <span className="text-5xl font-black text-slate-900 tracking-tight">149</span>
                   <span className="text-slate-550 text-xs font-semibold ml-1">/mês por prédio</span>
                 </div>
 
@@ -1051,13 +1051,13 @@ export default function App() {
                   <div className="space-y-1">
                     <div className="flex items-baseline space-x-1">
                       <span className="text-sm font-black text-blue-500 align-super">R$</span>
-                      <span className="text-5xl font-black text-white tracking-tight font-mono">{pricePerCondo}</span>
+                      <span className="text-5xl font-black text-white tracking-tight">{pricePerCondo}</span>
                       <span className="text-slate-400 text-xs font-semibold ml-1">/mês por prédio</span>
                     </div>
                     
                     <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider flex items-center space-x-1.5">
                       <span>Total:</span>
-                      <span className="text-blue-400 font-black text-xs font-mono">R$ {totalPrice.toLocaleString('pt-BR')},00</span>
+                      <span className="text-blue-400 font-black text-xs">R$ {totalPrice.toLocaleString('pt-BR')},00</span>
                       <span className="text-slate-500 font-medium">/mês</span>
                     </div>
                   </div>
@@ -1077,7 +1077,7 @@ export default function App() {
                             const val = parseInt(e.target.value);
                             setCondoCount(isNaN(val) ? 1 : Math.max(1, Math.min(500, val)));
                           }}
-                          className="w-10 bg-transparent text-white text-center font-mono font-bold focus:outline-none text-[11px]"
+                          className="w-10 bg-transparent text-white text-center font-bold focus:outline-none text-[11px]"
                         />
                         <span className="text-[9px] text-slate-500 font-semibold">un.</span>
                       </div>
@@ -1095,7 +1095,7 @@ export default function App() {
                       />
                     </div>
                     
-                    <div className="flex justify-between text-[8px] text-slate-500 font-bold uppercase tracking-wider font-mono">
+                    <div className="flex justify-between text-[8px] text-slate-500 font-bold uppercase tracking-wider">
                       <span>1</span>
                       <span>50</span>
                       <span>100+</span>
