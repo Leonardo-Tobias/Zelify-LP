@@ -4,6 +4,7 @@ import {
   QrCode, 
   CheckCircle2, 
   ArrowRight, 
+  ArrowLeft,
   Wrench, 
   Package, 
   ArrowUpRight, 
@@ -30,6 +31,46 @@ export default function App() {
 
   const [faqOpen, setFaqOpen] = useState<Record<number, boolean>>({});
   const [condoCount, setCondoCount] = useState(12);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const testimonials = [
+    {
+      text: "O Zelify reduziu em mais de 70% as ligações desnecessárias na portaria e o volume de mensagens no WhatsApp. Os moradores adoram a simplicidade do QR Code.",
+      author: "Roberto Silva",
+      role: "Síndico Profissional",
+      details: "Gestão de 8 condomínios em SP",
+      avatar: "RS"
+    },
+    {
+      text: "Consigo relatar uma lâmpada queimada na garagem em menos de 10 segundos quando estou saindo para trabalhar. É incrivelmente prático!",
+      author: "Carla Souza",
+      role: "Moradora",
+      details: "Residencial Jardim das Flores",
+      avatar: "CS"
+    },
+    {
+      text: "Receber as tarefas de manutenção organizadas em um painel Kanban mudou nossa rotina. Sei exatamente o que está pendente ou concluído.",
+      author: "Julio Costa",
+      role: "Zelador",
+      details: "Edifício Itália",
+      avatar: "JC"
+    },
+    {
+      text: "Oferecer o Zelify como um portal de zeladoria digital nos ajudou a agregar valor e reter 3 grandes condomínios em nossa carteira corporativa.",
+      author: "Mariana Dias",
+      role: "Gerente Operacional",
+      details: "Lello Administradora",
+      avatar: "MD"
+    }
+  ];
+
+  // Auto-play for testimonials
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 8000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
 
   // Plano Lote calculations
   let pricePerCondo = 59;
@@ -304,6 +345,86 @@ export default function App() {
         </div>
       </section>
 
+      {/* SEÇÃO CARROSSEL DE LOGOS (SOCIAL PROOF) */}
+      <section className="bg-white border-y border-slate-200/50 py-8 overflow-hidden select-none">
+        <div className="max-w-7xl mx-auto px-6 mb-4 text-center">
+          <p className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">
+            Confiado por síndicos de condomínios integrados às maiores administradoras do país
+          </p>
+        </div>
+        
+        <div className="relative flex overflow-x-hidden">
+          {/* Subtle fade overlay to left and right */}
+          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+          <div className="animate-marquee whitespace-nowrap flex items-center space-x-20">
+            {/* Logos group 1 */}
+            <div className="flex items-center space-x-20 shrink-0">
+              <span className="text-slate-400 font-black tracking-tighter text-sm flex items-center gap-1.5 grayscale opacity-60">
+                <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/></svg>
+                LELLO
+              </span>
+              <span className="text-slate-400 font-extrabold tracking-tight text-sm flex items-center gap-1.5 grayscale opacity-60">
+                <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                AUXILIADORA PREDIAL
+              </span>
+              <span className="text-slate-400 font-black tracking-wider text-sm flex items-center gap-1.5 grayscale opacity-60">
+                <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                HUBERT
+              </span>
+              <span className="text-slate-400 font-bold tracking-widest text-sm flex items-center gap-1.5 grayscale opacity-60">
+                <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg>
+                CIPA
+              </span>
+              <span className="text-slate-400 font-extrabold tracking-tight text-sm flex items-center gap-1.5 grayscale opacity-60">
+                <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l8 6v8l-8 6-8-6V8z"/></svg>
+                GUARIDA
+              </span>
+              <span className="text-slate-400 font-bold tracking-tight text-sm flex items-center gap-1.5 grayscale opacity-60">
+                <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/></svg>
+                GRAICHE
+              </span>
+              <span className="text-slate-400 font-black tracking-widest text-sm flex items-center gap-1.5 grayscale opacity-60">
+                <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg>
+                ITAMBÉ
+              </span>
+            </div>
+            {/* Duplicate for infinite scroll */}
+            <div className="flex items-center space-x-20 shrink-0">
+              <span className="text-slate-400 font-black tracking-tighter text-sm flex items-center gap-1.5 grayscale opacity-60">
+                <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/></svg>
+                LELLO
+              </span>
+              <span className="text-slate-400 font-extrabold tracking-tight text-sm flex items-center gap-1.5 grayscale opacity-60">
+                <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                AUXILIADORA PREDIAL
+              </span>
+              <span className="text-slate-400 font-black tracking-wider text-sm flex items-center gap-1.5 grayscale opacity-60">
+                <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                HUBERT
+              </span>
+              <span className="text-slate-400 font-bold tracking-widest text-sm flex items-center gap-1.5 grayscale opacity-60">
+                <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg>
+                CIPA
+              </span>
+              <span className="text-slate-400 font-extrabold tracking-tight text-sm flex items-center gap-1.5 grayscale opacity-60">
+                <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l8 6v8l-8 6-8-6V8z"/></svg>
+                GUARIDA
+              </span>
+              <span className="text-slate-400 font-bold tracking-tight text-sm flex items-center gap-1.5 grayscale opacity-60">
+                <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/></svg>
+                GRAICHE
+              </span>
+              <span className="text-slate-400 font-black tracking-widest text-sm flex items-center gap-1.5 grayscale opacity-60">
+                <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg>
+                ITAMBÉ
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 3. B. SEÇÃO DE DEMONSTRAÇÃO DO PRODUTO (MOCKUPS INTERATIVOS) */}
       <section className="py-20 md:py-28 bg-white border-b border-slate-200/60">
         <div className="max-w-7xl mx-auto px-6">
@@ -367,7 +488,7 @@ export default function App() {
                   : 'bg-white border-slate-200 text-slate-700'
               }`}>
                 {/* Top Browser Bar */}
-                <div className={`px-4 py-3 border-b flex items-center justify-between shrink-0 ${mockupTheme === 'dark' ? 'bg-zinc-900/60 border-zinc-850' : 'bg-slate-55 border-slate-200/80'}`}>
+                <div className={`px-4 py-3 border-b flex items-center justify-between shrink-0 ${mockupTheme === 'dark' ? 'bg-zinc-900/60 border-zinc-800/60' : 'bg-slate-50 border-slate-200/80'}`}>
                   <div className="flex items-center space-x-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-red-400"></span>
                     <span className="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
@@ -387,7 +508,7 @@ export default function App() {
                   
                   {/* APP SIDEBAR */}
                   <div className={`w-16 border-r flex flex-col items-center py-4 justify-between shrink-0 ${
-                    mockupTheme === 'dark' ? 'bg-zinc-900/30 border-zinc-850' : 'bg-slate-55/40 border-slate-150'
+                    mockupTheme === 'dark' ? 'bg-zinc-900/30 border-zinc-800/40' : 'bg-slate-50/40 border-slate-200/50'
                   }`}>
                     <div className="space-y-6 w-full flex flex-col items-center">
                       {/* Mini Logo */}
@@ -403,11 +524,11 @@ export default function App() {
                           <Building2 className="w-4 h-4" />
                           <span className="text-[6px] font-extrabold mt-0.5 uppercase tracking-wide">Painel</span>
                         </div>
-                        <div className="w-full aspect-square rounded-lg flex flex-col items-center justify-center text-slate-400 hover:text-slate-655 dark:hover:text-zinc-200 cursor-pointer">
+                        <div className="w-full aspect-square rounded-lg flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-zinc-200 cursor-pointer">
                           <Wrench className="w-4 h-4" />
                           <span className="text-[6px] font-extrabold mt-0.5 uppercase tracking-wide">Serviço</span>
                         </div>
-                        <div className="w-full aspect-square rounded-lg flex flex-col items-center justify-center text-slate-400 hover:text-slate-655 dark:hover:text-zinc-200 cursor-pointer">
+                        <div className="w-full aspect-square rounded-lg flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-zinc-200 cursor-pointer">
                           <Package className="w-4 h-4" />
                           <span className="text-[6px] font-extrabold mt-0.5 uppercase tracking-wide">Achados</span>
                         </div>
@@ -525,13 +646,13 @@ export default function App() {
                         <div className="flex-1 overflow-y-auto space-y-2 pr-0.5">
                           {/* Ticket 4 */}
                           <div className={`p-2.5 rounded-xl border space-y-2 opacity-70 transition-all hover:scale-[1.02] ${
-                            mockupTheme === 'dark' ? 'bg-zinc-900/40 border-zinc-850' : 'bg-slate-50/50 border-slate-200/40'
+                            mockupTheme === 'dark' ? 'bg-zinc-900/40 border-zinc-800' : 'bg-slate-50/50 border-slate-200'
                           }`}>
                             <div className="flex justify-between items-center text-[6px]">
                               <span className="font-extrabold uppercase bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 px-1.5 py-0.5 rounded">Resolvido</span>
                               <span className="text-slate-400 font-bold uppercase">Academia • 1d</span>
                             </div>
-                            <p className={`text-[9px] font-black leading-snug tracking-tight line-through ${mockupTheme === 'dark' ? 'text-zinc-450' : 'text-slate-500'}`}>Ar condicionado desligando</p>
+                            <p className={`text-[9px] font-black leading-snug tracking-tight line-through ${mockupTheme === 'dark' ? 'text-zinc-500' : 'text-slate-500'}`}>Ar condicionado desligando</p>
                             <p className="text-[7.5px] text-slate-400 font-semibold leading-none">Finalizado pelo técnico Marcos</p>
                           </div>
                         </div>
@@ -877,6 +998,85 @@ export default function App() {
               </div>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* SEÇÃO CARROSSEL DE COMENTÁRIOS (TESTIMONIALS) */}
+      <section className="py-24 bg-gradient-to-b from-slate-50 to-slate-100/50 border-b border-slate-200/60 relative overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#001CFF]/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="max-w-4xl mx-auto px-6 space-y-12 relative z-10">
+          <div className="text-center space-y-4">
+            <span className="text-[10px] font-bold text-[#001CFF] uppercase tracking-widest bg-[#001CFF]/10 border border-[#001CFF]/15 px-3 py-1 rounded-full">Depoimentos</span>
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 leading-tight">
+              O que quem usa o Zelify diz na prática
+            </h2>
+            <p className="text-slate-550 text-xs sm:text-sm font-semibold max-w-lg mx-auto">
+              Moradores, zeladores e síndicos profissionais compartilham suas experiências reais com o ecossistema.
+            </p>
+          </div>
+
+          {/* Testimonial Active Card */}
+          <div className="bg-white border border-slate-200/60 rounded-3xl p-8 sm:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.02)] relative flex flex-col justify-between min-h-[260px] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)]">
+            <div className="space-y-6">
+              {/* Giant quotation mark SVG */}
+              <div className="text-[#001CFF] opacity-15 absolute top-6 right-8">
+                <svg className="w-14 h-14 fill-current" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                </svg>
+              </div>
+
+              {/* Text content */}
+              <p className="text-slate-800 font-semibold text-sm sm:text-base md:text-lg italic leading-relaxed text-left pr-8">
+                "{testimonials[currentTestimonial].text}"
+              </p>
+            </div>
+
+            {/* Author details & controls */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-6 border-t border-slate-100 mt-6 shrink-0">
+              <div className="flex items-center space-x-3.5 text-left">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#001CFF] to-[#000AB3] flex items-center justify-center text-white text-xs font-black shadow-md shadow-[#001CFF]/15 uppercase">
+                  {testimonials[currentTestimonial].avatar}
+                </div>
+                <div>
+                  <h4 className="text-xs font-black text-slate-900 leading-none">{testimonials[currentTestimonial].author}</h4>
+                  <p className="text-[10px] text-[#001CFF] font-bold mt-1.5 flex items-center gap-1.5 leading-none">
+                    {testimonials[currentTestimonial].role}
+                    <span className="text-slate-400 font-medium">•</span>
+                    <span className="text-slate-550 font-semibold">{testimonials[currentTestimonial].details}</span>
+                  </p>
+                </div>
+              </div>
+
+              {/* Controls */}
+              <div className="flex items-center space-x-3 self-end sm:self-auto">
+                <button 
+                  onClick={() => setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+                  className="w-8 h-8 rounded-full border border-slate-200 hover:bg-slate-50 active:scale-[0.92] text-slate-600 hover:text-slate-900 flex items-center justify-center transition-all cursor-pointer shadow-sm"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                </button>
+                <div className="flex space-x-1.5">
+                  {testimonials.map((_, index) => (
+                    <button 
+                      key={index}
+                      onClick={() => setCurrentTestimonial(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        index === currentTestimonial ? 'bg-[#001CFF] w-4' : 'bg-slate-200'
+                      }`}
+                    ></button>
+                  ))}
+                </div>
+                <button 
+                  onClick={() => setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)}
+                  className="w-8 h-8 rounded-full border border-slate-200 hover:bg-slate-50 active:scale-[0.92] text-slate-600 hover:text-slate-900 flex items-center justify-center transition-all cursor-pointer shadow-sm"
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
