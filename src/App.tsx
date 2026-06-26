@@ -665,9 +665,9 @@ export default function App() {
                 {/* Visual Placeholder (Síndico trabalhando - Foto Real Unsplash) */}
                 <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden relative group border border-slate-200">
                   <img 
-                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" 
+                    src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" 
                     alt="Síndico gerenciando chamados" 
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-900/40 to-transparent"></div>
                   
