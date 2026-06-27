@@ -15,7 +15,11 @@ import {
   Check,
   Send,
   MessageSquare,
-  X
+  X,
+  Camera,
+  Layers,
+  Clock,
+  MapPin
 } from 'lucide-react';
 
 export default function App() {
@@ -944,15 +948,44 @@ export default function App() {
             {/* Linha guia de conexão no desktop */}
             <div className="hidden md:block absolute top-14 left-1/4 right-1/4 h-[1px] bg-slate-200 z-0"></div>
 
-            {/* Passo 1 */}
+            {/* Passo 1: QR Code Fixado */}
             <div className="relative z-10 flex flex-col items-center text-center space-y-6 group">
-              <div className="w-16 h-16 rounded-full bg-slate-50 border border-slate-200/80 flex items-center justify-center text-xl font-black text-[#001CFF] shadow-sm group-hover:border-[#001CFF] transition-colors">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#001CFF]/10 to-[#001CFF]/5 border border-[#001CFF]/20 flex items-center justify-center text-xl font-black text-[#001CFF] shadow-sm group-hover:border-[#001CFF]/60 group-hover:shadow-[0_0_20px_rgba(0,28,255,0.1)] transition-all duration-300">
                 01
               </div>
-              <div className="w-full aspect-video rounded-xl bg-slate-50 border border-slate-150 p-4 flex flex-col items-center justify-center relative overflow-hidden">
-                <div className="w-20 bg-white p-2.5 rounded-lg border border-slate-250 shadow-md flex flex-col items-center">
-                  <QrCode className="w-10 h-10 text-slate-950" />
-                  <span className="text-[5px] font-mono tracking-widest text-[#001CFF] font-bold mt-1">ZELIFY STICKER</span>
+              <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-6 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
+                {/* Wall texture hint */}
+                <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'repeating-linear-gradient(90deg, #94a3b8 0px, transparent 1px, transparent 12px)', backgroundSize: '12px 12px' }}></div>
+                
+                {/* Sticker card */}
+                <div className="relative bg-white rounded-xl border border-slate-200 shadow-[0_8px_24px_rgba(0,0,0,0.08)] p-4 w-36 flex flex-col items-center space-y-2.5 group-hover:shadow-[0_12px_32px_rgba(0,28,255,0.1)] transition-shadow duration-500">
+                  {/* Top header */}
+                  <div className="flex items-center space-x-1">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#001CFF]"></div>
+                    <span className="text-[9px] font-black text-[#001CFF] tracking-widest uppercase">Zelify.</span>
+                  </div>
+                  
+                  {/* QR Code area */}
+                  <div className="relative bg-slate-50 rounded-lg p-2.5 border border-slate-100 w-full aspect-square flex items-center justify-center">
+                    {/* Corner brackets */}
+                    <div className="absolute top-1 left-1 w-2.5 h-2.5 border-l-2 border-t-2 border-[#001CFF]/40 rounded-tl-sm"></div>
+                    <div className="absolute top-1 right-1 w-2.5 h-2.5 border-r-2 border-t-2 border-[#001CFF]/40 rounded-tr-sm"></div>
+                    <div className="absolute bottom-1 left-1 w-2.5 h-2.5 border-l-2 border-b-2 border-[#001CFF]/40 rounded-bl-sm"></div>
+                    <div className="absolute bottom-1 right-1 w-2.5 h-2.5 border-r-2 border-b-2 border-[#001CFF]/40 rounded-br-sm"></div>
+                    <QrCode className="w-12 h-12 text-slate-800" strokeWidth={1.5} />
+                  </div>
+                  
+                  {/* Bottom strip */}
+                  <div className="w-full bg-[#001CFF]/5 border border-[#001CFF]/10 rounded-md py-1 flex items-center justify-center space-x-1">
+                    <Camera className="w-2.5 h-2.5 text-[#001CFF]/70" />
+                    <span className="text-[6px] font-bold text-[#001CFF]/70 uppercase tracking-widest">Aponte a câmera</span>
+                  </div>
+                  
+                  {/* Access code */}
+                  <div className="flex items-center space-x-1">
+                    <span className="text-[5px] font-mono text-slate-400 tracking-widest">CÓDIGO:</span>
+                    <span className="text-[6px] font-mono font-bold text-slate-600 bg-slate-100 px-1 rounded">7 2 4 1</span>
+                  </div>
                 </div>
               </div>
               <div className="space-y-2">
@@ -963,16 +996,66 @@ export default function App() {
               </div>
             </div>
 
-            {/* Passo 2 */}
+            {/* Passo 2: Morador Notifica */}
             <div className="relative z-10 flex flex-col items-center text-center space-y-6 group">
-              <div className="w-16 h-16 rounded-full bg-slate-50 border border-slate-200/80 flex items-center justify-center text-xl font-black text-[#001CFF] shadow-sm group-hover:border-[#001CFF] transition-colors">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#001CFF]/10 to-[#001CFF]/5 border border-[#001CFF]/20 flex items-center justify-center text-xl font-black text-[#001CFF] shadow-sm group-hover:border-[#001CFF]/60 group-hover:shadow-[0_0_20px_rgba(0,28,255,0.1)] transition-all duration-300">
                 02
               </div>
-              <div className="w-full aspect-video rounded-xl bg-slate-50 border border-slate-150 p-4 flex flex-col items-center justify-center relative overflow-hidden">
-                <div className="w-12 aspect-[9/16] bg-slate-900 border border-slate-800 rounded-lg p-1 shadow-md flex flex-col justify-between">
-                  <div className="w-full h-1 bg-white/20 rounded"></div>
-                  <div className="w-full h-4 bg-[#001CFF] rounded flex items-center justify-center">
-                    <span className="text-[4px] text-white font-extrabold uppercase tracking-widest scale-75">ENVIAR</span>
+              <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-4 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
+                {/* Phone mockup */}
+                <div className="relative bg-slate-900 rounded-2xl p-1.5 shadow-[0_12px_40px_rgba(15,23,42,0.25)] w-28 h-52 mx-auto flex flex-col group-hover:shadow-[0_16px_48px_rgba(0,28,255,0.15)] transition-shadow duration-500">
+                  {/* Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-2.5 bg-slate-900 rounded-b-lg z-20 flex items-center justify-center">
+                    <div className="w-4 h-1 bg-slate-800 rounded-full"></div>
+                  </div>
+                  
+                  {/* Screen */}
+                  <div className="flex-1 bg-white rounded-xl overflow-hidden flex flex-col">
+                    {/* Status bar */}
+                    <div className="bg-slate-50 px-2 pt-3 pb-1 flex items-center justify-between">
+                      <span className="text-[5px] font-bold text-slate-400">9:41</span>
+                      <div className="flex items-center space-x-0.5">
+                        <div className="w-1 h-1.5 bg-slate-300 rounded-sm"></div>
+                        <div className="w-1 h-2 bg-slate-300 rounded-sm"></div>
+                        <div className="w-1 h-2.5 bg-slate-400 rounded-sm"></div>
+                      </div>
+                    </div>
+                    
+                    {/* App header */}
+                    <div className="px-2.5 py-1.5 border-b border-slate-100 flex items-center space-x-1">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#001CFF]"></div>
+                      <span className="text-[6px] font-black text-slate-900 tracking-wide">Zelify</span>
+                    </div>
+                    
+                    {/* Form content */}
+                    <div className="flex-1 px-2.5 py-2 space-y-1.5">
+                      <span className="text-[5px] font-bold text-slate-500 uppercase tracking-wider">Nova Ocorrência</span>
+                      
+                      {/* Photo placeholder */}
+                      <div className="w-full h-10 bg-slate-50 border border-dashed border-slate-200 rounded-lg flex items-center justify-center">
+                        <Camera className="w-3 h-3 text-slate-300" />
+                      </div>
+                      
+                      {/* Input fields */}
+                      <div className="space-y-1">
+                        <div className="w-full h-3.5 bg-slate-50 rounded border border-slate-150 flex items-center px-1.5">
+                          <span className="text-[4px] text-slate-400 font-semibold">Elevador Social</span>
+                        </div>
+                        <div className="w-full h-3.5 bg-slate-50 rounded border border-slate-150 flex items-center px-1.5">
+                          <span className="text-[4px] text-slate-400 font-semibold">Bloco A - Apto 302</span>
+                        </div>
+                        <div className="w-full h-6 bg-slate-50 rounded border border-slate-150 flex items-start px-1.5 pt-0.5">
+                          <span className="text-[4px] text-slate-400 font-semibold">Lâmpada queimada...</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Send button */}
+                    <div className="px-2.5 pb-2">
+                      <div className="w-full h-5 bg-[#001CFF] rounded-lg flex items-center justify-center shadow-[0_2px_8px_rgba(0,28,255,0.3)]">
+                        <span className="text-[5px] text-white font-black uppercase tracking-widest">Enviar Chamado</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -984,19 +1067,88 @@ export default function App() {
               </div>
             </div>
 
-            {/* Passo 3 */}
+            {/* Passo 3: Gestor Resolve */}
             <div className="relative z-10 flex flex-col items-center text-center space-y-6 group">
-              <div className="w-16 h-16 rounded-full bg-slate-50 border border-slate-200/80 flex items-center justify-center text-xl font-black text-[#001CFF] shadow-sm group-hover:border-[#001CFF] transition-colors">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#001CFF]/10 to-[#001CFF]/5 border border-[#001CFF]/20 flex items-center justify-center text-xl font-black text-[#001CFF] shadow-sm group-hover:border-[#001CFF]/60 group-hover:shadow-[0_0_20px_rgba(0,28,255,0.1)] transition-all duration-300">
                 03
               </div>
-              <div className="w-full aspect-video rounded-xl bg-slate-50 border border-slate-150 p-4 flex flex-col items-center justify-center relative overflow-hidden">
-                <div className="w-24 bg-white border border-slate-200 p-2 rounded-lg shadow-sm space-y-1.5">
-                  <div className="flex justify-between items-center border-b border-slate-100 pb-1">
-                    <span className="text-[5px] font-bold text-slate-400 uppercase">Kanban</span>
-                    <span className="w-1 h-1 rounded-full bg-[#001CFF]"></span>
+              <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-4 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
+                {/* Kanban Board */}
+                <div className="w-full max-w-[240px] bg-white border border-slate-200 rounded-xl shadow-[0_8px_24px_rgba(0,0,0,0.06)] overflow-hidden group-hover:shadow-[0_12px_32px_rgba(0,28,255,0.08)] transition-shadow duration-500">
+                  {/* Board header */}
+                  <div className="px-3 py-2 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+                    <div className="flex items-center space-x-1.5">
+                      <Layers className="w-2.5 h-2.5 text-[#001CFF]" />
+                      <span className="text-[7px] font-black text-slate-800 uppercase tracking-wider">Painel Kanban</span>
+                    </div>
+                    <div className="flex items-center space-x-0.5">
+                      <div className="w-1 h-1 rounded-full bg-emerald-400"></div>
+                      <span className="text-[5px] font-bold text-emerald-600">Ao vivo</span>
+                    </div>
                   </div>
-                  <div className="w-full h-2.5 bg-slate-100 rounded border border-slate-150"></div>
-                  <div className="w-full h-2.5 bg-slate-100 rounded border border-slate-150"></div>
+                  
+                  {/* Columns */}
+                  <div className="grid grid-cols-2 divide-x divide-slate-100 min-h-[80px]">
+                    {/* Pendentes column */}
+                    <div className="p-2 space-y-1.5">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-[5px] font-black text-amber-600 uppercase tracking-wider">Pendentes</span>
+                        <span className="text-[5px] font-bold text-amber-500 bg-amber-50 border border-amber-200/50 px-1 rounded-full">2</span>
+                      </div>
+                      
+                      {/* Ticket 1 */}
+                      <div className="bg-white border border-slate-150 rounded-lg p-1.5 shadow-sm space-y-1 hover:border-amber-200 transition-colors">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[4px] font-bold text-amber-500 bg-amber-50 px-1 py-0.5 rounded uppercase">Urgente</span>
+                          <Clock className="w-1.5 h-1.5 text-slate-300" />
+                        </div>
+                        <div className="w-full h-1 bg-slate-100 rounded-full"></div>
+                        <div className="w-3/4 h-1 bg-slate-100 rounded-full"></div>
+                        <div className="flex items-center space-x-0.5">
+                          <MapPin className="w-1.5 h-1.5 text-slate-300" />
+                          <span className="text-[4px] text-slate-400 font-medium">Elevador</span>
+                        </div>
+                      </div>
+                      
+                      {/* Ticket 2 */}
+                      <div className="bg-white border border-slate-150 rounded-lg p-1.5 shadow-sm space-y-1">
+                        <div className="w-full h-1 bg-slate-100 rounded-full"></div>
+                        <div className="w-2/3 h-1 bg-slate-100 rounded-full"></div>
+                        <div className="flex items-center space-x-0.5">
+                          <MapPin className="w-1.5 h-1.5 text-slate-300" />
+                          <span className="text-[4px] text-slate-400 font-medium">Portaria</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Resolvidos column */}
+                    <div className="p-2 space-y-1.5 bg-emerald-50/30">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-[5px] font-black text-emerald-600 uppercase tracking-wider">Resolvidos</span>
+                        <span className="text-[5px] font-bold text-emerald-500 bg-emerald-50 border border-emerald-200/50 px-1 rounded-full">3</span>
+                      </div>
+                      
+                      {/* Resolved ticket 1 */}
+                      <div className="bg-white border border-emerald-100 rounded-lg p-1.5 shadow-sm space-y-1">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[4px] font-bold text-emerald-600 bg-emerald-100 px-1 py-0.5 rounded uppercase">Concluído</span>
+                          <CheckCircle2 className="w-2 h-2 text-emerald-500" />
+                        </div>
+                        <div className="w-full h-1 bg-slate-100 rounded-full"></div>
+                        <div className="w-1/2 h-1 bg-slate-100 rounded-full"></div>
+                      </div>
+                      
+                      {/* Resolved ticket 2 */}
+                      <div className="bg-white border border-emerald-100 rounded-lg p-1.5 shadow-sm space-y-1 opacity-70">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[4px] font-bold text-emerald-600 bg-emerald-100 px-1 py-0.5 rounded uppercase">Concluído</span>
+                          <CheckCircle2 className="w-2 h-2 text-emerald-500" />
+                        </div>
+                        <div className="w-full h-1 bg-slate-100 rounded-full"></div>
+                        <div className="w-3/5 h-1 bg-slate-100 rounded-full"></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="space-y-2">
