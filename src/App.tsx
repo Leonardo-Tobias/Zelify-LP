@@ -1360,7 +1360,7 @@ export default function App() {
           </div>
 
           {/* Toggle Switch */}
-          <div className="flex items-center justify-center mb-6">
+          <div className="flex items-center justify-center mb-16">
             <div className="bg-white/80 backdrop-blur-md p-1.5 rounded-full flex items-center space-x-1 border border-slate-200/60 shadow-sm">
               <button
                 type="button"
@@ -1376,16 +1376,14 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => setIsAnnual(true)}
-                className={`px-5 py-2 text-xs font-black rounded-full transition-all duration-300 flex items-center space-x-1.5 cursor-pointer ${
+                className={`px-5 py-2 text-xs font-black rounded-full transition-all duration-300 flex items-center space-x-2.5 cursor-pointer ${
                   isAnnual 
                     ? 'bg-slate-900 text-white shadow-sm' 
                     : 'text-slate-500 hover:text-slate-800'
                 }`}
               >
                 <span>Anual</span>
-                <span className={`text-[8px] px-1.5 py-0.5 rounded-full font-black tracking-wider transition-colors duration-300 ${
-                  isAnnual ? 'bg-[#001CFF] text-white' : 'bg-[#001CFF]/10 text-[#001CFF]'
-                }`}>
+                <span className="text-xs px-3 py-1 rounded-full font-extrabold tracking-wide uppercase bg-[#001CFF] text-white shadow-[0_2px_8px_rgba(0,28,255,0.25)]">
                   2 MESES GRÁTIS
                 </span>
               </button>
