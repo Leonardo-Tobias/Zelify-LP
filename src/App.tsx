@@ -89,6 +89,7 @@ export default function App() {
 
   const [faqOpen, setFaqOpen] = useState<Record<number, boolean>>({});
   const [condoCount, setCondoCount] = useState(12);
+  const [isAnnual, setIsAnnual] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -148,11 +149,11 @@ export default function App() {
   }, [testimonials.length]);
 
   // Plano Lote calculations
-  let pricePerCondo = 59;
+  let pricePerCondo = isAnnual ? 49 : 59;
   if (condoCount >= 16 && condoCount <= 50) {
-    pricePerCondo = 49;
+    pricePerCondo = isAnnual ? 39 : 49;
   } else if (condoCount > 50) {
-    pricePerCondo = 39;
+    pricePerCondo = isAnnual ? 29 : 39;
   }
   const totalPrice = condoCount * pricePerCondo;
   const [b2bModalOpen, setB2bModalOpen] = useState(false);
@@ -1358,6 +1359,39 @@ export default function App() {
             </p>
           </div>
 
+          {/* Toggle Switch */}
+          <div className="flex items-center justify-center mb-6">
+            <div className="bg-white/80 backdrop-blur-md p-1.5 rounded-full flex items-center space-x-1 border border-slate-200/60 shadow-sm">
+              <button
+                type="button"
+                onClick={() => setIsAnnual(false)}
+                className={`px-5 py-2 text-xs font-black rounded-full transition-all duration-300 cursor-pointer ${
+                  !isAnnual 
+                    ? 'bg-slate-900 text-white shadow-sm' 
+                    : 'text-slate-500 hover:text-slate-800'
+                }`}
+              >
+                Mensal
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsAnnual(true)}
+                className={`px-5 py-2 text-xs font-black rounded-full transition-all duration-300 flex items-center space-x-1.5 cursor-pointer ${
+                  isAnnual 
+                    ? 'bg-slate-900 text-white shadow-sm' 
+                    : 'text-slate-500 hover:text-slate-800'
+                }`}
+              >
+                <span>Anual</span>
+                <span className={`text-[8px] px-1.5 py-0.5 rounded-full font-black tracking-wider transition-colors duration-300 ${
+                  isAnnual ? 'bg-[#001CFF] text-white' : 'bg-[#001CFF]/10 text-[#001CFF]'
+                }`}>
+                  2 MESES GRÁTIS
+                </span>
+              </button>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
             
             {/* PLANO STARTER (GRÁTIS) */}
@@ -1451,10 +1485,24 @@ export default function App() {
                   </h3>
                 </div>
                 
-                <div className="flex items-baseline space-x-1">
-                  <span className="text-sm font-black text-[#001CFF] align-super">R$</span>
-                  <span className="text-5xl font-black text-slate-900 tracking-tight">149</span>
-                  <span className="text-slate-550 text-xs font-semibold ml-1">/mês</span>
+                <div className="flex flex-col">
+                  <div className="flex items-baseline space-x-1">
+                    <span className="text-sm font-black text-[#001CFF] align-super">R$</span>
+                    <motion.span 
+                      key={isAnnual ? 'annual' : 'monthly'}
+                      initial={{ opacity: 0, y: -2 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-5xl font-black text-slate-900 tracking-tight inline-block"
+                    >
+                      {isAnnual ? '124' : '149'}
+                    </motion.span>
+                    <span className="text-slate-550 text-xs font-semibold ml-1">/mês</span>
+                  </div>
+                  {isAnnual && (
+                    <span className="text-[9.5px] text-slate-400 font-bold mt-1 text-left">
+                      Cobrado anualmente (R$ 1.488/ano)
+                    </span>
+                  )}
                 </div>
 
                 <p className="text-slate-550 text-xs font-semibold leading-relaxed">
@@ -1521,14 +1569,33 @@ export default function App() {
                   <div className="space-y-1">
                     <div className="flex items-baseline space-x-1">
                       <span className="text-sm font-black text-blue-500 align-super">R$</span>
-                      <span className="text-5xl font-black text-white tracking-tight">{pricePerCondo}</span>
+                      <motion.span 
+                        key={isAnnual ? 'annual' : 'monthly'}
+                        initial={{ opacity: 0, y: -2 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-5xl font-black text-white tracking-tight inline-block"
+                      >
+                        {pricePerCondo}
+                      </motion.span>
                       <span className="text-slate-400 text-xs font-semibold ml-1">/mês por prédio</span>
                     </div>
                     
-                    <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider flex items-center space-x-1.5">
+                    <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider flex items-center space-x-1.5 flex-wrap">
                       <span>Total:</span>
-                      <span className="text-blue-400 font-black text-xs">R$ {totalPrice.toLocaleString('pt-BR')},00</span>
-                      <span className="text-slate-500 font-medium">/mês</span>
+                      <motion.span 
+                        key={totalPrice}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-blue-400 font-black text-xs inline-block"
+                      >
+                        R$ {totalPrice.toLocaleString('pt-BR')},00
+                      </motion.span>
+                      <span className="text-slate-550 font-medium mr-1">/mês</span>
+                      {isAnnual && (
+                        <span className="text-[9.5px] text-slate-500 font-bold lowercase normal-case">
+                          (R$ {(totalPrice * 12).toLocaleString('pt-BR')}/ano)
+                        </span>
+                      )}
                     </div>
                   </div>
 
