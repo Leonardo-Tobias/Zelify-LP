@@ -380,8 +380,8 @@ export default function App() {
             {/* Blurr / Glow de Fundo Radial Premium */}
             <div className="absolute bg-[#001CFF]/5 blur-[120px] rounded-full w-[400px] h-[400px] -right-10 top-10 -z-10 pointer-events-none"></div>
             
-            {/* 1. MOCKUP DESKTOP (KANBAN DO GESTOR) - Principal de fundo, ampliado, legível e rotacionado em perspectiva 3D */}
-            <div className="absolute w-[138%] max-w-[750px] min-w-[580px] -right-20 -top-10 z-10 transition-all duration-300 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.08)] rounded-2xl border border-slate-100 bg-white overflow-hidden pointer-events-none transform rotate-y-[-12deg] rotate-x-[8deg] rotate-z-[2deg]">
+            {/* 1. MOCKUP DESKTOP (KANBAN DO GESTOR) - Principal de fundo, ampliado, legível e plano */}
+            <div className="absolute w-[138%] max-w-[750px] min-w-[580px] -right-20 -top-10 z-10 transition-all duration-300 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.08)] rounded-2xl border border-slate-100 bg-white overflow-hidden pointer-events-none">
               {/* Top Bar do Navegador */}
               <div className="bg-slate-50 border-b border-slate-200/80 px-4 py-2.5 flex items-center justify-between">
                 <div className="flex items-center space-x-1.5">
@@ -452,8 +452,8 @@ export default function App() {
               </div>
             </div>
 
-            {/* 2. MOCKUP MOBILE (FLUXO DO MORADOR) - Sobreposto em paralelo na perspectiva 3D */}
-            <div className="absolute z-20 left-[-10%] top-1/4 w-[240px] md:w-[260px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.08)] bg-slate-955 border-[5px] border-zinc-800 rounded-[32px] overflow-hidden aspect-[9/18.5] flex flex-col transform rotate-y-[-12deg] rotate-x-[8deg] rotate-z-[2deg] pointer-events-none">
+            {/* 2. MOCKUP MOBILE (FLUXO DO MORADOR) - Sobreposto de forma plana e limpa */}
+            <div className="absolute z-20 left-[-10%] top-1/4 w-[240px] md:w-[260px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.08)] bg-slate-955 border-[5px] border-zinc-800 rounded-[32px] overflow-hidden aspect-[9/18.5] flex flex-col transform hover:-translate-y-2 transition-transform duration-500 pointer-events-none">
               {/* Dynamic Island */}
               <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-14 h-3.5 bg-black rounded-full z-30 flex items-center justify-end px-1.5">
                 <div className="w-1 h-1 bg-[#001CFF]/40 rounded-full"></div>
