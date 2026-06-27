@@ -484,7 +484,7 @@ export default function App() {
             </div>
 
             {/* 2. MOCKUP MOBILE (FLUXO DO MORADOR) - Posicionado como elemento menor sobreposto à sidebar */}
-            <div className="absolute z-20 left-[-3%] bottom-2 w-[125px] sm:w-[145px] lg:w-[155px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.12)] bg-slate-955 border-[4px] border-zinc-800 rounded-[22px] sm:rounded-[26px] overflow-hidden aspect-[9/18.5] flex flex-col pointer-events-none">
+            <div className="absolute z-20 left-[-12%] bottom-2 w-[125px] sm:w-[145px] lg:w-[155px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.12)] bg-slate-955 border-[4px] border-zinc-800 rounded-[22px] sm:rounded-[26px] overflow-hidden aspect-[9/18.5] flex flex-col pointer-events-none">
               {/* Dynamic Island */}
               <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-14 h-3.5 bg-black rounded-full z-30 flex items-center justify-end px-1.5">
                 <div className="w-1 h-1 bg-[#001CFF]/40 rounded-full"></div>
