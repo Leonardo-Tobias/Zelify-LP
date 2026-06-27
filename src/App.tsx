@@ -1278,7 +1278,7 @@ export default function App() {
                       <div className="flex items-center space-x-1.5 bg-slate-950 border border-slate-800 rounded-xl px-1 py-1 shadow-inner">
                         <button 
                           type="button"
-                          onClick={() => setCondoCount(prev => Math.max(1, prev - 1))}
+                          onClick={() => setCondoCount(prev => Math.max(5, prev - 1))}
                           className="w-6 h-6 rounded-lg bg-slate-900 hover:bg-slate-800 active:scale-[0.92] text-slate-350 hover:text-white flex items-center justify-center font-bold transition-all border border-slate-800/85 cursor-pointer text-xs select-none"
                         >
                           -
@@ -1286,12 +1286,12 @@ export default function App() {
                         <input 
                           type="number"
                           id="condo-qty"
-                          min={1}
+                          min={5}
                           max={500}
                           value={condoCount}
                           onChange={(e) => {
                             const val = parseInt(e.target.value);
-                            setCondoCount(isNaN(val) ? 1 : Math.max(1, Math.min(500, val)));
+                            setCondoCount(isNaN(val) ? 5 : Math.max(5, Math.min(500, val)));
                           }}
                           className="w-12 bg-transparent text-white text-center font-bold focus:outline-none text-xs [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                         />
@@ -1309,7 +1309,7 @@ export default function App() {
                       <input 
                         type="range"
                         id="condo-range"
-                        min={1}
+                        min={5}
                         max={100}
                         value={condoCount > 100 ? 100 : condoCount}
                         onChange={(e) => setCondoCount(parseInt(e.target.value))}
@@ -1318,11 +1318,14 @@ export default function App() {
                     </div>
                     
                     <div className="flex justify-between text-[8px] text-slate-500 font-bold uppercase tracking-wider">
-                      <span>1</span>
+                      <span>5</span>
                       <span>50</span>
                       <span>100+</span>
                     </div>
                   </div>
+                  <p className="text-[8px] text-slate-500 text-right mt-1.5 leading-normal font-semibold">
+                    *Pedido mínimo de 5 condomínios para condições de faturamento em lote.
+                  </p>
                 </div>
 
                 <p className="text-slate-400 text-xs font-semibold leading-relaxed">
