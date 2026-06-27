@@ -20,7 +20,9 @@ import {
   Camera,
   Layers,
   Clock,
-  MapPin
+  MapPin,
+  Zap,
+  Shield
 } from 'lucide-react';
 
 function ScrollReveal({ 
@@ -345,119 +347,165 @@ export default function App() {
             </div>
           </div>
 
-          {/* Lado Direito: Elemento Visual (Mockup Elevador + QR Code) */}
-          <div className="lg:col-span-5 relative w-full flex justify-center">
-            <div className="absolute -inset-4 bg-gradient-to-tr from-[#001CFF]/5 to-transparent blur-3xl rounded-full opacity-60"></div>
+          {/* Lado Direito: Composição de Mockups Sobrepostos (Desktop + Mobile) + Badges de Benefícios */}
+          <div className="lg:col-span-5 flex flex-col space-y-10 w-full relative">
+            {/* Blurr de Fundo */}
+            <div className="absolute -inset-10 bg-gradient-to-tr from-[#001CFF]/10 to-transparent blur-3xl rounded-full opacity-60 pointer-events-none z-0"></div>
             
-            {/* Mockup Ilustrativo do Elevador Inox e Escaneamento */}
-            <div className="relative w-full max-w-[360px] bg-gradient-to-b from-slate-900 via-slate-955 to-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl overflow-hidden aspect-[4/5] flex flex-col justify-between group hover:border-slate-700 transition-all duration-500">
+            {/* Composição 3D Relativa */}
+            <div className="relative w-full h-[380px] sm:h-[420px] flex items-center justify-center z-10">
               
-              {/* Efeito de Reflexo Metálico Diagonal */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.01] via-white/[0.05] to-transparent pointer-events-none z-10"></div>
-              
-              {/* Textura Aço Inox (Linhas Verticais) */}
-              <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(90deg,rgba(255,255,255,0.1)_50%,transparent_50%)] bg-[size:4px_100%] pointer-events-none"></div>
-
-              {/* Painel de Botões Inox Realista */}
-              <div className="absolute right-6 top-8 w-16 bg-gradient-to-b from-zinc-800 to-zinc-900 border border-zinc-700/60 rounded-2xl p-2.5 flex flex-col items-center space-y-4 shadow-xl z-0">
-                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_6px_#10b981]"></div>
-                
-                <div className="w-9 h-9 rounded-full bg-zinc-900 border border-zinc-700 flex items-center justify-center text-[10px] text-zinc-400 font-bold shadow-inner">12</div>
-                <div className="w-9 h-9 rounded-full bg-zinc-900 border border-zinc-700 flex items-center justify-center text-[10px] text-zinc-400 font-bold shadow-inner">11</div>
-                
-                {/* Botão Ativo com LED Azul */}
-                <div className="w-9 h-9 rounded-full bg-zinc-900 border-2 border-[#001CFF] flex items-center justify-center text-[10px] text-[#001CFF] font-black shadow-[0_0_12px_rgba(0,28,255,0.6)] animate-pulse">10</div>
-                
-                <div className="w-9 h-9 rounded-full bg-zinc-900 border border-zinc-700 flex items-center justify-center text-[10px] text-zinc-400 font-bold shadow-inner">9</div>
-              </div>
-
-              {/* Adesivo QR Code Vinílico Premium */}
-              <div className="relative z-10 w-48 bg-white border border-slate-200 p-4.5 rounded-2xl shadow-[0_12px_24px_rgba(0,0,0,0.15)] transform -rotate-4 hover:rotate-0 transition-transform duration-500 self-start mt-6 flex flex-col items-center">
-                {/* Cabeçalho do Adesivo */}
-                <div className="flex items-center space-x-2 border-b border-slate-100 pb-2.5 mb-2.5 w-full">
-                  <div className="w-5 h-5 rounded bg-[#001CFF] flex items-center justify-center text-white text-[10px] font-black">
-                    Z
+              {/* 1. MOCKUP DESKTOP (KANBAN DO GESTOR) - Posicionado ao fundo */}
+              <div className="absolute right-0 top-0 w-[88%] bg-white border border-slate-200/80 rounded-2xl shadow-xl overflow-hidden pointer-events-none transform translate-x-2 translate-y-2">
+                {/* Top Bar do Navegador */}
+                <div className="bg-slate-50 border-b border-slate-200/80 px-4 py-2.5 flex items-center justify-between">
+                  <div className="flex items-center space-x-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
                   </div>
-                  <span className="text-[10px] font-black uppercase text-slate-900 tracking-wider">
-                    Zelify<span className="text-[#001CFF]">.</span>
-                  </span>
+                  <div className="text-[10px] font-bold text-slate-400 select-none tracking-wide bg-slate-100 px-4 py-0.5 rounded-md">
+                    zelify.app/painel
+                  </div>
+                  <div className="w-8"></div>
                 </div>
 
-                {/* QR Code Container */}
-                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-150 relative">
-                  {/* Corner Targets */}
-                  <div className="absolute top-0.5 left-0.5 w-1.5 h-1.5 border-t-2 border-l-2 border-[#001CFF]/40 rounded-tl"></div>
-                  <div className="absolute top-0.5 right-0.5 w-1.5 h-1.5 border-t-2 border-r-2 border-[#001CFF]/40 rounded-tr"></div>
-                  <div className="absolute bottom-0.5 left-0.5 w-1.5 h-1.5 border-b-2 border-l-2 border-[#001CFF]/40 rounded-bl"></div>
-                  <div className="absolute bottom-0.5 right-0.5 w-1.5 h-1.5 border-b-2 border-r-2 border-[#001CFF]/40 rounded-br"></div>
+                {/* Área Interna do Kanban */}
+                <div className="p-3.5 bg-slate-50/50 grid grid-cols-3 gap-3 text-left">
                   
-                  <QrCode className="w-20 h-20 text-slate-900" />
-                </div>
+                  {/* Coluna 1: Pendentes */}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between bg-amber-50/70 border border-amber-200/40 rounded-lg p-1.5 px-2">
+                      <span className="text-[9px] font-black text-amber-700 tracking-wider uppercase">Pendentes</span>
+                      <span className="w-4 h-4 rounded-full bg-amber-500/10 text-amber-700 flex items-center justify-center text-[8px] font-black">2</span>
+                    </div>
+                    <div className="bg-white border border-slate-200/60 rounded-xl p-2 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-1.5">
+                      <p className="text-[9px] font-black text-slate-800 leading-tight">Lâmpada Queimada</p>
+                      <p className="text-[7.5px] text-slate-500 font-semibold leading-none">Hall do Elevador - 3º Andar</p>
+                      <div className="flex justify-between items-center pt-1 border-t border-slate-100">
+                        <span className="text-[7px] text-slate-400 font-bold">Apto 302</span>
+                        <span className="text-[6.5px] bg-amber-500/10 text-amber-700 px-1.5 py-0.5 rounded font-black uppercase">Alta</span>
+                      </div>
+                    </div>
+                    <div className="bg-white border border-slate-200/60 rounded-xl p-2 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-1.5 opacity-60">
+                      <p className="text-[9px] font-black text-slate-800 leading-tight">Gás com Cheiro</p>
+                      <p className="text-[7.5px] text-slate-500 font-semibold leading-none">Garagem G1 - Box 14</p>
+                    </div>
+                  </div>
 
-                {/* Info Text */}
-                <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest text-center mt-3 leading-none">
-                  Aponte a câmera
-                </p>
-                <p className="text-[7px] text-slate-500 font-semibold text-center mt-1 uppercase tracking-wider">
-                  para relatar problemas
-                </p>
+                  {/* Coluna 2: Em Execução */}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between bg-blue-50/70 border border-blue-200/40 rounded-lg p-1.5 px-2">
+                      <span className="text-[9px] font-black text-[#001CFF] tracking-wider uppercase">Em Andamento</span>
+                      <span className="w-4 h-4 rounded-full bg-[#001CFF]/10 text-[#001CFF] flex items-center justify-center text-[8px] font-black">1</span>
+                    </div>
+                    <div className="bg-white border-l-2 border-l-[#001CFF] border-y border-r border-slate-200/60 rounded-r-xl rounded-l-md p-2 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-1.5">
+                      <p className="text-[9px] font-black text-slate-800 leading-tight">Portão Quebrado</p>
+                      <p className="text-[7.5px] text-slate-500 font-semibold leading-none">Portão da Entrada Principal</p>
+                      <div className="flex justify-between items-center pt-1 border-t border-slate-100">
+                        <span className="text-[7px] text-slate-400 font-bold">Zelador</span>
+                        <span className="text-[6.5px] bg-[#001CFF]/10 text-[#001CFF] px-1.5 py-0.5 rounded font-black uppercase">Crítico</span>
+                      </div>
+                    </div>
+                  </div>
 
-                {/* ID Tag */}
-                <div className="text-[8.5px] font-mono font-black text-[#001CFF] border border-[#001CFF]/20 bg-[#001CFF]/5 px-3 py-1 rounded-lg mt-3 tracking-widest select-none uppercase">
-                  CÓDIGO: 4002
+                  {/* Coluna 3: Resolvidos */}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between bg-emerald-50/70 border border-emerald-200/40 rounded-lg p-1.5 px-2">
+                      <span className="text-[9px] font-black text-emerald-700 tracking-wider uppercase">Resolvidos</span>
+                      <span className="w-4 h-4 rounded-full bg-emerald-500/10 text-emerald-700 flex items-center justify-center text-[8px] font-black">2</span>
+                    </div>
+                    <div className="bg-white border border-slate-200/60 rounded-xl p-2 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-1.5">
+                      <p className="text-[9px] font-black text-slate-800 leading-tight">Interfone Inativo</p>
+                      <p className="text-[7.5px] text-slate-500 font-semibold leading-none">Guarita da Portaria</p>
+                      <div className="flex justify-end pt-1 border-t border-slate-100">
+                        <span className="text-[6.5px] bg-emerald-500/10 text-emerald-700 px-1.5 py-0.5 rounded font-black uppercase">Finalizado</span>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
-              {/* Smartphone Sem Bezel de Alta Fidelidade */}
-              <div className="absolute bottom-6 right-6 z-20 w-[170px] bg-slate-950 border-[5px] border-zinc-800 rounded-[30px] shadow-[0_20px_40px_rgba(0,0,0,0.4)] transform rotate-8 hover:rotate-3 transition-transform duration-500 overflow-hidden aspect-[9/16]">
+              {/* 2. MOCKUP MOBILE (FLUXO DO MORADOR) - Sobreposto à esquerda */}
+              <div className="absolute left-0 bottom-0 w-[190px] sm:w-[210px] bg-slate-950 border-[6px] border-zinc-800 rounded-[32px] shadow-2xl overflow-hidden z-20 aspect-[9/18] flex flex-col transform hover:-translate-y-2 transition-transform duration-500">
                 {/* Dynamic Island */}
-                <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-12 h-3.5 bg-black rounded-full z-30 flex items-center justify-end px-1.5">
+                <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-14 h-3.5 bg-black rounded-full z-30 flex items-center justify-end px-1.5">
                   <div className="w-1 h-1 bg-[#001CFF]/40 rounded-full"></div>
                 </div>
 
-                {/* Camera Viewfinder (Scanning Effect) */}
-                <div className="relative h-full bg-slate-950 flex flex-col justify-between p-2 pt-6">
-                  {/* Blur Simulado atrás da câmera */}
-                  <div className="absolute inset-0 bg-radial-gradient from-transparent to-slate-950/85 z-0"></div>
+                {/* Tela do Aplicativo Web */}
+                <div className="h-full bg-white flex flex-col p-3 pt-6 text-left relative justify-between">
+                  {/* Cabeçalho do App */}
+                  <div className="border-b border-slate-100 pb-2">
+                    <span className="text-[10px] font-black text-slate-900 tracking-tight">
+                      Residencial Harmony<span className="text-[#001CFF]">.</span>
+                    </span>
+                    <p className="text-[7px] text-slate-400 font-bold uppercase tracking-wider leading-none mt-0.5">Nova Ocorrência</p>
+                  </div>
 
-                  {/* QR Code detectado no Viewfinder com Brackets */}
-                  <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none opacity-40">
-                    <div className="relative p-3 border-2 border-[#001CFF]/50 rounded-xl">
-                      <QrCode className="w-12 h-12 text-white" />
-                      {/* Corner guides */}
-                      <div className="absolute -top-1 -left-1 w-2.5 h-2.5 border-t-2 border-l-2 border-[#001CFF]"></div>
-                      <div className="absolute -top-1 -right-1 w-2.5 h-2.5 border-t-2 border-r-2 border-[#001CFF]"></div>
-                      <div className="absolute -bottom-1 -left-1 w-2.5 h-2.5 border-b-2 border-l-2 border-[#001CFF]"></div>
-                      <div className="absolute -bottom-1 -right-1 w-2.5 h-2.5 border-b-2 border-r-2 border-[#001CFF]"></div>
+                  {/* Formulário de Envio */}
+                  <div className="space-y-2.5 my-auto">
+                    {/* Campo de Localização */}
+                    <div className="space-y-1">
+                      <label className="text-[7.5px] font-black text-slate-700 uppercase tracking-wider block">Onde está o problema?</label>
+                      <div className="w-full bg-slate-50 border border-slate-200/80 rounded-md p-1 px-1.5 text-[8px] font-semibold text-slate-800">
+                        Elevador Social A - 3º andar
+                      </div>
+                    </div>
+
+                    {/* Área de Anexo de Imagem */}
+                    <div className="space-y-1">
+                      <label className="text-[7.5px] font-black text-slate-700 uppercase tracking-wider block">Anexar foto</label>
+                      <div className="w-full border border-dashed border-slate-300 rounded-md p-2 flex flex-col items-center justify-center bg-slate-50">
+                        <Camera className="w-4 h-4 text-[#001CFF] mb-1" />
+                        <span className="text-[6.5px] font-bold text-slate-500 uppercase tracking-wider">Tirar Foto do Local</span>
+                      </div>
+                    </div>
+
+                    {/* Descrição Curta */}
+                    <div className="space-y-1">
+                      <label className="text-[7.5px] font-black text-slate-700 uppercase tracking-wider block">Detalhes</label>
+                      <div className="w-full bg-slate-50 border border-slate-200/80 rounded-md p-1 px-1.5 text-[7.5px] text-slate-400 font-medium leading-tight">
+                        Lâmpada piscando sem parar.
+                      </div>
                     </div>
                   </div>
 
-                  {/* Linha de Scanner Laser Animada */}
-                  <div className="absolute inset-x-0 top-1/3 h-[2px] bg-gradient-to-r from-transparent via-[#001CFF] to-transparent shadow-[0_0_8px_#001CFF] z-10 animate-pulse"></div>
-
-                  {/* Glassmorphic iOS Notification Banner */}
-                  <div className="relative z-20 w-full bg-white/90 backdrop-blur-md border border-white/20 rounded-xl p-2 shadow-lg flex items-center justify-between transition-all">
-                    <div className="flex items-center space-x-2 min-w-0">
-                      <div className="w-5 h-5 rounded-md bg-[#001CFF]/10 flex items-center justify-center text-[#001CFF]">
-                        <QrCode className="w-3.5 h-3.5" />
-                      </div>
-                      <div className="min-w-0 text-left">
-                        <p className="text-[7.5px] font-black text-slate-900 leading-none">Abrir zelify.app</p>
-                        <p className="text-[6.5px] text-[#001CFF] font-bold leading-none mt-1 truncate">/residenciaharmony</p>
-                      </div>
-                    </div>
-                    <ArrowUpRight className="w-3 h-3 text-[#001CFF] shrink-0" />
-                  </div>
-
-                  {/* iOS Shutter Button (Representativo) */}
-                  <div className="relative z-20 pb-1 flex justify-center w-full">
-                    <div className="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center p-0.5">
-                      <div className="w-full h-full bg-white rounded-full"></div>
+                  {/* Botão de Envio de Ocorrência */}
+                  <div className="w-full pt-1.5 border-t border-slate-100">
+                    <div className="w-full bg-[#001CFF] text-white text-[8px] font-extrabold uppercase tracking-widest text-center py-2 rounded-lg shadow-md shadow-[#001CFF]/10">
+                      Enviar Chamado
                     </div>
                   </div>
                 </div>
               </div>
 
+            </div>
+
+            {/* 3. BADGES DE BENEFÍCIOS SUTIS E ELEGANTES */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-200/60 w-full z-10">
+              {/* Badge 1: Rápido */}
+              <div className="flex items-center space-x-3 text-left">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-50 text-[#001CFF] shrink-0 shadow-sm border border-blue-100/50">
+                  <Zap className="w-4.5 h-4.5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-sm">Rápido</h4>
+                  <p className="text-xs text-slate-500 leading-tight">Relatos em até 20 segundos, sem precisar baixar app.</p>
+                </div>
+              </div>
+
+              {/* Badge 2: Seguro */}
+              <div className="flex items-center space-x-3 text-left">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-emerald-50 text-emerald-600 shrink-0 shadow-sm border border-emerald-100/50">
+                  <Shield className="w-4.5 h-4.5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-sm">Seguro</h4>
+                  <p className="text-xs text-slate-500 leading-tight">Histórico de manutenção criptografado e auditável.</p>
+                </div>
+              </div>
             </div>
           </div>
 
