@@ -95,7 +95,7 @@ export default function App() {
   const timelineRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: timelineRef,
-    offset: ["start center", "end center"]
+    offset: ["start start", "end end"]
   });
   const [scrollProgress, setScrollProgress] = useState(0);
   
@@ -103,11 +103,21 @@ export default function App() {
     setScrollProgress(latest);
   });
   
-  const scaleX = useTransform(scrollYProgress, [0, 0.95], [0, 1]);
+  // Mapeamento preciso da linha de progresso
+  const scaleX = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.50, 0.85, 1.0],
+    [0, 0, 0.5, 1.0, 1.0]
+  );
 
-  const isStep1Active = scrollProgress >= 0.02;
-  const isStep2Active = scrollProgress >= 0.48;
-  const isStep3Active = scrollProgress >= 0.92;
+  // Ativação dos círculos e cards correspondentes
+  const isStep1Active = scrollProgress >= 0.0;
+  const isStep2Active = scrollProgress >= 0.50;
+  const isStep3Active = scrollProgress >= 0.85;
+
+  const showStep1Card = scrollProgress < 0.50;
+  const showStep2Card = scrollProgress >= 0.50 && scrollProgress < 0.85;
+  const showStep3Card = scrollProgress >= 0.85;
 
   const testimonials = [
     {
@@ -1003,69 +1013,92 @@ export default function App() {
       </section>
 
       {/* 3. D. LINHA DO TEMPO: O ECOSSISTEMA NO MUNDO FÍSICO */}
-      <section ref={timelineRef} className="py-24 md:py-36 border-b border-slate-200/60 bg-white">
-        <div className="max-w-7xl mx-auto px-6 space-y-16">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900 leading-tight">
-              O ecossistema que conecta o mundo físico à gestão digital.
-            </h2>
-            <p className="text-slate-500 text-xs sm:text-sm font-semibold max-w-xl mx-auto">
-              Três passos simples que eliminam intermediários e resolvem problemas de zeladoria de forma rápida.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+      <section ref={timelineRef} className="relative h-[300vh] bg-white border-b border-slate-200/60">
+        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center py-16 bg-white z-10">
+          <div className="max-w-7xl mx-auto w-full px-6 flex flex-col space-y-12">
             
-            {/* Linha guia de conexão no desktop */}
-            <div className="hidden md:block absolute top-8 left-[16.67%] right-[16.67%] h-[3px] bg-slate-100 -translate-y-1/2 z-0 rounded-full overflow-hidden">
-              <motion.div 
-                className="h-full bg-[#001CFF] origin-left"
-                style={{ scaleX }}
-              />
+            {/* Header */}
+            <div className="max-w-3xl mx-auto text-center space-y-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900 leading-tight">
+                O ecossistema que conecta o mundo físico à gestão digital.
+              </h2>
+              <p className="text-slate-500 text-xs sm:text-sm font-semibold max-w-xl mx-auto">
+                Três passos simples que eliminam intermediários e resolvem problemas de zeladoria de forma rápida.
+              </p>
             </div>
 
-            {/* Passo 1: QR Code Fixado */}
-            <div className="relative z-10 flex flex-col items-center text-center space-y-6 group">
-              <div className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-black shadow-sm transition-all duration-500 z-10 border ${
-                isStep1Active 
-                  ? 'bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white shadow-[0_0_20px_rgba(0,28,255,0.25)]' 
-                  : 'bg-gradient-to-br from-slate-50 to-slate-100/80 border-slate-200 text-slate-400'
-              }`}>
-                01
-              </div>
+            {/* Círculos e Linha */}
+            <div className="grid grid-cols-3 gap-8 relative max-w-3xl mx-auto w-full z-10">
               
-              <div className={`w-full flex flex-col items-center space-y-6 transition-all duration-700 ease-out transform ${
-                isStep1Active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'
+              {/* Linha guia de conexão no desktop */}
+              <div className="hidden md:block absolute top-8 left-[16.67%] right-[16.67%] h-[3px] bg-slate-100 -translate-y-1/2 z-0 rounded-full overflow-hidden">
+                <motion.div 
+                  className="h-full bg-[#001CFF] origin-left"
+                  style={{ scaleX }}
+                />
+              </div>
+
+              {/* Passo 01 Circle */}
+              <div className="flex flex-col items-center">
+                <div className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-black shadow-sm transition-all duration-500 z-10 border ${
+                  isStep1Active 
+                    ? 'bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white shadow-[0_0_20px_rgba(0,28,255,0.25)]' 
+                    : 'bg-gradient-to-br from-slate-50 to-slate-100/80 border-slate-200 text-slate-400'
+                }`}>
+                  01
+                </div>
+              </div>
+
+              {/* Passo 02 Circle */}
+              <div className="flex flex-col items-center">
+                <div className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-black shadow-sm transition-all duration-500 z-10 border ${
+                  isStep2Active 
+                    ? 'bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white shadow-[0_0_20px_rgba(0,28,255,0.25)]' 
+                    : 'bg-gradient-to-br from-slate-50 to-slate-100/80 border-slate-200 text-slate-400'
+                }`}>
+                  02
+                </div>
+              </div>
+
+              {/* Passo 03 Circle */}
+              <div className="flex flex-col items-center">
+                <div className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-black shadow-sm transition-all duration-500 z-10 border ${
+                  isStep3Active 
+                    ? 'bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white shadow-[0_0_20px_rgba(0,28,255,0.25)]' 
+                    : 'bg-gradient-to-br from-slate-50 to-slate-100/80 border-slate-200 text-slate-400'
+                }`}>
+                  03
+                </div>
+              </div>
+            </div>
+
+            {/* Conteúdo Central Pinned (Mockups e Descrições) */}
+            <div className="relative w-full max-w-xl mx-auto h-[380px] sm:h-[420px] flex items-center justify-center z-10">
+              
+              {/* Passo 1 Card */}
+              <div className={`absolute inset-0 flex flex-col items-center text-center space-y-6 transition-all duration-500 ease-out transform ${
+                showStep1Card 
+                  ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto' 
+                  : 'opacity-0 translate-y-[30px] scale-95 pointer-events-none'
               }`}>
                 <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
-                  {/* Wall texture hint */}
                   <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'repeating-linear-gradient(90deg, #94a3b8 0px, transparent 1px, transparent 12px)', backgroundSize: '12px 12px' }}></div>
-                  
-                  {/* Sticker card */}
-                  <div className="relative bg-white rounded-xl border border-slate-200 shadow-[0_8px_24px_rgba(0,0,0,0.08)] p-4 w-36 flex flex-col items-center space-y-2.5 group-hover:shadow-[0_12px_32px_rgba(0,28,255,0.1)] transition-shadow duration-500">
-                    {/* Top header */}
+                  <div className="relative bg-white rounded-xl border border-slate-200 shadow-[0_8px_24px_rgba(0,0,0,0.08)] p-4 w-36 flex flex-col items-center space-y-2.5 transition-shadow duration-500">
                     <div className="flex items-center space-x-1">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#001CFF]"></div>
                       <span className="text-[9px] font-black text-[#001CFF] tracking-widest uppercase">Zelify.</span>
                     </div>
-                    
-                    {/* QR Code area */}
                     <div className="relative bg-slate-50 rounded-lg p-2.5 border border-slate-100 w-full aspect-square flex items-center justify-center">
-                      {/* Corner brackets */}
                       <div className="absolute top-1 left-1 w-2.5 h-2.5 border-l-2 border-t-2 border-[#001CFF]/40 rounded-tl-sm"></div>
                       <div className="absolute top-1 right-1 w-2.5 h-2.5 border-r-2 border-t-2 border-[#001CFF]/40 rounded-tr-sm"></div>
                       <div className="absolute bottom-1 left-1 w-2.5 h-2.5 border-l-2 border-b-2 border-[#001CFF]/40 rounded-bl-sm"></div>
                       <div className="absolute bottom-1 right-1 w-2.5 h-2.5 border-r-2 border-b-2 border-[#001CFF]/40 rounded-br-sm"></div>
                       <QrCode className="w-12 h-12 text-slate-800" strokeWidth={1.5} />
                     </div>
-                    
-                    {/* Bottom strip */}
                     <div className="w-full bg-[#001CFF]/5 border border-[#001CFF]/10 rounded-md py-1 flex items-center justify-center space-x-1">
                       <Camera className="w-2.5 h-2.5 text-[#001CFF]/70" />
                       <span className="text-[6px] font-bold text-[#001CFF]/70 uppercase tracking-widest">Aponte a câmera</span>
                     </div>
-                    
-                    {/* Access code */}
                     <div className="flex items-center space-x-1">
                       <span className="text-[5px] font-mono text-slate-400 tracking-widest">CÓDIGO:</span>
                       <span className="text-[6px] font-mono font-bold text-slate-600 bg-slate-100 px-1 rounded">7 2 4 1</span>
@@ -1079,32 +1112,19 @@ export default function App() {
                   </p>
                 </div>
               </div>
-            </div>
 
-            {/* Passo 2: Morador Notifica */}
-            <div className="relative z-10 flex flex-col items-center text-center space-y-6 group">
-              <div className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-black shadow-sm transition-all duration-500 z-10 border ${
-                isStep2Active 
-                  ? 'bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white shadow-[0_0_20px_rgba(0,28,255,0.25)]' 
-                  : 'bg-gradient-to-br from-slate-50 to-slate-100/80 border-slate-200 text-slate-400'
+              {/* Passo 2 Card */}
+              <div className={`absolute inset-0 flex flex-col items-center text-center space-y-6 transition-all duration-500 ease-out transform ${
+                showStep2Card 
+                  ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto' 
+                  : 'opacity-0 translate-y-[30px] scale-95 pointer-events-none'
               }`}>
-                02
-              </div>
-              
-              <div className={`w-full flex flex-col items-center space-y-6 transition-all duration-700 ease-out transform ${
-                isStep2Active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'
-              }`}>
-                <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
-                  {/* Phone mockup */}
-                  <div className="relative bg-slate-900 rounded-2xl p-1.5 shadow-[0_12px_40px_rgba(15,23,42,0.25)] w-28 h-52 mx-auto flex flex-col group-hover:shadow-[0_16px_48px_rgba(0,28,255,0.15)] transition-shadow duration-500">
-                    {/* Notch */}
+                <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden transition-all duration-500">
+                  <div className="relative bg-slate-900 rounded-2xl p-1.5 shadow-[0_12px_40px_rgba(15,23,42,0.25)] w-28 h-52 mx-auto flex flex-col transition-shadow duration-500">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-2.5 bg-slate-900 rounded-b-lg z-20 flex items-center justify-center">
                       <div className="w-4 h-1 bg-slate-800 rounded-full"></div>
                     </div>
-                    
-                    {/* Screen */}
                     <div className="flex-1 bg-white rounded-xl overflow-hidden flex flex-col">
-                      {/* Status bar */}
                       <div className="bg-slate-50 px-2 pt-3 pb-1 flex items-center justify-between">
                         <span className="text-[5px] font-bold text-slate-400">9:41</span>
                         <div className="flex items-center space-x-0.5">
@@ -1113,23 +1133,15 @@ export default function App() {
                           <div className="w-1 h-2.5 bg-slate-400 rounded-sm"></div>
                         </div>
                       </div>
-                      
-                      {/* App header */}
                       <div className="px-2.5 py-1.5 border-b border-slate-100 flex items-center space-x-1">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#001CFF]"></div>
                         <span className="text-[6px] font-black text-slate-900 tracking-wide">Zelify</span>
                       </div>
-                      
-                      {/* Form content */}
                       <div className="flex-1 px-2.5 py-2 space-y-1.5">
-                        <span className="text-[5px] font-bold text-slate-500 uppercase tracking-wider">Nova Ocorrência</span>
-                        
-                        {/* Photo placeholder */}
+                        <span className="text-[5px] font-bold text-slate-500 uppercase tracking-wider text-left block">Nova Ocorrência</span>
                         <div className="w-full h-10 bg-slate-50 border border-dashed border-slate-200 rounded-lg flex items-center justify-center">
                           <Camera className="w-3 h-3 text-slate-300" />
                         </div>
-                        
-                        {/* Input fields */}
                         <div className="space-y-1">
                           <div className="w-full h-3.5 bg-slate-50 rounded border border-slate-150 flex items-center px-1.5">
                             <span className="text-[4px] text-slate-400 font-semibold">Elevador Social</span>
@@ -1143,8 +1155,6 @@ export default function App() {
                           </div>
                         </div>
                       </div>
-                      
-                      {/* Send button */}
                       <div className="px-2.5 pb-2">
                         <div className="w-full h-5 bg-[#001CFF] rounded-lg flex items-center justify-center shadow-[0_2px_8px_rgba(0,28,255,0.3)]">
                           <span className="text-[5px] text-white font-black uppercase tracking-widest">Enviar Chamado</span>
@@ -1160,25 +1170,15 @@ export default function App() {
                   </p>
                 </div>
               </div>
-            </div>
 
-            {/* Passo 3: Gestor Resolve */}
-            <div className="relative z-10 flex flex-col items-center text-center space-y-6 group">
-              <div className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-black shadow-sm transition-all duration-500 z-10 border ${
-                isStep3Active 
-                  ? 'bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white shadow-[0_0_20px_rgba(0,28,255,0.25)]' 
-                  : 'bg-gradient-to-br from-slate-50 to-slate-100/80 border-slate-200 text-slate-400'
+              {/* Passo 3 Card */}
+              <div className={`absolute inset-0 flex flex-col items-center text-center space-y-6 transition-all duration-500 ease-out transform ${
+                showStep3Card 
+                  ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto' 
+                  : 'opacity-0 translate-y-[30px] scale-95 pointer-events-none'
               }`}>
-                03
-              </div>
-              
-              <div className={`w-full flex flex-col items-center space-y-6 transition-all duration-700 ease-out transform ${
-                isStep3Active ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'
-              }`}>
-                <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
-                  {/* Kanban Board */}
-                  <div className="w-full max-w-[240px] bg-white border border-slate-200 rounded-xl shadow-[0_8px_24px_rgba(0,0,0,0.06)] overflow-hidden group-hover:shadow-[0_12px_32px_rgba(0,28,255,0.08)] transition-shadow duration-500">
-                    {/* Board header */}
+                <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden transition-all duration-500">
+                  <div className="w-full max-w-[240px] bg-white border border-slate-200 rounded-xl shadow-[0_8px_24px_rgba(0,0,0,0.06)] overflow-hidden transition-shadow duration-500">
                     <div className="px-3 py-2 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
                       <div className="flex items-center space-x-1.5">
                         <Layers className="w-2.5 h-2.5 text-[#001CFF]" />
@@ -1189,17 +1189,12 @@ export default function App() {
                         <span className="text-[5px] font-bold text-emerald-600">Ao vivo</span>
                       </div>
                     </div>
-                    
-                    {/* Columns */}
                     <div className="grid grid-cols-2 divide-x divide-slate-100 min-h-[80px]">
-                      {/* Pendentes column */}
                       <div className="p-2 space-y-1.5">
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-[5px] font-black text-amber-500 uppercase tracking-wider">Pendentes</span>
+                          <span className="text-[5px] font-black text-amber-500 uppercase tracking-wider text-left">Pendentes</span>
                           <span className="text-[5px] font-bold text-amber-500 bg-amber-500/10 border border-amber-500/20 px-1.5 py-0.5 rounded-full">2</span>
                         </div>
-                        
-                        {/* Ticket 1 */}
                         <div className="bg-white border border-slate-150 rounded-lg p-1.5 shadow-sm space-y-1 hover:border-amber-200 transition-colors">
                           <div className="flex items-center justify-between">
                             <span className="text-[4px] font-bold text-amber-500 bg-amber-50 px-1 py-0.5 rounded uppercase">Urgente</span>
@@ -1212,8 +1207,6 @@ export default function App() {
                             <span className="text-[4px] text-slate-400 font-medium">Elevador</span>
                           </div>
                         </div>
-                        
-                        {/* Ticket 2 */}
                         <div className="bg-white border border-slate-150 rounded-lg p-1.5 shadow-sm space-y-1">
                           <div className="w-full h-1 bg-slate-100 rounded-full"></div>
                           <div className="w-2/3 h-1 bg-slate-100 rounded-full"></div>
@@ -1223,15 +1216,11 @@ export default function App() {
                           </div>
                         </div>
                       </div>
-                      
-                      {/* Resolvidos column */}
                       <div className="p-2 space-y-1.5 bg-emerald-50/30">
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-[5px] font-black text-emerald-500 uppercase tracking-wider">Resolvidos</span>
+                          <span className="text-[5px] font-black text-emerald-500 uppercase tracking-wider text-left">Resolvidos</span>
                           <span className="text-[5px] font-bold text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-1.5 py-0.5 rounded-full">3</span>
                         </div>
-                        
-                        {/* Resolved ticket 1 */}
                         <div className="bg-white border border-emerald-100 rounded-lg p-1.5 shadow-sm space-y-1">
                           <div className="flex items-center justify-between">
                             <span className="text-[4px] font-bold text-emerald-650 bg-emerald-100 px-1 py-0.5 rounded uppercase">Concluído</span>
@@ -1240,8 +1229,6 @@ export default function App() {
                           <div className="w-full h-1 bg-slate-100 rounded-full"></div>
                           <div className="w-1/2 h-1 bg-slate-100 rounded-full"></div>
                         </div>
-                        
-                        {/* Resolved ticket 2 */}
                         <div className="bg-white border border-emerald-100 rounded-lg p-1.5 shadow-sm space-y-1 opacity-70">
                           <div className="flex items-center justify-between">
                             <span className="text-[4px] font-bold text-emerald-650 bg-emerald-100 px-1 py-0.5 rounded uppercase">Concluído</span>
@@ -1261,8 +1248,8 @@ export default function App() {
                   </p>
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
         </div>
       </section>
