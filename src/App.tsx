@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValueEvent, useMotionValue } from 'framer-motion';
 import { 
   Building2, 
   QrCode, 
@@ -107,33 +107,42 @@ export default function App() {
     target: timelineRef,
     offset: ["start start", "end end"]
   });
-  const [scrollProgress, setScrollProgress] = useState(0);
+  // Rastreia a progressão máxima de scroll alcançada para não retroceder as animações
+  const maxScrollYProgress = useMotionValue(0);
+  const [hasStep1Shown, setHasStep1Shown] = useState(false);
+  const [hasStep2Shown, setHasStep2Shown] = useState(false);
+  const [hasStep3Shown, setHasStep3Shown] = useState(false);
   
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    setScrollProgress(latest);
+    if (latest > maxScrollYProgress.get()) {
+      maxScrollYProgress.set(latest);
+    }
+    if (latest >= 0.0) setHasStep1Shown(true);
+    if (latest >= 0.40) setHasStep2Shown(true);
+    if (latest >= 0.70) setHasStep3Shown(true);
   });
   
-  // Mapeamento preciso da linha de progresso
+  // Mapeamento preciso da linha de progresso (utiliza a progressão máxima para ficar fixa)
   const scaleX = useTransform(
-    scrollYProgress,
+    maxScrollYProgress,
     [0.0, 0.4, 0.7, 1.0],
     [0.0, 0.5, 1.0, 1.0],
     { clamp: true }
   );
 
-  // Animação de opacidade e posição por intervalo (fade-in acumulativo)
-  const opacity1 = useTransform(scrollYProgress, [0.0, 0.2, 1.0], [0, 1, 1], { clamp: true });
-  const opacity2 = useTransform(scrollYProgress, [0.0, 0.4, 0.6, 1.0], [0, 0, 1, 1], { clamp: true });
-  const opacity3 = useTransform(scrollYProgress, [0.0, 0.7, 0.9, 1.0], [0, 0, 1, 1], { clamp: true });
+  // Animação de opacidade e posição por intervalo (fade-in acumulativo que não retrocede)
+  const opacity1 = useTransform(maxScrollYProgress, [0.0, 0.2, 1.0], [0, 1, 1], { clamp: true });
+  const opacity2 = useTransform(maxScrollYProgress, [0.0, 0.4, 0.6, 1.0], [0, 0, 1, 1], { clamp: true });
+  const opacity3 = useTransform(maxScrollYProgress, [0.0, 0.7, 0.9, 1.0], [0, 0, 1, 1], { clamp: true });
 
-  const y1 = useTransform(scrollYProgress, [0.0, 0.2, 1.0], [20, 0, 0], { clamp: true });
-  const y2 = useTransform(scrollYProgress, [0.0, 0.4, 0.6, 1.0], [20, 20, 0, 0], { clamp: true });
-  const y3 = useTransform(scrollYProgress, [0.0, 0.7, 0.9, 1.0], [20, 20, 0, 0], { clamp: true });
+  const y1 = useTransform(maxScrollYProgress, [0.0, 0.2, 1.0], [20, 0, 0], { clamp: true });
+  const y2 = useTransform(maxScrollYProgress, [0.0, 0.4, 0.6, 1.0], [20, 20, 0, 0], { clamp: true });
+  const y3 = useTransform(maxScrollYProgress, [0.0, 0.7, 0.9, 1.0], [20, 20, 0, 0], { clamp: true });
 
-  // Círculos acesos reativos
-  const isStep1Active = scrollProgress >= 0.0;
-  const isStep2Active = scrollProgress >= 0.40;
-  const isStep3Active = scrollProgress >= 0.70;
+  // Círculos acesos reativos permanentes (não retrocedem)
+  const isStep1Active = hasStep1Shown;
+  const isStep2Active = hasStep2Shown;
+  const isStep3Active = hasStep3Shown;
 
   const testimonials = [
     {
