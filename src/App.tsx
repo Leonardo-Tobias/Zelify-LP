@@ -1296,13 +1296,19 @@ export default function App() {
                     </span>
                     Acesso Completo via QR Code
                   </li>
+                  <li className="flex items-center text-slate-600 font-semibold text-xs transition-colors duration-300 group-hover:text-slate-800">
+                    <span className="w-5 h-5 rounded-full bg-blue-50 text-[#001CFF] flex items-center justify-center mr-2.5 shrink-0 shadow-sm shadow-blue-200/10">
+                      <Check className="w-3.5 h-3.5" />
+                    </span>
+                    Mural Kanban Básico
+                  </li>
                   <li className="flex items-center text-slate-400 font-medium text-xs">
                     <span className="w-5 h-5 rounded-full bg-slate-100/70 text-slate-450 flex items-center justify-center mr-2.5 shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     </span>
-                    Mural Kanban de Manutenção
+                    Mural de Achados e Perdidos
                   </li>
                   <li className="flex items-center text-slate-400 font-medium text-xs">
                     <span className="w-5 h-5 rounded-full bg-slate-100/70 text-slate-450 flex items-center justify-center mr-2.5 shrink-0">
@@ -1345,7 +1351,7 @@ export default function App() {
                 <div className="flex items-baseline space-x-1">
                   <span className="text-sm font-black text-[#001CFF] align-super">R$</span>
                   <span className="text-5xl font-black text-slate-900 tracking-tight">149</span>
-                  <span className="text-slate-550 text-xs font-semibold ml-1">/mês por prédio</span>
+                  <span className="text-slate-550 text-xs font-semibold ml-1">/mês</span>
                 </div>
 
                 <p className="text-slate-550 text-xs font-semibold leading-relaxed">
@@ -1405,7 +1411,7 @@ export default function App() {
               <div className="space-y-6">
                 <div className="space-y-1">
                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Múltiplos Prédios</span>
-                  <h3 className="text-xl font-black uppercase tracking-tight text-white">Plano Lote</h3>
+                  <h3 className="text-xl font-black uppercase tracking-tight text-white">Zelify Corporate</h3>
                 </div>
                 
                 <div className="flex flex-col space-y-4">
@@ -1464,7 +1470,7 @@ export default function App() {
                         min={5}
                         max={100}
                         value={condoCount > 100 ? 100 : condoCount}
-                        onChange={(e) => setCondoCount(parseInt(e.target.value))}
+                        onChange={(e) => setCondoCount(Math.max(5, parseInt(e.target.value)))}
                         className="w-full h-1.5 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-[#001CFF] border border-slate-800 focus:outline-none"
                       />
                     </div>
@@ -1521,12 +1527,14 @@ export default function App() {
               </div>
 
               <div className="pt-8">
-                <button 
-                  onClick={() => setB2bModalOpen(true)}
+                <a 
+                  href="https://zelify.vercel.app/cadastro?plan=corporate"
+                  target="_blank"
+                  rel="noreferrer"
                   className="block w-full text-center bg-white hover:bg-slate-100 text-slate-900 text-xs font-extrabold uppercase tracking-widest py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 active:scale-[0.98] cursor-pointer"
                 >
-                  Contatar Vendas B2B
-                </button>
+                  Assinar Plano Corporate
+                </a>
               </div>
             </div>
 
