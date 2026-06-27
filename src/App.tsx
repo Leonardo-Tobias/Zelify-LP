@@ -22,6 +22,58 @@ import {
   MapPin
 } from 'lucide-react';
 
+function ScrollReveal({ 
+  children, 
+  className = '', 
+  delay = 0, 
+  type = 'slide' 
+}: { 
+  children: React.ReactNode; 
+  className?: string; 
+  delay?: number; 
+  type?: 'slide' | 'fade' 
+}) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.05, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    const current = ref.current;
+    if (current) {
+      observer.observe(current);
+    }
+
+    return () => {
+      if (current) {
+        observer.unobserve(current);
+      }
+    };
+  }, []);
+
+  const effectClass = type === 'slide'
+    ? (isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]')
+    : (isVisible ? 'opacity-100' : 'opacity-0');
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-1000 ease-out transform ${effectClass} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+}
+
 export default function App() {
   const [mockupTheme, setMockupTheme] = useState<'dark' | 'light'>('dark');
   const [isScrolled, setIsScrolled] = useState(false);
@@ -444,10 +496,6 @@ export default function App() {
           
           {/* Header da Seção */}
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16 md:mb-20">
-            <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#001CFF] uppercase tracking-widest bg-[#001CFF]/10 border border-[#001CFF]/15 px-3 py-1 rounded-full">
-              <Sparkles className="w-3.5 h-3.5" />
-              Experiência Integrada
-            </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900 leading-tight">
               Sincronia perfeita entre quem mora e quem resolve.
             </h2>
@@ -817,114 +865,119 @@ export default function App() {
       {/* 3. C. DOBRA DE SEGMENTAÇÃO (OS DOIS PÚBLICOS) */}
       <section className="py-24 md:py-36 border-b border-slate-200/60 bg-slate-100/50">
         <div className="max-w-7xl mx-auto px-6 space-y-16">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <span className="text-[10px] font-bold text-[#001CFF] uppercase tracking-widest bg-[#001CFF]/10 border border-[#001CFF]/15 px-3 py-1 rounded-full">Segmentação Inteligente</span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900 leading-tight">
-              Solução sob medida para condomínios individuais ou grandes carteiras.
+          <div className="max-w-4xl text-left space-y-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl tracking-tight text-slate-900 leading-tight">
+              <span className="font-black">Soluções sob medida para </span>
+              <span className="font-normal text-slate-700">condomínios individuais</span>
+              <span className="font-black"> ou grandes carteiras.</span>
             </h2>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             
             {/* Card Síndicos Profissionais (Fundo Claro) */}
-            <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-              <div className="space-y-6">
-                {/* Visual Placeholder (Síndico trabalhando - Foto Real Unsplash) */}
-                <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden relative group border border-slate-200">
-                  <img 
-                    src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" 
-                    alt="Síndico gerenciando chamados" 
-                    className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-900/40 to-transparent"></div>
-                  
-                  {/* Glassmorphic Overlay Card */}
-                  <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md border border-white/20 p-3 rounded-xl shadow-lg flex items-center justify-between">
-                    <div className="flex items-center space-x-2.5 min-w-0">
-                      <div className="w-7 h-7 rounded-full bg-[#001CFF] flex items-center justify-center text-white text-xs font-black shrink-0">
-                        CS
+            <ScrollReveal className="flex flex-col h-full" delay={0}>
+              <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group h-full">
+                <div className="space-y-6">
+                  {/* Visual Placeholder (Síndico trabalhando - Foto Real Unsplash) */}
+                  <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden relative group border border-slate-200">
+                    <img 
+                      src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" 
+                      alt="Síndico gerenciando chamados" 
+                      className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-900/40 to-transparent"></div>
+                    
+                    {/* Glassmorphic Overlay Card */}
+                    <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md border border-white/20 p-3 rounded-xl shadow-lg flex items-center justify-between">
+                      <div className="flex items-center space-x-2.5 min-w-0">
+                        <div className="w-7 h-7 rounded-full bg-[#001CFF] flex items-center justify-center text-white text-xs font-black shrink-0">
+                          CS
+                        </div>
+                        <div className="min-w-0 text-left">
+                          <p className="text-[10px] font-black text-slate-900 leading-none">Carlos Santos</p>
+                          <p className="text-[8px] text-slate-500 font-semibold mt-1">Síndico Profissional • Residencial Harmony</p>
+                        </div>
                       </div>
-                      <div className="min-w-0 text-left">
-                        <p className="text-[10px] font-black text-slate-900 leading-none">Carlos Santos</p>
-                        <p className="text-[8px] text-slate-500 font-semibold mt-1">Síndico Profissional • Residencial Harmony</p>
-                      </div>
+                      <span className="text-[8px] bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
+                        Kanban Ativo
+                      </span>
                     </div>
-                    <span className="text-[8px] bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
-                      Kanban Ativo
-                    </span>
+                  </div>
+
+                  <div className="space-y-3">
+                    <span className="text-[9px] font-extrabold text-[#001CFF] uppercase tracking-widest">Para Síndicos</span>
+                    <h3 className="text-xl sm:text-2xl font-black text-slate-900 uppercase tracking-tight">Síndicos Profissionais & Orgânicos</h3>
+                    <p className="text-slate-500 text-xs sm:text-sm font-semibold leading-relaxed">
+                      Centralize toda a demanda de manutenção no Mural Kanban. Garanta transparência automática sobre a resolução das ocorrências e proteja o seu número pessoal de WhatsApp contra enxurradas de mensagens.
+                    </p>
                   </div>
                 </div>
 
-                <div className="space-y-3">
-                  <span className="text-[9px] font-extrabold text-[#001CFF] uppercase tracking-widest">Para Síndicos</span>
-                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 uppercase tracking-tight">Síndicos Profissionais & Orgânicos</h3>
-                  <p className="text-slate-500 text-xs sm:text-sm font-semibold leading-relaxed">
-                    Centralize toda a demanda de manutenção no Mural Kanban. Garanta transparência automática sobre a resolução das ocorrências e proteja o seu número pessoal de WhatsApp contra enxurradas de mensagens.
-                  </p>
+                <div className="pt-8">
+                  <a 
+                    href="https://zelify.vercel.app/cadastro"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center space-x-2 bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg shadow-[#001CFF]/15 transition-all active:scale-[0.98]"
+                  >
+                    <span>Testar no meu condomínio</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
                 </div>
               </div>
-
-              <div className="pt-8">
-                <a 
-                  href="https://zelify.vercel.app/cadastro"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center space-x-2 bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg shadow-[#001CFF]/15 transition-all active:scale-[0.98]"
-                >
-                  <span>Testar no meu condomínio</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
+            </ScrollReveal>
 
             {/* Card Administradoras (Fundo Escuro) */}
-            <div className="bg-slate-900 border border-slate-800 text-white rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-              <div className="space-y-6">
-                {/* Visual Placeholder (Administradoras - Foto Real Unsplash) */}
-                <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden relative group border border-slate-800">
-                  <img 
-                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" 
-                    alt="Equipe de administradora em reunião" 
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent"></div>
-                  
-                  {/* Glassmorphic Overlay Card */}
-                  <div className="absolute bottom-4 left-4 right-4 bg-slate-900/95 backdrop-blur-md border border-slate-800 p-3 rounded-xl shadow-lg flex items-center justify-between">
-                    <div className="flex items-center space-x-2.5 min-w-0">
-                      <div className="w-7 h-7 rounded bg-[#001CFF]/20 flex items-center justify-center text-[#001CFF] shrink-0">
-                        <Building2 className="w-4 h-4" />
+            <ScrollReveal className="flex flex-col h-full" delay={150}>
+              <div className="bg-slate-900 border border-slate-800 text-white rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group h-full">
+                <div className="space-y-6">
+                  {/* Visual Placeholder (Administradoras - Foto Real Unsplash) */}
+                  <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden relative group border border-slate-800">
+                    <img 
+                      src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" 
+                      alt="Equipe de administradora em reunião" 
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent"></div>
+                    
+                    {/* Glassmorphic Overlay Card */}
+                    <div className="absolute bottom-4 left-4 right-4 bg-slate-900/95 backdrop-blur-md border border-slate-800 p-3 rounded-xl shadow-lg flex items-center justify-between">
+                      <div className="flex items-center space-x-2.5 min-w-0">
+                        <div className="w-7 h-7 rounded bg-[#001CFF]/20 flex items-center justify-center text-[#001CFF] shrink-0">
+                          <Building2 className="w-4 h-4" />
+                        </div>
+                        <div className="min-w-0 text-left">
+                          <p className="text-[10px] font-black text-white leading-none">Lello Administradora</p>
+                          <p className="text-[8px] text-slate-400 font-semibold mt-1">Gestão de Carteira • 12 Condomínios</p>
+                        </div>
                       </div>
-                      <div className="min-w-0 text-left">
-                        <p className="text-[10px] font-black text-white leading-none">Lello Administradora</p>
-                        <p className="text-[8px] text-slate-400 font-semibold mt-1">Gestão de Carteira • 12 Condomínios</p>
-                      </div>
+                      <span className="text-[8px] bg-[#001CFF]/25 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
+                        Corporate
+                      </span>
                     </div>
-                    <span className="text-[8px] bg-[#001CFF]/25 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
-                      Corporate
-                    </span>
+                  </div>
+
+                  <div className="space-y-3">
+                    <span className="text-[9px] font-extrabold text-[#001CFF] uppercase tracking-widest">Para Administradoras</span>
+                    <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-white">Administradoras de Condomínios</h3>
+                    <p className="text-slate-400 text-xs sm:text-sm font-semibold leading-relaxed">
+                      Reduza em até 40% a carga de atendimento telefônico da sua equipe. Agregue valor ao seu condomínio contratando uma plataforma moderna e garanta retenção máxima de sua carteira corporativa.
+                    </p>
                   </div>
                 </div>
 
-                <div className="space-y-3">
-                  <span className="text-[9px] font-extrabold text-[#001CFF] uppercase tracking-widest">Para Administradoras</span>
-                  <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-white">Administradoras de Condomínios</h3>
-                  <p className="text-slate-400 text-xs sm:text-sm font-semibold leading-relaxed">
-                    Reduza em até 40% a carga de atendimento telefônico da sua equipe. Agregue valor ao seu condomínio contratando uma plataforma moderna e garanta retenção máxima de sua carteira corporativa.
-                  </p>
+                <div className="pt-8">
+                  <button 
+                    onClick={() => setB2bModalOpen(true)}
+                    className="inline-flex items-center space-x-2 bg-white hover:bg-slate-100 text-slate-900 text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg transition-all active:scale-[0.98]"
+                  >
+                    <span>Falar com Consultor B2B</span>
+                    <ArrowRight className="w-4 h-4 text-slate-900" />
+                  </button>
                 </div>
               </div>
-
-              <div className="pt-8">
-                <button 
-                  onClick={() => setB2bModalOpen(true)}
-                  className="inline-flex items-center space-x-2 bg-white hover:bg-slate-100 text-slate-900 text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg transition-all active:scale-[0.98]"
-                >
-                  <span>Falar com Consultor B2B</span>
-                  <ArrowRight className="w-4 h-4 text-slate-900" />
-                </button>
-              </div>
-            </div>
+            </ScrollReveal>
 
           </div>
         </div>
@@ -934,7 +987,6 @@ export default function App() {
       <section className="py-24 md:py-36 border-b border-slate-200/60 bg-white">
         <div className="max-w-7xl mx-auto px-6 space-y-16">
           <div className="max-w-3xl mx-auto text-center space-y-4">
-            <span className="text-[10px] font-bold text-[#001CFF] uppercase tracking-widest bg-[#001CFF]/10 border border-[#001CFF]/15 px-3 py-1 rounded-full">Como Funciona</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900 leading-tight">
               O ecossistema que conecta o mundo físico à gestão digital.
             </h2>
@@ -946,14 +998,14 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
             
             {/* Linha guia de conexão no desktop */}
-            <div className="hidden md:block absolute top-14 left-1/4 right-1/4 h-[1px] bg-slate-200 z-0"></div>
+            <div className="hidden md:block absolute top-8 left-1/4 right-1/4 h-[1px] bg-slate-200 z-0"></div>
 
             {/* Passo 1: QR Code Fixado */}
-            <div className="relative z-10 flex flex-col items-center text-center space-y-6 group">
+            <ScrollReveal className="relative z-10 flex flex-col items-center text-center space-y-6 group" delay={0}>
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#001CFF]/10 to-[#001CFF]/5 border border-[#001CFF]/20 flex items-center justify-center text-xl font-black text-[#001CFF] shadow-sm group-hover:border-[#001CFF]/60 group-hover:shadow-[0_0_20px_rgba(0,28,255,0.1)] transition-all duration-300">
                 01
               </div>
-              <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-6 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
+              <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
                 {/* Wall texture hint */}
                 <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'repeating-linear-gradient(90deg, #94a3b8 0px, transparent 1px, transparent 12px)', backgroundSize: '12px 12px' }}></div>
                 
@@ -994,14 +1046,14 @@ export default function App() {
                   Adesivos do Zelify contendo link exclusivo e código de acesso são fixados em áreas de circulação como elevador e portaria.
                 </p>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Passo 2: Morador Notifica */}
-            <div className="relative z-10 flex flex-col items-center text-center space-y-6 group">
+            <ScrollReveal className="relative z-10 flex flex-col items-center text-center space-y-6 group" delay={200}>
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#001CFF]/10 to-[#001CFF]/5 border border-[#001CFF]/20 flex items-center justify-center text-xl font-black text-[#001CFF] shadow-sm group-hover:border-[#001CFF]/60 group-hover:shadow-[0_0_20px_rgba(0,28,255,0.1)] transition-all duration-300">
                 02
               </div>
-              <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-4 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
+              <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
                 {/* Phone mockup */}
                 <div className="relative bg-slate-900 rounded-2xl p-1.5 shadow-[0_12px_40px_rgba(15,23,42,0.25)] w-28 h-52 mx-auto flex flex-col group-hover:shadow-[0_16px_48px_rgba(0,28,255,0.15)] transition-shadow duration-500">
                   {/* Notch */}
@@ -1044,8 +1096,9 @@ export default function App() {
                         <div className="w-full h-3.5 bg-slate-50 rounded border border-slate-150 flex items-center px-1.5">
                           <span className="text-[4px] text-slate-400 font-semibold">Bloco A - Apto 302</span>
                         </div>
-                        <div className="w-full h-6 bg-slate-50 rounded border border-slate-150 flex items-start px-1.5 pt-0.5">
-                          <span className="text-[4px] text-slate-400 font-semibold">Lâmpada queimada...</span>
+                        <div className="w-full h-6 bg-white rounded border border-[#001CFF]/60 flex items-start px-1.5 pt-0.5 shadow-[0_0_6px_rgba(0,28,255,0.06)]">
+                          <span className="text-[4px] text-slate-800 font-semibold">Lâmpada queimada...</span>
+                          <span className="text-[4.5px] text-[#001CFF] -ml-0.5 animate-pulse">|</span>
                         </div>
                       </div>
                     </div>
@@ -1065,14 +1118,14 @@ export default function App() {
                   Sem criar senhas, o morador aponta a câmera para o QR Code, preenche o local, anexa a foto do problema e envia em 20 segundos.
                 </p>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Passo 3: Gestor Resolve */}
-            <div className="relative z-10 flex flex-col items-center text-center space-y-6 group">
+            <ScrollReveal className="relative z-10 flex flex-col items-center text-center space-y-6 group" delay={400}>
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#001CFF]/10 to-[#001CFF]/5 border border-[#001CFF]/20 flex items-center justify-center text-xl font-black text-[#001CFF] shadow-sm group-hover:border-[#001CFF]/60 group-hover:shadow-[0_0_20px_rgba(0,28,255,0.1)] transition-all duration-300">
                 03
               </div>
-              <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-4 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
+              <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
                 {/* Kanban Board */}
                 <div className="w-full max-w-[240px] bg-white border border-slate-200 rounded-xl shadow-[0_8px_24px_rgba(0,0,0,0.06)] overflow-hidden group-hover:shadow-[0_12px_32px_rgba(0,28,255,0.08)] transition-shadow duration-500">
                   {/* Board header */}
@@ -1092,8 +1145,8 @@ export default function App() {
                     {/* Pendentes column */}
                     <div className="p-2 space-y-1.5">
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-[5px] font-black text-amber-600 uppercase tracking-wider">Pendentes</span>
-                        <span className="text-[5px] font-bold text-amber-500 bg-amber-50 border border-amber-200/50 px-1 rounded-full">2</span>
+                        <span className="text-[5px] font-black text-amber-500 uppercase tracking-wider">Pendentes</span>
+                        <span className="text-[5px] font-bold text-amber-500 bg-amber-500/10 border border-amber-500/20 px-1.5 py-0.5 rounded-full">2</span>
                       </div>
                       
                       {/* Ticket 1 */}
@@ -1124,8 +1177,8 @@ export default function App() {
                     {/* Resolvidos column */}
                     <div className="p-2 space-y-1.5 bg-emerald-50/30">
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-[5px] font-black text-emerald-600 uppercase tracking-wider">Resolvidos</span>
-                        <span className="text-[5px] font-bold text-emerald-500 bg-emerald-50 border border-emerald-200/50 px-1 rounded-full">3</span>
+                        <span className="text-[5px] font-black text-emerald-500 uppercase tracking-wider">Resolvidos</span>
+                        <span className="text-[5px] font-bold text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-1.5 py-0.5 rounded-full">3</span>
                       </div>
                       
                       {/* Resolved ticket 1 */}
@@ -1141,7 +1194,7 @@ export default function App() {
                       {/* Resolved ticket 2 */}
                       <div className="bg-white border border-emerald-100 rounded-lg p-1.5 shadow-sm space-y-1 opacity-70">
                         <div className="flex items-center justify-between">
-                          <span className="text-[4px] font-bold text-emerald-600 bg-emerald-100 px-1 py-0.5 rounded uppercase">Concluído</span>
+                          <span className="text-[4px] font-bold text-emerald-650 bg-emerald-100 px-1 py-0.5 rounded uppercase">Concluído</span>
                           <CheckCircle2 className="w-2 h-2 text-emerald-500" />
                         </div>
                         <div className="w-full h-1 bg-slate-100 rounded-full"></div>
@@ -1157,7 +1210,7 @@ export default function App() {
                   O chamado cai em tempo real como um cartão no painel operacional do síndico, pronto para ser encaminhado à equipe de manutenção.
                 </p>
               </div>
-            </div>
+            </ScrollReveal>
 
           </div>
         </div>
@@ -1170,7 +1223,6 @@ export default function App() {
 
         <div className="max-w-4xl mx-auto px-6 space-y-12 relative z-10">
           <div className="text-center space-y-4">
-            <span className="text-[10px] font-bold text-[#001CFF] uppercase tracking-widest bg-[#001CFF]/10 border border-[#001CFF]/15 px-3 py-1 rounded-full">Depoimentos</span>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 leading-tight">
               O que quem usa o Zelify diz na prática
             </h2>
@@ -1180,65 +1232,67 @@ export default function App() {
           </div>
 
           {/* Testimonial Active Card */}
-          <div className="bg-white border border-slate-200/60 rounded-3xl p-8 sm:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.02)] relative flex flex-col justify-between min-h-[260px] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)]">
-            <div className="space-y-6">
-              {/* Giant quotation mark SVG */}
-              <div className="text-[#001CFF] opacity-15 absolute top-6 right-8">
-                <svg className="w-14 h-14 fill-current" viewBox="0 0 24 24">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                </svg>
+          <ScrollReveal type="fade" className="w-full">
+            <div className="bg-white border border-slate-200/60 rounded-3xl p-8 sm:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.02)] relative flex flex-col justify-between min-h-[260px] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)]">
+              <div className="space-y-6">
+                {/* Giant quotation mark SVG */}
+                <div className="text-[#001CFF] opacity-15 absolute top-6 right-8">
+                  <svg className="w-14 h-14 fill-current" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                  </svg>
+                </div>
+
+                {/* Text content */}
+                <p className="text-slate-800 font-semibold text-sm sm:text-base md:text-lg italic leading-relaxed text-left pr-8">
+                  "{testimonials[currentTestimonial].text}"
+                </p>
               </div>
 
-              {/* Text content */}
-              <p className="text-slate-800 font-semibold text-sm sm:text-base md:text-lg italic leading-relaxed text-left pr-8">
-                "{testimonials[currentTestimonial].text}"
-              </p>
+              {/* Author details & controls */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-6 border-t border-slate-100 mt-6 shrink-0">
+                <div className="flex items-center space-x-3.5 text-left">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#001CFF] to-[#000AB3] flex items-center justify-center text-white text-xs font-black shadow-md shadow-[#001CFF]/15 uppercase">
+                    {testimonials[currentTestimonial].avatar}
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-black text-slate-900 leading-none">{testimonials[currentTestimonial].author}</h4>
+                    <p className="text-[10px] text-[#001CFF] font-bold mt-1.5 flex items-center gap-1.5 leading-none">
+                      {testimonials[currentTestimonial].role}
+                      <span className="text-slate-400 font-medium">•</span>
+                      <span className="text-slate-550 font-semibold">{testimonials[currentTestimonial].details}</span>
+                    </p>
+                  </div>
+                </div>
+
+                {/* Controls */}
+                <div className="flex items-center space-x-3 self-end sm:self-auto">
+                  <button 
+                    onClick={() => setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+                    className="w-8 h-8 rounded-full border border-slate-200 hover:bg-slate-50 active:scale-[0.92] text-slate-600 hover:text-slate-900 flex items-center justify-center transition-all cursor-pointer shadow-sm"
+                  >
+                    <ArrowLeft className="w-4 h-4" />
+                  </button>
+                  <div className="flex space-x-1.5">
+                    {testimonials.map((_, index) => (
+                      <button 
+                        key={index}
+                        onClick={() => setCurrentTestimonial(index)}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          index === currentTestimonial ? 'bg-[#001CFF] w-4' : 'bg-slate-200'
+                        }`}
+                      ></button>
+                    ))}
+                  </div>
+                  <button 
+                    onClick={() => setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)}
+                    className="w-8 h-8 rounded-full border border-slate-200 hover:bg-slate-50 active:scale-[0.92] text-slate-600 hover:text-slate-900 flex items-center justify-center transition-all cursor-pointer shadow-sm"
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
             </div>
-
-            {/* Author details & controls */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-6 border-t border-slate-100 mt-6 shrink-0">
-              <div className="flex items-center space-x-3.5 text-left">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#001CFF] to-[#000AB3] flex items-center justify-center text-white text-xs font-black shadow-md shadow-[#001CFF]/15 uppercase">
-                  {testimonials[currentTestimonial].avatar}
-                </div>
-                <div>
-                  <h4 className="text-xs font-black text-slate-900 leading-none">{testimonials[currentTestimonial].author}</h4>
-                  <p className="text-[10px] text-[#001CFF] font-bold mt-1.5 flex items-center gap-1.5 leading-none">
-                    {testimonials[currentTestimonial].role}
-                    <span className="text-slate-400 font-medium">•</span>
-                    <span className="text-slate-550 font-semibold">{testimonials[currentTestimonial].details}</span>
-                  </p>
-                </div>
-              </div>
-
-              {/* Controls */}
-              <div className="flex items-center space-x-3 self-end sm:self-auto">
-                <button 
-                  onClick={() => setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
-                  className="w-8 h-8 rounded-full border border-slate-200 hover:bg-slate-50 active:scale-[0.92] text-slate-600 hover:text-slate-900 flex items-center justify-center transition-all cursor-pointer shadow-sm"
-                >
-                  <ArrowLeft className="w-4 h-4" />
-                </button>
-                <div className="flex space-x-1.5">
-                  {testimonials.map((_, index) => (
-                    <button 
-                      key={index}
-                      onClick={() => setCurrentTestimonial(index)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        index === currentTestimonial ? 'bg-[#001CFF] w-4' : 'bg-slate-200'
-                      }`}
-                    ></button>
-                  ))}
-                </div>
-                <button 
-                  onClick={() => setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)}
-                  className="w-8 h-8 rounded-full border border-slate-200 hover:bg-slate-50 active:scale-[0.92] text-slate-600 hover:text-slate-900 flex items-center justify-center transition-all cursor-pointer shadow-sm"
-                >
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -1246,11 +1300,10 @@ export default function App() {
       <section className="py-24 md:py-36 border-b border-slate-200/60 bg-slate-100/50">
         <div className="max-w-7xl mx-auto px-6 space-y-16">
           <div className="max-w-3xl mx-auto text-center space-y-4">
-            <span className="text-[10px] font-bold text-[#001CFF] uppercase tracking-widest bg-[#001CFF]/10 border border-[#001CFF]/15 px-3 py-1 rounded-full">Planos e Preços</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900 leading-tight">
               Um modelo de faturamento transparente, sem pegadinhas.
             </h2>
-            <p className="text-slate-500 text-xs sm:text-sm font-semibold max-w-xl mx-auto">
+            <p className="text-slate-550 text-xs sm:text-sm font-semibold max-w-xl mx-auto">
               Encontre o plano ideal para a sua realidade operacional. Comece gratuitamente para validar a usabilidade do sistema.
             </p>
           </div>
@@ -1546,7 +1599,6 @@ export default function App() {
       <section className="py-24 md:py-36 bg-white border-b border-slate-200/60">
         <div className="max-w-4xl mx-auto px-6 space-y-16">
           <div className="text-center space-y-4">
-            <span className="text-[10px] font-bold text-[#001CFF] uppercase tracking-widest bg-[#001CFF]/10 border border-[#001CFF]/15 px-3 py-1 rounded-full">Dúvidas Frequentes</span>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">Perguntas Frequentes</h2>
             <p className="text-slate-500 text-xs sm:text-sm font-semibold">Tudo o que você precisa saber sobre o Zelify para começar a usar.</p>
           </div>
