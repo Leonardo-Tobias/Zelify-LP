@@ -1324,7 +1324,7 @@ export default function App() {
                     </div>
                   </div>
                   <p className="text-[8px] text-slate-500 text-right mt-1.5 leading-normal font-semibold">
-                    *Pedido mínimo de 5 condomínios para condições de faturamento em lote.
+                    *Condição exclusiva para o plano Corporate (mínimo de 5 condomínios ativos).
                   </p>
                 </div>
 
