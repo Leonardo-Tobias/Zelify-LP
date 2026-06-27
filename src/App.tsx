@@ -117,17 +117,18 @@ export default function App() {
   const scaleX = useTransform(
     scrollYProgress,
     [0.0, 0.4, 0.7, 1.0],
-    [0.0, 0.5, 1.0, 1.0]
+    [0.0, 0.5, 1.0, 1.0],
+    { clamp: true }
   );
 
   // Animação de opacidade e posição por intervalo (fade-in acumulativo)
-  const opacity1 = useTransform(scrollYProgress, [0.0, 0.2], [0, 1]);
-  const opacity2 = useTransform(scrollYProgress, [0.4, 0.6], [0, 1]);
-  const opacity3 = useTransform(scrollYProgress, [0.7, 0.9], [0, 1]);
+  const opacity1 = useTransform(scrollYProgress, [0.0, 0.2, 1.0], [0, 1, 1], { clamp: true });
+  const opacity2 = useTransform(scrollYProgress, [0.0, 0.4, 0.6, 1.0], [0, 0, 1, 1], { clamp: true });
+  const opacity3 = useTransform(scrollYProgress, [0.0, 0.7, 0.9, 1.0], [0, 0, 1, 1], { clamp: true });
 
-  const y1 = useTransform(scrollYProgress, [0.0, 0.2], [20, 0]);
-  const y2 = useTransform(scrollYProgress, [0.4, 0.6], [20, 0]);
-  const y3 = useTransform(scrollYProgress, [0.7, 0.9], [20, 0]);
+  const y1 = useTransform(scrollYProgress, [0.0, 0.2, 1.0], [20, 0, 0], { clamp: true });
+  const y2 = useTransform(scrollYProgress, [0.0, 0.4, 0.6, 1.0], [20, 20, 0, 0], { clamp: true });
+  const y3 = useTransform(scrollYProgress, [0.0, 0.7, 0.9, 1.0], [20, 20, 0, 0], { clamp: true });
 
   // Círculos acesos reativos
   const isStep1Active = scrollProgress >= 0.0;
