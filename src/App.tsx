@@ -345,18 +345,43 @@ export default function App() {
                 <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1">Transparência</p>
               </div>
             </div>
+
+            {/* Badges de Benefícios Sutis Integradas */}
+            <div className="flex flex-col sm:flex-row gap-6 pt-6 border-t border-slate-200/60 max-w-xl">
+              {/* Badge 1: Rápido */}
+              <div className="flex items-center space-x-3 text-left">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-50 text-[#001CFF] shrink-0 shadow-sm border border-blue-100/50">
+                  <Zap className="w-4.5 h-4.5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-sm">Rápido</h4>
+                  <p className="text-xs text-slate-500 leading-tight">Relatos em até 20 segundos, sem baixar app.</p>
+                </div>
+              </div>
+
+              {/* Badge 2: Seguro */}
+              <div className="flex items-center space-x-3 text-left">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-emerald-50 text-emerald-600 shrink-0 shadow-sm border border-emerald-100/50">
+                  <Shield className="w-4.5 h-4.5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-sm">Seguro</h4>
+                  <p className="text-xs text-slate-500 leading-tight">Histórico criptografado e auditável.</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Lado Direito: Composição de Mockups Sobrepostos (Desktop + Mobile) + Badges de Benefícios */}
-          <div className="lg:col-span-5 flex flex-col space-y-10 w-full relative">
+          {/* Lado Direito: Composição de Mockups Sobrepostos em Larga Escala (Desktop + Mobile) */}
+          <div className="lg:col-span-5 flex flex-col w-full relative h-[380px] sm:h-[450px]">
             {/* Blurr de Fundo */}
             <div className="absolute -inset-10 bg-gradient-to-tr from-[#001CFF]/10 to-transparent blur-3xl rounded-full opacity-60 pointer-events-none z-0"></div>
             
             {/* Composição 3D Relativa */}
-            <div className="relative w-full h-[380px] sm:h-[420px] flex items-center justify-center z-10">
+            <div className="relative w-full h-full flex items-center justify-center z-10">
               
-              {/* 1. MOCKUP DESKTOP (KANBAN DO GESTOR) - Posicionado ao fundo */}
-              <div className="absolute right-0 top-0 w-[88%] bg-white border border-slate-200/80 rounded-2xl shadow-xl overflow-hidden pointer-events-none transform translate-x-2 translate-y-2">
+              {/* 1. MOCKUP DESKTOP (KANBAN DO GESTOR) - Principal de fundo, ampliado e legível */}
+              <div className="absolute right-[-10%] sm:right-[-15%] lg:right-[-25%] top-4 w-[115%] sm:w-[125%] lg:w-[135%] min-w-[480px] sm:min-w-[540px] bg-white border border-slate-200/80 rounded-2xl shadow-2xl overflow-hidden pointer-events-none z-10">
                 {/* Top Bar do Navegador */}
                 <div className="bg-slate-50 border-b border-slate-200/80 px-4 py-2.5 flex items-center justify-between">
                   <div className="flex items-center space-x-1.5">
@@ -371,55 +396,55 @@ export default function App() {
                 </div>
 
                 {/* Área Interna do Kanban */}
-                <div className="p-3.5 bg-slate-50/50 grid grid-cols-3 gap-3 text-left">
+                <div className="p-4 bg-slate-50/50 grid grid-cols-3 gap-3.5 text-left">
                   
                   {/* Coluna 1: Pendentes */}
-                  <div className="space-y-2">
+                  <div className="space-y-2.5">
                     <div className="flex items-center justify-between bg-amber-50/70 border border-amber-200/40 rounded-lg p-1.5 px-2">
-                      <span className="text-[9px] font-black text-amber-700 tracking-wider uppercase">Pendentes</span>
-                      <span className="w-4 h-4 rounded-full bg-amber-500/10 text-amber-700 flex items-center justify-center text-[8px] font-black">2</span>
+                      <span className="text-[10px] font-black text-amber-700 tracking-wider uppercase">Pendentes</span>
+                      <span className="w-4 h-4 rounded-full bg-amber-500/10 text-amber-700 flex items-center justify-center text-[9px] font-black">2</span>
                     </div>
-                    <div className="bg-white border border-slate-200/60 rounded-xl p-2 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-1.5">
-                      <p className="text-[9px] font-black text-slate-800 leading-tight">Lâmpada Queimada</p>
-                      <p className="text-[7.5px] text-slate-500 font-semibold leading-none">Hall do Elevador - 3º Andar</p>
-                      <div className="flex justify-between items-center pt-1 border-t border-slate-100">
-                        <span className="text-[7px] text-slate-400 font-bold">Apto 302</span>
-                        <span className="text-[6.5px] bg-amber-500/10 text-amber-700 px-1.5 py-0.5 rounded font-black uppercase">Alta</span>
+                    <div className="bg-white border border-slate-200/60 rounded-xl p-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-2">
+                      <p className="text-[10px] font-black text-slate-800 leading-tight">Lâmpada Queimada</p>
+                      <p className="text-[8px] text-slate-500 font-semibold leading-none">Hall do Elevador - 3º Andar</p>
+                      <div className="flex justify-between items-center pt-1.5 border-t border-slate-100">
+                        <span className="text-[7.5px] text-slate-400 font-bold">Apto 302</span>
+                        <span className="text-[7px] bg-amber-500/10 text-amber-700 px-1.5 py-0.5 rounded font-black uppercase">Alta</span>
                       </div>
                     </div>
-                    <div className="bg-white border border-slate-200/60 rounded-xl p-2 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-1.5 opacity-60">
-                      <p className="text-[9px] font-black text-slate-800 leading-tight">Gás com Cheiro</p>
-                      <p className="text-[7.5px] text-slate-500 font-semibold leading-none">Garagem G1 - Box 14</p>
+                    <div className="bg-white border border-slate-200/60 rounded-xl p-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-2 opacity-60">
+                      <p className="text-[10px] font-black text-slate-800 leading-tight">Gás com Cheiro</p>
+                      <p className="text-[8px] text-slate-500 font-semibold leading-none">Garagem G1 - Box 14</p>
                     </div>
                   </div>
 
                   {/* Coluna 2: Em Execução */}
-                  <div className="space-y-2">
+                  <div className="space-y-2.5">
                     <div className="flex items-center justify-between bg-blue-50/70 border border-blue-200/40 rounded-lg p-1.5 px-2">
-                      <span className="text-[9px] font-black text-[#001CFF] tracking-wider uppercase">Em Andamento</span>
-                      <span className="w-4 h-4 rounded-full bg-[#001CFF]/10 text-[#001CFF] flex items-center justify-center text-[8px] font-black">1</span>
+                      <span className="text-[10px] font-black text-[#001CFF] tracking-wider uppercase">Em Andamento</span>
+                      <span className="w-4 h-4 rounded-full bg-[#001CFF]/10 text-[#001CFF] flex items-center justify-center text-[9px] font-black">1</span>
                     </div>
-                    <div className="bg-white border-l-2 border-l-[#001CFF] border-y border-r border-slate-200/60 rounded-r-xl rounded-l-md p-2 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-1.5">
-                      <p className="text-[9px] font-black text-slate-800 leading-tight">Portão Quebrado</p>
-                      <p className="text-[7.5px] text-slate-500 font-semibold leading-none">Portão da Entrada Principal</p>
-                      <div className="flex justify-between items-center pt-1 border-t border-slate-100">
-                        <span className="text-[7px] text-slate-400 font-bold">Zelador</span>
-                        <span className="text-[6.5px] bg-[#001CFF]/10 text-[#001CFF] px-1.5 py-0.5 rounded font-black uppercase">Crítico</span>
+                    <div className="bg-white border-l-2 border-l-[#001CFF] border-y border-r border-slate-200/60 rounded-r-xl rounded-l-md p-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-2">
+                      <p className="text-[10px] font-black text-slate-800 leading-tight">Portão Quebrado</p>
+                      <p className="text-[8px] text-slate-500 font-semibold leading-none">Entrada Principal G1</p>
+                      <div className="flex justify-between items-center pt-1.5 border-t border-slate-100">
+                        <span className="text-[7.5px] text-slate-400 font-bold">Zelador</span>
+                        <span className="text-[7px] bg-[#001CFF]/10 text-[#001CFF] px-1.5 py-0.5 rounded font-black uppercase">Crítico</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Coluna 3: Resolvidos */}
-                  <div className="space-y-2">
+                  <div className="space-y-2.5">
                     <div className="flex items-center justify-between bg-emerald-50/70 border border-emerald-200/40 rounded-lg p-1.5 px-2">
-                      <span className="text-[9px] font-black text-emerald-700 tracking-wider uppercase">Resolvidos</span>
-                      <span className="w-4 h-4 rounded-full bg-emerald-500/10 text-emerald-700 flex items-center justify-center text-[8px] font-black">2</span>
+                      <span className="text-[10px] font-black text-emerald-700 tracking-wider uppercase">Resolvidos</span>
+                      <span className="w-4 h-4 rounded-full bg-emerald-500/10 text-emerald-700 flex items-center justify-center text-[9px] font-black">2</span>
                     </div>
-                    <div className="bg-white border border-slate-200/60 rounded-xl p-2 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-1.5">
-                      <p className="text-[9px] font-black text-slate-800 leading-tight">Interfone Inativo</p>
-                      <p className="text-[7.5px] text-slate-500 font-semibold leading-none">Guarita da Portaria</p>
-                      <div className="flex justify-end pt-1 border-t border-slate-100">
-                        <span className="text-[6.5px] bg-emerald-500/10 text-emerald-700 px-1.5 py-0.5 rounded font-black uppercase">Finalizado</span>
+                    <div className="bg-white border border-slate-200/60 rounded-xl p-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-2">
+                      <p className="text-[10px] font-black text-slate-800 leading-tight">Interfone Inativo</p>
+                      <p className="text-[8px] text-slate-500 font-semibold leading-none">Guarita da Portaria</p>
+                      <div className="flex justify-end pt-1.5 border-t border-slate-100">
+                        <span className="text-[7px] bg-emerald-500/10 text-emerald-700 px-1.5 py-0.5 rounded font-black uppercase">Finalizado</span>
                       </div>
                     </div>
                   </div>
@@ -427,85 +452,60 @@ export default function App() {
                 </div>
               </div>
 
-              {/* 2. MOCKUP MOBILE (FLUXO DO MORADOR) - Sobreposto à esquerda */}
-              <div className="absolute left-0 bottom-0 w-[190px] sm:w-[210px] bg-slate-950 border-[6px] border-zinc-800 rounded-[32px] shadow-2xl overflow-hidden z-20 aspect-[9/18] flex flex-col transform hover:-translate-y-2 transition-transform duration-500">
+              {/* 2. MOCKUP MOBILE (FLUXO DO MORADOR) - Sobreposto à esquerda no primeiro plano */}
+              <div className="absolute left-[-5%] sm:left-[-8%] bottom-4 w-[185px] sm:w-[210px] bg-slate-950 border-[6px] border-zinc-800 rounded-[32px] shadow-2xl overflow-hidden z-20 aspect-[9/18] flex flex-col transform hover:-translate-y-2 transition-transform duration-500 pointer-events-none">
                 {/* Dynamic Island */}
                 <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-14 h-3.5 bg-black rounded-full z-30 flex items-center justify-end px-1.5">
                   <div className="w-1 h-1 bg-[#001CFF]/40 rounded-full"></div>
                 </div>
 
                 {/* Tela do Aplicativo Web */}
-                <div className="h-full bg-white flex flex-col p-3 pt-6 text-left relative justify-between">
+                <div className="h-full bg-white flex flex-col p-3.5 pt-6.5 text-left relative justify-between">
                   {/* Cabeçalho do App */}
                   <div className="border-b border-slate-100 pb-2">
                     <span className="text-[10px] font-black text-slate-900 tracking-tight">
                       Residencial Harmony<span className="text-[#001CFF]">.</span>
                     </span>
-                    <p className="text-[7px] text-slate-400 font-bold uppercase tracking-wider leading-none mt-0.5">Nova Ocorrência</p>
+                    <p className="text-[7.5px] text-slate-400 font-bold uppercase tracking-wider leading-none mt-0.5">Nova Ocorrência</p>
                   </div>
 
                   {/* Formulário de Envio */}
-                  <div className="space-y-2.5 my-auto">
+                  <div className="space-y-3 my-auto">
                     {/* Campo de Localização */}
                     <div className="space-y-1">
-                      <label className="text-[7.5px] font-black text-slate-700 uppercase tracking-wider block">Onde está o problema?</label>
-                      <div className="w-full bg-slate-50 border border-slate-200/80 rounded-md p-1 px-1.5 text-[8px] font-semibold text-slate-800">
+                      <label className="text-[8px] font-black text-slate-700 uppercase tracking-wider block">Onde está o problema?</label>
+                      <div className="w-full bg-slate-50 border border-slate-200/80 rounded-md p-1 px-1.5 text-[8.5px] font-semibold text-slate-800">
                         Elevador Social A - 3º andar
                       </div>
                     </div>
 
                     {/* Área de Anexo de Imagem */}
                     <div className="space-y-1">
-                      <label className="text-[7.5px] font-black text-slate-700 uppercase tracking-wider block">Anexar foto</label>
-                      <div className="w-full border border-dashed border-slate-300 rounded-md p-2 flex flex-col items-center justify-center bg-slate-50">
+                      <label className="text-[8px] font-black text-slate-700 uppercase tracking-wider block">Anexar foto</label>
+                      <div className="w-full border border-dashed border-slate-300 rounded-md p-2.5 flex flex-col items-center justify-center bg-slate-50">
                         <Camera className="w-4 h-4 text-[#001CFF] mb-1" />
-                        <span className="text-[6.5px] font-bold text-slate-500 uppercase tracking-wider">Tirar Foto do Local</span>
+                        <span className="text-[7px] font-bold text-slate-500 uppercase tracking-wider">Tirar Foto do Local</span>
                       </div>
                     </div>
 
                     {/* Descrição Curta */}
                     <div className="space-y-1">
-                      <label className="text-[7.5px] font-black text-slate-700 uppercase tracking-wider block">Detalhes</label>
-                      <div className="w-full bg-slate-50 border border-slate-200/80 rounded-md p-1 px-1.5 text-[7.5px] text-slate-400 font-medium leading-tight">
+                      <label className="text-[8px] font-black text-slate-700 uppercase tracking-wider block">Detalhes</label>
+                      <div className="w-full bg-slate-50 border border-slate-200/80 rounded-md p-1 px-1.5 text-[8px] text-slate-400 font-medium leading-tight">
                         Lâmpada piscando sem parar.
                       </div>
                     </div>
                   </div>
 
                   {/* Botão de Envio de Ocorrência */}
-                  <div className="w-full pt-1.5 border-t border-slate-100">
-                    <div className="w-full bg-[#001CFF] text-white text-[8px] font-extrabold uppercase tracking-widest text-center py-2 rounded-lg shadow-md shadow-[#001CFF]/10">
+                  <div className="w-full pt-2 border-t border-slate-100">
+                    <div className="w-full bg-[#001CFF] text-white text-[8.5px] font-extrabold uppercase tracking-widest text-center py-2 rounded-lg shadow-md shadow-[#001CFF]/10">
                       Enviar Chamado
                     </div>
                   </div>
                 </div>
               </div>
 
-            </div>
-
-            {/* 3. BADGES DE BENEFÍCIOS SUTIS E ELEGANTES */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-200/60 w-full z-10">
-              {/* Badge 1: Rápido */}
-              <div className="flex items-center space-x-3 text-left">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-50 text-[#001CFF] shrink-0 shadow-sm border border-blue-100/50">
-                  <Zap className="w-4.5 h-4.5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 text-sm">Rápido</h4>
-                  <p className="text-xs text-slate-500 leading-tight">Relatos em até 20 segundos, sem precisar baixar app.</p>
-                </div>
-              </div>
-
-              {/* Badge 2: Seguro */}
-              <div className="flex items-center space-x-3 text-left">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-emerald-50 text-emerald-600 shrink-0 shadow-sm border border-emerald-100/50">
-                  <Shield className="w-4.5 h-4.5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 text-sm">Seguro</h4>
-                  <p className="text-xs text-slate-500 leading-tight">Histórico de manutenção criptografado e auditável.</p>
-                </div>
-              </div>
             </div>
           </div>
 
