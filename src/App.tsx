@@ -299,7 +299,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Lado Esquerdo: Textos e CTAs */}
-          <div className="lg:col-span-7 space-y-8 max-w-2xl">
+          <div className="lg:col-span-7 flex flex-col justify-start items-start text-left w-full space-y-8">
             <div className="inline-flex items-center space-x-2 bg-slate-200/50 border border-slate-250/60 px-3 py-1 rounded-full text-[11px] font-bold text-slate-700 uppercase tracking-widest animate-fade-in">
               <Sparkles className="w-3.5 h-3.5 text-[#001CFF]" />
               <span>O Futuro da Zeladoria Condominial</span>
@@ -313,25 +313,26 @@ export default function App() {
               Elimine os relatos perdidos no WhatsApp. Moradores notificam problemas de zeladoria e achados em 20 segundos, direto do navegador e sem precisar baixar nenhum aplicativo.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row gap-4 pt-2 w-full sm:w-auto">
               <a 
                 href="https://zelify.vercel.app/cadastro"
                 target="_blank"
                 rel="noreferrer"
-                className="bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-extrabold uppercase tracking-widest px-8 py-4 rounded-xl shadow-[0_8px_30px_rgba(0,28,255,0.22)] hover:shadow-[0_8px_30px_rgba(0,28,255,0.35)] transition-all text-center flex items-center justify-center space-x-2 active:scale-[0.98] cursor-pointer"
+                className="bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-extrabold uppercase tracking-widest px-8 py-4 rounded-xl shadow-[0_8px_30px_rgba(0,28,255,0.22)] hover:shadow-[0_8px_30px_rgba(0,28,255,0.35)] transition-all text-center flex items-center justify-center space-x-2 active:scale-[0.98] cursor-pointer w-full sm:w-auto"
               >
                 <span>Começar Teste Grátis</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
               <button 
                 onClick={() => setB2bModalOpen(true)}
-                className="border border-slate-300 hover:border-slate-800 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-xs font-extrabold uppercase tracking-widest px-8 py-4 rounded-xl transition-all text-center flex items-center justify-center active:scale-[0.98] cursor-pointer"
+                className="border border-slate-300 hover:border-slate-800 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-xs font-extrabold uppercase tracking-widest px-8 py-4 rounded-xl transition-all text-center flex items-center justify-center active:scale-[0.98] cursor-pointer w-full sm:w-auto"
               >
                 Demonstração Corporativa
               </button>
             </div>
 
-            <div className="grid grid-cols-3 gap-6 pt-4 border-t border-slate-200/60 max-w-lg">
+            {/* Estatísticas */}
+            <div className="grid grid-cols-3 gap-4 mt-12 w-full max-w-lg">
               <div>
                 <p className="text-2xl font-black text-slate-900 tracking-tight">20s</p>
                 <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1">Tempo de relato</p>
