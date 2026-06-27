@@ -1238,7 +1238,7 @@ export default function App() {
 
               <div className="pt-8">
                 <a 
-                  href="https://zelify.vercel.app/cadastro"
+                  href="https://zelify.vercel.app/cadastro?plan=pro"
                   target="_blank"
                   rel="noreferrer"
                   className="block w-full text-center bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-extrabold uppercase tracking-widest py-4 rounded-xl shadow-[0_8px_30px_rgba(0,28,255,0.22)] hover:shadow-[0_12px_35px_rgba(0,28,255,0.35)] transition-all duration-300 active:scale-[0.98] cursor-pointer"
