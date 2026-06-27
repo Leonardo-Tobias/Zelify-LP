@@ -381,7 +381,7 @@ export default function App() {
             <div className="absolute bg-[#001CFF]/5 blur-[120px] rounded-full w-[400px] h-[400px] -right-10 top-10 -z-10 pointer-events-none"></div>
             
             {/* 1. MOCKUP DESKTOP (KANBAN DO GESTOR) - Principal de fundo com menu sidebar */}
-            <div className="absolute w-[138%] max-w-[750px] min-w-[580px] -right-20 -top-10 z-10 transition-all duration-300 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.08)] rounded-2xl border border-slate-100 bg-white overflow-hidden pointer-events-none">
+            <div className="absolute w-[138%] max-w-[750px] min-w-[580px] -right-20 bottom-2 z-10 transition-all duration-300 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.08)] rounded-2xl border border-slate-100 bg-white overflow-hidden pointer-events-none">
               {/* Top Bar do Navegador */}
               <div className="bg-slate-50 border-b border-slate-200/80 px-4 py-2.5 flex items-center justify-between">
                 <div className="flex items-center space-x-1.5">
@@ -395,34 +395,34 @@ export default function App() {
                 <div className="w-8"></div>
               </div>
 
-              {/* Layout com Sidebar + Conteúdo Principal */}
-              <div className="flex bg-slate-50/50 text-left h-[260px]">
+              {/* Layout com Sidebar + Conteúdo Principal (Altura Aumentada para 380px) */}
+              <div className="flex bg-slate-50/50 text-left h-[380px]">
                 {/* Menu Sidebar Lateral do Dashboard (Padrão de Produto Real) */}
-                <div className="w-[100px] bg-slate-900 border-r border-slate-800 p-2.5 flex flex-col justify-between shrink-0">
+                <div className="w-[110px] bg-slate-900 border-r border-slate-800 p-3 flex flex-col justify-between shrink-0">
                   <div className="space-y-4">
                     {/* Mini Logo */}
-                    <div className="flex items-center space-x-1 border-b border-slate-800 pb-2">
-                      <div className="w-3.5 h-3.5 rounded bg-[#001CFF] flex items-center justify-center text-white text-[8px] font-black">Z</div>
-                      <span className="text-[8px] font-black text-white tracking-tight">Zelify</span>
+                    <div className="flex items-center space-x-1.5 border-b border-slate-850 pb-3">
+                      <div className="w-4 h-4 rounded bg-[#001CFF] flex items-center justify-center text-white text-[9px] font-black">Z</div>
+                      <span className="text-[9px] font-black text-white tracking-tight">Zelify</span>
                     </div>
                     {/* Itens do Menu */}
                     <div className="space-y-1">
-                      <div className="bg-[#001CFF]/15 text-[#001CFF] text-[7.5px] font-black px-2 py-1 rounded flex items-center space-x-1.5">
+                      <div className="bg-[#001CFF]/15 text-[#001CFF] text-[8px] font-black px-2 py-1.5 rounded flex items-center space-x-1.5">
                         <div className="w-1 h-1 rounded-full bg-[#001CFF]"></div>
                         <span>Quadro</span>
                       </div>
-                      <div className="text-slate-450 text-[7.5px] font-bold px-2 py-1 rounded">
+                      <div className="text-slate-400 text-[8px] font-bold px-2 py-1.5 rounded">
                         Ocorrências
                       </div>
-                      <div className="text-slate-455 text-[7.5px] font-bold px-2 py-1 rounded">
+                      <div className="text-slate-400 text-[8px] font-bold px-2 py-1.5 rounded">
                         Moradores
                       </div>
-                      <div className="text-slate-455 text-[7.5px] font-bold px-2 py-1 rounded">
+                      <div className="text-slate-400 text-[8px] font-bold px-2 py-1.5 rounded">
                         Ajustes
                       </div>
                     </div>
                   </div>
-                  <div className="text-[6.5px] text-slate-500 font-bold tracking-wider uppercase">V1.2.0</div>
+                  <div className="text-[7px] text-slate-550 font-bold tracking-wider uppercase">V1.2.0</div>
                 </div>
 
                 {/* Área Interna do Kanban */}
@@ -441,6 +441,10 @@ export default function App() {
                         <span className="text-[7.5px] text-slate-400 font-bold">Ap. 302</span>
                         <span className="text-[7px] bg-amber-500/10 text-amber-700 px-1.5 py-0.5 rounded font-black uppercase">Alta</span>
                       </div>
+                    </div>
+                    <div className="bg-white border border-slate-200/60 rounded-xl p-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-2 opacity-65">
+                      <p className="text-[10px] font-black text-slate-800 leading-tight">Infiltração Parede</p>
+                      <p className="text-[8px] text-slate-500 font-semibold leading-none">Garagem G2</p>
                     </div>
                   </div>
 
