@@ -331,14 +331,10 @@ export default function App() {
               </button>
             </div>
 
-            {/* Estatísticas & Benefícios Lado a Lado (Estrutura Unificada) */}
+            {/* Estatísticas & Benefícios Lado a Lado (Estrutura Unificada Sem Duplicidades) */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-8 mt-12 pt-6 border-t border-slate-100 w-full justify-start">
-              {/* Grid de Métricas */}
-              <div className="grid grid-cols-3 gap-6 sm:gap-8 shrink-0">
-                <div>
-                  <p className="text-2xl font-black text-slate-900 tracking-tight">20s</p>
-                  <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1">Tempo de relato</p>
-                </div>
+              {/* Grid de Métricas (Sem o 20s duplicado) */}
+              <div className="grid grid-cols-2 gap-6 sm:gap-8 shrink-0">
                 <div>
                   <p className="text-2xl font-black text-slate-900 tracking-tight">Zero</p>
                   <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1">App p/ baixar</p>
