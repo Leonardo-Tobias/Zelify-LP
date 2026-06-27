@@ -378,7 +378,7 @@ export default function App() {
             <div className="absolute -inset-10 bg-gradient-to-tr from-[#001CFF]/10 to-transparent blur-3xl rounded-full opacity-60 pointer-events-none z-0"></div>
             
             {/* 1. MOCKUP DESKTOP (KANBAN DO GESTOR) - Principal de fundo, ampliado e legível */}
-            <div className="absolute w-[130%] min-w-[520px] max-w-[650px] right-[-15%] bottom-6 z-10 transition-all duration-300 shadow-xl rounded-2xl border border-slate-100 bg-white overflow-hidden pointer-events-none">
+            <div className="absolute w-[110%] sm:w-[120%] lg:w-[130%] right-[-10%] lg:right-[-20%] bottom-8 z-10 transition-all duration-300 shadow-xl rounded-2xl border border-slate-100 bg-white overflow-hidden pointer-events-none">
               {/* Top Bar do Navegador */}
               <div className="bg-slate-50 border-b border-slate-200/80 px-4 py-2.5 flex items-center justify-between">
                 <div className="flex items-center space-x-1.5">
@@ -450,7 +450,7 @@ export default function App() {
             </div>
 
             {/* 2. MOCKUP MOBILE (FLUXO DO MORADOR) - Sobreposto à esquerda no primeiro plano */}
-            <div className="absolute z-20 left-[-5%] bottom-[-2%] w-[220px] shadow-2xl bg-slate-955 border-[6px] border-zinc-800 rounded-[32px] overflow-hidden aspect-[9/18] flex flex-col transform hover:-translate-y-2 transition-transform duration-500 pointer-events-none">
+            <div className="absolute z-20 left-[-4%] sm:left-[-10%] bottom-[-5%] w-[160px] sm:w-[185px] lg:w-[200px] shadow-2xl bg-slate-955 border-[5px] border-zinc-800 rounded-[28px] sm:rounded-[32px] overflow-hidden aspect-[9/18.5] flex flex-col transform hover:-translate-y-2 transition-transform duration-500 pointer-events-none">
               {/* Dynamic Island */}
               <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-14 h-3.5 bg-black rounded-full z-30 flex items-center justify-end px-1.5">
                 <div className="w-1 h-1 bg-[#001CFF]/40 rounded-full"></div>
