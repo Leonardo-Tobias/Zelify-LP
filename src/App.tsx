@@ -91,6 +91,16 @@ export default function App() {
   const [condoCount, setCondoCount] = useState(12);
   const [isAnnual, setIsAnnual] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const timelineRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -106,18 +116,23 @@ export default function App() {
   // Mapeamento preciso da linha de progresso
   const scaleX = useTransform(
     scrollYProgress,
-    [0, 0.15, 0.50, 0.85, 1.0],
-    [0, 0, 0.5, 1.0, 1.0]
+    [0.0, 0.4, 0.7, 1.0],
+    [0.0, 0.5, 1.0, 1.0]
   );
 
-  // Ativação dos círculos e cards correspondentes
-  const isStep1Active = scrollProgress >= 0.0;
-  const isStep2Active = scrollProgress >= 0.50;
-  const isStep3Active = scrollProgress >= 0.85;
+  // Animação de opacidade e posição por intervalo (fade-in acumulativo)
+  const opacity1 = useTransform(scrollYProgress, [0.0, 0.2], [0, 1]);
+  const opacity2 = useTransform(scrollYProgress, [0.4, 0.6], [0, 1]);
+  const opacity3 = useTransform(scrollYProgress, [0.7, 0.9], [0, 1]);
 
-  const showStep1Card = scrollProgress < 0.50;
-  const showStep2Card = scrollProgress >= 0.50 && scrollProgress < 0.85;
-  const showStep3Card = scrollProgress >= 0.85;
+  const y1 = useTransform(scrollYProgress, [0.0, 0.2], [20, 0]);
+  const y2 = useTransform(scrollYProgress, [0.4, 0.6], [20, 0]);
+  const y3 = useTransform(scrollYProgress, [0.7, 0.9], [20, 0]);
+
+  // Círculos acesos reativos
+  const isStep1Active = scrollProgress >= 0.0;
+  const isStep2Active = scrollProgress >= 0.40;
+  const isStep3Active = scrollProgress >= 0.70;
 
   const testimonials = [
     {
@@ -1050,11 +1065,13 @@ export default function App() {
                 </div>
 
                 {/* Card 1 */}
-                <div className={`w-full flex flex-col items-center text-center space-y-6 transition-all duration-700 ease-out transform ${
-                  showStep1Card 
-                    ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto' 
-                    : 'opacity-100 md:opacity-0 translate-y-0 md:translate-y-[20px] scale-100 md:scale-95 pointer-events-auto md:pointer-events-none'
-                }`}>
+                <motion.div 
+                  className="w-full flex flex-col items-center text-center space-y-6"
+                  style={{ 
+                    opacity: isMobile ? 1 : opacity1,
+                    y: isMobile ? 0 : y1
+                  }}
+                >
                   <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
                     <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'repeating-linear-gradient(90deg, #94a3b8 0px, transparent 1px, transparent 12px)', backgroundSize: '12px 12px' }}></div>
                     <div className="relative bg-white rounded-xl border border-slate-200 shadow-[0_8px_24px_rgba(0,0,0,0.08)] p-4 w-36 flex flex-col items-center space-y-2.5 transition-shadow duration-500">
@@ -1085,7 +1102,7 @@ export default function App() {
                       Adesivos do Zelify contendo link exclusivo e código de acesso são fixados em áreas de circulação como elevador e portaria.
                     </p>
                   </div>
-                </div>
+                </motion.div>
               </div>
 
               {/* Passo 02 Column */}
@@ -1100,11 +1117,13 @@ export default function App() {
                 </div>
 
                 {/* Card 2 */}
-                <div className={`w-full flex flex-col items-center text-center space-y-6 transition-all duration-700 ease-out transform ${
-                  showStep2Card 
-                    ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto' 
-                    : 'opacity-100 md:opacity-0 translate-y-0 md:translate-y-[20px] scale-100 md:scale-95 pointer-events-auto md:pointer-events-none'
-                }`}>
+                <motion.div 
+                  className="w-full flex flex-col items-center text-center space-y-6"
+                  style={{ 
+                    opacity: isMobile ? 1 : opacity2,
+                    y: isMobile ? 0 : y2
+                  }}
+                >
                   <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden transition-all duration-500">
                     <div className="relative bg-slate-900 rounded-2xl p-1.5 shadow-[0_12px_40px_rgba(15,23,42,0.25)] w-28 h-52 mx-auto flex flex-col transition-shadow duration-500">
                       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-2.5 bg-slate-900 rounded-b-lg z-20 flex items-center justify-center">
@@ -1149,13 +1168,13 @@ export default function App() {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="text-sm font-black uppercase text-slate-900 tracking-wider">2. O Morador Notifica</h4>
-                  <p className="text-slate-550 text-xs font-semibold leading-relaxed px-4">
-                    Sem criar senhas, o morador aponta a câmera para o QR Code, preenche o local, anexa a foto do problema e envia em 20 segundos.
-                  </p>
-                </div>
+                  <div className="space-y-2">
+                    <h4 className="text-sm font-black uppercase text-slate-900 tracking-wider">2. O Morador Notifica</h4>
+                    <p className="text-slate-550 text-xs font-semibold leading-relaxed px-4">
+                      Sem criar senhas, o morador aponta a câmera para o QR Code, preenche o local, anexa a foto do problema e envia em 20 segundos.
+                    </p>
+                  </div>
+                </motion.div>
               </div>
 
               {/* Passo 03 Column */}
@@ -1170,11 +1189,13 @@ export default function App() {
                 </div>
 
                 {/* Card 3 */}
-                <div className={`w-full flex flex-col items-center text-center space-y-6 transition-all duration-700 ease-out transform ${
-                  showStep3Card 
-                    ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto' 
-                    : 'opacity-100 md:opacity-0 translate-y-0 md:translate-y-[20px] scale-100 md:scale-95 pointer-events-auto md:pointer-events-none'
-                }`}>
+                <motion.div 
+                  className="w-full flex flex-col items-center text-center space-y-6"
+                  style={{ 
+                    opacity: isMobile ? 1 : opacity3,
+                    y: isMobile ? 0 : y3
+                  }}
+                >
                   <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden transition-all duration-500">
                     <div className="w-full max-w-[240px] bg-white border border-slate-200 rounded-xl shadow-[0_8px_24px_rgba(0,0,0,0.06)] overflow-hidden transition-shadow duration-500">
                       <div className="px-3 py-2 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
@@ -1202,7 +1223,7 @@ export default function App() {
                             <div className="w-3/4 h-1 bg-slate-100 rounded-full"></div>
                             <div className="flex items-center space-x-0.5">
                               <MapPin className="w-1.5 h-1.5 text-slate-300" />
-                              <span className="text-[4px] text-slate-400 font-medium">Elevador</span>
+                              <span className="text-[4px] text-slate-400 font-medium">ElevadorSocial</span>
                             </div>
                           </div>
                           <div className="bg-white border border-slate-150 rounded-lg p-1.5 shadow-sm space-y-1">
@@ -1241,11 +1262,11 @@ export default function App() {
                   </div>
                   <div className="space-y-2">
                     <h4 className="text-sm font-black uppercase text-slate-900 tracking-wider">3. O Gestor Resolve</h4>
-                    <p className="text-slate-550 text-xs font-semibold leading-relaxed px-4">
+                    <p className="text-slate-555 text-xs font-semibold leading-relaxed px-4">
                       O chamado cai em tempo real como um cartão no painel operacional do síndico, pronto para ser encaminhado à equipe de manutenção.
                     </p>
                   </div>
-                </div>
+                </motion.div>
               </div>
 
             </div>
