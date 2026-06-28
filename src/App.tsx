@@ -93,16 +93,7 @@ export default function App() {
   const [condoCount, setCondoCount] = useState(12);
   const [isAnnual, setIsAnnual] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const timelineRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -114,7 +105,35 @@ export default function App() {
   const [hasStep1Shown, setHasStep1Shown] = useState(false);
   const [hasStep2Shown, setHasStep2Shown] = useState(false);
   const [hasStep3Shown, setHasStep3Shown] = useState(false);
+  const [isUnlocked, setIsUnlocked] = useState(false);
   
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!timelineRef.current) return;
+      const rect = timelineRef.current.getBoundingClientRect();
+      
+      // Se passarmos do fim da seção (rolando para baixo), destrava a seção
+      if (!isUnlocked && rect.bottom <= 1) {
+        setIsUnlocked(true);
+        // Calcula a diferença de altura de 300vh -> 105vh dinamicamente, arredondando para inteiro
+        const diff = Math.round(rect.height - (window.innerHeight * 1.05));
+        window.scrollBy(0, -diff);
+      }
+      
+      // Se subirmos de volta para cima do topo da seção (usando margem de 1px), trava ela novamente e reseta a animação
+      if (isUnlocked && rect.top >= window.innerHeight - 1) {
+        setIsUnlocked(false);
+        setHasStep1Shown(false);
+        setHasStep2Shown(false);
+        setHasStep3Shown(false);
+        maxScrollYProgress.set(0);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isUnlocked]);
+
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     if (latest > maxScrollYProgress.get()) {
       maxScrollYProgress.set(latest);
@@ -295,11 +314,11 @@ export default function App() {
       </nav>
 
       {/* 3. A. HERO SECTION */}
-      <section className="relative overflow-x-hidden pt-16 pb-24 md:pt-24 md:pb-36 border-b border-slate-200/60">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <section className="relative overflow-x-hidden pt-8 pb-10 md:pt-12 md:pb-16 border-b border-slate-200/60">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
           {/* Lado Esquerdo: Textos e CTAs */}
-          <div className="lg:col-span-7 flex flex-col justify-start items-start text-left w-full space-y-8">
+          <div className="lg:col-span-5 flex flex-col justify-start items-start text-left w-full space-y-6">
             <div className="inline-flex items-center space-x-2 bg-slate-200/50 border border-slate-250/60 px-3 py-1 rounded-full text-[11px] font-bold text-slate-700 uppercase tracking-widest animate-fade-in">
               <Sparkles className="w-3.5 h-3.5 text-[#001CFF]" />
               <span>O Futuro da Zeladoria Condominial</span>
@@ -332,7 +351,7 @@ export default function App() {
             </div>
 
             {/* Estatísticas & Benefícios Lado a Lado (Estrutura Unificada Sem Duplicidades) */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-8 mt-12 pt-6 border-t border-slate-100 w-full justify-start">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-6 mt-8 pt-4 border-t border-slate-100 w-full justify-start">
               {/* Grid de Métricas (Sem o 20s duplicado) */}
               <div className="grid grid-cols-2 gap-6 sm:gap-8 shrink-0">
                 <div>
@@ -374,164 +393,21 @@ export default function App() {
               </div>
             </div>
           </div>
-
-          {/* Lado Direito: Composição Ortogonal 2D Premium */}
-          <div className="lg:col-span-5 relative w-full h-[450px] lg:h-[550px] flex items-center justify-center -translate-x-4">
-            
-            {/* Glow de Fundo (Esfumado com a cor principal) */}
+          {/* Lado Direito: Ilustração SVG Customizada */}
+          <div className="lg:col-span-7 relative w-full flex items-center justify-center lg:justify-end">
+            {/* Glow de Fundo */}
             <div className="absolute w-[600px] h-[600px] bg-[#001CFF]/10 blur-[100px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 pointer-events-none" />
             
-            {/* 1. MOCKUP DESKTOP (Fundo - Tamanho ajustado e sem vazar) */}
-            <div className="absolute w-[180%] lg:w-[200%] left-[10%] lg:left-[15%] bottom-0 z-10 shadow-[0_30px_70px_rgba(0,0,0,0.1)] rounded-[20px] border border-slate-200/60 bg-white overflow-hidden flex flex-col h-[400px] lg:h-[500px] pointer-events-none">
-              {/* Navegador Falso */}
-              <div className="bg-slate-50 border-b border-slate-200/80 px-4 py-2.5 flex items-center">
-                <div className="flex space-x-1.5 mr-6">
-                  <div className="w-3 h-3 rounded-full bg-slate-200"></div>
-                  <div className="w-3 h-3 rounded-full bg-slate-200"></div>
-                  <div className="w-3 h-3 rounded-full bg-slate-200"></div>
-                </div>
-                <div className="flex-1 flex justify-center">
-                  <div className="bg-white border border-slate-200 text-[10px] font-semibold text-slate-400 px-6 py-1 rounded-md shadow-sm">
-                    painel.zelify.com.br
-                  </div>
-                </div>
-                <div className="w-12"></div>
-              </div>
-
-              {/* Layout Sidebar + Conteúdo */}
-              <div className="flex flex-1 overflow-x-hidden overflow-y-hidden text-left bg-slate-50/50">
-                {/* O container interno TEM que ser gigante para o Kanban não espremer e sim cortar */}
-                <div className="flex h-full min-w-[900px] lg:min-w-[1200px]">
-                  {/* Sidebar */}
-                  <div className="w-[140px] lg:w-[180px] bg-slate-900 border-r border-slate-800 p-4 flex flex-col justify-between shrink-0">
-                    <div className="space-y-4">
-                      <div className="flex items-center space-x-2 border-b border-slate-850 pb-3">
-                        <div className="w-5 h-5 rounded bg-[#001CFF] flex items-center justify-center text-white text-[10px] font-black">Z</div>
-                        <span className="text-[11px] font-black text-white tracking-tight">Zelify</span>
-                      </div>
-                      <div className="space-y-1">
-                        <div className="bg-[#001CFF]/15 text-[#001CFF] text-[9px] font-black px-2 py-1.5 rounded flex items-center space-x-1.5">
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#001CFF]"></div>
-                          <span>Quadro</span>
-                        </div>
-                        <div className="text-slate-400 text-[9px] font-bold px-2 py-1.5 rounded">Ocorrências</div>
-                        <div className="text-slate-400 text-[9px] font-bold px-2 py-1.5 rounded">Moradores</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Área Interna do Kanban */}
-                  <div className="p-6 grid grid-cols-3 gap-6 w-full">
-                    {/* Pendentes */}
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between bg-amber-50 border border-amber-100 rounded-lg p-2 px-3">
-                        <span className="text-[10px] lg:text-[11px] font-bold text-amber-700 uppercase">Pendentes</span>
-                        <span className="w-5 h-5 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-[10px] font-black">2</span>
-                      </div>
-                      <div className="bg-white border border-slate-200/80 rounded-xl p-4 shadow-sm space-y-3">
-                        <p className="text-[12px] lg:text-[14px] font-black text-slate-800 leading-tight">Lâmpada Queimada</p>
-                        <p className="text-[10px] lg:text-[12px] text-slate-500 font-medium">Elevador Social A</p>
-                        <div className="flex justify-between items-center pt-3 border-t border-slate-50">
-                          <span className="text-[9px] lg:text-[10px] text-slate-400 font-bold">Ap. 302</span>
-                          <span className="text-[8px] lg:text-[9px] bg-amber-100 text-amber-700 px-2 py-1 rounded font-bold uppercase">Alta</span>
-                        </div>
-                      </div>
-                      <div className="bg-white border border-slate-200/80 rounded-xl p-4 shadow-sm space-y-3 opacity-70">
-                        <p className="text-[12px] lg:text-[14px] font-black text-slate-800 leading-tight">Infiltração</p>
-                        <p className="text-[10px] lg:text-[12px] text-slate-500 font-medium">Garagem G2</p>
-                      </div>
-                    </div>
-
-                    {/* Em Execução */}
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between bg-blue-50 border border-blue-100 rounded-lg p-2 px-3">
-                        <span className="text-[10px] lg:text-[11px] font-bold text-[#001CFF] uppercase">Andamento</span>
-                        <span className="w-5 h-5 rounded-full bg-[#001CFF]/10 text-[#001CFF] flex items-center justify-center text-[10px] font-black">1</span>
-                      </div>
-                      <div className="bg-white border-l-4 border-l-[#001CFF] border-y border-r border-slate-200/80 rounded-r-xl rounded-l-md p-4 shadow-sm space-y-3">
-                        <p className="text-[12px] lg:text-[14px] font-black text-slate-800 leading-tight">Portão Quebrado</p>
-                        <p className="text-[10px] lg:text-[12px] text-slate-500 font-medium">Entrada Principal</p>
-                        <div className="flex justify-between items-center pt-3 border-t border-slate-50">
-                          <span className="text-[9px] lg:text-[10px] text-slate-400 font-bold">Geral</span>
-                          <span className="text-[8px] lg:text-[9px] bg-[#001CFF]/10 text-[#001CFF] px-2 py-1 rounded font-bold uppercase">Urgente</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Resolvidos */}
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between bg-emerald-50 border border-emerald-100 rounded-lg p-2 px-3">
-                        <span className="text-[10px] lg:text-[11px] font-bold text-emerald-700 uppercase">Resolvidos</span>
-                        <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[10px] font-black">1</span>
-                      </div>
-                      <div className="bg-white border border-slate-200/80 rounded-xl p-4 shadow-sm space-y-3 opacity-50">
-                        <p className="text-[12px] lg:text-[14px] font-black text-slate-800 leading-tight">Interfone Mudo</p>
-                        <p className="text-[10px] lg:text-[12px] text-slate-500 font-medium">Portaria</p>
-                        <div className="flex justify-end pt-3 border-t border-slate-50">
-                          <span className="text-[8px] lg:text-[9px] bg-emerald-100 text-emerald-700 px-2 py-1 rounded font-bold uppercase">Fim</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* 2. MOCKUP MOBILE (Frente) */}
-            <div className="absolute z-20 left-[-5%] lg:left-[5%] bottom-0 w-[140px] sm:w-[170px] lg:w-[200px] shadow-[0_40px_80px_-15px_rgba(0,0,0,0.25)] bg-slate-900 border-[6px] lg:border-[8px] border-slate-900 rounded-[32px] lg:rounded-[40px] overflow-hidden aspect-[9/18.5] flex flex-col pointer-events-none ring-1 ring-white/20">
-              
-              {/* Dynamic Island */}
-              <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-14 h-4 bg-black rounded-full z-30 flex items-center justify-end px-1.5">
-                <div className="w-1 h-1 bg-[#001CFF]/40 rounded-full"></div>
-              </div>
-
-              {/* Tela do Aplicativo Web */}
-              <div className="h-full bg-slate-50 flex flex-col p-3.5 pt-7 text-left relative justify-between">
-                
-                {/* Header Mobile */}
-                <div className="space-y-1 border-b border-slate-200/50 pb-2">
-                  <span className="text-[11px] font-black text-slate-900 tracking-tight leading-none block">
-                    Harmony<span className="text-[#001CFF]">.</span>
-                  </span>
-                  <p className="text-[7px] text-slate-400 font-semibold uppercase tracking-wider leading-none mt-1">Abrir Chamado</p>
-                </div>
-
-                {/* Form Cards */}
-                <div className="space-y-3 mt-3 my-auto">
-                  <div className="bg-white rounded-lg p-2 shadow-sm border border-slate-100/80 space-y-1">
-                    <label className="text-[7px] font-bold text-slate-400 uppercase tracking-widest block">Localização</label>
-                    <div className="text-[9px] font-bold text-slate-800">Elevador Social A</div>
-                  </div>
-
-                  <div className="bg-white rounded-lg p-2 shadow-sm border border-slate-100/80 space-y-1 flex flex-col items-center justify-center py-3 border-dashed border-2 border-slate-200">
-                    <div className="w-4 h-4 border-2 border-[#001CFF]/50 rounded mb-1"></div> {/* Placeholder Camera */}
-                    <span className="text-[7px] font-bold text-slate-500 uppercase tracking-widest">Anexar Foto</span>
-                  </div>
-                  
-                  <div className="bg-white rounded-lg p-2 shadow-sm border border-slate-100/80 space-y-1">
-                    <label className="text-[7px] font-bold text-slate-400 uppercase tracking-widest block">Descrição</label>
-                    <div className="text-[8px] text-slate-500 font-medium leading-snug">
-                      Lâmpada piscando intermitentemente no andar.
-                    </div>
-                  </div>
-                </div>
-
-                {/* Botão Inferior */}
-                <div className="w-full mt-3">
-                  <div className="w-full bg-[#001CFF] text-white text-[9px] font-black uppercase tracking-widest text-center py-2 rounded-xl shadow-[0_4px_12px_rgba(0,28,255,0.3)]">
-                    Enviar
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
+            <img 
+              src="/hero-illustration.svg" 
+              alt="Zelify Ecossistema" 
+              className="w-full h-auto max-w-[800px] lg:max-w-none drop-shadow-[0_20px_50px_rgba(0,28,255,0.06)] transform hover:scale-[1.015] transition-transform duration-500 pointer-events-none"
+            />
           </div>
-
         </div>
       </section>
 
-      {/* SEÇÃO CARROSSEL DE LOGOS (SOCIAL PROOF) */}
+{/* SEÇÃO CARROSSEL DE LOGOS (SOCIAL PROOF) */}
       <section className="bg-white border-y border-slate-200/50 py-8 overflow-hidden select-none">
         <div className="max-w-7xl mx-auto px-6 mb-4 text-center">
           <p className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">
@@ -1104,9 +980,13 @@ export default function App() {
         </div>
       </section>
       
-      {/* 3. D. LINHA DO TEMPO: O ECOSSISTEMA NO MUNDO FÍSICO */}
-      <section ref={timelineRef} className="relative h-[300vh] bg-white border-b border-slate-200/60">
-        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center py-16 bg-white z-10">
+            {/* 3. D. LINHA DO TEMPO: O ECOSSISTEMA NO MUNDO FÍSICO */}
+      <section ref={timelineRef} className="relative bg-white border-b border-slate-200/60" style={{ height: isUnlocked ? '105vh' : '300vh' }}>
+        <div className={
+          isUnlocked 
+            ? 'relative w-full h-full flex flex-col justify-center py-16 bg-white z-10' 
+            : 'sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center py-16 bg-white z-10'
+        }>
           <div className="max-w-7xl mx-auto w-full px-6 flex flex-col space-y-12">
             
             {/* Header */}
@@ -1114,7 +994,7 @@ export default function App() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900 leading-tight">
                 O ecossistema que conecta o mundo físico à gestão digital.
               </h2>
-              <p className="text-slate-500 text-xs sm:text-sm font-semibold max-w-xl mx-auto">
+              <p className="text-slate-550 text-xs sm:text-sm font-semibold max-w-xl mx-auto">
                 Três passos simples que eliminam intermediários e resolvem problemas de zeladoria de forma rápida.
               </p>
             </div>
@@ -1145,8 +1025,8 @@ export default function App() {
                 <motion.div 
                   className="w-full flex flex-col items-center text-center space-y-6"
                   style={{ 
-                    opacity: isMobile ? 1 : opacity1,
-                    y: isMobile ? 0 : y1
+                    opacity: opacity1,
+                    y: y1
                   }}
                 >
                   <div className="w-full h-64 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
@@ -1160,7 +1040,7 @@ export default function App() {
                         <div className="absolute top-1 left-1 w-2.5 h-2.5 border-l-2 border-t-2 border-[#001CFF]/40 rounded-tl-sm"></div>
                         <div className="absolute top-1 right-1 w-2.5 h-2.5 border-r-2 border-t-2 border-[#001CFF]/40 rounded-tr-sm"></div>
                         <div className="absolute bottom-1 left-1 w-2.5 h-2.5 border-l-2 border-b-2 border-[#001CFF]/40 rounded-bl-sm"></div>
-                        <div className="absolute bottom-1 right-1 w-2.5 h-2.5 border-r-2 border-b-2 border-[#001CFF]/40 rounded-br-sm"></div>
+                        <div className="absolute bottom-1 right-1 w-2.5 h-2.5 border-r-2 border-b-2 border-[#001CFF]/40 rounded-tr-sm"></div>
                         <QrCode className="w-12 h-12 text-slate-800" strokeWidth={1.5} />
                       </div>
                       <div className="w-full bg-[#001CFF]/5 border border-[#001CFF]/10 rounded-md py-1 flex items-center justify-center space-x-1">
@@ -1197,8 +1077,8 @@ export default function App() {
                 <motion.div 
                   className="w-full flex flex-col items-center text-center space-y-6"
                   style={{ 
-                    opacity: isMobile ? 1 : opacity2,
-                    y: isMobile ? 0 : y2
+                    opacity: opacity2,
+                    y: y2
                   }}
                 >
                   <div className="w-full h-64 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden transition-all duration-500">
@@ -1269,8 +1149,8 @@ export default function App() {
                 <motion.div 
                   className="w-full flex flex-col items-center text-center space-y-6"
                   style={{ 
-                    opacity: isMobile ? 1 : opacity3,
-                    y: isMobile ? 0 : y3
+                    opacity: opacity3,
+                    y: y3
                   }}
                 >
                   <div className="w-full h-64 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden transition-all duration-500">
@@ -1350,8 +1230,7 @@ export default function App() {
           </div>
         </div>
       </section>
-
-      {/* SEÇÃO CARROSSEL DE COMENTÁRIOS (TESTIMONIALS) */}
+{/* SEÇÃO CARROSSEL DE COMENTÁRIOS (TESTIMONIALS) */}
       <section className="py-24 bg-gradient-to-b from-slate-50 to-slate-100/50 border-b border-slate-200/60 relative overflow-hidden">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#001CFF]/5 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
