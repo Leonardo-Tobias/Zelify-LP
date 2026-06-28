@@ -376,7 +376,7 @@ export default function App() {
           </div>
 
           {/* Lado Direito: Composição Ortogonal 2D Premium */}
-          <div className="lg:col-span-5 relative w-full h-[450px] lg:h-[550px] flex items-center justify-center">
+          <div className="lg:col-span-5 relative w-full h-[450px] lg:h-[550px] flex items-center justify-center -translate-x-4">
             
             {/* Glow de Fundo (Esfumado com a cor principal) */}
             <div className="absolute w-[600px] h-[600px] bg-[#001CFF]/10 blur-[100px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 pointer-events-none" />
