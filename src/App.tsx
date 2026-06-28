@@ -381,10 +381,10 @@ export default function App() {
             {/* Glow de Fundo (Esfumado com a cor principal) */}
             <div className="absolute w-[600px] h-[600px] bg-[#001CFF]/10 blur-[100px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 pointer-events-none" />
             
-            {/* 1. MOCKUP DESKTOP (Fundo - Gigante e cortado na direita) */}
-            <div className="absolute w-[800px] lg:w-[1100px] left-[10%] lg:left-[15%] bottom-0 z-10 shadow-[0_30px_70px_rgba(0,0,0,0.1)] rounded-[20px] border border-slate-200/60 bg-white overflow-hidden flex flex-col h-[480px] lg:h-[600px] pointer-events-none">
-              {/* Navegador Falso */}
-              <div className="bg-slate-50 border-b border-slate-200/80 px-4 py-2.5 lg:py-4 flex items-center">
+            {/* 1. MOCKUP DESKTOP (Fundo - Cortado exatamente na borda do grid) */}
+            <div className="absolute left-[10%] lg:left-[15%] right-0 bottom-0 z-10 shadow-[-20px_30px_70px_rgba(0,0,0,0.1)] rounded-l-[20px] border-y border-l border-slate-200/60 bg-white overflow-hidden flex flex-col h-[480px] lg:h-[600px] pointer-events-none">
+              {/* Navegador Falso - Largura Interna Forçada */}
+              <div className="bg-slate-50 border-b border-slate-200/80 px-4 py-2.5 lg:py-4 flex items-center min-w-[800px] lg:min-w-[1000px]">
                 <div className="flex space-x-1.5 lg:space-x-2 mr-6">
                   <div className="w-3 h-3 lg:w-4 lg:h-4 rounded-full bg-slate-200"></div>
                   <div className="w-3 h-3 lg:w-4 lg:h-4 rounded-full bg-slate-200"></div>
@@ -398,8 +398,8 @@ export default function App() {
                 <div className="w-12 lg:w-20"></div>
               </div>
 
-              {/* Layout Sidebar + Conteúdo */}
-              <div className="flex flex-1 overflow-hidden text-left bg-slate-50/50">
+              {/* Layout Sidebar + Conteúdo - Largura Interna Forçada */}
+              <div className="flex flex-1 overflow-hidden text-left bg-slate-50/50 min-w-[800px] lg:min-w-[1000px]">
                 {/* Sidebar */}
                 <div className="w-[120px] lg:w-[180px] bg-slate-900 border-r border-slate-800 p-4 lg:p-6 flex flex-col justify-between shrink-0">
                   <div className="space-y-6 lg:space-y-8">
