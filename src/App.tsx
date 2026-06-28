@@ -378,10 +378,10 @@ export default function App() {
           {/* Lado Direito: Composição de Mockups Sobrepostos em Larga Escala (Desktop + Mobile) */}
           <div className="lg:col-span-5 relative w-full h-[450px] flex items-center justify-center overflow-visible perspective-[1200px]">
             {/* Blurr / Glow de Fundo Radial Premium */}
-            <div className="absolute bg-[#001CFF]/5 blur-[120px] rounded-full w-[400px] h-[400px] -right-10 top-10 -z-10 pointer-events-none"></div>
+            <div className="absolute bg-[#001CFF]/10 blur-[120px] rounded-full w-[450px] h-[450px] right-[-5%] top-1/2 -translate-y-1/2 -z-10 pointer-events-none" />
             
             {/* 1. MOCKUP DESKTOP (KANBAN DO GESTOR) - Principal de fundo com menu sidebar */}
-            <div className="absolute w-[125%] min-w-[540px] right-[-10%] bottom-0 z-10 shadow-xl rounded-2xl border border-slate-100 bg-white overflow-hidden pointer-events-none transform rotate-y-[-12deg] rotate-x-[8deg] rotate-z-[2deg]">
+            <div className="absolute w-[125%] min-w-[540px] right-[-10%] bottom-0 z-10 shadow-[0_30px_70px_rgba(0,0,0,0.06)] rounded-2xl border border-slate-100 bg-white overflow-hidden pointer-events-none transform rotate-y-[-14deg] rotate-x-[8deg] rotate-z-[2deg]">
               {/* Top Bar do Navegador */}
               <div className="bg-slate-50 border-b border-slate-200/80 px-4 py-2.5 flex items-center justify-between">
                 <div className="flex items-center space-x-1.5">
@@ -425,7 +425,7 @@ export default function App() {
                   <div className="text-[7px] text-slate-550 font-bold tracking-wider uppercase">V1.2.0</div>
                 </div>
 
-                {/* Área Interna do Kanban */}
+                {/* Área Interna do Kanban - Minimalista (Skeleton UI) */}
                 <div className="p-4 grid grid-cols-3 gap-3.5 w-full overflow-hidden">
                   
                   {/* Coluna 1: Pendentes */}
@@ -435,16 +435,17 @@ export default function App() {
                       <span className="w-4 h-4 rounded-full bg-amber-500/10 text-amber-700 flex items-center justify-center text-[9px] font-black">2</span>
                     </div>
                     <div className="bg-white border border-slate-200/60 rounded-xl p-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-2">
-                      <p className="text-[10px] font-black text-slate-800 leading-tight">Lâmpada Queimada</p>
-                      <p className="text-[8px] text-slate-500 font-semibold leading-none">Elevador Social A</p>
+                      <p className="text-[10px] font-black text-slate-800 leading-tight">Elevador</p>
+                      <div className="w-full h-1.5 bg-slate-100 rounded-full"></div>
+                      <div className="w-2/3 h-1.5 bg-slate-100 rounded-full"></div>
                       <div className="flex justify-between items-center pt-1.5 border-t border-slate-100">
-                        <span className="text-[7.5px] text-slate-400 font-bold">Ap. 302</span>
+                        <div className="w-4 h-1.5 bg-slate-200 rounded-full"></div>
                         <span className="text-[7px] bg-amber-500/10 text-amber-700 px-1.5 py-0.5 rounded font-black uppercase">Alta</span>
                       </div>
                     </div>
                     <div className="bg-white border border-slate-200/60 rounded-xl p-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-2 opacity-65">
-                      <p className="text-[10px] font-black text-slate-800 leading-tight">Infiltração Parede</p>
-                      <p className="text-[8px] text-slate-500 font-semibold leading-none">Garagem G2</p>
+                      <p className="text-[10px] font-black text-slate-800 leading-tight">Infiltração</p>
+                      <div className="w-full h-1.5 bg-slate-100 rounded-full"></div>
                     </div>
                   </div>
 
@@ -455,10 +456,11 @@ export default function App() {
                       <span className="w-4 h-4 rounded-full bg-[#001CFF]/10 text-[#001CFF] flex items-center justify-center text-[9px] font-black">1</span>
                     </div>
                     <div className="bg-white border-l-2 border-l-[#001CFF] border-y border-r border-slate-200/60 rounded-r-xl rounded-l-md p-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-2">
-                      <p className="text-[10px] font-black text-slate-800 leading-tight">Portão Quebrado</p>
-                      <p className="text-[8px] text-slate-500 font-semibold leading-none">Entrada G1</p>
+                      <p className="text-[10px] font-black text-slate-800 leading-tight">Portão</p>
+                      <div className="w-full h-1.5 bg-slate-100 rounded-full"></div>
+                      <div className="w-1/2 h-1.5 bg-slate-100 rounded-full"></div>
                       <div className="flex justify-between items-center pt-1.5 border-t border-slate-100">
-                        <span className="text-[7.5px] text-slate-400 font-bold">Portaria</span>
+                        <div className="w-5 h-1.5 bg-slate-200 rounded-full"></div>
                         <span className="text-[7px] bg-[#001CFF]/10 text-[#001CFF] px-1.5 py-0.5 rounded font-black uppercase">Crítico</span>
                       </div>
                     </div>
@@ -471,8 +473,9 @@ export default function App() {
                       <span className="w-4 h-4 rounded-full bg-emerald-500/10 text-emerald-700 flex items-center justify-center text-[9px] font-black">2</span>
                     </div>
                     <div className="bg-white border border-slate-200/60 rounded-xl p-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.02)] space-y-2">
-                      <p className="text-[10px] font-black text-slate-800 leading-tight">Interfone Inativo</p>
-                      <p className="text-[8px] text-slate-500 font-semibold leading-none">Portaria A</p>
+                      <p className="text-[10px] font-black text-slate-800 leading-tight">Interfone</p>
+                      <div className="w-full h-1.5 bg-slate-100 rounded-full"></div>
+                      <div className="w-3/4 h-1.5 bg-slate-100 rounded-full"></div>
                       <div className="flex justify-end pt-1.5 border-t border-slate-100">
                         <span className="text-[7px] bg-emerald-500/10 text-emerald-700 px-1.5 py-0.5 rounded font-black uppercase">Fim</span>
                       </div>
@@ -484,13 +487,13 @@ export default function App() {
             </div>
 
             {/* 2. MOCKUP MOBILE (FLUXO DO MORADOR) - Posicionado como elemento menor sobreposto à sidebar */}
-            <div className="absolute z-20 left-2 md:left-6 lg:left-10 bottom-0 w-[125px] sm:w-[145px] lg:w-[155px] shadow-[15px_15px_50px_rgba(0,0,0,0.15)] bg-slate-955 border-[4px] border-zinc-800 rounded-[22px] sm:rounded-[26px] overflow-hidden aspect-[9/18.5] flex flex-col pointer-events-none transform rotate-y-[-12deg] rotate-x-[8deg] rotate-z-[2deg]">
+            <div className="absolute z-20 left-2 md:left-6 lg:left-10 bottom-0 w-[125px] sm:w-[145px] lg:w-[155px] shadow-[0_30px_70px_rgba(0,0,0,0.06)] bg-slate-955 border-[4px] border-zinc-800 rounded-[22px] sm:rounded-[26px] overflow-hidden aspect-[9/18.5] flex flex-col pointer-events-none transform rotate-y-[-14deg] rotate-x-[8deg] rotate-z-[2deg]">
               {/* Dynamic Island */}
               <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-14 h-3.5 bg-black rounded-full z-30 flex items-center justify-end px-1.5">
                 <div className="w-1 h-1 bg-[#001CFF]/40 rounded-full"></div>
               </div>
 
-              {/* Tela do Aplicativo Web */}
+              {/* Tela do Aplicativo Web - Skeleton Minimalista */}
               <div className="h-full bg-white flex flex-col p-3.5 pt-6.5 text-left relative justify-between">
                 {/* Cabeçalho do App */}
                 <div className="border-b border-slate-100 pb-2">
@@ -500,37 +503,26 @@ export default function App() {
                   <p className="text-[7.5px] text-slate-400 font-bold uppercase tracking-wider leading-none mt-0.5">Nova Ocorrência</p>
                 </div>
 
-                {/* Formulário de Envio */}
+                {/* Formulário de Envio Skeleton */}
                 <div className="space-y-3 my-auto">
-                  {/* Campo de Localização */}
-                  <div className="space-y-1">
-                    <label className="text-[8px] font-black text-slate-700 uppercase tracking-wider block">Onde está o problema?</label>
-                    <div className="w-full bg-slate-50 border border-slate-200/80 rounded-md p-1 px-1.5 text-[8.5px] font-semibold text-slate-800">
-                      Elevador Social A - 3º andar
+                  {/* Campo 1 */}
+                  <div className="space-y-1.5">
+                    <div className="w-full bg-slate-50 border border-slate-100 rounded-md p-1.5 px-2 flex justify-start">
+                      <span className="text-[7.5px] font-semibold text-slate-400">Onde é o problema?...</span>
                     </div>
                   </div>
 
-                  {/* Área de Anexo de Imagem */}
-                  <div className="space-y-1">
-                    <label className="text-[8px] font-black text-slate-700 uppercase tracking-wider block">Anexar foto</label>
-                    <div className="w-full border border-dashed border-slate-300 rounded-md p-2.5 flex flex-col items-center justify-center bg-slate-50">
-                      <Camera className="w-4 h-4 text-[#001CFF] mb-1" />
-                      <span className="text-[7px] font-bold text-slate-500 uppercase tracking-wider">Tirar Foto do Local</span>
-                    </div>
-                  </div>
-
-                  {/* Descrição Curta */}
-                  <div className="space-y-1">
-                    <label className="text-[8px] font-black text-slate-700 uppercase tracking-wider block">Detalhes</label>
-                    <div className="w-full bg-slate-50 border border-slate-200/80 rounded-md p-1 px-1.5 text-[8px] text-slate-400 font-medium leading-tight">
-                      Lâmpada piscando sem parar.
+                  {/* Campo 2 */}
+                  <div className="space-y-1.5">
+                    <div className="w-full bg-slate-50 border border-slate-100 rounded-md p-1.5 px-2 flex justify-start">
+                      <span className="text-[7.5px] font-semibold text-slate-400">Detalhes...</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Botão de Envio de Ocorrência */}
                 <div className="w-full pt-2 border-t border-slate-100">
-                  <div className="w-full bg-[#001CFF] text-white text-[8.5px] font-extrabold uppercase tracking-widest text-center py-2 rounded-lg shadow-md shadow-[#001CFF]/10">
+                  <div className="w-full bg-[#001CFF] text-white text-[8px] font-extrabold uppercase tracking-widest text-center py-2 rounded-lg shadow-md shadow-[#001CFF]/20">
                     Enviar Chamado
                   </div>
                 </div>
