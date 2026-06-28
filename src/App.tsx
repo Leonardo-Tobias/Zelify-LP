@@ -381,7 +381,7 @@ export default function App() {
             <div className="absolute bg-[#001CFF]/5 blur-[120px] rounded-full w-[400px] h-[400px] -right-10 top-10 -z-10 pointer-events-none"></div>
             
             {/* 1. MOCKUP DESKTOP (KANBAN DO GESTOR) - Principal de fundo com menu sidebar */}
-            <div className="absolute w-[138%] max-w-[750px] min-w-[580px] -right-20 bottom-0 z-10 transition-all duration-300 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.08)] rounded-2xl border border-slate-100 bg-white overflow-hidden pointer-events-none transform rotate-y-[-12deg] rotate-x-[8deg] rotate-z-[2deg]">
+            <div className="absolute w-[125%] min-w-[540px] right-[-10%] bottom-0 z-10 shadow-xl rounded-2xl border border-slate-100 bg-white overflow-hidden pointer-events-none transform rotate-y-[-12deg] rotate-x-[8deg] rotate-z-[2deg]">
               {/* Top Bar do Navegador */}
               <div className="bg-slate-50 border-b border-slate-200/80 px-4 py-2.5 flex items-center justify-between">
                 <div className="flex items-center space-x-1.5">
@@ -484,7 +484,7 @@ export default function App() {
             </div>
 
             {/* 2. MOCKUP MOBILE (FLUXO DO MORADOR) - Posicionado como elemento menor sobreposto à sidebar */}
-            <div className="absolute z-20 left-[2%] md:left-[5%] bottom-0 w-[125px] sm:w-[145px] lg:w-[155px] shadow-[15px_15px_50px_rgba(0,0,0,0.15)] bg-slate-955 border-[4px] border-zinc-800 rounded-[22px] sm:rounded-[26px] overflow-hidden aspect-[9/18.5] flex flex-col pointer-events-none transform rotate-y-[-12deg] rotate-x-[8deg] rotate-z-[2deg]">
+            <div className="absolute z-20 left-2 md:left-6 lg:left-10 bottom-0 w-[125px] sm:w-[145px] lg:w-[155px] shadow-[15px_15px_50px_rgba(0,0,0,0.15)] bg-slate-955 border-[4px] border-zinc-800 rounded-[22px] sm:rounded-[26px] overflow-hidden aspect-[9/18.5] flex flex-col pointer-events-none transform rotate-y-[-12deg] rotate-x-[8deg] rotate-z-[2deg]">
               {/* Dynamic Island */}
               <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-14 h-3.5 bg-black rounded-full z-30 flex items-center justify-end px-1.5">
                 <div className="w-1 h-1 bg-[#001CFF]/40 rounded-full"></div>
