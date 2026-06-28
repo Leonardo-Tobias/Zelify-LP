@@ -382,7 +382,7 @@ export default function App() {
             <div className="absolute w-[600px] h-[600px] bg-[#001CFF]/10 blur-[100px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 pointer-events-none" />
             
             {/* 1. MOCKUP DESKTOP (Fundo) */}
-            <div className="absolute w-[125%] min-w-[540px] right-[-10%] z-10 shadow-[0_30px_70px_rgba(0,0,0,0.1)] rounded-[20px] border border-slate-200/60 bg-white overflow-hidden flex flex-col h-[380px] pointer-events-none">
+            <div className="absolute w-[150%] lg:w-[170%] min-w-[650px] left-[15%] lg:left-[22%] bottom-0 z-10 shadow-[0_30px_70px_rgba(0,0,0,0.1)] rounded-[20px] border border-slate-200/60 bg-white overflow-hidden flex flex-col h-[420px] pointer-events-none">
               {/* Navegador Falso */}
               <div className="bg-slate-50 border-b border-slate-200/80 px-4 py-2.5 flex items-center">
                 <div className="flex space-x-1.5 mr-6">
@@ -401,7 +401,7 @@ export default function App() {
               {/* Layout Sidebar + Conteúdo */}
               <div className="flex flex-1 overflow-hidden text-left bg-slate-50/50">
                 {/* Sidebar */}
-                <div className="w-[110px] bg-slate-900 border-r border-slate-800 p-3 flex flex-col justify-between shrink-0">
+                <div className="w-[120px] bg-slate-900 border-r border-slate-800 p-3 flex flex-col justify-between shrink-0">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-1.5 border-b border-slate-850 pb-3">
                       <div className="w-4 h-4 rounded bg-[#001CFF] flex items-center justify-center text-white text-[9px] font-black">Z</div>
@@ -419,54 +419,54 @@ export default function App() {
                 </div>
 
                 {/* Área Interna do Kanban - Fidelidade Alta Original */}
-                <div className="p-4 grid grid-cols-3 gap-3 w-full">
+                <div className="p-4 grid grid-cols-3 gap-4 w-full">
                   {/* Pendentes */}
-                  <div className="space-y-2.5">
+                  <div className="space-y-3">
                     <div className="flex items-center justify-between bg-amber-50 border border-amber-100 rounded-lg p-1.5 px-2">
                       <span className="text-[9px] font-bold text-amber-700 uppercase">Pendentes</span>
                       <span className="w-4 h-4 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-[9px] font-black">2</span>
                     </div>
-                    <div className="bg-white border border-slate-200/80 rounded-xl p-2.5 shadow-sm space-y-2">
-                      <p className="text-[10px] font-black text-slate-800 leading-tight">Lâmpada Queimada</p>
-                      <p className="text-[8px] text-slate-500 font-medium">Elevador Social A</p>
-                      <div className="flex justify-between items-center pt-1.5 border-t border-slate-50">
-                        <span className="text-[7.5px] text-slate-400 font-bold">Ap. 302</span>
-                        <span className="text-[7px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-bold uppercase">Alta</span>
+                    <div className="bg-white border border-slate-200/80 rounded-xl p-3 shadow-sm space-y-2">
+                      <p className="text-[11px] font-black text-slate-800 leading-tight">Lâmpada Queimada</p>
+                      <p className="text-[9px] text-slate-500 font-medium">Elevador Social A</p>
+                      <div className="flex justify-between items-center pt-2 border-t border-slate-50">
+                        <span className="text-[8px] text-slate-400 font-bold">Ap. 302</span>
+                        <span className="text-[7.5px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-bold uppercase">Alta</span>
                       </div>
                     </div>
-                    <div className="bg-white border border-slate-200/80 rounded-xl p-2.5 shadow-sm space-y-2 opacity-70">
-                      <p className="text-[10px] font-black text-slate-800 leading-tight">Infiltração</p>
-                      <p className="text-[8px] text-slate-500 font-medium">Garagem G2</p>
+                    <div className="bg-white border border-slate-200/80 rounded-xl p-3 shadow-sm space-y-2 opacity-70">
+                      <p className="text-[11px] font-black text-slate-800 leading-tight">Infiltração</p>
+                      <p className="text-[9px] text-slate-500 font-medium">Garagem G2</p>
                     </div>
                   </div>
 
                   {/* Em Execução */}
-                  <div className="space-y-2.5">
+                  <div className="space-y-3">
                     <div className="flex items-center justify-between bg-blue-50 border border-blue-100 rounded-lg p-1.5 px-2">
                       <span className="text-[9px] font-bold text-[#001CFF] uppercase">Andamento</span>
                       <span className="w-4 h-4 rounded-full bg-[#001CFF]/10 text-[#001CFF] flex items-center justify-center text-[9px] font-black">1</span>
                     </div>
-                    <div className="bg-white border-l-2 border-l-[#001CFF] border-y border-r border-slate-200/80 rounded-r-xl rounded-l-md p-2.5 shadow-sm space-y-2">
-                      <p className="text-[10px] font-black text-slate-800 leading-tight">Portão Quebrado</p>
-                      <p className="text-[8px] text-slate-500 font-medium">Entrada Principal</p>
-                      <div className="flex justify-between items-center pt-1.5 border-t border-slate-50">
-                        <span className="text-[7.5px] text-slate-400 font-bold">Geral</span>
-                        <span className="text-[7px] bg-[#001CFF]/10 text-[#001CFF] px-1.5 py-0.5 rounded font-bold uppercase">Urgente</span>
+                    <div className="bg-white border-l-2 border-l-[#001CFF] border-y border-r border-slate-200/80 rounded-r-xl rounded-l-md p-3 shadow-sm space-y-2">
+                      <p className="text-[11px] font-black text-slate-800 leading-tight">Portão Quebrado</p>
+                      <p className="text-[9px] text-slate-500 font-medium">Entrada Principal</p>
+                      <div className="flex justify-between items-center pt-2 border-t border-slate-50">
+                        <span className="text-[8px] text-slate-400 font-bold">Geral</span>
+                        <span className="text-[7.5px] bg-[#001CFF]/10 text-[#001CFF] px-1.5 py-0.5 rounded font-bold uppercase">Urgente</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Resolvidos */}
-                  <div className="space-y-2.5">
+                  <div className="space-y-3">
                     <div className="flex items-center justify-between bg-emerald-50 border border-emerald-100 rounded-lg p-1.5 px-2">
                       <span className="text-[9px] font-bold text-emerald-700 uppercase">Resolvidos</span>
                       <span className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[9px] font-black">1</span>
                     </div>
-                    <div className="bg-white border border-slate-200/80 rounded-xl p-2.5 shadow-sm space-y-2 opacity-50">
-                      <p className="text-[10px] font-black text-slate-800 leading-tight">Interfone Mudo</p>
-                      <p className="text-[8px] text-slate-500 font-medium">Portaria</p>
-                      <div className="flex justify-end pt-1.5 border-t border-slate-50">
-                        <span className="text-[7px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded font-bold uppercase">Fim</span>
+                    <div className="bg-white border border-slate-200/80 rounded-xl p-3 shadow-sm space-y-2 opacity-50">
+                      <p className="text-[11px] font-black text-slate-800 leading-tight">Interfone Mudo</p>
+                      <p className="text-[9px] text-slate-500 font-medium">Portaria</p>
+                      <div className="flex justify-end pt-2 border-t border-slate-50">
+                        <span className="text-[7.5px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded font-bold uppercase">Fim</span>
                       </div>
                     </div>
                   </div>
@@ -475,7 +475,7 @@ export default function App() {
             </div>
 
             {/* 2. MOCKUP MOBILE (Frente) */}
-            <div className="absolute z-20 left-[2%] md:left-[8%] top-1/2 -translate-y-[45%] w-[130px] sm:w-[155px] lg:w-[170px] shadow-[0_40px_80px_-15px_rgba(0,0,0,0.25)] bg-slate-900 border-[6px] border-slate-900 rounded-[32px] overflow-hidden aspect-[9/18.5] flex flex-col pointer-events-none ring-1 ring-white/20">
+            <div className="absolute z-20 left-[-5%] md:left-[2%] lg:left-[5%] bottom-0 w-[140px] sm:w-[170px] lg:w-[190px] shadow-[0_40px_80px_-15px_rgba(0,0,0,0.25)] bg-slate-900 border-[6px] border-slate-900 rounded-[32px] overflow-hidden aspect-[9/18.5] flex flex-col pointer-events-none ring-1 ring-white/20">
               
               {/* Dynamic Island */}
               <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-14 h-4 bg-black rounded-full z-30 flex items-center justify-end px-1.5">
