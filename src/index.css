@@ -112,5 +112,5 @@ input[type="range"]::-moz-range-thumb:active {
   text-fill-color: transparent;
   -webkit-text-fill-color: transparent;
   will-change: background-position;
-  animation: text-shine 4.5s ease-in-out infinite;
+  animation: text-shine 3.5s ease-in-out infinite;
 }
