@@ -322,7 +322,7 @@ export default function App() {
 
       {/* 3. A. HERO SECTION */}
       <section className="relative overflow-x-hidden pt-12 pb-16 md:pt-20 md:pb-24 border-b border-slate-200/60">
-        {/* Glow e Arcos de Fundo Animados com Parallax (Sem lag de renderização) */}
+        {/* Glow e Arcos de Fundo Animados com Parallax (z-0 para ficar visível atrás do conteúdo) */}
         <motion.div 
           style={{
             x: "-50%",
@@ -331,25 +331,25 @@ export default function App() {
             opacity: arcOpacity,
             rotate: arcRotation
           }}
-          className="absolute top-1/2 left-1/2 -z-10 pointer-events-none w-[700px] h-[700px] flex items-center justify-center"
+          className="absolute top-1/2 left-1/2 z-0 pointer-events-none w-[700px] h-[700px] flex items-center justify-center"
         >
-          {/* Brilho suave estático no centro (pequeno e sem blur dinâmico para máxima performance) */}
-          <div className="absolute w-64 h-64 bg-[#001CFF]/8 blur-3xl rounded-full" />
+          {/* Brilho suave estático no centro */}
+          <div className="absolute w-64 h-64 bg-[#001CFF]/5 blur-3xl rounded-full" />
           
-          {/* Linha orbital 1: Externa Cinza Pontilhada */}
-          <div className="absolute w-[640px] h-[640px] rounded-full border border-dashed border-slate-200/60" />
+          {/* Linha orbital 1: Externa Cinza Pontilhada (Mais visível) */}
+          <div className="absolute w-[640px] h-[640px] rounded-full border border-dashed border-slate-300/40" />
           
           {/* Linha orbital 2: Média Cinza Sólida */}
-          <div className="absolute w-[480px] h-[480px] rounded-full border border-slate-200/30" />
+          <div className="absolute w-[480px] h-[480px] rounded-full border border-slate-200/50" />
           
           {/* Linha orbital 3: Média Azul Sutil */}
-          <div className="absolute w-[360px] h-[360px] rounded-full border border-[#001CFF]/8" />
+          <div className="absolute w-[360px] h-[360px] rounded-full border border-[#001CFF]/15" />
           
-          {/* Linha orbital 4: Arco Principal Azul Elétrico */}
-          <div className="absolute w-[240px] h-[240px] rounded-full border-2 border-slate-100 border-t-[#001CFF]/50 border-l-[#001CFF]/30 border-b-transparent border-r-transparent" />
+          {/* Linha orbital 4: Arco Principal Azul Elétrico (Destaque nítido) */}
+          <div className="absolute w-[240px] h-[240px] rounded-full border-2 border-slate-200/40 border-t-[#001CFF]/70 border-l-[#001CFF]/50 border-b-transparent border-r-transparent" />
         </motion.div>
         
-        <div className="max-w-4xl mx-auto px-6 flex flex-col items-center text-center space-y-8 relative">
+        <div className="max-w-4xl mx-auto px-6 flex flex-col items-center text-center space-y-8 relative z-10">
           
           <div className="inline-flex items-center space-x-2 bg-slate-200/50 border border-slate-250/60 px-3 py-1 rounded-full text-[11px] font-bold text-slate-700 uppercase tracking-widest animate-fade-in">
             <Sparkles className="w-3.5 h-3.5 text-[#001CFF]" />
