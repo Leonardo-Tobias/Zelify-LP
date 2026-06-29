@@ -314,100 +314,88 @@ export default function App() {
       </nav>
 
       {/* 3. A. HERO SECTION */}
-      <section className="relative overflow-x-hidden pt-8 pb-10 md:pt-12 md:pb-16 border-b border-slate-200/60">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+      <section className="relative overflow-x-hidden pt-12 pb-16 md:pt-20 md:pb-24 border-b border-slate-200/60">
+        {/* Glow de Fundo */}
+        <div className="absolute w-[800px] h-[800px] bg-[#001CFF]/5 blur-[120px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 pointer-events-none" />
+        
+        <div className="max-w-4xl mx-auto px-6 flex flex-col items-center text-center space-y-8 relative">
           
-          {/* Lado Esquerdo: Textos e CTAs */}
-          <div className="lg:col-span-5 flex flex-col justify-start items-start text-left w-full space-y-6">
-            <div className="inline-flex items-center space-x-2 bg-slate-200/50 border border-slate-250/60 px-3 py-1 rounded-full text-[11px] font-bold text-slate-700 uppercase tracking-widest animate-fade-in">
-              <Sparkles className="w-3.5 h-3.5 text-[#001CFF]" />
-              <span>O Futuro da Zeladoria Condominial</span>
+          <div className="inline-flex items-center space-x-2 bg-slate-200/50 border border-slate-250/60 px-3 py-1 rounded-full text-[11px] font-bold text-slate-700 uppercase tracking-widest animate-fade-in">
+            <Sparkles className="w-3.5 h-3.5 text-[#001CFF]" />
+            <span>O Futuro da Zeladoria Condominial</span>
+          </div>
+          
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.05] max-w-3xl">
+            A gestão operacional do seu condomínio, <span className="text-[#001CFF] underline decoration-wavy decoration-2">direto no QR Code.</span>
+          </h1>
+
+          <p className="text-slate-600 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-2xl">
+            Elimine o caos dos relatos perdidos no WhatsApp. Moradores notificam manutenções, achados e perdidos ou incidentes em 20 segundos, direto do navegador e sem precisar baixar nenhum aplicativo.
+          </p>
+
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2 w-full sm:w-auto">
+            <a 
+              href="https://zelify.vercel.app/cadastro"
+              target="_blank"
+              rel="noreferrer"
+              className="bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-[0_8px_25px_rgba(0,28,255,0.18)] hover:shadow-[0_8px_25px_rgba(0,28,255,0.3)] transition-all text-center flex items-center justify-center space-x-2 active:scale-[0.98] cursor-pointer w-full sm:w-auto whitespace-nowrap"
+            >
+              <span>Testar Grátis</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <button 
+              onClick={() => setB2bModalOpen(true)}
+              className="border border-slate-300 hover:border-slate-800 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all text-center flex items-center justify-center active:scale-[0.98] cursor-pointer w-full sm:w-auto whitespace-nowrap"
+            >
+              Demonstração
+            </button>
+          </div>
+
+          {/* Estatísticas & Benefícios Lado a Lado (Centralizados) */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-12 pt-8 border-t border-slate-100 w-full">
+            {/* Grid de Métricas */}
+            <div className="flex items-center gap-8 shrink-0">
+              <div className="text-center md:text-left">
+                <p className="text-2xl font-black text-slate-900 tracking-tight">Zero</p>
+                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1">App p/ baixar</p>
+              </div>
+              <div className="text-center md:text-left">
+                <p className="text-2xl font-black text-slate-900 tracking-tight">100%</p>
+                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1">Transparência</p>
+              </div>
             </div>
-            
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.05]">
-              A gestão operacional do seu condomínio, <span className="text-[#001CFF] underline decoration-wavy decoration-2">direto no QR Code.</span>
-            </h1>
 
-            <p className="text-slate-600 text-sm sm:text-base md:text-lg font-medium leading-relaxed">
-              Elimine o caos dos relatos perdidos no WhatsApp. Moradores notificam manutenções, achados e perdidos ou incidentes em 20 segundos, direto do navegador e sem precisar baixar nenhum aplicativo.
-            </p>
+            {/* Divisor Vertical */}
+            <div className="hidden md:block w-[1px] h-10 bg-slate-200/85"></div>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-2 w-full sm:w-auto">
-              <a 
-                href="https://zelify.vercel.app/cadastro"
-                target="_blank"
-                rel="noreferrer"
-                className="bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-[0_8px_25px_rgba(0,28,255,0.18)] hover:shadow-[0_8px_25px_rgba(0,28,255,0.3)] transition-all text-center flex items-center justify-center space-x-2 active:scale-[0.98] cursor-pointer w-full sm:w-auto whitespace-nowrap"
-              >
-                <span>Testar Grátis</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
-              <button 
-                onClick={() => setB2bModalOpen(true)}
-                className="border border-slate-300 hover:border-slate-800 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all text-center flex items-center justify-center active:scale-[0.98] cursor-pointer w-full sm:w-auto whitespace-nowrap"
-              >
-                Demonstração
-              </button>
-            </div>
-
-            {/* Estatísticas & Benefícios Lado a Lado (Estrutura Unificada Sem Duplicidades) */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-6 mt-8 pt-4 border-t border-slate-100 w-full justify-start">
-              {/* Grid de Métricas (Sem o 20s duplicado) */}
-              <div className="grid grid-cols-2 gap-6 sm:gap-8 shrink-0">
-                <div>
-                  <p className="text-2xl font-black text-slate-900 tracking-tight">Zero</p>
-                  <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1">App p/ baixar</p>
+            {/* Badges de Benefícios */}
+            <div className="flex flex-col sm:flex-row gap-8 items-center justify-center">
+              <div className="flex items-center space-x-3 text-left">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-50 text-[#001CFF] shrink-0 shadow-sm border border-blue-100/50">
+                  <Zap className="w-4.5 h-4.5" />
                 </div>
                 <div>
-                  <p className="text-2xl font-black text-slate-900 tracking-tight">100%</p>
-                  <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1">Transparência</p>
+                  <h4 className="font-bold text-slate-900 text-sm leading-none">Rápido</h4>
+                  <p className="text-[11px] text-slate-500 leading-tight mt-1">Relatos em 20s, sem app.</p>
                 </div>
               </div>
 
-              {/* Divisor Vertical no Desktop */}
-              <div className="hidden sm:block w-[1px] h-10 bg-slate-200/85"></div>
-
-              {/* Badges de Benefícios Lado a Lado */}
-              <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-                {/* Badge 1: Rápido */}
-                <div className="flex items-center space-x-3 text-left">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-50 text-[#001CFF] shrink-0 shadow-sm border border-blue-100/50">
-                    <Zap className="w-4.5 h-4.5" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 text-sm leading-none">Rápido</h4>
-                    <p className="text-[11px] text-slate-500 leading-tight mt-1">Relatos em 20s, sem app.</p>
-                  </div>
+              <div className="flex items-center space-x-3 text-left">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-emerald-50 text-emerald-600 shrink-0 shadow-sm border border-emerald-100/50">
+                  <Shield className="w-4.5 h-4.5" />
                 </div>
-
-                {/* Badge 2: Seguro */}
-                <div className="flex items-center space-x-3 text-left">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center bg-emerald-50 text-emerald-600 shrink-0 shadow-sm border border-emerald-100/50">
-                    <Shield className="w-4.5 h-4.5" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 text-sm leading-none">Seguro</h4>
-                    <p className="text-[11px] text-slate-500 leading-tight mt-1">Histórico criptografado.</p>
-                  </div>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-sm leading-none">Seguro</h4>
+                  <p className="text-[11px] text-slate-500 leading-tight mt-1">Histórico criptografado.</p>
                 </div>
               </div>
             </div>
           </div>
-          {/* Lado Direito: Ilustração SVG Customizada */}
-          <div className="lg:col-span-7 relative w-full flex items-center justify-center lg:justify-end">
-            {/* Glow de Fundo */}
-            <div className="absolute w-[600px] h-[600px] bg-[#001CFF]/10 blur-[100px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 pointer-events-none" />
-            
-            <img 
-              src="/hero-illustration.svg" 
-              alt="Zelify Ecossistema" 
-              className="w-full h-auto max-w-[800px] lg:max-w-none drop-shadow-[0_20px_50px_rgba(0,28,255,0.06)] transform hover:scale-[1.015] transition-transform duration-500 pointer-events-none"
-            />
-          </div>
+
         </div>
       </section>
 
-{/* SEÇÃO CARROSSEL DE LOGOS (SOCIAL PROOF) */}
+      {/* SEÇÃO CARROSSEL DE LOGOS (SOCIAL PROOF) */}
       <section className="bg-white border-y border-slate-200/50 py-8 overflow-hidden select-none">
         <div className="max-w-7xl mx-auto px-6 mb-4 text-center">
           <p className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">
