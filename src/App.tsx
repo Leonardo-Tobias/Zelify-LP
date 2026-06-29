@@ -325,11 +325,11 @@ export default function App() {
             </div>
             
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.05]">
-              A gestão de manutenção do seu condomínio, <span className="text-[#001CFF] underline decoration-wavy decoration-2">direto no QR Code</span>.
+              A gestão operacional do seu condomínio, <span className="text-[#001CFF] underline decoration-wavy decoration-2">direto no QR Code.</span>
             </h1>
 
             <p className="text-slate-600 text-sm sm:text-base md:text-lg font-medium leading-relaxed">
-              Elimine os relatos perdidos no WhatsApp. Moradores notificam problemas de zeladoria e achados em 20 segundos, direto do navegador e sem precisar baixar nenhum aplicativo.
+              Elimine o caos dos relatos perdidos no WhatsApp. Moradores notificam manutenções, achados e perdidos ou incidentes em 20 segundos, direto do navegador e sem precisar baixar nenhum aplicativo.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-2 w-full sm:w-auto">
