@@ -549,7 +549,7 @@ export default function App() {
                     href="https://zelify.vercel.app/cadastro"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center space-x-2 bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg shadow-[#001CFF]/15 transition-all active:scale-[0.98]"
+                    className="inline-flex items-center space-x-2 bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-semibold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg shadow-[#001CFF]/15 transition-all active:scale-[0.98]"
                   >
                     <span>Testar no meu condomínio</span>
                     <ArrowUpRight className="w-4 h-4" />
@@ -600,7 +600,7 @@ export default function App() {
                 <div className="pt-8">
                   <button 
                     onClick={() => setB2bModalOpen(true)}
-                    className="inline-flex items-center space-x-2 bg-white hover:bg-slate-100 text-slate-900 text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg transition-all active:scale-[0.98]"
+                    className="inline-flex items-center space-x-2 bg-white hover:bg-slate-100 text-slate-900 text-xs font-medium uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg transition-all active:scale-[0.98]"
                   >
                     <span>Falar com Consultor B2B</span>
                     <ArrowRight className="w-4 h-4 text-slate-900" />
@@ -1323,7 +1323,7 @@ export default function App() {
                     onClick={() => toggleFaq(idx)}
                     className="w-full flex items-center justify-between text-left group cursor-pointer focus:outline-none"
                   >
-                    <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wide text-slate-900 group-hover:text-[#001CFF] transition-colors leading-relaxed">
+                    <span className="font-display text-xs sm:text-sm font-bold uppercase tracking-wide text-slate-900 group-hover:text-[#001CFF] transition-colors leading-relaxed">
                       {item.q}
                     </span>
                     <ChevronDown className={`w-4 h-4 text-slate-400 group-hover:text-[#001CFF] transition-all shrink-0 ml-4 ${isOpen ? 'transform rotate-180 text-[#001CFF]' : ''}`} />
