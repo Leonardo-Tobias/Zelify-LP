@@ -392,7 +392,7 @@ export default function App() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8 md:gap-12 mt-12 pt-8 border-t border-slate-100 w-full max-w-4xl mx-auto">
             {/* Badge 1: 100% Transparência */}
             <div className="flex items-center space-x-3 text-left">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-amber-50 text-amber-600 shrink-0 shadow-sm border border-amber-100/50">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#001CFF]/8 text-[#001CFF] shrink-0 shadow-sm border border-[#001CFF]/15">
                 <Eye className="w-4.5 h-4.5" />
               </div>
               <div>
@@ -403,7 +403,7 @@ export default function App() {
 
             {/* Badge 2: Rápido */}
             <div className="flex items-center space-x-3 text-left">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-50 text-[#001CFF] shrink-0 shadow-sm border border-blue-100/50">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#001CFF]/8 text-[#001CFF] shrink-0 shadow-sm border border-[#001CFF]/15">
                 <Zap className="w-4.5 h-4.5" />
               </div>
               <div>
@@ -414,7 +414,7 @@ export default function App() {
 
             {/* Badge 3: Seguro */}
             <div className="flex items-center space-x-3 text-left">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-emerald-50 text-emerald-600 shrink-0 shadow-sm border border-emerald-100/50">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#001CFF]/8 text-[#001CFF] shrink-0 shadow-sm border border-[#001CFF]/15">
                 <Shield className="w-4.5 h-4.5" />
               </div>
               <div>
