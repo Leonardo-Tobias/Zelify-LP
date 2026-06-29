@@ -87,24 +87,24 @@ input[type="range"]::-moz-range-thumb:active {
 /* Efeito de luz passando (Shimmer Text Shine) */
 @keyframes text-shine {
   0% {
-    background-position: -100% 0;
+    background-position: 150% 0;
   }
   40% {
-    background-position: 100% 0;
+    background-position: -50% 0;
   }
   100% {
-    background-position: 100% 0;
+    background-position: -50% 0;
   }
 }
 
 .animate-text-shine {
   background: linear-gradient(
     110deg,
-    #001CFF 30%,
-    #8fb2ff 45%,
+    #001CFF 35%,
+    #8fb2ff 47%,
     #ffffff 50%,
-    #8fb2ff 55%,
-    #001CFF 70%
+    #8fb2ff 53%,
+    #001CFF 65%
   );
   background-size: 200% 100%;
   background-clip: text;
