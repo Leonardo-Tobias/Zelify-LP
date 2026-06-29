@@ -574,7 +574,7 @@ export default function App() {
                     {/* Glassmorphic Overlay Card */}
                     <div className="absolute bottom-4 left-4 right-4 bg-slate-900/95 backdrop-blur-md border border-slate-800 p-3 rounded-xl shadow-lg flex items-center justify-between">
                       <div className="flex items-center space-x-2.5 min-w-0">
-                        <div className="w-7 h-7 rounded bg-[#001CFF]/20 flex items-center justify-center text-[#001CFF] shrink-0">
+                        <div className="w-7 h-7 rounded bg-blue-400/10 flex items-center justify-center text-blue-400 shrink-0">
                           <Building2 className="w-4 h-4" />
                         </div>
                         <div className="min-w-0 text-left">
@@ -582,14 +582,14 @@ export default function App() {
                           <p className="text-[8px] text-slate-400 font-semibold mt-1">Gestão de Carteira • 12 Condomínios</p>
                         </div>
                       </div>
-                      <span className="text-[8px] bg-[#001CFF]/25 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
+                      <span className="text-[8px] bg-blue-450/20 text-blue-400 border border-blue-400/20 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
                         Corporate
                       </span>
                     </div>
                   </div>
 
                   <div className="space-y-3">
-                    <span className="text-[9px] font-extrabold text-[#001CFF] uppercase tracking-widest">Para Administradoras</span>
+                    <span className="text-[9px] font-extrabold text-blue-400 uppercase tracking-widest">Para Administradoras</span>
                     <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-white">Administradoras de Condomínios</h3>
                     <p className="text-slate-400 text-xs sm:text-sm font-semibold leading-relaxed">
                       Reduza em até 40% a carga de atendimento telefônico da sua equipe. Agregue valor ao seu condomínio contratando uma plataforma moderna e garanta retenção máxima de sua carteira corporativa.
@@ -1235,7 +1235,7 @@ export default function App() {
                         max={100}
                         value={condoCount > 100 ? 100 : condoCount}
                         onChange={(e) => setCondoCount(Math.max(5, parseInt(e.target.value)))}
-                        className="w-full h-1.5 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-[#001CFF] border border-slate-800 focus:outline-none"
+                        className="w-full h-1.5 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-blue-500 border border-slate-800 focus:outline-none"
                       />
                     </div>
                     
