@@ -22,7 +22,9 @@ import {
   Clock,
   MapPin,
   Zap,
-  Shield
+  Shield,
+  Smartphone,
+  Eye
 } from 'lucide-react';
 
 function ScrollReveal({ 
@@ -351,43 +353,49 @@ export default function App() {
             </button>
           </div>
 
-          {/* Estatísticas & Benefícios Lado a Lado (Centralizados) */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-12 pt-8 border-t border-slate-100 w-full">
-            {/* Grid de Métricas */}
-            <div className="flex items-center gap-8 shrink-0">
-              <div className="text-center md:text-left">
-                <p className="text-2xl font-black text-slate-900 tracking-tight">Zero</p>
-                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1">App p/ baixar</p>
+          {/* Estatísticas & Benefícios Lado a Lado (Centralizados & Padronizados) */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 mt-12 pt-8 border-t border-slate-100 w-full max-w-5xl mx-auto">
+            {/* Badge 1: Zero App */}
+            <div className="flex items-center space-x-3 text-left">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-slate-50 text-slate-650 shrink-0 shadow-sm border border-slate-150">
+                <Smartphone className="w-4.5 h-4.5" />
               </div>
-              <div className="text-center md:text-left">
-                <p className="text-2xl font-black text-slate-900 tracking-tight">100%</p>
-                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1">Transparência</p>
+              <div>
+                <h4 className="font-bold text-slate-900 text-sm leading-none">Zero App</h4>
+                <p className="text-[11px] text-slate-500 leading-tight mt-1">Sem download ou instalação.</p>
               </div>
             </div>
 
-            {/* Divisor Vertical */}
-            <div className="hidden md:block w-[1px] h-10 bg-slate-200/85"></div>
-
-            {/* Badges de Benefícios */}
-            <div className="flex flex-col sm:flex-row gap-8 items-center justify-center">
-              <div className="flex items-center space-x-3 text-left">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-50 text-[#001CFF] shrink-0 shadow-sm border border-blue-100/50">
-                  <Zap className="w-4.5 h-4.5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 text-sm leading-none">Rápido</h4>
-                  <p className="text-[11px] text-slate-500 leading-tight mt-1">Relatos em 20s, sem app.</p>
-                </div>
+            {/* Badge 2: 100% Transparência */}
+            <div className="flex items-center space-x-3 text-left">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-amber-50 text-amber-600 shrink-0 shadow-sm border border-amber-100/50">
+                <Eye className="w-4.5 h-4.5" />
               </div>
+              <div>
+                <h4 className="font-bold text-slate-900 text-sm leading-none">100% Transparência</h4>
+                <p className="text-[11px] text-slate-500 leading-tight mt-1">Acompanhamento em tempo real.</p>
+              </div>
+            </div>
 
-              <div className="flex items-center space-x-3 text-left">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-emerald-50 text-emerald-600 shrink-0 shadow-sm border border-emerald-100/50">
-                  <Shield className="w-4.5 h-4.5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 text-sm leading-none">Seguro</h4>
-                  <p className="text-[11px] text-slate-500 leading-tight mt-1">Histórico criptografado.</p>
-                </div>
+            {/* Badge 3: Rápido */}
+            <div className="flex items-center space-x-3 text-left">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-50 text-[#001CFF] shrink-0 shadow-sm border border-blue-100/50">
+                <Zap className="w-4.5 h-4.5" />
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900 text-sm leading-none">Rápido</h4>
+                <p className="text-[11px] text-slate-500 leading-tight mt-1">Relatos em 20s, sem app.</p>
+              </div>
+            </div>
+
+            {/* Badge 4: Seguro */}
+            <div className="flex items-center space-x-3 text-left">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-emerald-50 text-emerald-600 shrink-0 shadow-sm border border-emerald-100/50">
+                <Shield className="w-4.5 h-4.5" />
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900 text-sm leading-none">Seguro</h4>
+                <p className="text-[11px] text-slate-500 leading-tight mt-1">Histórico criptografado.</p>
               </div>
             </div>
           </div>
