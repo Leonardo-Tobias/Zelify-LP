@@ -23,7 +23,6 @@ import {
   MapPin,
   Zap,
   Shield,
-  Smartphone,
   Eye
 } from 'lucide-react';
 
@@ -354,19 +353,8 @@ export default function App() {
           </div>
 
           {/* Estatísticas & Benefícios Lado a Lado (Centralizados & Padronizados) */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 mt-12 pt-8 border-t border-slate-100 w-full max-w-5xl mx-auto">
-            {/* Badge 1: Zero App */}
-            <div className="flex items-center space-x-3 text-left">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-slate-50 text-slate-650 shrink-0 shadow-sm border border-slate-150">
-                <Smartphone className="w-4.5 h-4.5" />
-              </div>
-              <div>
-                <h4 className="font-bold text-slate-900 text-sm leading-none">Zero App</h4>
-                <p className="text-[11px] text-slate-500 leading-tight mt-1">Sem download ou instalação.</p>
-              </div>
-            </div>
-
-            {/* Badge 2: 100% Transparência */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 md:gap-12 mt-12 pt-8 border-t border-slate-100 w-full max-w-4xl mx-auto">
+            {/* Badge 1: 100% Transparência */}
             <div className="flex items-center space-x-3 text-left">
               <div className="w-10 h-10 rounded-full flex items-center justify-center bg-amber-50 text-amber-600 shrink-0 shadow-sm border border-amber-100/50">
                 <Eye className="w-4.5 h-4.5" />
@@ -377,7 +365,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* Badge 3: Rápido */}
+            {/* Badge 2: Rápido */}
             <div className="flex items-center space-x-3 text-left">
               <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-50 text-[#001CFF] shrink-0 shadow-sm border border-blue-100/50">
                 <Zap className="w-4.5 h-4.5" />
@@ -388,7 +376,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* Badge 4: Seguro */}
+            {/* Badge 3: Seguro */}
             <div className="flex items-center space-x-3 text-left">
               <div className="w-10 h-10 rounded-full flex items-center justify-center bg-emerald-50 text-emerald-600 shrink-0 shadow-sm border border-emerald-100/50">
                 <Shield className="w-4.5 h-4.5" />
