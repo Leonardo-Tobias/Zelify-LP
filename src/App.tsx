@@ -1342,6 +1342,78 @@ export default function App() {
         </div>
       </section>
 
+      {/* FINAL CTA */}
+      <section className="relative overflow-hidden bg-[#0B0F19] py-28 md:py-36">
+        {/* Glow de fundo */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#001CFF]/12 rounded-full blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#001CFF]/10 rounded-full blur-[60px]" />
+        </div>
+
+        {/* Grade decorativa sutil */}
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)`,
+            backgroundSize: '48px 48px',
+          }}
+        />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-10">
+
+          {/* Badge */}
+          <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#001CFF] animate-pulse" />
+            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
+              Pronto para começar?
+            </span>
+          </div>
+
+          {/* Título */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08] max-w-3xl mx-auto">
+            Leve a operação do seu condomínio para um{' '}
+            <span className="relative inline-block">
+              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">
+                novo nível
+              </span>
+              <span className="absolute inset-x-0 bottom-1 h-[3px] bg-gradient-to-r from-blue-500/60 to-blue-300/40 rounded-full" />
+            </span>
+            {' '}de organização.
+          </h2>
+
+          {/* Texto */}
+          <p className="text-slate-400 text-sm sm:text-base font-medium leading-relaxed max-w-2xl mx-auto">
+            Comece gratuitamente, valide com seus moradores e transforme a gestão operacional em algo simples, rastreável e centralizado.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
+            <a
+              href="https://zelify.vercel.app/cadastro"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center space-x-2 bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-semibold uppercase tracking-wider px-8 py-4 rounded-xl shadow-[0_8px_30px_rgba(0,28,255,0.35)] hover:shadow-[0_12px_40px_rgba(0,28,255,0.5)] transition-all duration-300 active:scale-[0.98] w-full sm:w-auto whitespace-nowrap"
+            >
+              <span>Testar Grátis</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <button
+              onClick={() => setB2bModalOpen(true)}
+              className="inline-flex items-center justify-center space-x-2 border border-white/15 hover:border-white/30 bg-white/5 hover:bg-white/10 text-white text-xs font-medium uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-300 active:scale-[0.98] w-full sm:w-auto whitespace-nowrap backdrop-blur-sm"
+            >
+              <span>Ver Demonstração</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Social proof mínimo */}
+          <p className="text-[11px] text-slate-600 font-medium">
+            Sem cartão de crédito · Configuração em menos de 5 minutos · Cancele quando quiser
+          </p>
+
+        </div>
+      </section>
+
       {/* FOOTER */}
       <footer className="bg-slate-900 text-white py-16 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start">
