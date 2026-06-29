@@ -96,6 +96,7 @@ export default function App() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
 
+  const { scrollY } = useScroll();
   const timelineRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: timelineRef,
@@ -107,6 +108,11 @@ export default function App() {
   const [hasStep2Shown, setHasStep2Shown] = useState(false);
   const [hasStep3Shown, setHasStep3Shown] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState(false);
+  
+  // Parallax do glow de fundo da Hero (surge e aumenta ao descer, diminui ao subir)
+  const glowY = useTransform(scrollY, [0, 600], ["-50%", "-35%"]);
+  const glowScale = useTransform(scrollY, [0, 600], [1, 1.25]);
+  const glowOpacity = useTransform(scrollY, [0, 300, 600], [0.5, 0.85, 0]);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -316,8 +322,16 @@ export default function App() {
 
       {/* 3. A. HERO SECTION */}
       <section className="relative overflow-x-hidden pt-12 pb-16 md:pt-20 md:pb-24 border-b border-slate-200/60">
-        {/* Glow de Fundo */}
-        <div className="absolute w-[800px] h-[800px] bg-[#001CFF]/5 blur-[120px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 pointer-events-none" />
+        {/* Glow de Fundo Animado com Parallax */}
+        <motion.div 
+          style={{
+            x: "-50%",
+            y: glowY,
+            scale: glowScale,
+            opacity: glowOpacity
+          }}
+          className="absolute w-[800px] h-[800px] bg-[#001CFF]/6 blur-[120px] rounded-full top-1/2 left-1/2 -z-10 pointer-events-none"
+        />
         
         <div className="max-w-4xl mx-auto px-6 flex flex-col items-center text-center space-y-8 relative">
           

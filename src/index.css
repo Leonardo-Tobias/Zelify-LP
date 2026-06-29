@@ -89,6 +89,9 @@ input[type="range"]::-moz-range-thumb:active {
   0% {
     background-position: 200% 0;
   }
+  45% {
+    background-position: -200% 0;
+  }
   100% {
     background-position: -200% 0;
   }
@@ -108,5 +111,5 @@ input[type="range"]::-moz-range-thumb:active {
   -webkit-background-clip: text;
   text-fill-color: transparent;
   -webkit-text-fill-color: transparent;
-  animation: text-shine 2.5s linear infinite;
+  animation: text-shine 4.5s linear infinite;
 }
