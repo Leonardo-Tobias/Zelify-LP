@@ -109,10 +109,10 @@ export default function App() {
   const [hasStep3Shown, setHasStep3Shown] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState(false);
   
-  // Parallax dos Arcos e Linhas orbitais da Hero (com expansão dinâmica altamente visível)
-  const arcScale = useTransform(scrollY, [0, 500], [0.9, 1.85]);
-  const arcOpacity = useTransform(scrollY, [0, 500], [0.75, 0.2]);
-  const arcRotation = useTransform(scrollY, [0, 500], [0, 45]);
+  // Arcos Hero: começam invisíveis e crescem progressivamente com o scroll
+  const arcScale = useTransform(scrollY, [0, 600], [0.05, 3.5]);
+  const arcOpacity = useTransform(scrollY, [0, 80, 500], [0, 0.7, 0.15]);
+  const arcRotation = useTransform(scrollY, [0, 600], [0, 60]);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -321,9 +321,9 @@ export default function App() {
       </nav>
 
       {/* 3. A. HERO SECTION */}
-      <section className="relative overflow-x-hidden pt-12 pb-16 md:pt-20 md:pb-24 border-b border-slate-200/60">
-        {/* Glow e Arcos de Fundo Animados com Parallax (z-0 para ficar visível atrás do conteúdo) */}
-        <motion.div 
+      <section className="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-24 border-b border-slate-200/60">
+        {/* Arcos orbitais: começam invisíveis e expandem sem limite com o scroll */}
+        <motion.div
           style={{
             x: "-50%",
             y: "-50%",
@@ -331,22 +331,28 @@ export default function App() {
             opacity: arcOpacity,
             rotate: arcRotation
           }}
-          className="absolute top-1/2 left-1/2 z-0 pointer-events-none w-[700px] h-[700px] flex items-center justify-center"
+          className="absolute top-1/2 left-1/2 z-0 pointer-events-none"
         >
-          {/* Brilho suave estático no centro */}
-          <div className="absolute w-64 h-64 bg-[#001CFF]/5 blur-3xl rounded-full" />
-          
-          {/* Linha orbital 1: Externa Cinza Pontilhada (Mais visível) */}
-          <div className="absolute w-[640px] h-[640px] rounded-full border border-dashed border-slate-300/40" />
-          
-          {/* Linha orbital 2: Média Cinza Sólida */}
-          <div className="absolute w-[480px] h-[480px] rounded-full border border-slate-200/50" />
-          
-          {/* Linha orbital 3: Média Azul Sutil */}
-          <div className="absolute w-[360px] h-[360px] rounded-full border border-[#001CFF]/15" />
-          
-          {/* Linha orbital 4: Arco Principal Azul Elétrico (Destaque nítido) */}
-          <div className="absolute w-[240px] h-[240px] rounded-full border-2 border-slate-200/40 border-t-[#001CFF]/70 border-l-[#001CFF]/50 border-b-transparent border-r-transparent" />
+          {/* Círculo de referência base: 400px — o scale faz ele crescer até cobrir a tela */}
+          {/* Arco 1 — Azul elétrico com destaque (mais interno) */}
+          <div className="absolute rounded-full border-2 border-[#001CFF]/40 border-b-transparent border-r-transparent"
+            style={{ width: 200, height: 200, top: -100, left: -100 }} />
+
+          {/* Arco 2 — Cinza sólido */}
+          <div className="absolute rounded-full border border-slate-300/50"
+            style={{ width: 340, height: 340, top: -170, left: -170 }} />
+
+          {/* Arco 3 — Azul sutil */}
+          <div className="absolute rounded-full border border-[#001CFF]/20"
+            style={{ width: 500, height: 500, top: -250, left: -250 }} />
+
+          {/* Arco 4 — Cinza pontilhado externo */}
+          <div className="absolute rounded-full border border-dashed border-slate-300/35"
+            style={{ width: 680, height: 680, top: -340, left: -340 }} />
+
+          {/* Arco 5 — Cinza muito leve, borda máxima */}
+          <div className="absolute rounded-full border border-slate-200/25"
+            style={{ width: 900, height: 900, top: -450, left: -450 }} />
         </motion.div>
         
         <div className="max-w-4xl mx-auto px-6 flex flex-col items-center text-center space-y-8 relative z-10">
