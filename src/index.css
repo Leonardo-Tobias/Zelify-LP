@@ -8,12 +8,15 @@
 @layer base {
   body {
     @apply bg-slate-50 text-slate-900 antialiased selection:bg-brand-blue/15 selection:text-brand-blue;
+    font-family: 'Inter', sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
   h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manrope', sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 }
+
 
 /* Tokens Tipográficos Consolidados */
 @utility editorial-tag {
