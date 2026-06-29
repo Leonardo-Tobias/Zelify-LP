@@ -6,8 +6,7 @@ import {
   CheckCircle2, 
   ArrowRight, 
   ArrowLeft,
-  Wrench, 
-  Package, 
+
   ArrowUpRight, 
   ChevronDown, 
   User, 
@@ -79,7 +78,7 @@ function ScrollReveal({
 }
 
 export default function App() {
-  const [mockupTheme, setMockupTheme] = useState<'dark' | 'light'>('dark');
+
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
