@@ -1064,10 +1064,10 @@ export default function App() {
               </div>
             </div>
 
-            {/* PLANO PRO (MAIS RECOMENDADO) */}
+            {/* PLANO PRO (MAIS POPULAR) */}
             <div className="bg-white border-2 border-[#001CFF] rounded-3xl p-8 flex flex-col justify-between shadow-[0_15px_45px_rgba(0,28,255,0.06)] hover:shadow-[0_25px_60px_rgba(0,28,255,0.12)] hover:-translate-y-2.5 transition-all duration-500 relative group">
               <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#001CFF] text-white border border-[#001CFF]/10 px-4.5 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest shadow-[0_4px_20px_rgba(0,28,255,0.3)] select-none">
-                Mais Recomendado
+                Mais Popular
               </div>
               
               <div className="space-y-6">
