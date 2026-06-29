@@ -297,7 +297,7 @@ export default function App() {
               href="https://zelify.vercel.app/login"
               target="_blank"
               rel="noreferrer"
-              className="text-xs font-bold text-slate-600 hover:text-[#001CFF] transition-colors cursor-pointer"
+              className="text-xs font-medium text-slate-655 hover:text-[#001CFF] transition-colors cursor-pointer"
             >
               Entrar
             </a>
@@ -305,7 +305,7 @@ export default function App() {
               href="https://zelify.vercel.app/cadastro"
               target="_blank"
               rel="noreferrer"
-              className={`bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-[#001CFF]/15 transition-all duration-300 active:scale-[0.98] cursor-pointer ${
+              className={`bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-semibold uppercase tracking-wider shadow-lg shadow-[#001CFF]/15 transition-all duration-300 active:scale-[0.98] cursor-pointer ${
                 isScrolled ? 'px-3.5 py-1.5 rounded-lg' : 'px-4.5 py-2.5 rounded-xl'
               }`}
             >
@@ -370,14 +370,14 @@ export default function App() {
               href="https://zelify.vercel.app/cadastro"
               target="_blank"
               rel="noreferrer"
-              className="bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-[0_8px_25px_rgba(0,28,255,0.18)] hover:shadow-[0_8px_25px_rgba(0,28,255,0.3)] transition-all text-center flex items-center justify-center space-x-2 active:scale-[0.98] cursor-pointer w-full sm:w-auto whitespace-nowrap"
+              className="bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-semibold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-[0_8px_25px_rgba(0,28,255,0.18)] hover:shadow-[0_8px_25px_rgba(0,28,255,0.3)] transition-all text-center flex items-center justify-center space-x-2 active:scale-[0.98] cursor-pointer w-full sm:w-auto whitespace-nowrap"
             >
               <span>Testar Grátis</span>
               <ArrowRight className="w-4 h-4" />
             </a>
             <button 
               onClick={() => setB2bModalOpen(true)}
-              className="border border-slate-300 hover:border-slate-800 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all text-center flex items-center justify-center active:scale-[0.98] cursor-pointer w-full sm:w-auto whitespace-nowrap"
+              className="border border-slate-300 hover:border-slate-800 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-xs font-medium uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all text-center flex items-center justify-center active:scale-[0.98] cursor-pointer w-full sm:w-auto whitespace-nowrap"
             >
               Demonstração
             </button>
@@ -1057,7 +1057,7 @@ export default function App() {
                   href="https://zelify.vercel.app/cadastro"
                   target="_blank"
                   rel="noreferrer"
-                  className="block w-full text-center border-2 border-slate-900 hover:bg-slate-900 hover:text-white text-slate-900 text-xs font-extrabold uppercase tracking-widest py-4 rounded-xl transition-all duration-300 active:scale-[0.98] cursor-pointer shadow-sm hover:shadow-md"
+                  className="block w-full text-center border-2 border-slate-900 hover:bg-slate-900 hover:text-white text-slate-900 text-xs font-medium uppercase tracking-wider py-4 rounded-xl transition-all duration-300 active:scale-[0.98] cursor-pointer shadow-sm hover:shadow-md"
                 >
                   Começar Teste Gratuito
                 </a>
@@ -1144,7 +1144,7 @@ export default function App() {
                   href="https://zelify.vercel.app/cadastro?plan=pro"
                   target="_blank"
                   rel="noreferrer"
-                  className="block w-full text-center bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-extrabold uppercase tracking-widest py-4 rounded-xl shadow-[0_8px_30px_rgba(0,28,255,0.22)] hover:shadow-[0_12px_35px_rgba(0,28,255,0.35)] transition-all duration-300 active:scale-[0.98] cursor-pointer"
+                  className="block w-full text-center bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-semibold uppercase tracking-wider py-4 rounded-xl shadow-[0_8px_30px_rgba(0,28,255,0.22)] hover:shadow-[0_12px_35px_rgba(0,28,255,0.35)] transition-all duration-300 active:scale-[0.98] cursor-pointer"
                 >
                   Assinar Plano Pro
                 </a>
@@ -1295,7 +1295,7 @@ export default function App() {
                   href="https://zelify.vercel.app/cadastro?plan=corporate"
                   target="_blank"
                   rel="noreferrer"
-                  className="block w-full text-center bg-white hover:bg-slate-100 text-slate-900 text-xs font-extrabold uppercase tracking-widest py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 active:scale-[0.98] cursor-pointer"
+                  className="block w-full text-center bg-white hover:bg-slate-100 text-slate-900 text-xs font-semibold uppercase tracking-wider py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 active:scale-[0.98] cursor-pointer"
                 >
                   Assinar Plano Corporate
                 </a>
@@ -1516,7 +1516,7 @@ export default function App() {
                   {/* Submit button */}
                   <button 
                     type="submit"
-                    className="w-full bg-[#001CFF] hover:bg-[#0014CC] text-white py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest shadow-lg shadow-blue-500/20 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] flex items-center justify-center space-x-2 cursor-pointer mt-6"
+                    className="w-full bg-[#001CFF] hover:bg-[#0014CC] text-white py-3.5 rounded-2xl text-xs font-semibold uppercase tracking-wider shadow-lg shadow-blue-500/20 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] flex items-center justify-center space-x-2 cursor-pointer mt-6"
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>Solicitar Contato</span>
