@@ -109,10 +109,10 @@ export default function App() {
   const [hasStep3Shown, setHasStep3Shown] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState(false);
   
-  // Parallax dos Arcos e Linhas orbitais da Hero (alta performance, sem lag de repaints)
-  const arcScale = useTransform(scrollY, [0, 600], [0.85, 1.2]);
-  const arcOpacity = useTransform(scrollY, [0, 450], [0.65, 0]);
-  const arcRotation = useTransform(scrollY, [0, 600], [0, 35]);
+  // Parallax dos Arcos e Linhas orbitais da Hero (com expansão dinâmica altamente visível)
+  const arcScale = useTransform(scrollY, [0, 500], [0.9, 1.85]);
+  const arcOpacity = useTransform(scrollY, [0, 500], [0.75, 0.2]);
+  const arcRotation = useTransform(scrollY, [0, 500], [0, 45]);
   
   useEffect(() => {
     const handleScroll = () => {
