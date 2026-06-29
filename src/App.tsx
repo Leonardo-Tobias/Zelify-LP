@@ -328,7 +328,7 @@ export default function App() {
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.05] max-w-3xl">
-            A gestão operacional do seu condomínio, <span className="text-[#001CFF] underline decoration-wavy decoration-2">direto no QR Code.</span>
+            A gestão operacional do seu condomínio, <span className="animate-text-shine">direto no QR Code.</span>
           </h1>
 
           <p className="text-slate-600 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-2xl">
