@@ -109,10 +109,10 @@ export default function App() {
   const [hasStep3Shown, setHasStep3Shown] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState(false);
   
-  // Parallax do glow de fundo da Hero (surge e aumenta ao descer, diminui ao subir)
-  const glowY = useTransform(scrollY, [0, 600], ["-50%", "-35%"]);
-  const glowScale = useTransform(scrollY, [0, 600], [1, 1.25]);
-  const glowOpacity = useTransform(scrollY, [0, 300, 600], [0.5, 0.85, 0]);
+  // Parallax dos Arcos e Linhas orbitais da Hero (alta performance, sem lag de repaints)
+  const arcScale = useTransform(scrollY, [0, 600], [0.85, 1.2]);
+  const arcOpacity = useTransform(scrollY, [0, 450], [0.65, 0]);
+  const arcRotation = useTransform(scrollY, [0, 600], [0, 35]);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -322,16 +322,32 @@ export default function App() {
 
       {/* 3. A. HERO SECTION */}
       <section className="relative overflow-x-hidden pt-12 pb-16 md:pt-20 md:pb-24 border-b border-slate-200/60">
-        {/* Glow de Fundo Animado com Parallax */}
+        {/* Glow e Arcos de Fundo Animados com Parallax (Sem lag de renderização) */}
         <motion.div 
           style={{
             x: "-50%",
-            y: glowY,
-            scale: glowScale,
-            opacity: glowOpacity
+            y: "-50%",
+            scale: arcScale,
+            opacity: arcOpacity,
+            rotate: arcRotation
           }}
-          className="absolute w-[800px] h-[800px] bg-[#001CFF]/6 blur-[120px] rounded-full top-1/2 left-1/2 -z-10 pointer-events-none"
-        />
+          className="absolute top-1/2 left-1/2 -z-10 pointer-events-none w-[700px] h-[700px] flex items-center justify-center"
+        >
+          {/* Brilho suave estático no centro (pequeno e sem blur dinâmico para máxima performance) */}
+          <div className="absolute w-64 h-64 bg-[#001CFF]/8 blur-3xl rounded-full" />
+          
+          {/* Linha orbital 1: Externa Cinza Pontilhada */}
+          <div className="absolute w-[640px] h-[640px] rounded-full border border-dashed border-slate-200/60" />
+          
+          {/* Linha orbital 2: Média Cinza Sólida */}
+          <div className="absolute w-[480px] h-[480px] rounded-full border border-slate-200/30" />
+          
+          {/* Linha orbital 3: Média Azul Sutil */}
+          <div className="absolute w-[360px] h-[360px] rounded-full border border-[#001CFF]/8" />
+          
+          {/* Linha orbital 4: Arco Principal Azul Elétrico */}
+          <div className="absolute w-[240px] h-[240px] rounded-full border-2 border-slate-100 border-t-[#001CFF]/50 border-l-[#001CFF]/30 border-b-transparent border-r-transparent" />
+        </motion.div>
         
         <div className="max-w-4xl mx-auto px-6 flex flex-col items-center text-center space-y-8 relative">
           
