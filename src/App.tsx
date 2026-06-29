@@ -122,18 +122,14 @@ export default function App() {
       // Se passarmos do fim da seção (rolando para baixo), destrava a seção
       if (!isUnlocked && rect.bottom <= 1) {
         setIsUnlocked(true);
-        // Calcula a diferença de altura de 300vh -> 105vh dinamicamente, arredondando para inteiro
         const diff = Math.round(rect.height - (window.innerHeight * 1.05));
         window.scrollBy(0, -diff);
       }
       
-      // Se subirmos de volta para cima do topo da seção (usando margem de 1px), trava ela novamente e reseta a animação
+      // Se subirmos de volta para cima do topo da seção, apenas destrava o scroll
+      // mas NÃO reseta a animação — ela fica revelada até o usuário atualizar a página
       if (isUnlocked && rect.top >= window.innerHeight - 1) {
         setIsUnlocked(false);
-        setHasStep1Shown(false);
-        setHasStep2Shown(false);
-        setHasStep3Shown(false);
-        maxScrollYProgress.set(0);
       }
     };
     
