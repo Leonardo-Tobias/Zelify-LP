@@ -337,16 +337,16 @@ export default function App() {
                 href="https://zelify.vercel.app/cadastro"
                 target="_blank"
                 rel="noreferrer"
-                className="bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-extrabold uppercase tracking-widest px-8 py-4 rounded-xl shadow-[0_8px_30px_rgba(0,28,255,0.22)] hover:shadow-[0_8px_30px_rgba(0,28,255,0.35)] transition-all text-center flex items-center justify-center space-x-2 active:scale-[0.98] cursor-pointer w-full sm:w-auto whitespace-nowrap"
+                className="bg-[#001CFF] hover:bg-[#0014CC] text-white text-sm font-bold px-6 py-3.5 rounded-xl shadow-[0_8px_25px_rgba(0,28,255,0.18)] hover:shadow-[0_8px_25px_rgba(0,28,255,0.3)] transition-all text-center flex items-center justify-center space-x-2 active:scale-[0.98] cursor-pointer w-full sm:w-auto whitespace-nowrap"
               >
-                <span>Começar Teste Grátis</span>
+                <span>Testar Grátis</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
               <button 
                 onClick={() => setB2bModalOpen(true)}
-                className="border border-slate-300 hover:border-slate-800 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-xs font-extrabold uppercase tracking-widest px-8 py-4 rounded-xl transition-all text-center flex items-center justify-center active:scale-[0.98] cursor-pointer w-full sm:w-auto whitespace-nowrap"
+                className="border border-slate-300 hover:border-slate-800 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-sm font-bold px-6 py-3.5 rounded-xl transition-all text-center flex items-center justify-center active:scale-[0.98] cursor-pointer w-full sm:w-auto whitespace-nowrap"
               >
-                Demonstração Corporativa
+                Demonstração
               </button>
             </div>
 
