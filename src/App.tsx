@@ -94,6 +94,15 @@ export default function App() {
   const [isAnnual, setIsAnnual] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
+  // Detecta mobile para desativar scroll-hijacking na seção timeline
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
 
   const { scrollY } = useScroll();
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -115,6 +124,7 @@ export default function App() {
   
   useEffect(() => {
     const handleScroll = () => {
+      if (isMobile) return; // No scroll-hijacking on mobile
       if (!timelineRef.current) return;
       const rect = timelineRef.current.getBoundingClientRect();
       
@@ -134,7 +144,7 @@ export default function App() {
     
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isUnlocked]);
+  }, [isUnlocked, isMobile]);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     if (latest > maxScrollYProgress.get()) {
@@ -614,11 +624,13 @@ export default function App() {
       </section>
       
             {/* 3. D. LINHA DO TEMPO: O ECOSSISTEMA NO MUNDO FÍSICO */}
-      <section ref={timelineRef} className="relative bg-white border-b border-slate-200/60" style={{ height: isUnlocked ? '105vh' : '300vh' }}>
+      <section ref={timelineRef} className="relative bg-white border-b border-slate-200/60" style={{ height: isMobile ? 'auto' : (isUnlocked ? '105vh' : '300vh') }}>
         <div className={
-          isUnlocked 
-            ? 'relative w-full h-full flex flex-col justify-center py-16 bg-white z-10' 
-            : 'sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center py-16 bg-white z-10'
+          isMobile
+            ? 'relative w-full py-16 md:py-24 bg-white z-10'
+            : isUnlocked 
+              ? 'relative w-full h-full flex flex-col justify-center py-16 bg-white z-10' 
+              : 'sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center py-16 bg-white z-10'
         }>
           <div className="max-w-7xl mx-auto w-full px-6 flex flex-col space-y-12">
             
@@ -644,10 +656,11 @@ export default function App() {
               </div>
 
               {/* Passo 01 Column */}
+              <ScrollReveal delay={0}>
               <div className="flex flex-col items-center space-y-6">
                 {/* Passo 01 Circle */}
                 <div className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-black shadow-sm transition-all duration-500 z-10 border ${
-                  isStep1Active 
+                  isMobile || isStep1Active 
                     ? 'bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white shadow-[0_0_20px_rgba(0,28,255,0.25)]' 
                     : 'bg-gradient-to-br from-slate-50 to-slate-100/80 border-slate-200 text-slate-400'
                 }`}>
@@ -657,7 +670,7 @@ export default function App() {
                 {/* Card 1 */}
                 <motion.div 
                   className="w-full flex flex-col items-center text-center space-y-6"
-                  style={{ 
+                  style={isMobile ? {} : { 
                     opacity: opacity1,
                     y: y1
                   }}
@@ -694,12 +707,14 @@ export default function App() {
                   </div>
                 </motion.div>
               </div>
+              </ScrollReveal>
 
               {/* Passo 02 Column */}
+              <ScrollReveal delay={150}>
               <div className="flex flex-col items-center space-y-6">
                 {/* Passo 02 Circle */}
                 <div className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-black shadow-sm transition-all duration-500 z-10 border ${
-                  isStep2Active 
+                  isMobile || isStep2Active 
                     ? 'bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white shadow-[0_0_20px_rgba(0,28,255,0.25)]' 
                     : 'bg-gradient-to-br from-slate-50 to-slate-100/80 border-slate-200 text-slate-400'
                 }`}>
@@ -709,7 +724,7 @@ export default function App() {
                 {/* Card 2 */}
                 <motion.div 
                   className="w-full flex flex-col items-center text-center space-y-6"
-                  style={{ 
+                  style={isMobile ? {} : { 
                     opacity: opacity2,
                     y: y2
                   }}
@@ -766,12 +781,14 @@ export default function App() {
                   </div>
                 </motion.div>
               </div>
+              </ScrollReveal>
 
               {/* Passo 03 Column */}
+              <ScrollReveal delay={300}>
               <div className="flex flex-col items-center space-y-6">
                 {/* Passo 03 Circle */}
                 <div className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-black shadow-sm transition-all duration-500 z-10 border ${
-                  isStep3Active 
+                  isMobile || isStep3Active 
                     ? 'bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white shadow-[0_0_20px_rgba(0,28,255,0.25)]' 
                     : 'bg-gradient-to-br from-slate-50 to-slate-100/80 border-slate-200 text-slate-400'
                 }`}>
@@ -781,7 +798,7 @@ export default function App() {
                 {/* Card 3 */}
                 <motion.div 
                   className="w-full flex flex-col items-center text-center space-y-6"
-                  style={{ 
+                  style={isMobile ? {} : { 
                     opacity: opacity3,
                     y: y3
                   }}
@@ -858,6 +875,7 @@ export default function App() {
                   </div>
                 </motion.div>
               </div>
+              </ScrollReveal>
 
             </div>
           </div>
