@@ -1180,7 +1180,7 @@ export default function App() {
             <div className="bg-[#0B0F19] border border-slate-800 text-white rounded-3xl p-8 flex flex-col justify-between shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-slate-700 transition-all duration-500 relative group">
               <div className="space-y-6">
                 <div className="space-y-1">
-                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Múltiplos Prédios</span>
+                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Múltiplos Condomínios</span>
                   <h3 className="text-xl font-black uppercase tracking-tight text-white">Zelcore Corporate</h3>
                 </div>
                 
@@ -1196,7 +1196,7 @@ export default function App() {
                       >
                         {pricePerCondo}
                       </motion.span>
-                      <span className="text-slate-400 text-xs font-semibold ml-1">/mês por prédio</span>
+                      <span className="text-slate-400 text-xs font-semibold ml-1">/mês por condomínio</span>
                     </div>
                     
                     <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider flex items-center space-x-1.5 flex-wrap">
@@ -1221,7 +1221,7 @@ export default function App() {
                   {/* Campo de entrada interativo */}
                   <div className="space-y-3 pt-2 bg-slate-950/40 border border-slate-800/60 p-4 rounded-2xl">
                     <div className="flex items-center justify-between text-xs font-bold text-slate-350">
-                      <label htmlFor="condo-qty" className="uppercase tracking-wider text-[9px] text-slate-400 font-extrabold">Qtd. de Prédios</label>
+                      <label htmlFor="condo-qty" className="uppercase tracking-wider text-[9px] text-slate-400 font-extrabold">Qtd. de Condomínios</label>
                       <div className="flex items-center space-x-1.5 bg-slate-950 border border-slate-800 rounded-xl px-1 py-1 shadow-inner">
                         <button 
                           type="button"
