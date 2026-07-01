@@ -37,9 +37,13 @@ function ScrollReveal({
   type?: 'slide' | 'fade' 
 }) {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -62,9 +66,12 @@ function ScrollReveal({
     };
   }, []);
 
+  // Mobile: sempre visível sem animação
+  const showContent = isMobile || isVisible;
+
   const effectClass = type === 'slide'
-    ? (isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]')
-    : (isVisible ? 'opacity-100' : 'opacity-0');
+    ? (showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]')
+    : (showContent ? 'opacity-100' : 'opacity-0');
 
   return (
     <div
@@ -675,7 +682,7 @@ export default function App() {
                     y: y1
                   }}
                 >
-                  <div className="w-full h-64 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
+                  <div className="w-full h-48 md:h-64 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
                     <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'repeating-linear-gradient(90deg, #94a3b8 0px, transparent 1px, transparent 12px)', backgroundSize: '12px 12px' }}></div>
                     <div className="relative bg-white rounded-xl border border-slate-200 shadow-[0_8px_24px_rgba(0,0,0,0.08)] p-4 w-36 flex flex-col items-center space-y-2.5 transition-shadow duration-500">
                       <div className="flex items-center space-x-1">
