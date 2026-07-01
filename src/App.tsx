@@ -37,12 +37,12 @@ function ScrollReveal({
   type?: 'slide' | 'fade' 
 }) {
   const [isVisible, setIsVisible] = useState(false);
-  const [isMobile, setIsMobile] = React.useState(false);
+  const [isMobile] = React.useState(
+    typeof window !== 'undefined' ? window.innerWidth < 768 : false
+  );
   const ref = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
 
     const observer = new IntersectionObserver(
       ([entry]) => {
