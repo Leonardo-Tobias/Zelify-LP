@@ -220,13 +220,14 @@ export default function App() {
   }, [testimonials.length]);
 
   // Plano Lote calculations
+  const isUnlimited = condoCount >= 100;
   let pricePerCondo = isAnnual ? 49 : 59;
   if (condoCount >= 16 && condoCount <= 50) {
     pricePerCondo = isAnnual ? 39 : 49;
-  } else if (condoCount > 50) {
+  } else if (condoCount > 50 && condoCount < 100) {
     pricePerCondo = isAnnual ? 29 : 39;
   }
-  const totalPrice = condoCount * pricePerCondo;
+  const totalPrice = isUnlimited ? 0 : condoCount * pricePerCondo;
   const [b2bModalOpen, setB2bModalOpen] = useState(false);
   const [b2bSubmitted, setB2bSubmitted] = useState(false);
   const [b2bName, setB2bName] = useState('');
@@ -1182,36 +1183,45 @@ export default function App() {
                 
                 <div className="flex flex-col space-y-4">
                   <div className="space-y-1">
-                    <div className="flex items-baseline space-x-1">
-                      <span className="text-sm font-black text-blue-500 align-super">R$</span>
-                      <motion.span 
-                        key={isAnnual ? 'annual' : 'monthly'}
-                        initial={{ opacity: 0, y: -2 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl font-black text-white tracking-tight inline-block"
-                      >
-                        {pricePerCondo}
-                      </motion.span>
-                      <span className="text-slate-400 text-xs font-semibold ml-1">/mês por condomínio</span>
-                    </div>
-                    
-                    <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider flex items-center space-x-1.5 flex-wrap">
-                      <span>Total:</span>
-                      <motion.span 
-                        key={totalPrice}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="text-blue-400 font-black text-xs inline-block"
-                      >
-                        R$ {totalPrice.toLocaleString('pt-BR')},00
-                      </motion.span>
-                      <span className="text-slate-550 font-medium mr-1">/mês</span>
-                      {isAnnual && (
-                        <span className="text-[9.5px] text-slate-500 font-bold lowercase normal-case">
-                          (R$ {(totalPrice * 12).toLocaleString('pt-BR')}/ano)
-                        </span>
-                      )}
-                    </div>
+                    {isUnlimited ? (
+                      <div className="flex items-baseline space-x-2">
+                        <span className="text-4xl font-black text-white tracking-tight">Ilimitado</span>
+                        <span className="text-slate-400 text-xs font-semibold ml-1">Condomínios</span>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="flex items-baseline space-x-1">
+                          <span className="text-sm font-black text-blue-500 align-super">R$</span>
+                          <motion.span
+                            key={isAnnual ? 'annual' : 'monthly'}
+                            initial={{ opacity: 0, y: -2 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="text-5xl font-black text-white tracking-tight inline-block"
+                          >
+                            {pricePerCondo}
+                          </motion.span>
+                          <span className="text-slate-400 text-xs font-semibold ml-1">/mês por condomínio</span>
+                        </div>
+
+                        <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider flex items-center space-x-1.5 flex-wrap">
+                          <span>Total:</span>
+                          <motion.span
+                            key={totalPrice}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            className="text-blue-400 font-black text-xs inline-block"
+                          >
+                            R$ {totalPrice.toLocaleString('pt-BR')},00
+                          </motion.span>
+                          <span className="text-slate-550 font-medium mr-1">/mês</span>
+                          {isAnnual && (
+                            <span className="text-[9.5px] text-slate-500 font-bold lowercase normal-case">
+                              (R$ {(totalPrice * 12).toLocaleString('pt-BR')}/ano)
+                            </span>
+                          )}
+                        </div>
+                      </>
+                    )}
                   </div>
 
                   {/* Campo de entrada interativo */}
@@ -1263,7 +1273,7 @@ export default function App() {
                     <div className="flex justify-between text-[8px] text-slate-500 font-bold uppercase tracking-wider">
                       <span>5</span>
                       <span>50</span>
-                      <span>100+</span>
+                      <span className={condoCount >= 100 ? 'text-blue-400' : ''}>Ilimitado</span>
                     </div>
                   </div>
                   <p className="text-[8px] text-slate-500 text-right mt-1.5 leading-normal font-semibold">
@@ -1312,14 +1322,23 @@ export default function App() {
               </div>
 
               <div className="pt-8">
-                <a 
-                  href="https://zelify.vercel.app/cadastro?plan=corporate"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="block w-full text-center bg-white hover:bg-slate-100 text-slate-900 text-xs font-semibold uppercase tracking-wider py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 active:scale-[0.98] cursor-pointer"
-                >
-                  Assinar Plano Corporate
-                </a>
+                {isUnlimited ? (
+                  <button
+                    onClick={() => setB2bModalOpen(true)}
+                    className="block w-full text-center bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white text-xs font-semibold uppercase tracking-wider py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-[0.98] cursor-pointer"
+                  >
+                    Falar com Consultor
+                  </button>
+                ) : (
+                  <a
+                    href="https://zelify.vercel.app/cadastro?plan=corporate"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="block w-full text-center bg-white hover:bg-slate-100 text-slate-900 text-xs font-semibold uppercase tracking-wider py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 active:scale-[0.98] cursor-pointer"
+                  >
+                    Assinar Plano Corporate
+                  </a>
+                )}
               </div>
             </div>
 
