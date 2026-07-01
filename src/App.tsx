@@ -51,7 +51,7 @@ function ScrollReveal({
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.05, rootMargin: '0px 0px -50px 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
     );
 
     const current = ref.current;
@@ -102,13 +102,9 @@ export default function App() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   // Detecta mobile para desativar scroll-hijacking na seção timeline
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const [isMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth < 768 : false
+  );
 
 
   const { scrollY } = useScroll();
