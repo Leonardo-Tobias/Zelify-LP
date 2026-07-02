@@ -525,10 +525,12 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 space-y-16">
           <div className="max-w-4xl text-left space-y-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl tracking-tight text-slate-900 leading-tight">
-              <span className="font-black">Soluções sob medida para </span>
-              <span className="font-normal text-slate-700">condomínios individuais</span>
-              <span className="font-black"> ou grandes carteiras.</span>
+              <span className="font-black">Duas realidades, </span>
+              <span className="font-normal text-slate-700">uma mesma solução.</span>
             </h2>
+            <p className="text-slate-550 text-xs sm:text-sm font-semibold max-w-lg">
+              Seja você um síndico profissional ou uma administradora com dezenas de prédios, o Zelcon se adapta ao seu modelo de gestão.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -549,17 +551,24 @@ export default function App() {
                     {/* Glassmorphic Overlay Card */}
                     <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md border border-white/20 p-3 rounded-xl shadow-lg flex items-center justify-between">
                       <div className="flex items-center space-x-2.5 min-w-0">
-                        <div className="w-7 h-7 rounded-full bg-[#001CFF] flex items-center justify-center text-white text-xs font-black shrink-0">
-                          CS
-                        </div>
+                        <img
+                          src="https://randomuser.me/api/portraits/men/42.jpg"
+                          alt="Carlos Santos"
+                          className="w-7 h-7 rounded-full object-cover ring-1 ring-white/20 shrink-0"
+                        />
                         <div className="min-w-0 text-left">
                           <p className="text-[10px] font-black text-slate-900 leading-none">Carlos Santos</p>
                           <p className="text-[8px] text-slate-500 font-semibold mt-1">Síndico Profissional • Residencial Harmony</p>
                         </div>
                       </div>
-                      <span className="text-[8px] bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
-                        Kanban Ativo
-                      </span>
+                      <div className="flex items-center space-x-1.5">
+                        <span className="text-[8px] bg-[#001CFF]/10 text-[#001CFF] border border-[#001CFF]/20 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
+                          Pro
+                        </span>
+                        <span className="text-[8px] bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
+                          Kanban
+                        </span>
+                      </div>
                     </div>
                   </div>
 
@@ -602,12 +611,14 @@ export default function App() {
                     {/* Glassmorphic Overlay Card */}
                     <div className="absolute bottom-4 left-4 right-4 bg-slate-900/95 backdrop-blur-md border border-slate-800 p-3 rounded-xl shadow-lg flex items-center justify-between">
                       <div className="flex items-center space-x-2.5 min-w-0">
-                        <div className="w-7 h-7 rounded bg-blue-400/10 flex items-center justify-center text-blue-400 shrink-0">
-                          <Building2 className="w-4 h-4" />
-                        </div>
+                        <img
+                          src="https://randomuser.me/api/portraits/women/33.jpg"
+                          alt="Ana Beatriz"
+                          className="w-7 h-7 rounded-full object-cover ring-1 ring-white/10 shrink-0"
+                        />
                         <div className="min-w-0 text-left">
-                          <p className="text-[10px] font-black text-white leading-none">Lello Administradora</p>
-                          <p className="text-[8px] text-slate-400 font-semibold mt-1">Gestão de Carteira • 12 Condomínios</p>
+                          <p className="text-[10px] font-black text-white leading-none">Ana Beatriz</p>
+                          <p className="text-[8px] text-slate-400 font-semibold mt-1">Gerente de Carteira • 12 Condomínios</p>
                         </div>
                       </div>
                       <span className="text-[8px] bg-blue-450/20 text-blue-400 border border-blue-400/20 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
