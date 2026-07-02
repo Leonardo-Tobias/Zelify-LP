@@ -182,7 +182,7 @@ export default function App() {
 
   const testimonials = [
     {
-      text: "O Zelcore reduziu em mais de 70% as ligações desnecessárias na portaria e o volume de mensagens no WhatsApp. Os moradores adoram a simplicidade do QR Code.",
+      text: "O Zelcon reduziu em mais de 70% as ligações desnecessárias na portaria e o volume de mensagens no WhatsApp. Os moradores adoram a simplicidade do QR Code.",
       author: "Roberto Silva",
       role: "Síndico Profissional",
       details: "Gestão de 8 condomínios em SP",
@@ -203,7 +203,7 @@ export default function App() {
       avatar: "JC"
     },
     {
-      text: "Oferecer o Zelcore como um portal de zeladoria digital nos ajudou a agregar valor e reter 3 grandes condomínios em nossa carteira corporativa.",
+      text: "Oferecer o Zelcon como um portal de zeladoria digital nos ajudou a agregar valor e reter 3 grandes condomínios em nossa carteira corporativa.",
       author: "Mariana Dias",
       role: "Gerente Operacional",
       details: "Lello Administradora",
@@ -260,11 +260,11 @@ export default function App() {
   const faqItems = [
     {
       q: "O morador realmente não precisa baixar nada para usar?",
-      a: "Não. O morador apenas aponta a câmera do celular para o QR Code fixado no prédio. O Zelcore abre instantaneamente no navegador do smartphone (como uma página web leve), permitindo registrar a ocorrência com foto em menos de 20 segundos. Sem downloads, sem criação de contas, sem senhas."
+      a: "Não. O morador apenas aponta a câmera do celular para o QR Code fixado no prédio. O Zelcon abre instantaneamente no navegador do smartphone (como uma página web leve), permitindo registrar a ocorrência com foto em menos de 20 segundos. Sem downloads, sem criação de contas, sem senhas."
     },
     {
       q: "Como o síndico ou o zelador ficam sabendo das novas ocorrências?",
-      a: "O sistema centraliza tudo no Painel do Gestor em tempo real. Além disso, o Zelcore envia alertas automáticos por e-mail e notificações configuráveis assim que um morador envia um novo relato, garantindo que nenhum vazamento ou lâmpada queimada passe despercebida."
+      a: "O sistema centraliza tudo no Painel do Gestor em tempo real. Além disso, o Zelcon envia alertas automáticos por e-mail e notificações configuráveis assim que um morador envia um novo relato, garantindo que nenhum vazamento ou lâmpada queimada passe despercebida."
     },
     {
       q: "Qualquer pessoa de fora do condomínio pode escanear o QR Code e enviar falsos chamados?",
@@ -272,7 +272,7 @@ export default function App() {
     },
     {
       q: "Como funciona a cobrança em lote para as Administradoras de Condomínio?",
-      a: "Oferecemos uma tabela progressiva extremamente vantajosa para administradoras que desejam incluir o Zelcore em sua carteira de clientes, reduzindo o custo unitário por prédio à medida que o volume aumenta (variando de R$ 59 a R$ 39 mensais por condomínio ativo). A gestão financeira é unificada em uma única fatura mensal."
+      a: "Oferecemos uma tabela progressiva extremamente vantajosa para administradoras que desejam incluir o Zelcon em sua carteira de clientes, reduzindo o custo unitário por prédio à medida que o volume aumenta (variando de R$ 59 a R$ 39 mensais por condomínio ativo). A gestão financeira é unificada em uma única fatura mensal."
     },
     {
       q: "O Plano Starter Gratuito tem pegadinhas ou exige cartão de crédito?",
@@ -302,7 +302,7 @@ export default function App() {
         >
           <div className="flex items-center space-x-2">
             <span className="text-2xl font-black tracking-tight text-slate-900">
-              Zelcore<span className="text-[#001CFF]">.</span>
+              Zelcon<span className="text-[#001CFF]">.</span>
             </span>
           </div>
 
@@ -460,7 +460,7 @@ export default function App() {
               <div className="w-full overflow-hidden border-b border-slate-200/80">
                 <img
                   src="/mockup-admin.png"
-                  alt="Painel administrativo Zelcore — Mural de Ocorrências"
+                  alt="Painel administrativo Zelcon — Mural de Ocorrências"
                   className="w-full h-auto block"
                   draggable={false}
                 />
@@ -482,7 +482,7 @@ export default function App() {
               <div className="w-full overflow-hidden border-b border-slate-200/80">
                 <img
                   src="/mockup-morador.png"
-                  alt="Portal do morador Zelcore — Interface mobile"
+                  alt="Portal do morador Zelcon — Interface mobile"
                   className="w-full h-auto block"
                   draggable={false}
                 />
@@ -684,7 +684,7 @@ export default function App() {
                     <div className="relative bg-white rounded-xl border border-slate-200 shadow-[0_8px_24px_rgba(0,0,0,0.08)] p-4 w-36 flex flex-col items-center space-y-2.5 transition-shadow duration-500">
                       <div className="flex items-center space-x-1">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#001CFF]"></div>
-                        <span className="text-[9px] font-black text-[#001CFF] tracking-widest uppercase">Zelcore.</span>
+                        <span className="text-[9px] font-black text-[#001CFF] tracking-widest uppercase">Zelcon.</span>
                       </div>
                       <div className="relative bg-slate-50 rounded-lg p-2.5 border border-slate-100 w-full aspect-square flex items-center justify-center">
                         <div className="absolute top-1 left-1 w-2.5 h-2.5 border-l-2 border-t-2 border-[#001CFF]/40 rounded-tl-sm"></div>
@@ -706,7 +706,7 @@ export default function App() {
                   <div className="space-y-2">
                     <h4 className="text-sm font-black uppercase text-slate-900 tracking-wider">1. O QR Code é fixado</h4>
                     <p className="text-slate-550 text-xs font-semibold leading-relaxed px-4">
-                      Adesivos do Zelcore contendo link exclusivo e código de acesso são fixados em áreas de circulação como elevador e portaria.
+                      Adesivos do Zelcon contendo link exclusivo e código de acesso são fixados em áreas de circulação como elevador e portaria.
                     </p>
                   </div>
                 </motion.div>
@@ -749,7 +749,7 @@ export default function App() {
                         </div>
                         <div className="px-2.5 py-1.5 border-b border-slate-100 flex items-center space-x-1">
                           <div className="w-1.5 h-1.5 rounded-full bg-[#001CFF]"></div>
-                          <span className="text-[6px] font-black text-slate-900 tracking-wide">Zelcore</span>
+                          <span className="text-[6px] font-black text-slate-900 tracking-wide">Zelcon</span>
                         </div>
                         <div className="flex-1 px-2.5 py-2 space-y-1.5">
                           <span className="text-[5px] font-bold text-slate-500 uppercase tracking-wider text-left block">Nova Ocorrência</span>
@@ -893,7 +893,7 @@ export default function App() {
         <div className="max-w-4xl mx-auto px-6 space-y-12 relative z-10">
           <div className="text-center space-y-4">
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 leading-tight">
-              O que quem usa o Zelcore diz na prática
+              O que quem usa o Zelcon diz na prática
             </h2>
             <p className="text-slate-550 text-xs sm:text-sm font-semibold max-w-lg mx-auto">
               Moradores, zeladores e síndicos profissionais compartilham suas experiências reais com o ecossistema.
@@ -1096,7 +1096,7 @@ export default function App() {
                 <div className="space-y-1">
                   <span className="text-[10px] font-black text-[#001CFF] uppercase tracking-widest">Controle Completo</span>
                   <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight flex items-center">
-                    Zelcore Pro
+                    Zelcon Pro
                     <Sparkles className="w-4 h-4 text-[#001CFF] ml-1.5 animate-pulse" />
                   </h3>
                 </div>
@@ -1178,7 +1178,7 @@ export default function App() {
               <div className="space-y-6">
                 <div className="space-y-1">
                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Múltiplos Condomínios</span>
-                  <h3 className="text-xl font-black uppercase tracking-tight text-white">Zelcore Corporate</h3>
+                  <h3 className="text-xl font-black uppercase tracking-tight text-white">Zelcon Corporate</h3>
                 </div>
                 
                 <div className="flex flex-col space-y-4">
@@ -1351,7 +1351,7 @@ export default function App() {
         <div className="max-w-4xl mx-auto px-6 space-y-16">
           <div className="text-center space-y-4">
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">Perguntas Frequentes</h2>
-            <p className="text-slate-500 text-xs sm:text-sm font-semibold">Tudo o que você precisa saber sobre o Zelcore para começar a usar.</p>
+            <p className="text-slate-500 text-xs sm:text-sm font-semibold">Tudo o que você precisa saber sobre o Zelcon para começar a usar.</p>
           </div>
 
           <div className="divide-y divide-slate-200 border-t border-b border-slate-200">
@@ -1460,12 +1460,12 @@ export default function App() {
           
           {/* Col 1 */}
           <div className="md:col-span-6 space-y-4">
-            <span className="text-2xl font-black tracking-tight">Zelcore<span className="text-[#001CFF]">.</span></span>
+            <span className="text-2xl font-black tracking-tight">Zelcon<span className="text-[#001CFF]">.</span></span>
             <p className="text-slate-450 text-xs max-w-sm font-semibold leading-relaxed">
               Simplificando a comunicação entre moradores e a zeladoria condominial com o uso inteligente de QR Codes. Sem aplicativo, sem burocracia.
             </p>
             <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider pt-4">
-              © {new Date().getFullYear()} Zelcore. Todos os direitos reservados.
+              © {new Date().getFullYear()} Zelcon. Todos os direitos reservados.
             </p>
           </div>
 
@@ -1493,7 +1493,7 @@ export default function App() {
                 <button onClick={() => setB2bModalOpen(true)} className="hover:text-white transition-colors text-left">Falar com Vendas B2B</button>
               </li>
               <li>
-                <span className="text-slate-500 font-bold font-mono">contato@zelcore.com.br</span>
+                <span className="text-slate-500 font-bold font-mono">contato@zelcon.com.br</span>
               </li>
             </ul>
           </div>
