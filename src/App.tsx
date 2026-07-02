@@ -182,32 +182,46 @@ export default function App() {
 
   const testimonials = [
     {
-      text: "O Zelcon reduziu em mais de 70% as ligações desnecessárias na portaria e o volume de mensagens no WhatsApp. Os moradores adoram a simplicidade do QR Code.",
+      text: "O Zelcon reduziu em mais de 70% as ligações desnecessárias na portaria e o volume de mensagens no WhatsApp. Os moradores adoram a simplicidade do QR Code — não precisa instalar nada, é só apontar a câmera.",
       author: "Roberto Silva",
       role: "Síndico Profissional",
       details: "Gestão de 8 condomínios em SP",
-      avatar: "RS"
+      avatar: "https://i.pravatar.cc/150?u=roberto"
     },
     {
-      text: "Consigo relatar uma lâmpada queimada na garagem em menos de 10 segundos quando estou saindo para trabalhar. É incrivelmente prático!",
+      text: "Consigo relatar uma lâmpada queimada na garagem em menos de 10 segundos quando estou saindo para trabalhar. É incrivelmente prático! Antes eu precisava ligar na portaria ou mandar WhatsApp.",
       author: "Carla Souza",
       role: "Moradora",
       details: "Residencial Jardim das Flores",
-      avatar: "CS"
+      avatar: "https://i.pravatar.cc/150?u=carla"
     },
     {
-      text: "Receber as tarefas de manutenção organizadas em um painel Kanban mudou nossa rotina. Sei exatamente o que está pendente ou concluído.",
+      text: "O Kanban organizou nosso dia a dia. Antes as solicitações se perdiam no papel, hoje tenho o status de cada serviço em tempo real. Reduzimos o tempo médio de resposta de 3 dias para 12 horas.",
       author: "Julio Costa",
       role: "Zelador",
       details: "Edifício Itália",
-      avatar: "JC"
+      avatar: "https://i.pravatar.cc/150?u=julio"
     },
     {
-      text: "Oferecer o Zelcon como um portal de zeladoria digital nos ajudou a agregar valor e reter 3 grandes condomínios em nossa carteira corporativa.",
+      text: "Oferecer o Zelcon como um portal de zeladoria digital nos ajudou a agregar valor e reter 3 grandes condomínios em nossa carteira corporativa. O painel multi-condomínio foi o diferencial.",
       author: "Mariana Dias",
       role: "Gerente Operacional",
-      details: "Lello Administradora",
-      avatar: "MD"
+      details: "Administradora parceira",
+      avatar: "https://i.pravatar.cc/150?u=mariana"
+    },
+    {
+      text: "Imprimimos a placa com QR Code e colamos nos elevadores. No primeiro mês, 40% dos moradores já tinham usado o portal. Zero resistência à adoção.",
+      author: "Fernando Oliveira",
+      role: "Síndico",
+      details: "Condomínio Villa Verde",
+      avatar: "https://i.pravatar.cc/150?u=fernando"
+    },
+    {
+      text: "O suporte é rápido e resolutivo. Em menos de 2 horas tínhamos o painel configurado e os primeiros chamados sendo registrados pelos moradores. Recomendo para qualquer administradora.",
+      author: "Camila Rocha",
+      role: "Analista de Operações",
+      details: "Administradora Nacional",
+      avatar: "https://i.pravatar.cc/150?u=camila"
     }
   ];
 
@@ -920,9 +934,11 @@ export default function App() {
               {/* Author details & controls */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-6 border-t border-slate-100 mt-6 shrink-0">
                 <div className="flex items-center space-x-3.5 text-left">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#001CFF] to-[#000AB3] flex items-center justify-center text-white text-xs font-black shadow-md shadow-[#001CFF]/15 uppercase">
-                    {testimonials[currentTestimonial].avatar}
-                  </div>
+                  <img
+                    src={testimonials[currentTestimonial].avatar}
+                    alt={testimonials[currentTestimonial].author}
+                    className="w-10 h-10 rounded-full object-cover shadow-md shadow-[#001CFF]/15 ring-1 ring-white/20"
+                  />
                   <div>
                     <h4 className="text-xs font-black text-slate-900 leading-none">{testimonials[currentTestimonial].author}</h4>
                     <p className="text-[10px] text-[#001CFF] font-bold mt-1.5 flex items-center gap-1.5 leading-none">
@@ -962,6 +978,20 @@ export default function App() {
               </div>
             </div>
           </ScrollReveal>
+
+          {/* CTA abaixo dos depoimentos */}
+          <div className="text-center">
+            <a
+              href="https://zelify.vercel.app/cadastro"
+              className="inline-flex items-center space-x-2 bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-black px-6 py-3 sm:px-8 sm:py-4 rounded-2xl transition-all active:scale-[0.97] shadow-[0_8px_25px_rgba(0,0,0,0.15)] hover:shadow-[0_12px_35px_rgba(0,0,0,0.2)]"
+            >
+              <span>Começar grátis agora</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <p className="text-[10px] text-slate-400 font-semibold mt-3">
+              Sem cartão de crédito. Sem compromisso.
+            </p>
+          </div>
         </div>
       </section>
 
