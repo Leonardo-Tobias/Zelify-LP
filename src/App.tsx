@@ -186,42 +186,42 @@ export default function App() {
       author: "Roberto Silva",
       role: "Síndico Profissional",
       details: "Gestão de 8 condomínios em SP",
-      avatar: "https://i.pravatar.cc/150?u=roberto"
+      avatar: "https://randomuser.me/api/portraits/men/32.jpg"
     },
     {
       text: "Consigo relatar uma lâmpada queimada na garagem em menos de 10 segundos quando estou saindo para trabalhar. É incrivelmente prático! Antes eu precisava ligar na portaria ou mandar WhatsApp.",
       author: "Carla Souza",
       role: "Moradora",
       details: "Residencial Jardim das Flores",
-      avatar: "https://i.pravatar.cc/150?u=carla"
+      avatar: "https://randomuser.me/api/portraits/women/44.jpg"
     },
     {
       text: "O Kanban organizou nosso dia a dia. Antes as solicitações se perdiam no papel, hoje tenho o status de cada serviço em tempo real. Reduzimos o tempo médio de resposta de 3 dias para 12 horas.",
       author: "Julio Costa",
       role: "Zelador",
       details: "Edifício Itália",
-      avatar: "https://i.pravatar.cc/150?u=julio"
+      avatar: "https://randomuser.me/api/portraits/men/75.jpg"
     },
     {
       text: "Oferecer o Zelcon como um portal de zeladoria digital nos ajudou a agregar valor e reter 3 grandes condomínios em nossa carteira corporativa. O painel multi-condomínio foi o diferencial.",
       author: "Mariana Dias",
       role: "Gerente Operacional",
       details: "Administradora parceira",
-      avatar: "https://i.pravatar.cc/150?u=mariana"
+      avatar: "https://randomuser.me/api/portraits/women/68.jpg"
     },
     {
       text: "Imprimimos a placa com QR Code e colamos nos elevadores. No primeiro mês, 40% dos moradores já tinham usado o portal. Zero resistência à adoção.",
       author: "Fernando Oliveira",
       role: "Síndico",
       details: "Condomínio Villa Verde",
-      avatar: "https://i.pravatar.cc/150?u=fernando"
+      avatar: "https://randomuser.me/api/portraits/men/52.jpg"
     },
     {
       text: "O suporte é rápido e resolutivo. Em menos de 2 horas tínhamos o painel configurado e os primeiros chamados sendo registrados pelos moradores. Recomendo para qualquer administradora.",
       author: "Camila Rocha",
       role: "Analista de Operações",
       details: "Administradora Nacional",
-      avatar: "https://i.pravatar.cc/150?u=camila"
+      avatar: "https://randomuser.me/api/portraits/women/26.jpg"
     }
   ];
 
