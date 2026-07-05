@@ -17,13 +17,14 @@ import {
   MessageSquare,
   X,
   Camera,
-  Layers,
   Clock,
   MapPin,
   Zap,
   Shield,
-  Eye
+  Eye,
+  Paperclip
 } from 'lucide-react';
+
 
 function ScrollReveal({ 
   children, 
@@ -704,7 +705,7 @@ export default function App() {
                     y: y1
                   }}
                 >
-                  <div className="w-full h-48 md:h-64 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
+                  <div className="w-full h-64 md:h-80 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
                     <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'repeating-linear-gradient(90deg, #94a3b8 0px, transparent 1px, transparent 12px)', backgroundSize: '12px 12px' }}></div>
                     <div className="relative bg-white rounded-xl border border-slate-200 shadow-[0_8px_24px_rgba(0,0,0,0.08)] p-4 w-36 flex flex-col items-center space-y-2.5 transition-shadow duration-500">
                       <div className="flex items-center space-x-1">
@@ -758,7 +759,7 @@ export default function App() {
                     y: y2
                   }}
                 >
-                  <div className="w-full h-64 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden transition-all duration-500">
+                  <div className="w-full h-64 md:h-80 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden transition-all duration-500">
                     <div className="relative bg-slate-900 rounded-2xl p-1.5 shadow-[0_12px_40px_rgba(15,23,42,0.25)] w-28 h-52 mx-auto flex flex-col transition-shadow duration-500">
                       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-2.5 bg-slate-900 rounded-b-lg z-20 flex items-center justify-center">
                         <div className="w-4 h-1 bg-slate-800 rounded-full"></div>
@@ -832,65 +833,249 @@ export default function App() {
                     y: y3
                   }}
                 >
-                  <div className="w-full h-64 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden transition-all duration-500">
-                    <div className="w-full max-w-[240px] bg-white border border-slate-200 rounded-xl shadow-[0_8px_24px_rgba(0,0,0,0.06)] overflow-hidden transition-shadow duration-500">
-                      <div className="px-3 py-2 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+                  <div className="w-full h-64 md:h-80 rounded-2xl bg-gradient-to-br from-[#0B0F19] to-[#121826] border border-slate-800/80 p-3 flex items-center justify-center relative overflow-hidden transition-all duration-500">
+                    <div className="w-full h-full bg-[#080B11] border border-slate-850 rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col">
+                      {/* Window Header */}
+                      <div className="px-2.5 py-1.5 border-b border-slate-850 flex items-center justify-between bg-[#0B0F19]">
                         <div className="flex items-center space-x-1.5">
-                          <Layers className="w-2.5 h-2.5 text-[#001CFF]" />
-                          <span className="text-[7px] font-black text-slate-800 uppercase tracking-wider">Painel Kanban</span>
+                          {/* Window buttons */}
+                          <div className="flex space-x-1">
+                            <div className="w-1.5 h-1.5 rounded-full bg-red-500/80"></div>
+                            <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/80"></div>
+                            <div className="w-1.5 h-1.5 rounded-full bg-green-500/80"></div>
+                          </div>
+                          <span className="text-[6.5px] font-black text-slate-300 uppercase tracking-wider ml-1">Painel Kanban</span>
                         </div>
-                        <div className="flex items-center space-x-0.5">
-                          <div className="w-1 h-1 rounded-full bg-emerald-400"></div>
-                          <span className="text-[5px] font-bold text-emerald-600">Ao vivo</span>
+                        <div className="flex items-center space-x-1 bg-emerald-500/10 px-1.5 py-0.5 rounded-full border border-emerald-500/20">
+                          <div className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse"></div>
+                          <span className="text-[5px] font-bold text-emerald-400 uppercase tracking-widest">Ao vivo</span>
                         </div>
                       </div>
-                      <div className="grid grid-cols-2 divide-x divide-slate-100 min-h-[80px]">
-                        <div className="p-2 space-y-1.5">
-                          <div className="flex items-center justify-between mb-1">
-                            <span className="text-[5px] font-black text-amber-500 uppercase tracking-wider text-left">Pendentes</span>
-                            <span className="text-[5px] font-bold text-amber-500 bg-amber-500/10 border border-amber-500/20 px-1.5 py-0.5 rounded-full">2</span>
+
+                      {/* Kanban Columns */}
+                      <div className="grid grid-cols-3 gap-1.5 p-1.5 bg-[#070A13] flex-1 overflow-hidden">
+                        {/* PENDENTES Column */}
+                        <div className="rounded-lg bg-[#0C0F19] border border-slate-850/60 flex flex-col overflow-hidden">
+                          {/* Column Header */}
+                          <div className="border-t border-amber-500 bg-amber-500/5 px-1.5 py-1 flex items-center justify-between text-[5.5px] font-black text-amber-500 uppercase tracking-wider">
+                            <div className="flex items-center space-x-1">
+                              <Clock className="w-1.5 h-1.5" />
+                              <span>PENDENTES</span>
+                            </div>
+                            <span className="bg-amber-500/20 px-1 py-0.2 rounded-full text-[5px]">2</span>
                           </div>
-                          <div className="bg-white border border-slate-150 rounded-lg p-1.5 shadow-sm space-y-1 hover:border-amber-200 transition-colors">
-                            <div className="flex items-center justify-between">
-                              <span className="text-[4px] font-bold text-amber-500 bg-amber-50 px-1 py-0.5 rounded uppercase">Urgente</span>
-                              <Clock className="w-1.5 h-1.5 text-slate-300" />
+                          {/* Cards List */}
+                          <div className="p-1 space-y-1 overflow-y-auto flex-1 scrollbar-none">
+                            {/* Card 1 */}
+                            <div className="bg-[#13192B] border border-slate-800 rounded-md p-1.5 space-y-1 hover:border-amber-500/35 transition-colors">
+                              <div className="flex items-center justify-between">
+                                <span className="text-[4.5px] font-bold text-indigo-400 uppercase tracking-wider flex items-center">
+                                  <MapPin className="w-1 h-1 mr-0.5 shrink-0" />
+                                  GARAGEM
+                                </span>
+                                <span className="text-[3.5px] font-bold text-amber-500 bg-amber-500/10 border border-amber-500/20 px-1 py-0.2 rounded uppercase scale-90 origin-right">Média</span>
+                              </div>
+                              <h5 className="text-[5.5px] font-black text-white text-left leading-tight">Lâmpada queimada</h5>
+                              <p className="text-[4.5px] text-slate-450 text-left line-clamp-1 leading-normal">Lâmpada do corredor da garagem...</p>
+                              <div className="flex items-center justify-between text-[4px] text-slate-500 pt-1 border-t border-slate-800/50">
+                                <span className="flex items-center"><Building2 className="w-1 h-1 mr-0.5 shrink-0" />Bloco A · Apt 101</span>
+                                <span className="flex items-center space-x-0.5">
+                                  <span>25/06</span>
+                                  <div className="flex space-x-0.5 scale-90">
+                                    <span className="w-2.5 h-2.5 rounded-full bg-slate-800 flex items-center justify-center text-white text-[3px] select-none cursor-pointer">&lt;</span>
+                                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700 flex items-center justify-center text-white text-[3px] select-none cursor-pointer">&gt;</span>
+                                  </div>
+                                </span>
+                              </div>
                             </div>
-                            <div className="w-full h-1 bg-slate-100 rounded-full"></div>
-                            <div className="w-3/4 h-1 bg-slate-100 rounded-full"></div>
-                            <div className="flex items-center space-x-0.5">
-                              <MapPin className="w-1.5 h-1.5 text-slate-300" />
-                              <span className="text-[4px] text-slate-400 font-medium">ElevadorSocial</span>
+                            {/* Card 2 */}
+                            <div className="bg-[#13192B] border border-slate-800 rounded-md p-1.5 space-y-1 hover:border-amber-500/35 transition-colors">
+                              <div className="flex items-center justify-between">
+                                <span className="text-[4.5px] font-bold text-indigo-400 uppercase tracking-wider flex items-center">
+                                  <MapPin className="w-1 h-1 mr-0.5 shrink-0" />
+                                  ESCADA
+                                </span>
+                                <span className="text-[3.5px] font-bold text-red-500 bg-red-500/10 border border-red-500/20 px-1 py-0.2 rounded uppercase scale-90 origin-right">Alta</span>
+                              </div>
+                              <h5 className="text-[5.5px] font-black text-white text-left leading-tight">Corrimão solto</h5>
+                              <p className="text-[4.5px] text-slate-450 text-left line-clamp-1 leading-normal">Corrimão da escada do bloco B...</p>
+                              <div className="flex items-center space-x-0.5 text-[4px] text-blue-400 font-semibold cursor-pointer">
+                                <Paperclip className="w-1 h-1 shrink-0" />
+                                <span>Ver foto do chamado</span>
+                              </div>
+                              <div className="flex items-center justify-between text-[4px] text-slate-500 pt-1 border-t border-slate-800/50">
+                                <span className="flex items-center"><Building2 className="w-1 h-1 mr-0.5 shrink-0" />Bloco B · Apt 204</span>
+                                <span className="flex items-center space-x-0.5">
+                                  <span>24/06</span>
+                                  <div className="flex space-x-0.5 scale-90">
+                                    <span className="w-2.5 h-2.5 rounded-full bg-slate-800 flex items-center justify-center text-white text-[3px] select-none cursor-pointer">&lt;</span>
+                                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700 flex items-center justify-center text-white text-[3px] select-none cursor-pointer">&gt;</span>
+                                  </div>
+                                </span>
+                              </div>
                             </div>
                           </div>
-                          <div className="bg-white border border-slate-150 rounded-lg p-1.5 shadow-sm space-y-1">
-                            <div className="w-full h-1 bg-slate-100 rounded-full"></div>
-                            <div className="w-2/3 h-1 bg-slate-100 rounded-full"></div>
-                            <div className="flex items-center space-x-0.5">
-                              <MapPin className="w-1.5 h-1.5 text-slate-300" />
-                              <span className="text-[4px] text-slate-400 font-medium">Portaria</span>
-                            </div>
+                          {/* Column Footer */}
+                          <div className="p-1 border-t border-slate-850 bg-[#0A0D17]">
+                            <button className="w-full py-0.5 rounded border border-dashed border-slate-800 hover:border-slate-750 text-slate-500 hover:text-slate-450 text-[4.5px] font-medium transition-colors cursor-pointer">
+                              + Novo chamado
+                            </button>
                           </div>
                         </div>
-                        <div className="p-2 space-y-1.5 bg-emerald-50/30">
-                          <div className="flex items-center justify-between mb-1">
-                            <span className="text-[5px] font-black text-emerald-500 uppercase tracking-wider text-left">Resolvidos</span>
-                            <span className="text-[5px] font-bold text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-1.5 py-0.5 rounded-full">3</span>
-                          </div>
-                          <div className="bg-white border border-emerald-100 rounded-lg p-1.5 shadow-sm space-y-1">
-                            <div className="flex items-center justify-between">
-                              <span className="text-[4px] font-bold text-emerald-650 bg-emerald-100 px-1 py-0.5 rounded uppercase">Concluído</span>
-                              <CheckCircle2 className="w-2 h-2 text-emerald-500" />
+
+                        {/* EM EXECUÇÃO Column */}
+                        <div className="rounded-lg bg-[#0C0F19] border border-slate-850/60 flex flex-col overflow-hidden">
+                          {/* Column Header */}
+                          <div className="border-t border-blue-500 bg-blue-500/5 px-1.5 py-1 flex items-center justify-between text-[5.5px] font-black text-blue-500 uppercase tracking-wider">
+                            <div className="flex items-center space-x-1">
+                              <Building2 className="w-1.5 h-1.5" />
+                              <span>EM EXECUÇÃO</span>
                             </div>
-                            <div className="w-full h-1 bg-slate-100 rounded-full"></div>
-                            <div className="w-1/2 h-1 bg-slate-100 rounded-full"></div>
+                            <span className="bg-blue-500/20 px-1 py-0.2 rounded-full text-[5px]">3</span>
                           </div>
-                          <div className="bg-white border border-emerald-100 rounded-lg p-1.5 shadow-sm space-y-1 opacity-70">
-                            <div className="flex items-center justify-between">
-                              <span className="text-[4px] font-bold text-emerald-650 bg-emerald-100 px-1 py-0.5 rounded uppercase">Concluído</span>
-                              <CheckCircle2 className="w-2 h-2 text-emerald-500" />
+                          {/* Cards List */}
+                          <div className="p-1 space-y-1 overflow-y-auto flex-1 scrollbar-none">
+                            {/* Card 1 */}
+                            <div className="bg-[#13192B] border border-slate-800 rounded-md p-1.5 space-y-1 hover:border-blue-500/35 transition-colors">
+                              <div className="flex items-center justify-between">
+                                <span className="text-[4.5px] font-bold text-indigo-400 uppercase tracking-wider flex items-center">
+                                  <MapPin className="w-1 h-1 mr-0.5 shrink-0" />
+                                  HALL
+                                </span>
+                                <span className="text-[3.5px] font-bold text-amber-500 bg-amber-500/10 border border-amber-500/20 px-1 py-0.2 rounded uppercase scale-90 origin-right">Média</span>
+                              </div>
+                              <h5 className="text-[5.5px] font-black text-white text-left leading-tight">Lâmpada queimada no hall</h5>
+                              <p className="text-[4.5px] text-slate-450 text-left line-clamp-1 leading-normal">A lâmpada de led do hall...</p>
+                              <div className="flex items-center space-x-0.5 text-[4px] text-blue-400 font-semibold cursor-pointer">
+                                <Paperclip className="w-1 h-1 shrink-0" />
+                                <span>Ver foto do chamado</span>
+                              </div>
+                              <div className="flex items-center justify-between text-[4px] text-slate-500 pt-1 border-t border-slate-800/50">
+                                <span className="flex items-center"><Building2 className="w-1 h-1 mr-0.5 shrink-0" />Bloco A · Apt 302</span>
+                                <span className="flex items-center space-x-0.5">
+                                  <span>26/06</span>
+                                  <div className="flex space-x-0.5 scale-90">
+                                    <span className="w-2.5 h-2.5 rounded-full bg-slate-800 flex items-center justify-center text-white text-[3px] select-none cursor-pointer">&lt;</span>
+                                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700 flex items-center justify-center text-white text-[3px] select-none cursor-pointer">&gt;</span>
+                                  </div>
+                                </span>
+                              </div>
                             </div>
-                            <div className="w-full h-1 bg-slate-100 rounded-full"></div>
-                            <div className="w-3/5 h-1 bg-slate-100 rounded-full"></div>
+                            {/* Card 2 */}
+                            <div className="bg-[#13192B] border border-slate-800 rounded-md p-1.5 space-y-1 hover:border-blue-500/35 transition-colors">
+                              <div className="flex items-center justify-between">
+                                <span className="text-[4.5px] font-bold text-indigo-400 uppercase tracking-wider flex items-center">
+                                  <MapPin className="w-1 h-1 mr-0.5 shrink-0" />
+                                  PISCINA
+                                </span>
+                                <span className="text-[3.5px] font-bold text-red-500 bg-red-500/10 border border-red-500/20 px-1 py-0.2 rounded uppercase scale-90 origin-right">Alta</span>
+                              </div>
+                              <h5 className="text-[5.5px] font-black text-white text-left leading-tight">Bomba d'água com ruído</h5>
+                              <p className="text-[4.5px] text-slate-450 text-left line-clamp-1 leading-normal">Bomba fazendo barulho alto...</p>
+                              <div className="flex items-center justify-between text-[4px] text-slate-500 pt-1 border-t border-slate-800/50">
+                                <span className="flex items-center"><Building2 className="w-1 h-1 mr-0.5 shrink-0" />Bloco C · Apt 510</span>
+                                <span className="flex items-center space-x-0.5">
+                                  <span>23/06</span>
+                                  <div className="flex space-x-0.5 scale-90">
+                                    <span className="w-2.5 h-2.5 rounded-full bg-slate-800 flex items-center justify-center text-white text-[3px] select-none cursor-pointer">&lt;</span>
+                                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700 flex items-center justify-center text-white text-[3px] select-none cursor-pointer">&gt;</span>
+                                  </div>
+                                </span>
+                              </div>
+                            </div>
+                            {/* Card 3 */}
+                            <div className="bg-[#13192B] border border-slate-800 rounded-md p-1.5 space-y-1 hover:border-blue-500/35 transition-colors">
+                              <div className="flex items-center justify-between">
+                                <span className="text-[4.5px] font-bold text-indigo-400 uppercase tracking-wider flex items-center">
+                                  <MapPin className="w-1 h-1 mr-0.5 shrink-0" />
+                                  ELEVADOR
+                                </span>
+                                <span className="text-[3.5px] font-bold text-red-500 bg-red-500/10 border border-red-500/20 px-1 py-0.2 rounded uppercase scale-90 origin-right">Alta</span>
+                              </div>
+                              <h5 className="text-[5.5px] font-black text-white text-left leading-tight">Porta travando</h5>
+                              <p className="text-[4.5px] text-slate-450 text-left line-clamp-1 leading-normal">Porta do elevador demorando...</p>
+                              <div className="flex items-center justify-between text-[4px] text-slate-500 pt-1 border-t border-slate-800/50">
+                                <span className="flex items-center"><Building2 className="w-1 h-1 mr-0.5 shrink-0" />Bloco B · Apt 403</span>
+                                <span className="flex items-center space-x-0.5">
+                                  <span>22/06</span>
+                                  <div className="flex space-x-0.5 scale-90">
+                                    <span className="w-2.5 h-2.5 rounded-full bg-slate-800 flex items-center justify-center text-white text-[3px] select-none cursor-pointer">&lt;</span>
+                                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700 flex items-center justify-center text-white text-[3px] select-none cursor-pointer">&gt;</span>
+                                  </div>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          {/* Column Footer */}
+                          <div className="p-1 border-t border-slate-850 bg-[#0A0D17]">
+                            <button className="w-full py-0.5 rounded border border-dashed border-slate-800 hover:border-slate-750 text-slate-500 hover:text-slate-450 text-[4.5px] font-medium transition-colors cursor-pointer">
+                              + Novo chamado
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* RESOLVIDOS Column */}
+                        <div className="rounded-lg bg-[#0C0F19] border border-slate-850/60 flex flex-col overflow-hidden">
+                          {/* Column Header */}
+                          <div className="border-t border-emerald-500 bg-emerald-500/5 px-1.5 py-1 flex items-center justify-between text-[5.5px] font-black text-emerald-500 uppercase tracking-wider">
+                            <div className="flex items-center space-x-1">
+                              <CheckCircle2 className="w-1.5 h-1.5" />
+                              <span>RESOLVIDOS</span>
+                            </div>
+                            <span className="bg-emerald-500/20 px-1 py-0.2 rounded-full text-[5px]">2</span>
+                          </div>
+                          {/* Cards List */}
+                          <div className="p-1 space-y-1 overflow-y-auto flex-1 scrollbar-none">
+                            {/* Card 1 */}
+                            <div className="bg-[#13192B] border border-slate-800 rounded-md p-1.5 space-y-1 hover:border-emerald-500/35 transition-colors">
+                              <div className="flex items-center justify-between">
+                                <span className="text-[4.5px] font-bold text-indigo-400 uppercase tracking-wider flex items-center">
+                                  <MapPin className="w-1 h-1 mr-0.5 shrink-0" />
+                                  SALÃO FEST.
+                                </span>
+                                <span className="text-[3.5px] font-bold text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-1 py-0.2 rounded uppercase scale-90 origin-right">Baixa</span>
+                              </div>
+                              <h5 className="text-[5.5px] font-black text-white text-left leading-tight">Ar-condicionado sem gelar</h5>
+                              <p className="text-[4.5px] text-slate-450 text-left line-clamp-1 leading-normal">O ar-condicionado do salão...</p>
+                              <div className="flex items-center justify-between text-[4px] text-slate-500 pt-1 border-t border-slate-800/50">
+                                <span className="flex items-center"><Building2 className="w-1 h-1 mr-0.5 shrink-0" />Bloco A</span>
+                                <span className="flex items-center space-x-0.5">
+                                  <span>20/06</span>
+                                  <div className="flex space-x-0.5 scale-90">
+                                    <span className="w-2.5 h-2.5 rounded-full bg-slate-800 flex items-center justify-center text-white text-[3px] select-none cursor-pointer">&lt;</span>
+                                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700 flex items-center justify-center text-white text-[3px] select-none cursor-pointer">&gt;</span>
+                                  </div>
+                                </span>
+                              </div>
+                            </div>
+                            {/* Card 2 */}
+                            <div className="bg-[#13192B] border border-slate-800 rounded-md p-1.5 space-y-1 hover:border-emerald-500/35 transition-colors">
+                              <div className="flex items-center justify-between">
+                                <span className="text-[4.5px] font-bold text-indigo-400 uppercase tracking-wider flex items-center">
+                                  <MapPin className="w-1 h-1 mr-0.5 shrink-0" />
+                                  PORTARIA
+                                </span>
+                                <span className="text-[3.5px] font-bold text-amber-500 bg-amber-500/10 border border-amber-500/20 px-1 py-0.2 rounded uppercase scale-90 origin-right">Média</span>
+                              </div>
+                              <h5 className="text-[5.5px] font-black text-white text-left leading-tight">Interfone com falha</h5>
+                              <p className="text-[4.5px] text-slate-450 text-left line-clamp-1 leading-normal">Interfone da portaria sem som...</p>
+                              <div className="flex items-center justify-between text-[4px] text-slate-500 pt-1 border-t border-slate-800/50">
+                                <span className="flex items-center"><Building2 className="w-1 h-1 mr-0.5 shrink-0" />Bloco —</span>
+                                <span className="flex items-center space-x-0.5">
+                                  <span>18/06</span>
+                                  <div className="flex space-x-0.5 scale-90">
+                                    <span className="w-2.5 h-2.5 rounded-full bg-slate-800 flex items-center justify-center text-white text-[3px] select-none cursor-pointer">&lt;</span>
+                                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700 flex items-center justify-center text-white text-[3px] select-none cursor-pointer">&gt;</span>
+                                  </div>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          {/* Column Footer */}
+                          <div className="p-1 border-t border-slate-850 bg-[#0A0D17]">
+                            <button className="w-full py-0.5 rounded border border-dashed border-slate-800 hover:border-slate-750 text-slate-500 hover:text-slate-450 text-[4.5px] font-medium transition-colors cursor-pointer">
+                              + Novo chamado
+                            </button>
                           </div>
                         </div>
                       </div>
