@@ -323,6 +323,12 @@ export default function App() {
 
           <div className="flex items-center space-x-5">
             <a 
+              href="/blog"
+              className="text-xs font-medium text-slate-655 hover:text-[#001CFF] transition-colors cursor-pointer hidden sm:inline"
+            >
+              Blog
+            </a>
+            <a 
               href="https://zelify.vercel.app/login"
               target="_blank"
               rel="noreferrer"
@@ -1707,6 +1713,9 @@ export default function App() {
               </li>
               <li>
                 <a href="#planos" className="hover:text-white transition-colors">Planos e Preços</a>
+              </li>
+              <li>
+                <a href="/blog" className="hover:text-white transition-colors">Blog</a>
               </li>
             </ul>
           </div>
