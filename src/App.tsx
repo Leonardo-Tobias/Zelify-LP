@@ -6,16 +6,10 @@ import {
   CheckCircle2, 
   ArrowRight, 
   ArrowLeft,
-
   ArrowUpRight, 
   ChevronDown, 
-  User, 
-  Mail, 
   Sparkles,
   Check,
-  Send,
-  MessageSquare,
-  X,
   Camera,
   Clock,
   MapPin,
@@ -24,6 +18,9 @@ import {
   Eye,
   Paperclip
 } from 'lucide-react';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import B2bModal from './components/B2bModal';
 
 
 function ScrollReveal({ 
@@ -86,16 +83,6 @@ function ScrollReveal({
 }
 
 export default function App() {
-
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const [faqOpen, setFaqOpen] = useState<Record<number, boolean>>({});
   const [condoCount, setCondoCount] = useState(12);
@@ -244,32 +231,12 @@ export default function App() {
   }
   const totalPrice = isUnlimited ? 0 : condoCount * pricePerCondo;
   const [b2bModalOpen, setB2bModalOpen] = useState(false);
-  const [b2bSubmitted, setB2bSubmitted] = useState(false);
-  const [b2bName, setB2bName] = useState('');
-  const [b2bEmail, setB2bEmail] = useState('');
-  const [b2bCompany, setB2bCompany] = useState('');
-  const [b2bPhone, setB2bPhone] = useState('');
 
   const toggleFaq = (index: number) => {
     setFaqOpen(prev => ({
       ...prev,
       [index]: !prev[index]
     }));
-  };
-
-  const handleB2bSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (b2bName && b2bEmail && b2bCompany) {
-      setB2bSubmitted(true);
-      setTimeout(() => {
-        setB2bSubmitted(false);
-        setB2bModalOpen(false);
-        setB2bName('');
-        setB2bEmail('');
-        setB2bCompany('');
-        setB2bPhone('');
-      }, 3000);
-    }
   };
 
   const faqItems = [
@@ -298,57 +265,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-[#001CFF]/10 selection:text-[#001CFF] scroll-smooth antialiased">
       
-      {/* 2. NAVBAR */}
-      <nav 
-        style={{ transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)' }}
-        className={`sticky top-0 z-40 w-full h-20 flex items-center transition-all ${
-          isScrolled 
-            ? 'bg-transparent border-transparent backdrop-blur-none shadow-none' 
-            : 'bg-slate-50/80 backdrop-blur-md border-b border-slate-200/60'
-        }`}
-      >
-        <div 
-          style={{ transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)' }}
-          className={`mx-auto flex items-center justify-between w-full px-6 transition-all ${
-            isScrolled 
-              ? 'bg-white/85 backdrop-blur-lg border border-slate-200/60 shadow-[0_12px_30px_rgba(0,28,255,0.04)] h-14 rounded-full max-w-5xl' 
-              : 'bg-transparent border-transparent h-full rounded-none max-w-7xl'
-          }`}
-        >
-          <div className="flex items-center space-x-2">
-            <span className="text-2xl font-black tracking-tight text-slate-900">
-              Zelcon<span className="text-[#001CFF]">.</span>
-            </span>
-          </div>
-
-          <div className="flex items-center space-x-5">
-            <a 
-              href="/blog"
-              className="text-xs font-medium text-slate-655 hover:text-[#001CFF] transition-colors cursor-pointer hidden sm:inline"
-            >
-              Blog
-            </a>
-            <a 
-              href="https://zelify.vercel.app/login"
-              target="_blank"
-              rel="noreferrer"
-              className="text-xs font-medium text-slate-655 hover:text-[#001CFF] transition-colors cursor-pointer"
-            >
-              Entrar
-            </a>
-            <a 
-              href="https://zelify.vercel.app/cadastro"
-              target="_blank"
-              rel="noreferrer"
-              className={`bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-semibold uppercase tracking-wider shadow-lg shadow-[#001CFF]/15 transition-all duration-300 active:scale-[0.98] cursor-pointer ${
-                isScrolled ? 'px-3.5 py-1.5 rounded-lg' : 'px-4.5 py-2.5 rounded-xl'
-              }`}
-            >
-              Testar Grátis
-            </a>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* 3. A. HERO SECTION */}
       <section className="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-24 border-b border-slate-200/60">
@@ -1686,194 +1603,9 @@ export default function App() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-slate-900 text-white py-16 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start">
-          
-          {/* Col 1 */}
-          <div className="md:col-span-6 space-y-4">
-            <span className="text-2xl font-black tracking-tight">Zelcon<span className="text-[#001CFF]">.</span></span>
-            <p className="text-slate-450 text-xs max-w-sm font-semibold leading-relaxed">
-              Simplificando a comunicação entre moradores e a zeladoria condominial com o uso inteligente de QR Codes. Sem aplicativo, sem burocracia.
-            </p>
-            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider pt-4">
-              © {new Date().getFullYear()} Zelcon. Todos os direitos reservados.
-            </p>
-          </div>
+      <Footer onB2bClick={() => setB2bModalOpen(true)} />
 
-          {/* Col 2 */}
-          <div className="md:col-span-3 space-y-4">
-            <h4 className="text-xs font-black uppercase tracking-wider text-slate-400">Links do Produto</h4>
-            <ul className="space-y-2.5 text-xs text-slate-450 font-semibold">
-              <li>
-                <a href="https://zelify.vercel.app/login" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Entrar no Painel</a>
-              </li>
-              <li>
-                <a href="https://zelify.vercel.app/cadastro" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Criar Novo Condomínio</a>
-              </li>
-              <li>
-                <a href="#planos" className="hover:text-white transition-colors">Planos e Preços</a>
-              </li>
-              <li>
-                <a href="/blog" className="hover:text-white transition-colors">Blog</a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 3 */}
-          <div className="md:col-span-3 space-y-4">
-            <h4 className="text-xs font-black uppercase tracking-wider text-slate-400">Corporativo</h4>
-            <ul className="space-y-2.5 text-xs text-slate-450 font-semibold">
-              <li>
-                <button onClick={() => setB2bModalOpen(true)} className="hover:text-white transition-colors text-left">Falar com Vendas B2B</button>
-              </li>
-              <li>
-                <span className="text-slate-500 font-bold font-mono">contato@zelcon.com.br</span>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-      </footer>
-
-      {/* 4. MODAL DE SOLICITAÇÃO B2B */}
-      {b2bModalOpen && (
-        <div className="fixed inset-0 bg-slate-950/85 z-50 flex items-center justify-center p-4 backdrop-blur-md animate-fade-in">
-          <div className="bg-white border border-slate-100 rounded-[32px] w-full max-w-md overflow-hidden shadow-2xl relative animate-scale-in">
-            {/* Close Button */}
-            <button 
-              onClick={() => setB2bModalOpen(false)}
-              className="absolute top-5 right-5 text-slate-400 hover:text-slate-600 bg-slate-50 hover:bg-slate-100 border border-slate-200/40 rounded-full w-8 h-8 flex items-center justify-center transition-all duration-200 active:scale-95 cursor-pointer"
-              aria-label="Close"
-            >
-              <X className="w-4 h-4" />
-            </button>
-
-            {/* Modal Body */}
-            <div className="p-8">
-              {/* Header section with badge */}
-              <div className="mb-6">
-                <div className="w-12 h-12 bg-blue-50 border border-blue-100/50 rounded-2xl flex items-center justify-center text-[#001CFF] mb-4.5 shadow-sm shadow-blue-100/30">
-                  <Building2 className="w-6 h-6" />
-                </div>
-                <div className="space-y-1.5">
-                  <span className="text-[9px] font-black text-[#001CFF] uppercase tracking-widest bg-blue-50/70 border border-blue-100/30 px-3 py-1 rounded-full w-fit">
-                    Atendimento Comercial
-                  </span>
-                  <h3 className="text-xl font-black text-slate-950 tracking-tight pt-1">
-                    Falar com Consultor B2B
-                  </h3>
-                  <p className="text-xs text-slate-500 font-semibold leading-relaxed">
-                    Preencha o formulário abaixo e retornaremos com nossa proposta comercial personalizada.
-                  </p>
-                </div>
-              </div>
-
-              {b2bSubmitted ? (
-                <div className="py-12 text-center space-y-4 animate-in fade-in duration-300">
-                  <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 rounded-2xl flex items-center justify-center mx-auto shadow-sm shadow-emerald-100/50">
-                    <Check className="w-7 h-7 animate-pulse" />
-                  </div>
-                  <h4 className="text-base font-extrabold text-slate-900 uppercase tracking-wide">Solicitação Enviada!</h4>
-                  <p className="text-xs text-slate-550 font-semibold leading-relaxed max-w-xs mx-auto">
-                    Entraremos em contato no e-mail informado nas próximas horas para apresentar a proposta ideal para sua carteira.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleB2bSubmit} className="space-y-4">
-                  {/* Nome */}
-                  <div className="space-y-1.5">
-                    <label className="block text-[9px] font-bold uppercase tracking-wider text-slate-400">
-                      Nome Completo
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                        <User className="w-4 h-4 text-slate-400" />
-                      </div>
-                      <input 
-                        type="text" 
-                        required
-                        placeholder="Ex: Roberto Silva"
-                        value={b2bName}
-                        onChange={(e) => setB2bName(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 bg-slate-50/50 hover:bg-slate-55 focus:bg-white border border-slate-200/80 rounded-2xl text-xs text-slate-850 focus:outline-none focus:ring-4 focus:ring-[#001CFF]/10 focus:border-[#001CFF] font-semibold transition-all duration-200"
-                      />
-                    </div>
-                  </div>
-
-                  {/* E-mail */}
-                  <div className="space-y-1.5">
-                    <label className="block text-[9px] font-bold uppercase tracking-wider text-slate-400">
-                      E-mail Corporativo
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                        <Mail className="w-4 h-4 text-slate-400" />
-                      </div>
-                      <input 
-                        type="email" 
-                        required
-                        placeholder="Ex: roberto@empresa.com.br"
-                        value={b2bEmail}
-                        onChange={(e) => setB2bEmail(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 bg-slate-50/50 hover:bg-slate-55 focus:bg-white border border-slate-200/80 rounded-2xl text-xs text-slate-850 focus:outline-none focus:ring-4 focus:ring-[#001CFF]/10 focus:border-[#001CFF] font-semibold transition-all duration-200"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Nome da Administradora */}
-                  <div className="space-y-1.5">
-                    <label className="block text-[9px] font-bold uppercase tracking-wider text-slate-400">
-                      Nome da Administradora
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                        <Building2 className="w-4 h-4 text-slate-400" />
-                      </div>
-                      <input 
-                        type="text" 
-                        required
-                        placeholder="Ex: Administradora Viver Mais"
-                        value={b2bCompany}
-                        onChange={(e) => setB2bCompany(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 bg-slate-50/50 hover:bg-slate-55 focus:bg-white border border-slate-200/80 rounded-2xl text-xs text-slate-850 focus:outline-none focus:ring-4 focus:ring-[#001CFF]/10 focus:border-[#001CFF] font-semibold transition-all duration-200"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Telefone */}
-                  <div className="space-y-1.5">
-                    <label className="block text-[9px] font-bold uppercase tracking-wider text-slate-400">
-                      WhatsApp / Celular
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                        <MessageSquare className="w-4 h-4 text-slate-400" />
-                      </div>
-                      <input 
-                        type="text" 
-                        placeholder="Ex: (11) 99999-9999"
-                        value={b2bPhone}
-                        onChange={(e) => setB2bPhone(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 bg-slate-50/50 hover:bg-slate-55 focus:bg-white border border-slate-200/80 rounded-2xl text-xs text-slate-850 focus:outline-none focus:ring-4 focus:ring-[#001CFF]/10 focus:border-[#001CFF] font-semibold transition-all duration-200"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Submit button */}
-                  <button 
-                    type="submit"
-                    className="w-full bg-[#001CFF] hover:bg-[#0014CC] text-white py-3.5 rounded-2xl text-xs font-semibold uppercase tracking-wider shadow-lg shadow-blue-500/20 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] flex items-center justify-center space-x-2 cursor-pointer mt-6"
-                  >
-                    <Send className="w-3.5 h-3.5" />
-                    <span>Solicitar Contato</span>
-                  </button>
-                </form>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+      {b2bModalOpen && <B2bModal onClose={() => setB2bModalOpen(false)} />}
 
     </div>
   );

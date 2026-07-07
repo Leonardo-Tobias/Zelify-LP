@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { articles } from '../data/articles'
 import { Calendar, Clock, ArrowLeft, ArrowRight } from 'lucide-react'
+import BlogLayout from '../components/BlogLayout'
 
 export default function BlogArticle() {
   const { slug } = useParams()
@@ -8,16 +9,18 @@ export default function BlogArticle() {
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="text-center space-y-4 max-w-md px-6">
-          <h1 className="text-2xl font-black text-slate-900">Artigo não encontrado</h1>
-          <p className="text-sm text-slate-500 font-semibold">O artigo que você procura não existe ou foi removido.</p>
-          <Link to="/blog" className="inline-flex items-center space-x-2 text-[#001CFF] text-sm font-bold hover:underline">
-            <ArrowLeft className="w-4 h-4" />
-            <span>Voltar para o blog</span>
-          </Link>
+      <BlogLayout>
+        <div className="flex items-center justify-center py-32">
+          <div className="text-center space-y-4 max-w-md px-6">
+            <h1 className="text-2xl font-black text-slate-900">Artigo não encontrado</h1>
+            <p className="text-sm text-slate-500 font-semibold">O artigo que você procura não existe ou foi removido.</p>
+            <Link to="/blog" className="inline-flex items-center space-x-2 text-[#001CFF] text-sm font-bold hover:underline">
+              <ArrowLeft className="w-4 h-4" />
+              <span>Voltar para o blog</span>
+            </Link>
+          </div>
         </div>
-      </div>
+      </BlogLayout>
     )
   }
 
@@ -26,7 +29,7 @@ export default function BlogArticle() {
   const nextArticle = currentIndex < articles.length - 1 ? articles[currentIndex + 1] : null
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <BlogLayout>
       <div className="max-w-3xl mx-auto px-6 py-24 md:py-32">
         <Link
           to="/blog"
@@ -100,6 +103,6 @@ export default function BlogArticle() {
           </div>
         )}
       </div>
-    </div>
+    </BlogLayout>
   )
 }

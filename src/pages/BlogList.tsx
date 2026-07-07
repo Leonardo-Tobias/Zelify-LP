@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import { articles } from '../data/articles'
 import { Calendar, Clock, ArrowRight } from 'lucide-react'
+import BlogLayout from '../components/BlogLayout'
 
 export default function BlogList() {
   return (
-    <div className="min-h-screen bg-slate-50">
+    <BlogLayout>
       <div className="max-w-4xl mx-auto px-6 py-24 md:py-32">
         <div className="space-y-4 mb-16">
           <span className="text-[10px] font-black text-[#001CFF] uppercase tracking-widest">Blog</span>
@@ -51,6 +52,6 @@ export default function BlogList() {
           ))}
         </div>
       </div>
-    </div>
+    </BlogLayout>
   )
 }
