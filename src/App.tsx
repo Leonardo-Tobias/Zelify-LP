@@ -505,7 +505,7 @@ export default function App() {
       </section>
       
             {/* 3. D. LINHA DO TEMPO: O ECOSSISTEMA NO MUNDO FÍSICO */}
-      <section className="relative bg-white border-b border-slate-200/60 py-24 md:py-32">
+      <section className="relative bg-white border-b border-slate-200/60 py-24 md:py-36">
         <div className="max-w-7xl mx-auto w-full px-6 flex flex-col space-y-12">
           
           {/* Header */}
