@@ -21,6 +21,7 @@ import {
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import B2bModal from './components/B2bModal';
+import { PRODUCT_URL } from './config';
 
 
 function ScrollReveal({ 
@@ -119,46 +120,46 @@ export default function App() {
 
   const testimonials = [
     {
-      text: "O Zelcon reduziu em mais de 70% as ligações desnecessárias na portaria e o volume de mensagens no WhatsApp. Os moradores adoram a simplicidade do QR Code — não precisa instalar nada, é só apontar a câmera.",
-      author: "Roberto Silva",
-      role: "Síndico Profissional",
-      details: "Gestão de 8 condomínios em SP",
-      avatar: "https://randomuser.me/api/portraits/men/32.jpg"
+      text: "Centralize relatos que hoje chegam por telefone, papel e WhatsApp em uma fila única, com responsável e status visíveis.",
+      author: "Gestão centralizada",
+      role: "Cenário de uso",
+      details: "Síndicos profissionais",
+      avatar: "/favicon.svg"
     },
     {
-      text: "Consigo relatar uma lâmpada queimada na garagem em menos de 10 segundos quando estou saindo para trabalhar. É incrivelmente prático! Antes eu precisava ligar na portaria ou mandar WhatsApp.",
-      author: "Carla Souza",
-      role: "Moradora",
-      details: "Residencial Jardim das Flores",
-      avatar: "https://randomuser.me/api/portraits/women/44.jpg"
+      text: "O morador escaneia o QR Code, informa sua unidade e registra o problema com foto sem instalar aplicativo ou criar uma conta.",
+      author: "Acesso simples",
+      role: "Cenário de uso",
+      details: "Moradores",
+      avatar: "/favicon.svg"
     },
     {
-      text: "O Kanban organizou nosso dia a dia. Antes as solicitações se perdiam no papel, hoje tenho o status de cada serviço em tempo real. Reduzimos o tempo médio de resposta de 3 dias para 12 horas.",
-      author: "Julio Costa",
-      role: "Zelador",
-      details: "Edifício Itália",
-      avatar: "https://randomuser.me/api/portraits/men/75.jpg"
+      text: "O Kanban deixa pendências, serviços em execução e itens resolvidos em uma visão operacional fácil de acompanhar.",
+      author: "Rotina organizada",
+      role: "Cenário de uso",
+      details: "Equipes de zeladoria",
+      avatar: "/favicon.svg"
     },
     {
-      text: "Oferecer o Zelcon como um portal de zeladoria digital nos ajudou a agregar valor e reter 3 grandes condomínios em nossa carteira corporativa. O painel multi-condomínio foi o diferencial.",
-      author: "Mariana Dias",
-      role: "Gerente Operacional",
-      details: "Administradora parceira",
-      avatar: "https://randomuser.me/api/portraits/women/68.jpg"
+      text: "Administradoras podem alternar entre condomínios da carteira sem misturar chamados, moradores ou configurações.",
+      author: "Carteira unificada",
+      role: "Cenário de uso",
+      details: "Administradoras",
+      avatar: "/favicon.svg"
     },
     {
-      text: "Imprimimos a placa com QR Code e colamos nos elevadores. No primeiro mês, 40% dos moradores já tinham usado o portal. Zero resistência à adoção.",
-      author: "Fernando Oliveira",
-      role: "Síndico",
-      details: "Condomínio Villa Verde",
-      avatar: "https://randomuser.me/api/portraits/men/52.jpg"
+      text: "O painel gera o material com QR Code para impressão e instalação em elevadores, portaria e outras áreas comuns.",
+      author: "Implantação prática",
+      role: "Cenário de uso",
+      details: "Áreas comuns",
+      avatar: "/favicon.svg"
     },
     {
-      text: "O suporte é rápido e resolutivo. Em menos de 2 horas tínhamos o painel configurado e os primeiros chamados sendo registrados pelos moradores. Recomendo para qualquer administradora.",
-      author: "Camila Rocha",
-      role: "Analista de Operações",
-      details: "Administradora Nacional",
-      avatar: "https://randomuser.me/api/portraits/women/26.jpg"
+      text: "Comece no plano gratuito, valide o fluxo com os moradores e faça o upgrade apenas quando precisar ampliar o volume.",
+      author: "Validação gradual",
+      role: "Cenário de uso",
+      details: "Plano Starter",
+      avatar: "/favicon.svg"
     }
   ];
 
@@ -191,11 +192,11 @@ export default function App() {
   const faqItems = [
     {
       q: "O morador realmente não precisa baixar nada para usar?",
-      a: "Não. O morador apenas aponta a câmera do celular para o QR Code fixado no prédio. O Zelcon abre instantaneamente no navegador do smartphone (como uma página web leve), permitindo registrar a ocorrência com foto em menos de 20 segundos. Sem downloads, sem criação de contas, sem senhas."
+      a: "Não. O morador aponta a câmera para o QR Code e usa o código de acesso compartilhado pela administração. O portal abre no navegador, sem download e sem criação de conta individual."
     },
     {
       q: "Como o síndico ou o zelador ficam sabendo das novas ocorrências?",
-      a: "O sistema centraliza tudo no Painel do Gestor em tempo real. Além disso, o Zelcon envia alertas automáticos por e-mail e notificações configuráveis assim que um morador envia um novo relato, garantindo que nenhum vazamento ou lâmpada queimada passe despercebida."
+      a: "As novas ocorrências aparecem no Painel do Gestor, organizadas no Kanban por status. Assim, a equipe acompanha o que está pendente, em execução ou resolvido."
     },
     {
       q: "Qualquer pessoa de fora do condomínio pode escanear o QR Code e enviar falsos chamados?",
@@ -268,7 +269,7 @@ export default function App() {
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2 w-full sm:w-auto">
             <a 
-              href="https://zelify.vercel.app/cadastro"
+              href={`${PRODUCT_URL}/cadastro`}
               target="_blank"
               rel="noreferrer"
               className="bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-semibold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-[0_8px_25px_rgba(0,28,255,0.18)] hover:shadow-[0_8px_25px_rgba(0,28,255,0.3)] transition-all text-center flex items-center justify-center space-x-2 active:scale-[0.98] cursor-pointer w-full sm:w-auto whitespace-nowrap"
@@ -456,7 +457,7 @@ export default function App() {
 
                 <div className="pt-8">
                   <a 
-                    href="https://zelify.vercel.app/cadastro"
+                    href={`${PRODUCT_URL}/cadastro`}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center space-x-2 bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-semibold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg shadow-[#001CFF]/15 transition-all active:scale-[0.98]"
@@ -504,7 +505,7 @@ export default function App() {
                     <span className="text-[9px] font-extrabold text-blue-400 uppercase tracking-widest">Para Administradoras</span>
                     <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-white">Administradoras de Condomínios</h3>
                     <p className="text-slate-400 text-xs sm:text-sm font-semibold leading-relaxed">
-                      Reduza em até 40% a carga de atendimento telefônico da sua equipe. Agregue valor ao seu condomínio contratando uma plataforma moderna e garanta retenção máxima de sua carteira corporativa.
+                      Reduza a dependência de ligações e mensagens dispersas. Agregue valor à sua carteira com uma operação centralizada e rastreável.
                     </p>
                   </div>
                 </div>
@@ -967,10 +968,10 @@ export default function App() {
         <div className="max-w-4xl mx-auto px-6 space-y-12 relative z-10">
           <div className="text-center space-y-4">
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 leading-tight">
-              O que quem usa o Zelcon diz na prática
+              Onde o Zelcon ajuda na prática
             </h2>
             <p className="text-slate-550 text-xs sm:text-sm font-semibold max-w-lg mx-auto">
-              Moradores, zeladores e síndicos profissionais compartilham suas experiências reais com o ecossistema.
+              Cenários ilustrativos de como a plataforma pode organizar a rotina do condomínio.
             </p>
           </div>
 
@@ -1042,7 +1043,7 @@ export default function App() {
           {/* CTA abaixo dos depoimentos */}
           <div className="text-center">
             <a
-              href="https://zelify.vercel.app/cadastro"
+              href={`${PRODUCT_URL}/cadastro`}
               className="inline-flex items-center space-x-2 bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-black px-6 py-3 sm:px-8 sm:py-4 rounded-2xl transition-all active:scale-[0.97] shadow-[0_8px_25px_rgba(0,0,0,0.15)] hover:shadow-[0_12px_35px_rgba(0,0,0,0.2)]"
             >
               <span>Começar grátis agora</span>
@@ -1166,7 +1167,7 @@ export default function App() {
 
               <div className="pt-8">
                 <a 
-                  href="https://zelify.vercel.app/cadastro"
+                  href={`${PRODUCT_URL}/cadastro`}
                   target="_blank"
                   rel="noreferrer"
                   className="block w-full text-center border-2 border-slate-900 hover:bg-slate-900 hover:text-white text-slate-900 text-xs font-medium uppercase tracking-wider py-4 rounded-xl transition-all duration-300 active:scale-[0.98] cursor-pointer shadow-sm hover:shadow-md"
@@ -1253,7 +1254,7 @@ export default function App() {
 
               <div className="pt-8">
                 <a 
-                  href="https://zelify.vercel.app/cadastro?plan=pro"
+                  href={`${PRODUCT_URL}/cadastro?plan=pro`}
                   target="_blank"
                   rel="noreferrer"
                   className="block w-full text-center bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-semibold uppercase tracking-wider py-4 rounded-xl shadow-[0_8px_30px_rgba(0,28,255,0.22)] hover:shadow-[0_12px_35px_rgba(0,28,255,0.35)] transition-all duration-300 active:scale-[0.98] cursor-pointer"
@@ -1421,7 +1422,7 @@ export default function App() {
                   </button>
                 ) : (
                   <a
-                    href="https://zelify.vercel.app/cadastro?plan=corporate"
+                    href={`${PRODUCT_URL}/cadastro?plan=corporate`}
                     target="_blank"
                     rel="noreferrer"
                     className="block w-full text-center bg-white hover:bg-slate-100 text-slate-900 text-xs font-semibold uppercase tracking-wider py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 active:scale-[0.98] cursor-pointer"
@@ -1519,7 +1520,7 @@ export default function App() {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
             <a
-              href="https://zelify.vercel.app/cadastro"
+              href={`${PRODUCT_URL}/cadastro`}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center space-x-2 bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-semibold uppercase tracking-wider px-8 py-4 rounded-xl shadow-[0_8px_30px_rgba(0,28,255,0.35)] hover:shadow-[0_12px_40px_rgba(0,28,255,0.5)] transition-all duration-300 active:scale-[0.98] w-full sm:w-auto whitespace-nowrap"

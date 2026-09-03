@@ -1,3 +1,5 @@
+import { PRODUCT_URL } from '../config'
+
 export default function Footer({ onB2bClick }: { onB2bClick: () => void }) {
   return (
     <footer className="bg-slate-900 text-white py-16 border-t border-slate-800">
@@ -25,10 +27,10 @@ export default function Footer({ onB2bClick }: { onB2bClick: () => void }) {
               <a href="/blog" className="hover:text-white transition-colors">Blog</a>
             </li>
             <li>
-              <a href="https://zelify.vercel.app/login" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Entrar no Painel</a>
+              <a href={`${PRODUCT_URL}/login`} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Entrar no Painel</a>
             </li>
             <li>
-              <a href="https://zelify.vercel.app/cadastro" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Criar Novo Condom&iacute;nio</a>
+              <a href={`${PRODUCT_URL}/cadastro`} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Criar Novo Condom&iacute;nio</a>
             </li>
           </ul>
         </div>

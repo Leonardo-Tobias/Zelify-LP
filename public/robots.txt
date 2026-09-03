@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zelcon.com.br/sitemap.xml

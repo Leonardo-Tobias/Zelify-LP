@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { PRODUCT_URL } from '../config'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -47,7 +48,7 @@ export default function Navbar() {
             </a>
           )}
           <a
-            href="https://zelify.vercel.app/login"
+            href={`${PRODUCT_URL}/login`}
             target="_blank"
             rel="noreferrer"
             className="text-xs font-medium text-slate-655 hover:text-[#001CFF] transition-colors cursor-pointer"
@@ -55,7 +56,7 @@ export default function Navbar() {
             Entrar
           </a>
           <a
-            href="https://zelify.vercel.app/cadastro"
+            href={`${PRODUCT_URL}/cadastro`}
             target="_blank"
             rel="noreferrer"
             className={`bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-semibold uppercase tracking-wider shadow-lg shadow-[#001CFF]/15 transition-all duration-300 active:scale-[0.98] cursor-pointer ${

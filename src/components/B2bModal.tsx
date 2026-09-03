@@ -11,15 +11,12 @@ export default function B2bModal({ onClose }: { onClose: () => void }) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (name && email && company) {
+      const subject = encodeURIComponent(`Contato Corporate — ${company}`)
+      const body = encodeURIComponent(
+        `Olá, equipe Zelcon!\n\nNome: ${name}\nE-mail: ${email}\nAdministradora: ${company}\nTelefone: ${phone || 'Não informado'}\n\nGostaria de receber uma proposta do plano Corporate.`,
+      )
+      window.location.href = `mailto:vendas@zelcon.com.br?subject=${subject}&body=${body}`
       setSubmitted(true)
-      setTimeout(() => {
-        setSubmitted(false)
-        onClose()
-        setName('')
-        setEmail('')
-        setCompany('')
-        setPhone('')
-      }, 3000)
     }
   }
 
@@ -57,10 +54,11 @@ export default function B2bModal({ onClose }: { onClose: () => void }) {
               <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 rounded-2xl flex items-center justify-center mx-auto shadow-sm shadow-emerald-100/50">
                 <Check className="w-7 h-7 animate-pulse" />
               </div>
-              <h4 className="text-base font-extrabold text-slate-900 uppercase tracking-wide">Solicita&ccedil;&atilde;o Enviada!</h4>
+              <h4 className="text-base font-extrabold text-slate-900 uppercase tracking-wide">E-mail preparado</h4>
               <p className="text-xs text-slate-550 font-semibold leading-relaxed max-w-xs mx-auto">
-                Entraremos em contato no e-mail informado nas pr&oacute;ximas horas para apresentar a proposta ideal para sua carteira.
+                Seu aplicativo de e-mail foi aberto. Revise a mensagem e confirme o envio para falar com nosso time comercial.
               </p>
+              <button type="button" onClick={onClose} className="text-xs font-bold text-[#001CFF] hover:underline">Fechar</button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">

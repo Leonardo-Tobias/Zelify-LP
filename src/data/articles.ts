@@ -1,3 +1,5 @@
+import { PRODUCT_URL } from '../config'
+
 export interface Article {
   slug: string
   title: string
@@ -50,10 +52,10 @@ export const articles: Article[] = [
 
       <h2>Um número que vale ouro</h2>
 
-      <p>Condomínios que organizam chamados digitalmente reduzem o tempo médio de resolução de 3 dias para 12 horas. Não é mágica — é só não deixar nada cair no esquecimento.</p>
+      <p>Ao organizar chamados digitalmente, o condomínio ganha visibilidade sobre prioridades, responsáveis e prazos. O resultado pode ser medido no próprio histórico da operação.</p>
     `,
     cta: 'Cansou de perder chamados no WhatsApp? O painel do Zelcon organiza tudo em 5 minutos. Teste grátis.',
-    ctaLink: 'https://zelify.vercel.app/cadastro'
+    ctaLink: `${PRODUCT_URL}/cadastro`
   },
   {
     slug: 'achados-e-perdidos-guia-pratico-para-o-sindico-organizar',
@@ -84,7 +86,7 @@ export const articles: Article[] = [
       <p>Digitalizar esse processo não é frescura — é a única forma de manter organizado sem depender da memória do porteiro.</p>
     `,
     cta: 'Quer organizar o achados e perdidos do seu condomínio sem papel? O Zelcon tem um módulo específico pra isso. Comece grátis.',
-    ctaLink: 'https://zelify.vercel.app/cadastro'
+    ctaLink: `${PRODUCT_URL}/cadastro`
   },
   {
     slug: 'lgpd-para-condominios-o-que-o-sindico-precisa-saber',
@@ -128,7 +130,7 @@ export const articles: Article[] = [
       </ul>
     `,
     cta: 'O Zelcon foi construído com LGPD em mente: morador não cria conta, não expõe dados, e o gestor controla quem vê o quê. Teste grátis.',
-    ctaLink: 'https://zelify.vercel.app/cadastro'
+    ctaLink: `${PRODUCT_URL}/cadastro`
   },
   {
     slug: 'como-administradoras-de-condominio-podem-reduzir-custos',
@@ -162,9 +164,9 @@ export const articles: Article[] = [
 
       <h2>O ganho real</h2>
 
-      <p>Uma administradora com 30 condomínios que adota um sistema digital consegue reduzir em média 40% do tempo gasto com atendimento telefônico. Não é substituir gente — é fazer a equipe gastar tempo com o que realmente importa.</p>
+      <p>Uma administradora com muitos condomínios pode reduzir o tempo gasto procurando solicitações em canais diferentes. Não é substituir gente — é fazer a equipe gastar tempo com o que realmente importa.</p>
     `,
     cta: 'Quer reduzir custos operacionais na sua administradora? O Zelcon Corporate unifica todos os condomínios num painel só. Fale com um consultor.',
-    ctaLink: 'https://zelify.vercel.app/cadastro?plan=corporate'
+    ctaLink: `${PRODUCT_URL}/cadastro?plan=corporate`
   }
 ]
