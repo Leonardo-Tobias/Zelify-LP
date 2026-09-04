@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
 import { 
   Building2, 
@@ -91,6 +91,7 @@ export default function App() {
   const [isAnnual, setIsAnnual] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [revealedTimelineSteps, setRevealedTimelineSteps] = useState(0);
+  const [timelineSequencePassed, setTimelineSequencePassed] = useState(false);
   const [timelineSequenceComplete, setTimelineSequenceComplete] = useState(false);
 
   const { scrollY } = useScroll();
@@ -102,6 +103,9 @@ export default function App() {
 
   // Timeline / Ecossistema: animações progressivas conforme o scroll
   const timelineRef = useRef<HTMLDivElement>(null);
+  const timelineExpandedHeightRef = useRef(0);
+  const timelineCollapseStartedRef = useRef(false);
+  const lastScrollYRef = useRef(0);
   const { scrollYProgress: timelineProgress } = useScroll({
     target: timelineRef,
     offset: ["start start", "end end"]
@@ -110,8 +114,32 @@ export default function App() {
   useMotionValueEvent(timelineProgress, 'change', (latest) => {
     const reachedStep = latest >= 0.68 ? 3 : latest >= 0.38 ? 2 : latest >= 0.08 ? 1 : 0;
     setRevealedTimelineSteps((current) => Math.max(current, reachedStep));
-    if (latest >= 0.98) setTimelineSequenceComplete(true);
+    if (latest >= 0.98) setTimelineSequencePassed(true);
   });
+
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const isScrollingUp = latest < lastScrollYRef.current;
+    lastScrollYRef.current = latest;
+
+    if (
+      isScrollingUp &&
+      timelineSequencePassed &&
+      !timelineSequenceComplete &&
+      !timelineCollapseStartedRef.current &&
+      timelineRef.current
+    ) {
+      timelineCollapseStartedRef.current = true;
+      timelineExpandedHeightRef.current = timelineRef.current.offsetHeight;
+      setTimelineSequenceComplete(true);
+    }
+  });
+
+  useLayoutEffect(() => {
+    if (!timelineSequenceComplete || !timelineRef.current) return;
+
+    const removedHeight = timelineExpandedHeightRef.current - timelineRef.current.offsetHeight;
+    if (removedHeight > 0) window.scrollBy(0, -removedHeight);
+  }, [timelineSequenceComplete]);
 
   const testimonials = [
     {
