@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import { articles } from '../data/articles'
 import { Calendar, Clock, ArrowLeft, ArrowRight } from 'lucide-react'
 import BlogLayout from '../components/BlogLayout'
+import { CtaLink } from '../components/Cta'
 
 export default function BlogArticle() {
   const { slug } = useParams()
@@ -63,15 +64,14 @@ export default function BlogArticle() {
           <p className="text-sm text-slate-700 font-semibold leading-relaxed mb-4">
             {article.cta}
           </p>
-          <a
+          <CtaLink
             href={article.ctaLink}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center space-x-2 bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-semibold uppercase tracking-wider px-5 py-3 rounded-xl transition-all active:scale-[0.98]"
           >
             <span>Testar Grátis</span>
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </CtaLink>
         </div>
 
         {(prevArticle || nextArticle) && (

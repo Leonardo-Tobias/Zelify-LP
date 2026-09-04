@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { X, User, Mail, Building2, MessageSquare, Check, Send } from 'lucide-react'
+import { CtaButton } from './Cta'
 
 export default function B2bModal({ onClose }: { onClose: () => void }) {
   const [submitted, setSubmitted] = useState(false)
@@ -106,11 +107,10 @@ export default function B2bModal({ onClose }: { onClose: () => void }) {
                 </div>
               </div>
 
-              <button type="submit"
-                className="w-full bg-[#001CFF] hover:bg-[#0014CC] text-white py-3.5 rounded-2xl text-xs font-semibold uppercase tracking-wider shadow-lg shadow-blue-500/20 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] flex items-center justify-center space-x-2 cursor-pointer mt-6">
+              <CtaButton type="submit" fullWidth className="mt-6">
                 <Send className="w-3.5 h-3.5" />
                 <span>Solicitar Contato</span>
-              </button>
+              </CtaButton>
             </form>
           )}
         </div>

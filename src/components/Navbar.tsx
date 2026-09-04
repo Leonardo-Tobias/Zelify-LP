@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { PRODUCT_URL } from '../config'
+import { CtaLink } from './Cta'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -55,16 +56,15 @@ export default function Navbar() {
           >
             Entrar
           </a>
-          <a
+          <CtaLink
             href={`${PRODUCT_URL}/cadastro`}
             target="_blank"
             rel="noreferrer"
-            className={`bg-[#001CFF] hover:bg-[#0014CC] text-white text-[9px] sm:text-xs font-semibold uppercase tracking-wider shadow-lg shadow-[#001CFF]/15 transition-all duration-300 active:scale-[0.98] cursor-pointer whitespace-nowrap ${
-              isScrolled ? 'px-3 py-1.5 rounded-lg sm:px-3.5' : 'px-3 py-2 rounded-lg sm:px-4.5 sm:py-2.5 sm:rounded-xl'
-            }`}
+            size="compact"
+            className={isScrolled ? 'shadow-md' : ''}
           >
             Testar Grátis
-          </a>
+          </CtaLink>
         </div>
       </div>
     </nav>

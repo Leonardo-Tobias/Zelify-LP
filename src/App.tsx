@@ -21,6 +21,7 @@ import {
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import B2bModal from './components/B2bModal';
+import { CtaButton, CtaLink } from './components/Cta';
 import { PRODUCT_URL } from './config';
 
 
@@ -262,21 +263,22 @@ export default function App() {
           </p>
 
           <div className="flex flex-row flex-wrap justify-center items-center gap-2 sm:gap-4 pt-1 sm:pt-2">
-            <a 
+            <CtaLink
               href={`${PRODUCT_URL}/cadastro`}
               target="_blank"
               rel="noreferrer"
-              className="bg-[#001CFF] hover:bg-[#0014CC] text-white text-[10px] sm:text-xs 2xl:text-sm font-semibold uppercase tracking-wider px-4 py-2.5 sm:px-6 sm:py-3.5 2xl:px-8 2xl:py-4 rounded-lg sm:rounded-xl shadow-[0_8px_25px_rgba(0,28,255,0.18)] hover:shadow-[0_8px_25px_rgba(0,28,255,0.3)] transition-all text-center flex items-center justify-center space-x-1.5 sm:space-x-2 active:scale-[0.98] cursor-pointer whitespace-nowrap"
+              size="default"
             >
               <span>Testar Grátis</span>
               <ArrowRight className="w-4 h-4" />
-            </a>
-            <button 
+            </CtaLink>
+            <CtaButton
               onClick={() => setB2bModalOpen(true)}
-              className="border border-slate-300 hover:border-slate-800 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-[10px] sm:text-xs 2xl:text-sm font-medium uppercase tracking-wider px-4 py-2.5 sm:px-6 sm:py-3.5 2xl:px-8 2xl:py-4 rounded-lg sm:rounded-xl transition-all text-center flex items-center justify-center active:scale-[0.98] cursor-pointer whitespace-nowrap"
+              variant="secondary"
+              size="default"
             >
               Demonstração
-            </button>
+            </CtaButton>
           </div>
 
           {/* Estatísticas & Benefícios Lado a Lado (Centralizados & Padronizados) */}
@@ -450,15 +452,14 @@ export default function App() {
                 </div>
 
                 <div className="pt-8">
-                  <a 
+                  <CtaLink
                     href={`${PRODUCT_URL}/cadastro`}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center space-x-2 bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-semibold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg shadow-[#001CFF]/15 transition-all active:scale-[0.98]"
                   >
                     <span>Testar no meu condomínio</span>
                     <ArrowUpRight className="w-4 h-4" />
-                  </a>
+                  </CtaLink>
                 </div>
               </div>
             </ScrollReveal>
@@ -505,13 +506,13 @@ export default function App() {
                 </div>
 
                 <div className="pt-8">
-                  <button 
+                  <CtaButton
                     onClick={() => setB2bModalOpen(true)}
-                    className="inline-flex items-center space-x-2 bg-white hover:bg-slate-100 text-slate-900 text-xs font-medium uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg transition-all active:scale-[0.98]"
+                    variant="light"
                   >
                     <span>Falar com Consultor B2B</span>
                     <ArrowRight className="w-4 h-4 text-slate-900" />
-                  </button>
+                  </CtaButton>
                 </div>
               </div>
             </ScrollReveal>
@@ -1046,13 +1047,14 @@ export default function App() {
 
           {/* CTA abaixo dos depoimentos */}
           <div className="text-center">
-            <a
+            <CtaLink
               href={`${PRODUCT_URL}/cadastro`}
-              className="inline-flex items-center space-x-2 bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-black px-6 py-3 sm:px-8 sm:py-4 rounded-2xl transition-all active:scale-[0.97] shadow-[0_8px_25px_rgba(0,0,0,0.15)] hover:shadow-[0_12px_35px_rgba(0,0,0,0.2)]"
+              variant="dark"
+              size="large"
             >
               <span>Começar grátis agora</span>
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </CtaLink>
             <p className="text-[10px] text-slate-400 font-semibold mt-3">
               Sem cartão de crédito. Sem compromisso.
             </p>
@@ -1170,14 +1172,15 @@ export default function App() {
               </div>
 
               <div className="pt-8">
-                <a 
+                <CtaLink
                   href={`${PRODUCT_URL}/cadastro`}
                   target="_blank"
                   rel="noreferrer"
-                  className="block w-full text-center border-2 border-slate-900 hover:bg-slate-900 hover:text-white text-slate-900 text-xs font-medium uppercase tracking-wider py-4 rounded-xl transition-all duration-300 active:scale-[0.98] cursor-pointer shadow-sm hover:shadow-md"
+                  variant="outline"
+                  fullWidth
                 >
                   Começar Teste Gratuito
-                </a>
+                </CtaLink>
               </div>
             </div>
 
@@ -1257,14 +1260,14 @@ export default function App() {
               </div>
 
               <div className="pt-8">
-                <a 
+                <CtaLink
                   href={`${PRODUCT_URL}/cadastro?plan=pro`}
                   target="_blank"
                   rel="noreferrer"
-                  className="block w-full text-center bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-semibold uppercase tracking-wider py-4 rounded-xl shadow-[0_8px_30px_rgba(0,28,255,0.22)] hover:shadow-[0_12px_35px_rgba(0,28,255,0.35)] transition-all duration-300 active:scale-[0.98] cursor-pointer"
+                  fullWidth
                 >
                   Assinar Plano Pro
-                </a>
+                </CtaLink>
               </div>
             </div>
 
@@ -1418,21 +1421,23 @@ export default function App() {
 
               <div className="pt-8">
                 {isUnlimited ? (
-                  <button
+                  <CtaButton
                     onClick={() => setB2bModalOpen(true)}
-                    className="block w-full text-center bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white text-xs font-semibold uppercase tracking-wider py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 active:scale-[0.98] cursor-pointer"
+                    variant="gradient"
+                    fullWidth
                   >
                     Falar com Consultor
-                  </button>
+                  </CtaButton>
                 ) : (
-                  <a
+                  <CtaLink
                     href={`${PRODUCT_URL}/cadastro?plan=corporate`}
                     target="_blank"
                     rel="noreferrer"
-                    className="block w-full text-center bg-white hover:bg-slate-100 text-slate-900 text-xs font-semibold uppercase tracking-wider py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 active:scale-[0.98] cursor-pointer"
+                    variant="light"
+                    fullWidth
                   >
                     Assinar Plano Corporate
-                  </a>
+                  </CtaLink>
                 )}
               </div>
             </div>
@@ -1523,22 +1528,23 @@ export default function App() {
 
           {/* CTAs */}
           <div className="flex flex-row flex-wrap justify-center items-center gap-2 sm:gap-4 pt-2">
-            <a
+            <CtaLink
               href={`${PRODUCT_URL}/cadastro`}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center space-x-1.5 sm:space-x-2 bg-[#001CFF] hover:bg-[#0014CC] text-white text-[10px] sm:text-xs font-semibold uppercase tracking-wider px-4 py-2.5 sm:px-8 sm:py-4 rounded-lg sm:rounded-xl shadow-[0_8px_30px_rgba(0,28,255,0.35)] hover:shadow-[0_12px_40px_rgba(0,28,255,0.5)] transition-all duration-300 active:scale-[0.98] whitespace-nowrap"
+              size="large"
             >
               <span>Testar Grátis</span>
               <ArrowRight className="w-4 h-4" />
-            </a>
-            <button
+            </CtaLink>
+            <CtaButton
               onClick={() => setB2bModalOpen(true)}
-              className="inline-flex items-center justify-center space-x-1.5 sm:space-x-2 border border-white/15 hover:border-white/30 bg-white/5 hover:bg-white/10 text-white text-[10px] sm:text-xs font-medium uppercase tracking-wider px-4 py-2.5 sm:px-8 sm:py-4 rounded-lg sm:rounded-xl transition-all duration-300 active:scale-[0.98] whitespace-nowrap backdrop-blur-sm"
+              variant="ghost"
+              size="large"
             >
               <span>Ver Demonstração</span>
               <ArrowUpRight className="w-4 h-4" />
-            </button>
+            </CtaButton>
           </div>
 
           {/* Social proof mínimo */}
