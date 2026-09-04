@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
 import { 
   Building2, 
   QrCode, 
@@ -89,6 +89,7 @@ export default function App() {
   const [condoCount, setCondoCount] = useState(12);
   const [isAnnual, setIsAnnual] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [revealedTimelineSteps, setRevealedTimelineSteps] = useState(0);
 
   const { scrollY } = useScroll();
   
@@ -104,19 +105,10 @@ export default function App() {
     offset: ["start start", "end end"]
   });
 
-  const circle1Progress = useTransform(timelineProgress, [0, 0.15, 1], [0, 1, 1]);
-  const circle2Progress = useTransform(timelineProgress, [0.15, 0.35, 1], [0, 1, 1]);
-  const circle3Progress = useTransform(timelineProgress, [0.35, 0.55, 1], [0, 1, 1]);
-
-  const lineScale = useTransform(timelineProgress, [0, 0.55, 1], [0, 1, 1]);
-
-  const cardOpacity1 = useTransform(timelineProgress, [0, 0.14, 1], [0, 1, 1]);
-  const cardOpacity2 = useTransform(timelineProgress, [0.14, 0.32, 1], [0, 1, 1]);
-  const cardOpacity3 = useTransform(timelineProgress, [0.32, 0.5, 1], [0, 1, 1]);
-
-  const cardY1 = useTransform(timelineProgress, [0, 0.14, 1], [30, 0, 0]);
-  const cardY2 = useTransform(timelineProgress, [0.14, 0.32, 1], [30, 0, 0]);
-  const cardY3 = useTransform(timelineProgress, [0.32, 0.5, 1], [30, 0, 0]);
+  useMotionValueEvent(timelineProgress, 'change', (latest) => {
+    const reachedStep = latest >= 0.4 ? 3 : latest >= 0.22 ? 2 : latest >= 0.05 ? 1 : 0;
+    setRevealedTimelineSteps((current) => Math.max(current, reachedStep));
+  });
 
   const testimonials = [
     {
@@ -547,7 +539,8 @@ export default function App() {
               <div className="hidden md:block absolute top-8 left-[16.67%] right-[16.67%] h-[3px] bg-slate-100 -translate-y-1/2 z-0 rounded-full overflow-hidden">
                 <motion.div
                   className="h-full bg-gradient-to-r from-[#001CFF] to-[#001CFF]/60 origin-left"
-                  style={{ scaleX: lineScale }}
+                  animate={{ scaleX: revealedTimelineSteps / 3 }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
                 />
               </div>
 
@@ -557,11 +550,12 @@ export default function App() {
                 {/* Passo 01 Circle */}
                 <motion.div
                   className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-black z-10 bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white"
-                  style={{
-                    opacity: useTransform(circle1Progress, [0, 1], [0.4, 1]),
-                    scale: useTransform(circle1Progress, [0, 1], [0.85, 1]),
-                    boxShadow: useTransform(circle1Progress, [0.5, 1], ['0 0 0px rgba(0,28,255,0)', '0 0 20px rgba(0,28,255,0.25)'])
+                  animate={{
+                    opacity: revealedTimelineSteps >= 1 ? 1 : 0.4,
+                    scale: revealedTimelineSteps >= 1 ? 1 : 0.85,
+                    boxShadow: revealedTimelineSteps >= 1 ? '0 0 20px rgba(0,28,255,0.25)' : '0 0 0px rgba(0,28,255,0)'
                   }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
                   01
                 </motion.div>
@@ -569,7 +563,8 @@ export default function App() {
                 {/* Card 1 */}
                 <motion.div
                   className="w-full flex flex-col items-center text-center space-y-6"
-                  style={{ opacity: cardOpacity1, y: cardY1 }}
+                  animate={{ opacity: revealedTimelineSteps >= 1 ? 1 : 0, y: revealedTimelineSteps >= 1 ? 0 : 30 }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
                   <div className="timeline-visual w-full h-64 lg:h-80 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
                     <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'repeating-linear-gradient(90deg, #94a3b8 0px, transparent 1px, transparent 12px)', backgroundSize: '12px 12px' }}></div>
@@ -611,11 +606,12 @@ export default function App() {
                 {/* Passo 02 Circle */}
                 <motion.div
                   className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-black z-10 bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white"
-                  style={{
-                    opacity: useTransform(circle2Progress, [0, 1], [0.4, 1]),
-                    scale: useTransform(circle2Progress, [0, 1], [0.85, 1]),
-                    boxShadow: useTransform(circle2Progress, [0.5, 1], ['0 0 0px rgba(0,28,255,0)', '0 0 20px rgba(0,28,255,0.25)'])
+                  animate={{
+                    opacity: revealedTimelineSteps >= 2 ? 1 : 0.4,
+                    scale: revealedTimelineSteps >= 2 ? 1 : 0.85,
+                    boxShadow: revealedTimelineSteps >= 2 ? '0 0 20px rgba(0,28,255,0.25)' : '0 0 0px rgba(0,28,255,0)'
                   }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
                   02
                 </motion.div>
@@ -623,7 +619,8 @@ export default function App() {
                 {/* Card 2 */}
                 <motion.div
                   className="w-full flex flex-col items-center text-center space-y-6"
-                  style={{ opacity: cardOpacity2, y: cardY2 }}
+                  animate={{ opacity: revealedTimelineSteps >= 2 ? 1 : 0, y: revealedTimelineSteps >= 2 ? 0 : 30 }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
                   <div className="timeline-visual w-full h-64 lg:h-80 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden transition-all duration-500">
                     <div className="relative bg-slate-900 rounded-2xl p-1.5 shadow-[0_12px_40px_rgba(15,23,42,0.25)] w-28 h-52 mx-auto flex flex-col transition-shadow duration-500">
@@ -685,11 +682,12 @@ export default function App() {
                 {/* Passo 03 Circle */}
                 <motion.div
                   className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-black z-10 bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white"
-                  style={{
-                    opacity: useTransform(circle3Progress, [0, 1], [0.4, 1]),
-                    scale: useTransform(circle3Progress, [0, 1], [0.85, 1]),
-                    boxShadow: useTransform(circle3Progress, [0.5, 1], ['0 0 0px rgba(0,28,255,0)', '0 0 20px rgba(0,28,255,0.25)'])
+                  animate={{
+                    opacity: revealedTimelineSteps >= 3 ? 1 : 0.4,
+                    scale: revealedTimelineSteps >= 3 ? 1 : 0.85,
+                    boxShadow: revealedTimelineSteps >= 3 ? '0 0 20px rgba(0,28,255,0.25)' : '0 0 0px rgba(0,28,255,0)'
                   }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
                   03
                 </motion.div>
@@ -697,7 +695,8 @@ export default function App() {
                 {/* Card 3 */}
                 <motion.div
                   className="w-full flex flex-col items-center text-center space-y-6"
-                  style={{ opacity: cardOpacity3, y: cardY3 }}
+                  animate={{ opacity: revealedTimelineSteps >= 3 ? 1 : 0, y: revealedTimelineSteps >= 3 ? 0 : 30 }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
                   <div className="timeline-visual w-full h-64 lg:h-80 rounded-2xl bg-gradient-to-br from-[#0B0F19] to-[#121826] border border-slate-800/80 p-3 flex items-center justify-center relative overflow-hidden transition-all duration-500">
                     <div className="w-full h-full bg-[#080B11] border border-slate-850 rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col">
