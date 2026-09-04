@@ -108,9 +108,9 @@ export default function App() {
   });
 
   useMotionValueEvent(timelineProgress, 'change', (latest) => {
-    const reachedStep = latest >= 0.4 ? 3 : latest >= 0.22 ? 2 : latest >= 0.05 ? 1 : 0;
+    const reachedStep = latest >= 0.68 ? 3 : latest >= 0.38 ? 2 : latest >= 0.08 ? 1 : 0;
     setRevealedTimelineSteps((current) => Math.max(current, reachedStep));
-    if (latest >= 0.72) setTimelineSequenceComplete(true);
+    if (latest >= 0.98) setTimelineSequenceComplete(true);
   });
 
   const testimonials = [
