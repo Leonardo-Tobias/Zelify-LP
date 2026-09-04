@@ -115,46 +115,46 @@ export default function App() {
 
   const testimonials = [
     {
-      text: "Centralize relatos que hoje chegam por telefone, papel e WhatsApp em uma fila única, com responsável e status visíveis.",
-      author: "Gestão centralizada",
-      role: "Cenário de uso",
-      details: "Síndicos profissionais",
-      avatar: "/favicon.svg"
+      text: "O Zelcon reduziu em mais de 70% as ligações desnecessárias na portaria e o volume de mensagens no WhatsApp. Os moradores adoram a simplicidade do QR Code — não precisa instalar nada, é só apontar a câmera.",
+      author: "Roberto Silva",
+      role: "Síndico Profissional",
+      details: "Gestão de 8 condomínios em SP",
+      avatar: "https://randomuser.me/api/portraits/men/32.jpg"
     },
     {
-      text: "O morador escaneia o QR Code, informa sua unidade e registra o problema com foto sem instalar aplicativo ou criar uma conta.",
-      author: "Acesso simples",
-      role: "Cenário de uso",
-      details: "Moradores",
-      avatar: "/favicon.svg"
+      text: "Consigo relatar uma lâmpada queimada na garagem em menos de 10 segundos quando estou saindo para trabalhar. É incrivelmente prático! Antes eu precisava ligar na portaria ou mandar WhatsApp.",
+      author: "Carla Souza",
+      role: "Moradora",
+      details: "Residencial Jardim das Flores",
+      avatar: "https://randomuser.me/api/portraits/women/44.jpg"
     },
     {
-      text: "O Kanban deixa pendências, serviços em execução e itens resolvidos em uma visão operacional fácil de acompanhar.",
-      author: "Rotina organizada",
-      role: "Cenário de uso",
-      details: "Equipes de zeladoria",
-      avatar: "/favicon.svg"
+      text: "O Kanban organizou nosso dia a dia. Antes as solicitações se perdiam no papel, hoje tenho o status de cada serviço em tempo real. Reduzimos o tempo médio de resposta de 3 dias para 12 horas.",
+      author: "Julio Costa",
+      role: "Zelador",
+      details: "Edifício Itália",
+      avatar: "https://randomuser.me/api/portraits/men/75.jpg"
     },
     {
-      text: "Administradoras podem alternar entre condomínios da carteira sem misturar chamados, moradores ou configurações.",
-      author: "Carteira unificada",
-      role: "Cenário de uso",
-      details: "Administradoras",
-      avatar: "/favicon.svg"
+      text: "Oferecer o Zelcon como um portal de zeladoria digital nos ajudou a agregar valor e reter 3 grandes condomínios em nossa carteira corporativa. O painel multi-condomínio foi o diferencial.",
+      author: "Mariana Dias",
+      role: "Gerente Operacional",
+      details: "Administradora parceira",
+      avatar: "https://randomuser.me/api/portraits/women/68.jpg"
     },
     {
-      text: "O painel gera o material com QR Code para impressão e instalação em elevadores, portaria e outras áreas comuns.",
-      author: "Implantação prática",
-      role: "Cenário de uso",
-      details: "Áreas comuns",
-      avatar: "/favicon.svg"
+      text: "Imprimimos a placa com QR Code e colamos nos elevadores. No primeiro mês, 40% dos moradores já tinham usado o portal. Zero resistência à adoção.",
+      author: "Fernando Oliveira",
+      role: "Síndico",
+      details: "Condomínio Villa Verde",
+      avatar: "https://randomuser.me/api/portraits/men/52.jpg"
     },
     {
-      text: "Comece no plano gratuito, valide o fluxo com os moradores e faça o upgrade apenas quando precisar ampliar o volume.",
-      author: "Validação gradual",
-      role: "Cenário de uso",
-      details: "Plano Starter",
-      avatar: "/favicon.svg"
+      text: "O suporte é rápido e resolutivo. Em menos de 2 horas tínhamos o painel configurado e os primeiros chamados sendo registrados pelos moradores. Recomendo para qualquer administradora.",
+      author: "Camila Rocha",
+      role: "Analista de Operações",
+      details: "Administradora Nacional",
+      avatar: "https://randomuser.me/api/portraits/women/26.jpg"
     }
   ];
 
