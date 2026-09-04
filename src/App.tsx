@@ -101,7 +101,7 @@ export default function App() {
   const timelineRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: timelineProgress } = useScroll({
     target: timelineRef,
-    offset: ["start end", "end start"]
+    offset: ["start start", "end end"]
   });
 
   const circle1Progress = useTransform(timelineProgress, [0, 0.25], [0, 1]);
@@ -218,7 +218,7 @@ export default function App() {
       <Navbar />
 
       {/* 3. A. HERO SECTION */}
-      <section className="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-24 border-b border-slate-200/60">
+      <section className="hero-compact relative overflow-hidden min-h-[calc(100svh-4rem)] sm:min-h-[calc(100svh-5rem)] flex items-center py-8 sm:py-12 md:py-16 border-b border-slate-200/60">
         {/* Arcos orbitais: começam invisíveis e expandem sem limite com o scroll */}
         <motion.div
           style={{
@@ -252,71 +252,71 @@ export default function App() {
             style={{ width: 900, height: 900, top: -450, left: -450 }} />
         </motion.div>
         
-        <div className="max-w-4xl mx-auto px-6 flex flex-col items-center text-center space-y-8 relative z-10">
+        <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 flex flex-col items-center text-center space-y-5 sm:space-y-7 relative z-10">
           
-          <div className="inline-flex items-center space-x-2 bg-slate-200/50 border border-slate-250/60 px-3 py-1 rounded-full text-[11px] font-bold text-slate-700 uppercase tracking-widest animate-fade-in">
+          <div className="inline-flex items-center space-x-1.5 sm:space-x-2 bg-slate-200/50 border border-slate-250/60 px-2.5 sm:px-3 py-1 rounded-full text-[9px] sm:text-[11px] font-bold text-slate-700 uppercase tracking-widest animate-fade-in">
             <Sparkles className="w-3.5 h-3.5 text-[#001CFF]" />
             <span>O Futuro da Zeladoria Condominial</span>
           </div>
           
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.05] max-w-3xl">
+          <h1 className="text-[clamp(2rem,9.5vw,3rem)] sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.05] max-w-3xl">
             A gestão operacional do seu condomínio, <span className="animate-text-shine">direto no QR Code.</span>
           </h1>
 
-          <p className="text-slate-600 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-2xl">
+          <p className="text-slate-600 text-xs sm:text-base md:text-lg font-medium leading-relaxed max-w-2xl">
             Elimine o caos dos relatos perdidos no WhatsApp. Moradores notificam manutenções, achados e perdidos ou incidentes em 20 segundos, direto do navegador e sem precisar baixar nenhum aplicativo.
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2 w-full sm:w-auto">
+          <div className="flex flex-row flex-wrap justify-center items-center gap-2 sm:gap-4 pt-1 sm:pt-2">
             <a 
               href={`${PRODUCT_URL}/cadastro`}
               target="_blank"
               rel="noreferrer"
-              className="bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-semibold uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-[0_8px_25px_rgba(0,28,255,0.18)] hover:shadow-[0_8px_25px_rgba(0,28,255,0.3)] transition-all text-center flex items-center justify-center space-x-2 active:scale-[0.98] cursor-pointer w-full sm:w-auto whitespace-nowrap"
+              className="bg-[#001CFF] hover:bg-[#0014CC] text-white text-[10px] sm:text-xs font-semibold uppercase tracking-wider px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-lg sm:rounded-xl shadow-[0_8px_25px_rgba(0,28,255,0.18)] hover:shadow-[0_8px_25px_rgba(0,28,255,0.3)] transition-all text-center flex items-center justify-center space-x-1.5 sm:space-x-2 active:scale-[0.98] cursor-pointer whitespace-nowrap"
             >
               <span>Testar Grátis</span>
               <ArrowRight className="w-4 h-4" />
             </a>
             <button 
               onClick={() => setB2bModalOpen(true)}
-              className="border border-slate-300 hover:border-slate-800 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-xs font-medium uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all text-center flex items-center justify-center active:scale-[0.98] cursor-pointer w-full sm:w-auto whitespace-nowrap"
+              className="border border-slate-300 hover:border-slate-800 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-[10px] sm:text-xs font-medium uppercase tracking-wider px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-lg sm:rounded-xl transition-all text-center flex items-center justify-center active:scale-[0.98] cursor-pointer whitespace-nowrap"
             >
               Demonstração
             </button>
           </div>
 
           {/* Estatísticas & Benefícios Lado a Lado (Centralizados & Padronizados) */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 md:gap-12 mt-12 pt-8 border-t border-slate-100 w-full max-w-4xl mx-auto">
+          <div className="grid grid-cols-3 items-start justify-center gap-2 sm:gap-8 md:gap-12 mt-3 sm:mt-7 pt-4 sm:pt-7 border-t border-slate-100 w-full max-w-4xl mx-auto">
             {/* Badge 1: 100% Transparência */}
-            <div className="flex items-center space-x-3 text-left">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#001CFF]/8 text-[#001CFF] shrink-0 shadow-sm border border-[#001CFF]/15">
+            <div className="flex flex-col sm:flex-row items-center sm:space-x-3 text-center sm:text-left gap-1.5 sm:gap-0">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-[#001CFF]/8 text-[#001CFF] shrink-0 shadow-sm border border-[#001CFF]/15">
                 <Eye className="w-4.5 h-4.5" />
               </div>
               <div>
-                <h4 className="font-bold text-slate-900 text-sm leading-none">100% Transparência</h4>
-                <p className="text-[11px] text-slate-500 leading-tight mt-1">Acompanhamento em tempo real.</p>
+                <h4 className="font-bold text-slate-900 text-[9px] sm:text-sm leading-tight">100% Transparência</h4>
+                <p className="hidden sm:block text-[11px] text-slate-500 leading-tight mt-1">Acompanhamento em tempo real.</p>
               </div>
             </div>
 
             {/* Badge 2: Rápido */}
-            <div className="flex items-center space-x-3 text-left">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#001CFF]/8 text-[#001CFF] shrink-0 shadow-sm border border-[#001CFF]/15">
+            <div className="flex flex-col sm:flex-row items-center sm:space-x-3 text-center sm:text-left gap-1.5 sm:gap-0">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-[#001CFF]/8 text-[#001CFF] shrink-0 shadow-sm border border-[#001CFF]/15">
                 <Zap className="w-4.5 h-4.5" />
               </div>
               <div>
-                <h4 className="font-bold text-slate-900 text-sm leading-none">Rápido</h4>
-                <p className="text-[11px] text-slate-500 leading-tight mt-1">Relatos em 20s, sem app.</p>
+                <h4 className="font-bold text-slate-900 text-[9px] sm:text-sm leading-tight">Rápido</h4>
+                <p className="hidden sm:block text-[11px] text-slate-500 leading-tight mt-1">Relatos em 20s, sem app.</p>
               </div>
             </div>
 
             {/* Badge 3: Seguro */}
-            <div className="flex items-center space-x-3 text-left">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#001CFF]/8 text-[#001CFF] shrink-0 shadow-sm border border-[#001CFF]/15">
+            <div className="flex flex-col sm:flex-row items-center sm:space-x-3 text-center sm:text-left gap-1.5 sm:gap-0">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-[#001CFF]/8 text-[#001CFF] shrink-0 shadow-sm border border-[#001CFF]/15">
                 <Shield className="w-4.5 h-4.5" />
               </div>
               <div>
-                <h4 className="font-bold text-slate-900 text-sm leading-none">Seguro</h4>
-                <p className="text-[11px] text-slate-500 leading-tight mt-1">Histórico criptografado.</p>
+                <h4 className="font-bold text-slate-900 text-[9px] sm:text-sm leading-tight">Seguro</h4>
+                <p className="hidden sm:block text-[11px] text-slate-500 leading-tight mt-1">Histórico criptografado.</p>
               </div>
             </div>
           </div>
@@ -327,8 +327,8 @@ export default function App() {
 
 
       {/* 3. B. SEÇÃO DE DEMONSTRAÇÃO DO PRODUTO */}
-      <section className="py-20 md:py-28 bg-white border-b border-slate-200/60">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 sm:py-20 md:py-28 bg-white border-b border-slate-200/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
           {/* Header da Seção */}
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16 md:mb-20">
@@ -395,8 +395,8 @@ export default function App() {
 
 
       {/* 3. C. DOBRA DE SEGMENTAÇÃO (OS DOIS PÚBLICOS) */}
-      <section className="py-24 md:py-36 border-b border-slate-200/60 bg-slate-100/50">
-        <div className="max-w-7xl mx-auto px-6 space-y-16">
+      <section className="py-16 sm:py-24 md:py-36 border-b border-slate-200/60 bg-slate-100/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-12 sm:space-y-16">
           <div className="max-w-4xl text-left space-y-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl tracking-tight text-slate-900 leading-tight">
               <span className="font-black">Duas realidades, </span>
@@ -411,7 +411,7 @@ export default function App() {
             
             {/* Card Síndicos Profissionais (Fundo Claro) */}
             <ScrollReveal className="flex flex-col h-full" delay={0}>
-              <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group h-full">
+              <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group h-full">
                 <div className="space-y-6">
                   {/* Visual Placeholder (Síndico trabalhando - Foto Real Unsplash) */}
                   <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden relative group border border-slate-200">
@@ -471,7 +471,7 @@ export default function App() {
 
             {/* Card Administradoras (Fundo Escuro) */}
             <ScrollReveal className="flex flex-col h-full" delay={150}>
-              <div className="bg-slate-900 border border-slate-800 text-white rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group h-full">
+              <div className="bg-slate-900 border border-slate-800 text-white rounded-3xl p-6 sm:p-10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group h-full">
                 <div className="space-y-6">
                   {/* Visual Placeholder (Administradoras - Foto Real Unsplash) */}
                   <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden relative group border border-slate-800">
@@ -527,8 +527,8 @@ export default function App() {
       </section>
       
             {/* 3. D. LINHA DO TEMPO: O ECOSSISTEMA NO MUNDO FÍSICO */}
-      <section ref={timelineRef} className="relative bg-white border-b border-slate-200/60 py-24 md:py-36">
-        <div className="max-w-7xl mx-auto w-full px-6 flex flex-col space-y-12">
+      <section ref={timelineRef} className="relative bg-white border-b border-slate-200/60 py-16 sm:py-24 md:py-0 md:h-[300svh]">
+        <div className="timeline-stage max-w-7xl mx-auto w-full px-4 sm:px-6 flex flex-col space-y-12 md:sticky md:top-0 md:h-[100svh] md:justify-center md:overflow-hidden">
           
           {/* Header */}
           <div className="max-w-3xl mx-auto text-center space-y-4">
@@ -541,7 +541,7 @@ export default function App() {
             </div>
 
             {/* Círculos e Cards Lado a Lado (grid) */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10 w-full max-w-6xl mx-auto">
+            <div className="timeline-grid grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10 w-full max-w-6xl mx-auto">
               
               {/* Linha guia de conexão no desktop */}
               <div className="hidden md:block absolute top-8 left-[16.67%] right-[16.67%] h-[3px] bg-slate-100 -translate-y-1/2 z-0 rounded-full overflow-hidden">
@@ -571,7 +571,7 @@ export default function App() {
                   className="w-full flex flex-col items-center text-center space-y-6"
                   style={{ opacity: cardOpacity1, y: cardY1 }}
                 >
-                  <div className="w-full h-64 md:h-80 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
+                  <div className="timeline-visual w-full h-64 lg:h-80 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
                     <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'repeating-linear-gradient(90deg, #94a3b8 0px, transparent 1px, transparent 12px)', backgroundSize: '12px 12px' }}></div>
                     <div className="relative bg-white rounded-xl border border-slate-200 shadow-[0_8px_24px_rgba(0,0,0,0.08)] p-4 w-36 flex flex-col items-center space-y-2.5 transition-shadow duration-500">
                       <div className="flex items-center space-x-1">
@@ -625,7 +625,7 @@ export default function App() {
                   className="w-full flex flex-col items-center text-center space-y-6"
                   style={{ opacity: cardOpacity2, y: cardY2 }}
                 >
-                  <div className="w-full h-64 md:h-80 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden transition-all duration-500">
+                  <div className="timeline-visual w-full h-64 lg:h-80 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden transition-all duration-500">
                     <div className="relative bg-slate-900 rounded-2xl p-1.5 shadow-[0_12px_40px_rgba(15,23,42,0.25)] w-28 h-52 mx-auto flex flex-col transition-shadow duration-500">
                       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-2.5 bg-slate-900 rounded-b-lg z-20 flex items-center justify-center">
                         <div className="w-4 h-1 bg-slate-800 rounded-full"></div>
@@ -699,7 +699,7 @@ export default function App() {
                   className="w-full flex flex-col items-center text-center space-y-6"
                   style={{ opacity: cardOpacity3, y: cardY3 }}
                 >
-                  <div className="w-full h-64 md:h-80 rounded-2xl bg-gradient-to-br from-[#0B0F19] to-[#121826] border border-slate-800/80 p-3 flex items-center justify-center relative overflow-hidden transition-all duration-500">
+                  <div className="timeline-visual w-full h-64 lg:h-80 rounded-2xl bg-gradient-to-br from-[#0B0F19] to-[#121826] border border-slate-800/80 p-3 flex items-center justify-center relative overflow-hidden transition-all duration-500">
                     <div className="w-full h-full bg-[#080B11] border border-slate-850 rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col">
                       {/* Window Header */}
                       <div className="px-2.5 py-1.5 border-b border-slate-850 flex items-center justify-between bg-[#0B0F19]">
@@ -961,11 +961,11 @@ export default function App() {
           </div>
       </section>
 {/* SEÇÃO CARROSSEL DE COMENTÁRIOS (TESTIMONIALS) */}
-      <section className="py-24 bg-gradient-to-b from-slate-50 to-slate-100/50 border-b border-slate-200/60 relative overflow-hidden">
+      <section className="py-16 sm:py-24 bg-gradient-to-b from-slate-50 to-slate-100/50 border-b border-slate-200/60 relative overflow-hidden">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#001CFF]/5 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="max-w-4xl mx-auto px-6 space-y-12 relative z-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-10 sm:space-y-12 relative z-10">
           <div className="text-center space-y-4">
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 leading-tight">
               Onde o Zelcon ajuda na prática
@@ -977,7 +977,7 @@ export default function App() {
 
           {/* Testimonial Active Card */}
           <ScrollReveal type="fade" className="w-full">
-            <div className="bg-white border border-slate-200/60 rounded-3xl p-8 sm:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.02)] relative flex flex-col justify-between min-h-[260px] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)]">
+            <div className="bg-white border border-slate-200/60 rounded-3xl p-6 sm:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.02)] relative flex flex-col justify-between min-h-[260px] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)]">
               <div className="space-y-6">
                 {/* Giant quotation mark SVG */}
                 <div className="text-[#001CFF] opacity-15 absolute top-6 right-8">
@@ -1057,8 +1057,8 @@ export default function App() {
       </section>
 
       {/* 3. E. TABELA DE PREÇOS (PRICING DE 3 COLUNAS) */}
-      <section className="py-24 md:py-36 border-b border-slate-200/60 bg-slate-100/50">
-        <div className="max-w-7xl mx-auto px-6 space-y-16">
+      <section className="py-16 sm:py-24 md:py-36 border-b border-slate-200/60 bg-slate-100/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-12 sm:space-y-16">
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900 leading-tight">
               Um modelo de faturamento transparente, sem pegadinhas.
@@ -1102,7 +1102,7 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
             
             {/* PLANO STARTER (GRÁTIS) */}
-            <div className="bg-white/80 backdrop-blur-md border border-slate-200/70 rounded-3xl p-8 flex flex-col justify-between shadow-[0_8px_30px_rgb(0,0,0,0.015)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-300/80 transition-all duration-500 relative group">
+            <div className="bg-white/80 backdrop-blur-md border border-slate-200/70 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-[0_8px_30px_rgb(0,0,0,0.015)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-300/80 transition-all duration-500 relative group">
               <div className="space-y-6">
                 <div className="space-y-1">
                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Para Começar</span>
@@ -1178,7 +1178,7 @@ export default function App() {
             </div>
 
             {/* PLANO PRO (MAIS POPULAR) */}
-            <div className="bg-white border-2 border-[#001CFF] rounded-3xl p-8 flex flex-col justify-between shadow-[0_15px_45px_rgba(0,28,255,0.06)] hover:shadow-[0_25px_60px_rgba(0,28,255,0.12)] hover:-translate-y-2.5 transition-all duration-500 relative group">
+            <div className="bg-white border-2 border-[#001CFF] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-[0_15px_45px_rgba(0,28,255,0.06)] hover:shadow-[0_25px_60px_rgba(0,28,255,0.12)] hover:-translate-y-2.5 transition-all duration-500 relative group">
               <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#001CFF] text-white border border-[#001CFF]/10 px-4.5 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest shadow-[0_4px_20px_rgba(0,28,255,0.3)] select-none">
                 Mais Popular
               </div>
@@ -1265,7 +1265,7 @@ export default function App() {
             </div>
 
             {/* PLANO CORPORATIVO (ADMINISTRADORAS) */}
-            <div className="bg-[#0B0F19] border border-slate-800 text-white rounded-3xl p-8 flex flex-col justify-between shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-slate-700 transition-all duration-500 relative group">
+            <div className="bg-[#0B0F19] border border-slate-800 text-white rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-slate-700 transition-all duration-500 relative group">
               <div className="space-y-6">
                 <div className="space-y-1">
                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Múltiplos Condomínios</span>
@@ -1438,8 +1438,8 @@ export default function App() {
       </section>
 
       {/* 3. F. PERGUNTAS FREQUENTES (FAQ ACCORDION) */}
-      <section className="py-24 md:py-36 bg-white border-b border-slate-200/60">
-        <div className="max-w-4xl mx-auto px-6 space-y-16">
+      <section className="py-16 sm:py-24 md:py-36 bg-white border-b border-slate-200/60">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-12 sm:space-y-16">
           <div className="text-center space-y-4">
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">Perguntas Frequentes</h2>
             <p className="text-slate-500 text-xs sm:text-sm font-semibold">Tudo o que você precisa saber sobre o Zelcon para começar a usar.</p>
@@ -1474,7 +1474,7 @@ export default function App() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="relative overflow-hidden bg-[#0B0F19] py-28 md:py-36">
+      <section className="relative overflow-hidden bg-[#0B0F19] min-h-[70svh] flex items-center py-16 sm:py-24 md:py-36">
         {/* Glow de fundo */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#001CFF]/12 rounded-full blur-[120px]" />
@@ -1490,7 +1490,7 @@ export default function App() {
           }}
         />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-10">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-7 sm:space-y-10">
 
           {/* Badge */}
           <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full">
@@ -1518,19 +1518,19 @@ export default function App() {
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
+          <div className="flex flex-row flex-wrap justify-center items-center gap-2 sm:gap-4 pt-2">
             <a
               href={`${PRODUCT_URL}/cadastro`}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center space-x-2 bg-[#001CFF] hover:bg-[#0014CC] text-white text-xs font-semibold uppercase tracking-wider px-8 py-4 rounded-xl shadow-[0_8px_30px_rgba(0,28,255,0.35)] hover:shadow-[0_12px_40px_rgba(0,28,255,0.5)] transition-all duration-300 active:scale-[0.98] w-full sm:w-auto whitespace-nowrap"
+              className="inline-flex items-center justify-center space-x-1.5 sm:space-x-2 bg-[#001CFF] hover:bg-[#0014CC] text-white text-[10px] sm:text-xs font-semibold uppercase tracking-wider px-4 py-2.5 sm:px-8 sm:py-4 rounded-lg sm:rounded-xl shadow-[0_8px_30px_rgba(0,28,255,0.35)] hover:shadow-[0_12px_40px_rgba(0,28,255,0.5)] transition-all duration-300 active:scale-[0.98] whitespace-nowrap"
             >
               <span>Testar Grátis</span>
               <ArrowRight className="w-4 h-4" />
             </a>
             <button
               onClick={() => setB2bModalOpen(true)}
-              className="inline-flex items-center justify-center space-x-2 border border-white/15 hover:border-white/30 bg-white/5 hover:bg-white/10 text-white text-xs font-medium uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-300 active:scale-[0.98] w-full sm:w-auto whitespace-nowrap backdrop-blur-sm"
+              className="inline-flex items-center justify-center space-x-1.5 sm:space-x-2 border border-white/15 hover:border-white/30 bg-white/5 hover:bg-white/10 text-white text-[10px] sm:text-xs font-medium uppercase tracking-wider px-4 py-2.5 sm:px-8 sm:py-4 rounded-lg sm:rounded-xl transition-all duration-300 active:scale-[0.98] whitespace-nowrap backdrop-blur-sm"
             >
               <span>Ver Demonstração</span>
               <ArrowUpRight className="w-4 h-4" />

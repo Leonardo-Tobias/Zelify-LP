@@ -8,9 +8,9 @@ export default function BlogLayout({ children }: { children: ReactNode }) {
   const [b2bOpen, setB2bOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 flex flex-col">
       <Navbar />
-      {children}
+      <main className="flex-1">{children}</main>
       <Footer onB2bClick={() => setB2bOpen(true)} />
       {b2bOpen && <B2bModal onClose={() => setB2bOpen(false)} />}
     </div>

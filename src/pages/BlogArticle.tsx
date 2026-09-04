@@ -10,7 +10,7 @@ export default function BlogArticle() {
   if (!article) {
     return (
       <BlogLayout>
-        <div className="flex items-center justify-center py-32">
+        <div className="min-h-[calc(100svh-4rem)] flex items-center justify-center py-16 sm:py-32">
           <div className="text-center space-y-4 max-w-md px-6">
             <h1 className="text-2xl font-black text-slate-900">Artigo não encontrado</h1>
             <p className="text-sm text-slate-500 font-semibold">O artigo que você procura não existe ou foi removido.</p>
@@ -30,7 +30,7 @@ export default function BlogArticle() {
 
   return (
     <BlogLayout>
-      <div className="max-w-3xl mx-auto px-6 py-24 md:py-32">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24 md:py-32">
         <Link
           to="/blog"
           className="inline-flex items-center space-x-2 text-xs font-bold text-slate-400 hover:text-[#001CFF] transition-colors mb-8"
@@ -39,7 +39,7 @@ export default function BlogArticle() {
           <span>Voltar para o blog</span>
         </Link>
 
-        <div className="flex items-center space-x-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-4">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-4">
           <span className="bg-slate-100 px-2 py-1 rounded-full">{article.category}</span>
           <span className="flex items-center">
             <Calendar className="w-3 h-3 mr-1" />
@@ -59,7 +59,7 @@ export default function BlogArticle() {
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 
-        <div className="mt-12 p-6 bg-[#001CFF]/5 border border-[#001CFF]/10 rounded-2xl">
+        <div className="mt-12 p-5 sm:p-6 bg-[#001CFF]/5 border border-[#001CFF]/10 rounded-2xl">
           <p className="text-sm text-slate-700 font-semibold leading-relaxed mb-4">
             {article.cta}
           </p>

@@ -21,8 +21,8 @@ export default function B2bModal({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <div className="fixed inset-0 bg-slate-950/85 z-50 flex items-center justify-center p-4 backdrop-blur-md animate-fade-in">
-      <div className="bg-white border border-slate-100 rounded-[32px] w-full max-w-md overflow-hidden shadow-2xl relative animate-scale-in">
+    <div className="fixed inset-0 bg-slate-950/85 z-50 flex items-center justify-center p-3 sm:p-4 backdrop-blur-md animate-fade-in overflow-y-auto">
+      <div className="bg-white border border-slate-100 rounded-3xl sm:rounded-[32px] w-full max-w-md max-h-[calc(100svh-1.5rem)] overflow-y-auto shadow-2xl relative animate-scale-in">
         <button
           onClick={onClose}
           className="absolute top-5 right-5 text-slate-400 hover:text-slate-600 bg-slate-50 hover:bg-slate-100 border border-slate-200/40 rounded-full w-8 h-8 flex items-center justify-center transition-all duration-200 active:scale-95 cursor-pointer"
@@ -31,7 +31,7 @@ export default function B2bModal({ onClose }: { onClose: () => void }) {
           <X className="w-4 h-4" />
         </button>
 
-        <div className="p-8">
+        <div className="p-5 sm:p-8">
           <div className="mb-6">
             <div className="w-12 h-12 bg-blue-50 border border-blue-100/50 rounded-2xl flex items-center justify-center text-[#001CFF] mb-4.5 shadow-sm shadow-blue-100/30">
               <Building2 className="w-6 h-6" />

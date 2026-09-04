@@ -6,8 +6,8 @@ import BlogLayout from '../components/BlogLayout'
 export default function BlogList() {
   return (
     <BlogLayout>
-      <div className="max-w-4xl mx-auto px-6 py-24 md:py-32">
-        <div className="space-y-4 mb-16">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-24 md:py-32">
+        <div className="space-y-4 mb-10 sm:mb-16">
           <span className="text-[10px] font-black text-[#001CFF] uppercase tracking-widest">Blog</span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
             Dicas e guias para síndicos e administradoras
@@ -22,9 +22,9 @@ export default function BlogList() {
             <Link
               key={article.slug}
               to={`/blog/${article.slug}`}
-              className="block bg-white border border-slate-200/70 rounded-2xl p-6 sm:p-8 hover:shadow-lg hover:border-slate-300/80 transition-all duration-300 group"
+              className="block bg-white border border-slate-200/70 rounded-2xl p-5 sm:p-8 hover:shadow-lg hover:border-slate-300/80 transition-all duration-300 group"
             >
-              <div className="flex items-center space-x-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-3">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-3">
                 <span className="bg-slate-100 px-2 py-1 rounded-full">{article.category}</span>
                 <span className="flex items-center">
                   <Calendar className="w-3 h-3 mr-1" />

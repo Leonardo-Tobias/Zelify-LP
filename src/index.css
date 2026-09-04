@@ -8,17 +8,59 @@
 }
 
 @layer base {
+  html {
+    min-width: 320px;
+    overflow-x: hidden;
+    scroll-padding-top: 5rem;
+  }
+
   body {
     @apply bg-slate-50 text-slate-900 antialiased selection:bg-brand-blue/15 selection:text-brand-blue;
+    min-width: 320px;
+    min-height: 100svh;
+    margin: 0;
+    overflow-x: hidden;
     font-family: var(--font-sans);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
+
+  #root {
+    min-height: 100svh;
+  }
+
+  img,
+  video,
+  svg {
+    max-width: 100%;
+  }
+
   h1, h2, h3, h4, h5, h6, .font-display {
     font-family: var(--font-display);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
   button, input, textarea, select, a {
     font-family: inherit;
+  }
+}
+
+@media (max-height: 700px) and (min-width: 640px) {
+  .hero-compact {
+    padding-block: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) and (max-height: 760px) {
+  .timeline-stage {
+    gap: 1.5rem;
+    padding-block: 1rem;
+  }
+
+  .timeline-grid {
+    gap: 1.25rem;
+  }
+
+  .timeline-visual {
+    height: 13rem;
   }
 }
 

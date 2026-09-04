@@ -2,8 +2,8 @@ import { PRODUCT_URL } from '../config'
 
 export default function Footer({ onB2bClick }: { onB2bClick: () => void }) {
   return (
-    <footer className="bg-slate-900 text-white py-16 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start">
+    <footer className="bg-slate-900 text-white py-12 sm:py-16 border-t border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-12 gap-10 sm:gap-12 md:gap-8 items-start">
 
         <div className="md:col-span-6 space-y-4">
           <a href="/" className="text-2xl font-black tracking-tight no-underline text-white">
