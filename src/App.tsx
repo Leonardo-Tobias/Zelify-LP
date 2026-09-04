@@ -90,6 +90,7 @@ export default function App() {
   const [isAnnual, setIsAnnual] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [revealedTimelineSteps, setRevealedTimelineSteps] = useState(0);
+  const [timelineSequenceComplete, setTimelineSequenceComplete] = useState(false);
 
   const { scrollY } = useScroll();
   
@@ -108,6 +109,7 @@ export default function App() {
   useMotionValueEvent(timelineProgress, 'change', (latest) => {
     const reachedStep = latest >= 0.4 ? 3 : latest >= 0.22 ? 2 : latest >= 0.05 ? 1 : 0;
     setRevealedTimelineSteps((current) => Math.max(current, reachedStep));
+    if (latest >= 0.72) setTimelineSequenceComplete(true);
   });
 
   const testimonials = [
@@ -519,8 +521,11 @@ export default function App() {
       </section>
       
             {/* 3. D. LINHA DO TEMPO: O ECOSSISTEMA NO MUNDO FÍSICO */}
-      <section ref={timelineRef} className="relative bg-white border-b border-slate-200/60 py-16 sm:py-24 md:py-0 md:h-[300svh]">
-        <div className="timeline-stage max-w-7xl mx-auto w-full px-4 sm:px-6 flex flex-col space-y-12 md:sticky md:top-0 md:h-[100svh] md:justify-center md:overflow-hidden">
+      <section
+        ref={timelineRef}
+        className={`relative bg-white border-b border-slate-200/60 py-16 sm:py-24 ${timelineSequenceComplete ? 'md:h-auto md:py-24' : 'md:py-0 md:h-[300svh]'}`}
+      >
+        <div className={`timeline-stage max-w-7xl mx-auto w-full px-4 sm:px-6 flex flex-col space-y-12 ${timelineSequenceComplete ? 'md:relative md:h-auto md:overflow-visible' : 'md:sticky md:top-0 md:h-[100svh] md:justify-center md:overflow-hidden'}`}>
           
           {/* Header */}
           <div className="max-w-3xl mx-auto text-center space-y-4">
