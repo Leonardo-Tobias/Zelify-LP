@@ -110,7 +110,7 @@ export default function App() {
   const circle3Progress = useTransform(timelineProgress, [0.55, 0.85], [0, 1]);
 
   useMotionValueEvent(timelineProgress, 'change', (latest) => {
-    const nextStep = latest < 0.34 ? 1 : latest < 0.67 ? 2 : 3;
+    const nextStep = latest < 0.33 ? 1 : latest < 0.66 ? 2 : 3;
     setActiveTimelineStep((current) => current === nextStep ? current : nextStep);
   });
 
@@ -523,7 +523,7 @@ export default function App() {
       </section>
       
             {/* 3. D. LINHA DO TEMPO: O ECOSSISTEMA NO MUNDO FÍSICO */}
-      <section ref={timelineRef} className="relative bg-white border-b border-slate-200/60 py-16 sm:py-24 md:py-0 md:h-[240svh]">
+      <section ref={timelineRef} className="relative bg-white border-b border-slate-200/60 py-16 sm:py-24 md:py-0 md:h-[190svh]">
         <div className="timeline-stage max-w-7xl mx-auto w-full px-4 sm:px-6 flex flex-col space-y-12 md:sticky md:top-0 md:h-[100svh] md:justify-center md:overflow-hidden">
           
           {/* Header */}
@@ -537,7 +537,7 @@ export default function App() {
             </div>
 
             {/* Um passo por vez no desktop; fluxo contínuo no celular */}
-            <div className="timeline-grid grid grid-cols-1 gap-8 relative z-10 w-full max-w-4xl mx-auto md:h-[34rem]">
+            <div className="timeline-grid grid grid-cols-1 gap-8 relative z-10 w-full max-w-4xl mx-auto md:h-[31rem] lg:h-[35rem]">
 
               {/* Passo 01 Column */}
               <ScrollReveal className={`timeline-step md:absolute md:inset-0 ${activeTimelineStep === 1 ? 'md:block' : 'md:hidden'}`} delay={0}>
