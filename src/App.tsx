@@ -104,19 +104,19 @@ export default function App() {
     offset: ["start start", "end end"]
   });
 
-  const circle1Progress = useTransform(timelineProgress, [0, 0.25], [0, 1]);
-  const circle2Progress = useTransform(timelineProgress, [0.25, 0.55], [0, 1]);
-  const circle3Progress = useTransform(timelineProgress, [0.55, 0.85], [0, 1]);
+  const circle1Progress = useTransform(timelineProgress, [0, 0.15, 1], [0, 1, 1]);
+  const circle2Progress = useTransform(timelineProgress, [0.15, 0.35, 1], [0, 1, 1]);
+  const circle3Progress = useTransform(timelineProgress, [0.35, 0.55, 1], [0, 1, 1]);
 
-  const lineScale = useTransform(timelineProgress, [0, 0.85], [0, 1]);
+  const lineScale = useTransform(timelineProgress, [0, 0.55, 1], [0, 1, 1]);
 
-  const cardOpacity1 = useTransform(timelineProgress, [0, 0.2], [0, 1]);
-  const cardOpacity2 = useTransform(timelineProgress, [0.25, 0.5], [0, 1]);
-  const cardOpacity3 = useTransform(timelineProgress, [0.55, 0.8], [0, 1]);
+  const cardOpacity1 = useTransform(timelineProgress, [0, 0.14, 1], [0, 1, 1]);
+  const cardOpacity2 = useTransform(timelineProgress, [0.14, 0.32, 1], [0, 1, 1]);
+  const cardOpacity3 = useTransform(timelineProgress, [0.32, 0.5, 1], [0, 1, 1]);
 
-  const cardY1 = useTransform(timelineProgress, [0, 0.2], [30, 0]);
-  const cardY2 = useTransform(timelineProgress, [0.25, 0.5], [30, 0]);
-  const cardY3 = useTransform(timelineProgress, [0.55, 0.8], [30, 0]);
+  const cardY1 = useTransform(timelineProgress, [0, 0.14, 1], [30, 0, 0]);
+  const cardY2 = useTransform(timelineProgress, [0.14, 0.32, 1], [30, 0, 0]);
+  const cardY3 = useTransform(timelineProgress, [0.32, 0.5, 1], [30, 0, 0]);
 
   const testimonials = [
     {
