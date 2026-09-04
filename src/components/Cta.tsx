@@ -14,7 +14,7 @@ type SharedProps = {
 const base = 'inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-xl text-center font-semibold uppercase tracking-wider transition-all duration-300 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50'
 
 const sizes: Record<CtaSize, string> = {
-  compact: 'min-h-[42px] px-3 text-xs sm:min-h-11 sm:px-4 2xl:min-h-12 2xl:px-5 2xl:text-[13px]',
+  compact: 'min-h-9 px-3 text-[10px] sm:min-h-10 sm:px-4 sm:text-[11px] 2xl:min-h-11 2xl:px-5 2xl:text-xs',
   default: 'min-h-[42px] px-4 text-xs sm:min-h-11 sm:px-6 2xl:min-h-12 2xl:px-7 2xl:text-sm',
   large: 'min-h-11 px-5 text-xs sm:min-h-12 sm:px-8 sm:text-[13px] 2xl:min-h-13 2xl:px-9 2xl:text-sm',
 }
