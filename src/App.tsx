@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
 import { 
   Building2, 
   QrCode, 
@@ -89,6 +89,7 @@ export default function App() {
   const [condoCount, setCondoCount] = useState(12);
   const [isAnnual, setIsAnnual] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [activeTimelineStep, setActiveTimelineStep] = useState(1);
 
   const { scrollY } = useScroll();
   
@@ -108,13 +109,10 @@ export default function App() {
   const circle2Progress = useTransform(timelineProgress, [0.25, 0.55], [0, 1]);
   const circle3Progress = useTransform(timelineProgress, [0.55, 0.85], [0, 1]);
 
-  const stepOpacity1 = useTransform(timelineProgress, [0, 0.04, 0.27, 0.34], [1, 1, 1, 0]);
-  const stepOpacity2 = useTransform(timelineProgress, [0.27, 0.36, 0.61, 0.68], [0, 1, 1, 0]);
-  const stepOpacity3 = useTransform(timelineProgress, [0.61, 0.7, 1], [0, 1, 1]);
-
-  const stepY1 = useTransform(timelineProgress, [0, 0.04, 0.34], [0, 0, -24]);
-  const stepY2 = useTransform(timelineProgress, [0.27, 0.36, 0.68], [24, 0, -24]);
-  const stepY3 = useTransform(timelineProgress, [0.61, 0.7], [24, 0]);
+  useMotionValueEvent(timelineProgress, 'change', (latest) => {
+    const nextStep = latest < 0.34 ? 1 : latest < 0.67 ? 2 : 3;
+    setActiveTimelineStep((current) => current === nextStep ? current : nextStep);
+  });
 
   const testimonials = [
     {
@@ -542,8 +540,8 @@ export default function App() {
             <div className="timeline-grid grid grid-cols-1 gap-8 relative z-10 w-full max-w-4xl mx-auto md:h-[34rem]">
 
               {/* Passo 01 Column */}
-              <ScrollReveal className="timeline-step md:absolute md:inset-0" delay={0}>
-              <motion.div className="flex flex-col items-center space-y-6" style={{ opacity: stepOpacity1, y: stepY1 }}>
+              <ScrollReveal className={`timeline-step md:absolute md:inset-0 ${activeTimelineStep === 1 ? 'md:block' : 'md:hidden'}`} delay={0}>
+              <motion.div className="flex flex-col items-center space-y-6">
                 {/* Passo 01 Circle */}
                 <motion.div
                   className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-black z-10 bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white"
@@ -594,8 +592,8 @@ export default function App() {
               </ScrollReveal>
 
               {/* Passo 02 Column */}
-              <ScrollReveal className="timeline-step md:absolute md:inset-0" delay={150}>
-              <motion.div className="flex flex-col items-center space-y-6" style={{ opacity: stepOpacity2, y: stepY2 }}>
+              <ScrollReveal className={`timeline-step md:absolute md:inset-0 ${activeTimelineStep === 2 ? 'md:block' : 'md:hidden'}`} delay={0}>
+              <motion.div className="flex flex-col items-center space-y-6">
                 {/* Passo 02 Circle */}
                 <motion.div
                   className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-black z-10 bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white"
@@ -666,8 +664,8 @@ export default function App() {
               </ScrollReveal>
 
               {/* Passo 03 Column */}
-              <ScrollReveal className="timeline-step md:absolute md:inset-0" delay={300}>
-              <motion.div className="flex flex-col items-center space-y-6" style={{ opacity: stepOpacity3, y: stepY3 }}>
+              <ScrollReveal className={`timeline-step md:absolute md:inset-0 ${activeTimelineStep === 3 ? 'md:block' : 'md:hidden'}`} delay={0}>
+              <motion.div className="flex flex-col items-center space-y-6">
                 {/* Passo 03 Circle */}
                 <motion.div
                   className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-black z-10 bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white"
