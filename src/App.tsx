@@ -108,15 +108,13 @@ export default function App() {
   const circle2Progress = useTransform(timelineProgress, [0.25, 0.55], [0, 1]);
   const circle3Progress = useTransform(timelineProgress, [0.55, 0.85], [0, 1]);
 
-  const lineScale = useTransform(timelineProgress, [0, 0.85], [0, 1]);
+  const stepOpacity1 = useTransform(timelineProgress, [0, 0.04, 0.27, 0.34], [1, 1, 1, 0]);
+  const stepOpacity2 = useTransform(timelineProgress, [0.27, 0.36, 0.61, 0.68], [0, 1, 1, 0]);
+  const stepOpacity3 = useTransform(timelineProgress, [0.61, 0.7, 1], [0, 1, 1]);
 
-  const cardOpacity1 = useTransform(timelineProgress, [0, 0.2], [0, 1]);
-  const cardOpacity2 = useTransform(timelineProgress, [0.25, 0.5], [0, 1]);
-  const cardOpacity3 = useTransform(timelineProgress, [0.55, 0.8], [0, 1]);
-
-  const cardY1 = useTransform(timelineProgress, [0, 0.2], [30, 0]);
-  const cardY2 = useTransform(timelineProgress, [0.25, 0.5], [30, 0]);
-  const cardY3 = useTransform(timelineProgress, [0.55, 0.8], [30, 0]);
+  const stepY1 = useTransform(timelineProgress, [0, 0.04, 0.34], [0, 0, -24]);
+  const stepY2 = useTransform(timelineProgress, [0.27, 0.36, 0.68], [24, 0, -24]);
+  const stepY3 = useTransform(timelineProgress, [0.61, 0.7], [24, 0]);
 
   const testimonials = [
     {
@@ -527,7 +525,7 @@ export default function App() {
       </section>
       
             {/* 3. D. LINHA DO TEMPO: O ECOSSISTEMA NO MUNDO FÍSICO */}
-      <section ref={timelineRef} className="relative bg-white border-b border-slate-200/60 py-16 sm:py-24 md:py-0 md:h-[300svh]">
+      <section ref={timelineRef} className="relative bg-white border-b border-slate-200/60 py-16 sm:py-24 md:py-0 md:h-[240svh]">
         <div className="timeline-stage max-w-7xl mx-auto w-full px-4 sm:px-6 flex flex-col space-y-12 md:sticky md:top-0 md:h-[100svh] md:justify-center md:overflow-hidden">
           
           {/* Header */}
@@ -540,25 +538,16 @@ export default function App() {
               </p>
             </div>
 
-            {/* Círculos e Cards Lado a Lado (grid) */}
-            <div className="timeline-grid grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10 w-full max-w-6xl mx-auto">
-              
-              {/* Linha guia de conexão no desktop */}
-              <div className="hidden md:block absolute top-8 left-[16.67%] right-[16.67%] h-[3px] bg-slate-100 -translate-y-1/2 z-0 rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full bg-gradient-to-r from-[#001CFF] to-[#001CFF]/60 origin-left"
-                  style={{ scaleX: lineScale }}
-                />
-              </div>
+            {/* Um passo por vez no desktop; fluxo contínuo no celular */}
+            <div className="timeline-grid grid grid-cols-1 gap-8 relative z-10 w-full max-w-4xl mx-auto md:h-[34rem]">
 
               {/* Passo 01 Column */}
-              <ScrollReveal delay={0}>
-              <div className="flex flex-col items-center space-y-6">
+              <ScrollReveal className="timeline-step md:absolute md:inset-0" delay={0}>
+              <motion.div className="flex flex-col items-center space-y-6" style={{ opacity: stepOpacity1, y: stepY1 }}>
                 {/* Passo 01 Circle */}
                 <motion.div
                   className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-black z-10 bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white"
                   style={{
-                    opacity: useTransform(circle1Progress, [0, 1], [0.4, 1]),
                     scale: useTransform(circle1Progress, [0, 1], [0.85, 1]),
                     boxShadow: useTransform(circle1Progress, [0.5, 1], ['0 0 0px rgba(0,28,255,0)', '0 0 20px rgba(0,28,255,0.25)'])
                   }}
@@ -569,7 +558,6 @@ export default function App() {
                 {/* Card 1 */}
                 <motion.div
                   className="w-full flex flex-col items-center text-center space-y-6"
-                  style={{ opacity: cardOpacity1, y: cardY1 }}
                 >
                   <div className="timeline-visual w-full h-64 lg:h-80 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden group-hover:border-[#001CFF]/20 transition-all duration-500">
                     <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'repeating-linear-gradient(90deg, #94a3b8 0px, transparent 1px, transparent 12px)', backgroundSize: '12px 12px' }}></div>
@@ -602,17 +590,16 @@ export default function App() {
                     </p>
                   </div>
                 </motion.div>
-              </div>
+              </motion.div>
               </ScrollReveal>
 
               {/* Passo 02 Column */}
-              <ScrollReveal delay={150}>
-              <div className="flex flex-col items-center space-y-6">
+              <ScrollReveal className="timeline-step md:absolute md:inset-0" delay={150}>
+              <motion.div className="flex flex-col items-center space-y-6" style={{ opacity: stepOpacity2, y: stepY2 }}>
                 {/* Passo 02 Circle */}
                 <motion.div
                   className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-black z-10 bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white"
                   style={{
-                    opacity: useTransform(circle2Progress, [0, 1], [0.4, 1]),
                     scale: useTransform(circle2Progress, [0, 1], [0.85, 1]),
                     boxShadow: useTransform(circle2Progress, [0.5, 1], ['0 0 0px rgba(0,28,255,0)', '0 0 20px rgba(0,28,255,0.25)'])
                   }}
@@ -623,7 +610,6 @@ export default function App() {
                 {/* Card 2 */}
                 <motion.div
                   className="w-full flex flex-col items-center text-center space-y-6"
-                  style={{ opacity: cardOpacity2, y: cardY2 }}
                 >
                   <div className="timeline-visual w-full h-64 lg:h-80 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/60 p-5 flex items-center justify-center relative overflow-hidden transition-all duration-500">
                     <div className="relative bg-slate-900 rounded-2xl p-1.5 shadow-[0_12px_40px_rgba(15,23,42,0.25)] w-28 h-52 mx-auto flex flex-col transition-shadow duration-500">
@@ -676,17 +662,16 @@ export default function App() {
                     </p>
                   </div>
                 </motion.div>
-              </div>
+              </motion.div>
               </ScrollReveal>
 
               {/* Passo 03 Column */}
-              <ScrollReveal delay={300}>
-              <div className="flex flex-col items-center space-y-6">
+              <ScrollReveal className="timeline-step md:absolute md:inset-0" delay={300}>
+              <motion.div className="flex flex-col items-center space-y-6" style={{ opacity: stepOpacity3, y: stepY3 }}>
                 {/* Passo 03 Circle */}
                 <motion.div
                   className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-black z-10 bg-gradient-to-br from-[#001CFF] to-[#000AB3] border-[#001CFF] text-white"
                   style={{
-                    opacity: useTransform(circle3Progress, [0, 1], [0.4, 1]),
                     scale: useTransform(circle3Progress, [0, 1], [0.85, 1]),
                     boxShadow: useTransform(circle3Progress, [0.5, 1], ['0 0 0px rgba(0,28,255,0)', '0 0 20px rgba(0,28,255,0.25)'])
                   }}
@@ -697,7 +682,6 @@ export default function App() {
                 {/* Card 3 */}
                 <motion.div
                   className="w-full flex flex-col items-center text-center space-y-6"
-                  style={{ opacity: cardOpacity3, y: cardY3 }}
                 >
                   <div className="timeline-visual w-full h-64 lg:h-80 rounded-2xl bg-gradient-to-br from-[#0B0F19] to-[#121826] border border-slate-800/80 p-3 flex items-center justify-center relative overflow-hidden transition-all duration-500">
                     <div className="w-full h-full bg-[#080B11] border border-slate-850 rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col">
@@ -954,7 +938,7 @@ export default function App() {
                     </p>
                   </div>
                 </motion.div>
-              </div>
+              </motion.div>
               </ScrollReveal>
 
             </div>

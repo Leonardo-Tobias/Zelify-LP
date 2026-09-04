@@ -57,10 +57,18 @@
 
   .timeline-grid {
     gap: 1.25rem;
+    height: 28rem;
   }
 
   .timeline-visual {
     height: 13rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .timeline-step > div {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
