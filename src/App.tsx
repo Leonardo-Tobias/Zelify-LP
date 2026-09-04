@@ -252,18 +252,18 @@ export default function App() {
             style={{ width: 900, height: 900, top: -450, left: -450 }} />
         </motion.div>
         
-        <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 flex flex-col items-center text-center space-y-5 sm:space-y-7 relative z-10">
+        <div className="max-w-4xl 2xl:max-w-6xl mx-auto w-full px-4 sm:px-6 flex flex-col items-center text-center space-y-5 sm:space-y-7 2xl:space-y-9 relative z-10">
           
-          <div className="inline-flex items-center space-x-1.5 sm:space-x-2 bg-slate-200/50 border border-slate-250/60 px-2.5 sm:px-3 py-1 rounded-full text-[9px] sm:text-[11px] font-bold text-slate-700 uppercase tracking-widest animate-fade-in">
+          <div className="inline-flex items-center space-x-1.5 sm:space-x-2 bg-slate-200/50 border border-slate-250/60 px-2.5 sm:px-3 2xl:px-4 py-1 2xl:py-1.5 rounded-full text-[9px] sm:text-[11px] 2xl:text-xs font-bold text-slate-700 uppercase tracking-widest animate-fade-in">
             <Sparkles className="w-3.5 h-3.5 text-[#001CFF]" />
             <span>O Futuro da Zeladoria Condominial</span>
           </div>
           
-          <h1 className="text-[clamp(2rem,9.5vw,3rem)] sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.05] max-w-3xl">
+          <h1 className="text-[clamp(2rem,9.5vw,3rem)] sm:text-5xl md:text-6xl 2xl:text-8xl font-black text-slate-900 tracking-tight leading-[1.05] max-w-3xl 2xl:max-w-5xl">
             A gestão operacional do seu condomínio, <span className="animate-text-shine">direto no QR Code.</span>
           </h1>
 
-          <p className="text-slate-600 text-xs sm:text-base md:text-lg font-medium leading-relaxed max-w-2xl">
+          <p className="text-slate-600 text-xs sm:text-base md:text-lg 2xl:text-xl font-medium leading-relaxed max-w-2xl 2xl:max-w-3xl">
             Elimine o caos dos relatos perdidos no WhatsApp. Moradores notificam manutenções, achados e perdidos ou incidentes em 20 segundos, direto do navegador e sem precisar baixar nenhum aplicativo.
           </p>
 
@@ -272,51 +272,51 @@ export default function App() {
               href={`${PRODUCT_URL}/cadastro`}
               target="_blank"
               rel="noreferrer"
-              className="bg-[#001CFF] hover:bg-[#0014CC] text-white text-[10px] sm:text-xs font-semibold uppercase tracking-wider px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-lg sm:rounded-xl shadow-[0_8px_25px_rgba(0,28,255,0.18)] hover:shadow-[0_8px_25px_rgba(0,28,255,0.3)] transition-all text-center flex items-center justify-center space-x-1.5 sm:space-x-2 active:scale-[0.98] cursor-pointer whitespace-nowrap"
+              className="bg-[#001CFF] hover:bg-[#0014CC] text-white text-[10px] sm:text-xs 2xl:text-sm font-semibold uppercase tracking-wider px-4 py-2.5 sm:px-6 sm:py-3.5 2xl:px-8 2xl:py-4 rounded-lg sm:rounded-xl shadow-[0_8px_25px_rgba(0,28,255,0.18)] hover:shadow-[0_8px_25px_rgba(0,28,255,0.3)] transition-all text-center flex items-center justify-center space-x-1.5 sm:space-x-2 active:scale-[0.98] cursor-pointer whitespace-nowrap"
             >
               <span>Testar Grátis</span>
               <ArrowRight className="w-4 h-4" />
             </a>
             <button 
               onClick={() => setB2bModalOpen(true)}
-              className="border border-slate-300 hover:border-slate-800 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-[10px] sm:text-xs font-medium uppercase tracking-wider px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-lg sm:rounded-xl transition-all text-center flex items-center justify-center active:scale-[0.98] cursor-pointer whitespace-nowrap"
+              className="border border-slate-300 hover:border-slate-800 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-[10px] sm:text-xs 2xl:text-sm font-medium uppercase tracking-wider px-4 py-2.5 sm:px-6 sm:py-3.5 2xl:px-8 2xl:py-4 rounded-lg sm:rounded-xl transition-all text-center flex items-center justify-center active:scale-[0.98] cursor-pointer whitespace-nowrap"
             >
               Demonstração
             </button>
           </div>
 
           {/* Estatísticas & Benefícios Lado a Lado (Centralizados & Padronizados) */}
-          <div className="grid grid-cols-3 items-start justify-center gap-2 sm:gap-8 md:gap-12 mt-3 sm:mt-7 pt-4 sm:pt-7 border-t border-slate-100 w-full max-w-4xl mx-auto">
+          <div className="grid grid-cols-3 items-start justify-center gap-2 sm:gap-8 md:gap-12 2xl:gap-20 mt-3 sm:mt-7 2xl:mt-10 pt-4 sm:pt-7 2xl:pt-9 border-t border-slate-100 w-full max-w-4xl 2xl:max-w-5xl mx-auto">
             {/* Badge 1: 100% Transparência */}
             <div className="flex flex-col sm:flex-row items-center sm:space-x-3 text-center sm:text-left gap-1.5 sm:gap-0">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-[#001CFF]/8 text-[#001CFF] shrink-0 shadow-sm border border-[#001CFF]/15">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 2xl:w-12 2xl:h-12 rounded-full flex items-center justify-center bg-[#001CFF]/8 text-[#001CFF] shrink-0 shadow-sm border border-[#001CFF]/15">
                 <Eye className="w-4.5 h-4.5" />
               </div>
               <div>
-                <h4 className="font-bold text-slate-900 text-[9px] sm:text-sm leading-tight">100% Transparência</h4>
-                <p className="hidden sm:block text-[11px] text-slate-500 leading-tight mt-1">Acompanhamento em tempo real.</p>
+                <h4 className="font-bold text-slate-900 text-[9px] sm:text-sm 2xl:text-base leading-tight">100% Transparência</h4>
+                <p className="hidden sm:block text-[11px] 2xl:text-sm text-slate-500 leading-tight mt-1">Acompanhamento em tempo real.</p>
               </div>
             </div>
 
             {/* Badge 2: Rápido */}
             <div className="flex flex-col sm:flex-row items-center sm:space-x-3 text-center sm:text-left gap-1.5 sm:gap-0">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-[#001CFF]/8 text-[#001CFF] shrink-0 shadow-sm border border-[#001CFF]/15">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 2xl:w-12 2xl:h-12 rounded-full flex items-center justify-center bg-[#001CFF]/8 text-[#001CFF] shrink-0 shadow-sm border border-[#001CFF]/15">
                 <Zap className="w-4.5 h-4.5" />
               </div>
               <div>
-                <h4 className="font-bold text-slate-900 text-[9px] sm:text-sm leading-tight">Rápido</h4>
-                <p className="hidden sm:block text-[11px] text-slate-500 leading-tight mt-1">Relatos em 20s, sem app.</p>
+                <h4 className="font-bold text-slate-900 text-[9px] sm:text-sm 2xl:text-base leading-tight">Rápido</h4>
+                <p className="hidden sm:block text-[11px] 2xl:text-sm text-slate-500 leading-tight mt-1">Relatos em 20s, sem app.</p>
               </div>
             </div>
 
             {/* Badge 3: Seguro */}
             <div className="flex flex-col sm:flex-row items-center sm:space-x-3 text-center sm:text-left gap-1.5 sm:gap-0">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-[#001CFF]/8 text-[#001CFF] shrink-0 shadow-sm border border-[#001CFF]/15">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 2xl:w-12 2xl:h-12 rounded-full flex items-center justify-center bg-[#001CFF]/8 text-[#001CFF] shrink-0 shadow-sm border border-[#001CFF]/15">
                 <Shield className="w-4.5 h-4.5" />
               </div>
               <div>
-                <h4 className="font-bold text-slate-900 text-[9px] sm:text-sm leading-tight">Seguro</h4>
-                <p className="hidden sm:block text-[11px] text-slate-500 leading-tight mt-1">Histórico criptografado.</p>
+                <h4 className="font-bold text-slate-900 text-[9px] sm:text-sm 2xl:text-base leading-tight">Seguro</h4>
+                <p className="hidden sm:block text-[11px] 2xl:text-sm text-slate-500 leading-tight mt-1">Histórico criptografado.</p>
               </div>
             </div>
           </div>
